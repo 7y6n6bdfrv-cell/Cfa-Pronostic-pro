@@ -125,9 +125,25 @@
     .prono-soon { font-style: italic; color: var(--text2); margin-top: 20px; font-size: 15px; display: block; text-align: center; }
 
     .live-section { margin-top: 40px; }
-    .live-badge { background: var(--red); color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 12px; animation: blink 1.5s infinite; font-family: 'JetBrains Mono'; }
-    @keyframes blink { 50% { opacity: 0.3; } }
-    .live-promo-text { font-size: 13px; color: var(--gold); font-weight: bold; margin-top: 10px; border-top: 1px rgba(255,255,255,0.1) solid; padding-top: 5px; }
+    
+    .no-live-events {
+      background: var(--card);
+      border: 1px dashed rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      padding: 40px 20px;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .no-live-events i {
+      font-size: 40px;
+      color: var(--text2);
+      margin-bottom: 15px;
+    }
+    .no-live-events p {
+      color: var(--text2);
+      font-size: 15px;
+    }
 
     .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
     .card-title { font-family: 'Rajdhani'; font-size: 22px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
@@ -224,7 +240,6 @@
         <h1 id="hero-title">L'Algorithme Mondial <br>de Pari Sportif</h1>
         <p id="hero-desc">Inscriptions sécurisées, analyses algorithmiques ultra-précises et code promo universel.</p>
         
-        <!-- ENCART ACCROCHEUR CODE PROMO -->
         <div class="promo-catchy-box" id="promo-box-text">
           ✨ OFFRE DE L'IA : Profitez immédiatement du meilleur code promo actuel <span class="promo-highlight">20VM</span> pour maximiser vos gains !
         </div>
@@ -248,16 +263,16 @@
         <center><span class="prono-header-badge"><i class="fas fa-chart-line"></i> DERNIÈRES ANALYSES DU SYSTÈME</span></center>
         <div class="grid" style="grid-template-columns: 1fr;">
           <div class="match-card" style="border: 1px solid var(--accent); background: linear-gradient(145deg, var(--card), #081122);">
-            <div style="color: var(--accent); font-weight: bold; font-size: 14px; margin-bottom: 10px; font-family: 'JetBrains Mono';">ANALYSE TERMINÉE - SCORE SIMULÉ</div>
+            <div style="color: var(--accent); font-weight: bold; font-size: 14px; margin-bottom: 10px; font-family: 'JetBrains Mono';" id="prono-status-label">PRONOSTIC DU JOUR VALIDÉ</div>
             <div class="match-teams" style="max-width: 500px; margin: 0 auto 15px auto;">
               <div class="team" style="font-size: 20px;">OGC Nice</div>
-              <div class="vs-box" style="font-size: 26px; color: var(--gold);">4 - 1</div>
+              <div class="vs-box" style="font-size: 22px; color: var(--gold);">VS</div>
               <div class="team" style="font-size: 20px;">ASSE</div>
             </div>
-            <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: var(--radius); display: inline-block; margin-bottom: 10px;">
+            <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: var(--radius); display: inline-block; margin-bottom: 10px;" id="prono-tip-box">
               <span style="color: var(--text2);">Pronostic conseillé :</span> 
-              <strong style="color: var(--green); font-size: 16px;">Les deux équipes marquent</strong> 
-              <span style="color: var(--gold); margin-left: 10px; font-weight: bold; font-family: 'JetBrains Mono';">Cote : 2,3</span>
+              <strong style="color: var(--green); font-size: 16px;">Gagner (Victoire de Nice)</strong> 
+              <span style="color: var(--gold); margin-left: 10px; font-weight: bold; font-family: 'JetBrains Mono';">Cote : 1,75</span>
             </div>
             <div class="live-promo-text" style="border: none;">💡 Activez ce coupon sur votre bookmaker configuré avec le code : 20VM</div>
           </div>
@@ -268,25 +283,14 @@
       <!-- TRACKER DES MATCHS EN LIVE -->
       <div class="live-section">
         <h2 class="section-title" id="live-section-title">🔴 TRACKER DES MATCHS EN LIVE DE L'IA</h2>
-        <div class="grid">
-          <div class="match-card">
-            <span class="live-badge">LIVE 72'</span>
-            <div class="match-teams"><div class="team">Real Madrid</div><div class="vs-box">2 - 1</div><div class="team">FC Barcelone</div></div>
-            <div class="match-time">Algorithme : Victoire Prochaine Buteur</div>
-            <div class="live-promo-text">⚠️ Inscrivez-vous avec le code promo : 20VM</div>
-          </div>
-          <div class="match-card">
-            <span class="live-badge">LIVE 41'</span>
-            <div class="match-teams"><div class="team">Manchester City</div><div class="vs-box">0 - 0</div><div class="team">Liverpool</div></div>
-            <div class="match-time">Algorithme : Total Plus de 1.5 Buts</div>
-            <div class="live-promo-text">⚠️ Inscrivez-vous avec le code promo : 20VM</div>
-          </div>
-          <div class="match-card">
-            <span class="live-badge">LIVE 55'</span>
-            <div class="match-teams"><div class="team">Juventus</div><div class="vs-box">0 - 1</div><div class="team">AC Milan</div></div>
-            <div class="match-time">Algorithme : Double Chance Milan</div>
-            <div class="live-promo-text">⚠️ Inscrivez-vous avec le code promo : 20VM</div>
-          </div>
+        
+        <div class="no-live-events" id="no-live-box">
+          <i class="fas fa-info-circle"></i>
+          <p style="font-weight: bold; font-size: 16px; margin-bottom: 8px;">Pas d'événement populaire d'Europe en live actuellement</p>
+          <p style="font-size: 14px; color: var(--text2);">
+            Les analyses en direct reprendreont dès le coup d'envoi des prochaines rencontres européennes. 
+            Profitez-en pour configurer votre compte avec le code promo <span style="color: var(--gold); font-weight: bold;">20VM</span>.
+          </p>
         </div>
       </div>
 
@@ -305,7 +309,6 @@
         🚀 <strong>BONUS COMPRIS :</strong> Cliquez sur le bouton d'un bookmaker ci-dessous pour être redirigé vers l'interface d'inscription. Le code promo <strong>20VM</strong> s'activera automatiquement pour doubler votre premier dépôt !
       </div>
 
-      <!-- GRID DES BOOKMAKERS AVEC LIENS DIRECTS -->
       <div class="grid" style="margin-top: 20px;">
         <div class="bookmaker-card">
           <div style="font-size:24px; font-weight:700; color:#1a6cff; margin-bottom:15px">1XBET</div>
@@ -378,7 +381,7 @@
     <div onclick="triggerGate()" class="float-btn float-tg" title="Telegram"><i class="fab fa-telegram-plane"></i></div>
   </div>
 
-  <!-- MODAL DE BLOCAGE (Pour réseaux sociaux uniquement désormais) -->
+  <!-- MODAL DE BLOCAGE -->
   <div class="gate-modal" id="gateModal">
     <div class="gate-content">
       <i class="fas fa-lock gate-icon"></i>
@@ -395,7 +398,7 @@
     <div class="chat-box" id="chatBox">
       <div style="background:var(--bg2); padding:10px; font-weight:700">GEMINI ASSISTANT</div>
       <div class="chat-messages" id="chatMsgs">
-        <div class="msg bot">Bonjour ! Les liens de redirection directe vers nos bookmakers partenaires sont maintenant actifs. Cliquez sur l'un d'eux pour commencer avec le code promo **20VM** déjà validé !</div>
+        <div class="msg bot">Bonjour ! Aujourd'hui, notre algorithme a validé la victoire de l'OGC Nice. N'oubliez pas de placer vos pronostics avec le code promo **20VM** !</div>
       </div>
       <div class="chat-input-area">
         <input type="text" class="chat-input" id="chatIn" placeholder="Posez votre question..." onkeypress="if(event.key==='Enter') sendChat()">
@@ -416,11 +419,8 @@
       window.scrollTo(0,0);
     }
 
-    // FONCTION DE REDIRECTION VERS LES SITES OFFICIELS AVEC LIENS PARAMÉTRÉS
     function redirectToBookmaker(platform) {
       let url = "";
-      
-      // Remplace ces liens fictifs ci-dessous par tes vrais liens d'affiliation si nécessaire !
       switch(platform) {
         case '1xbet':
           url = "https://1xbet.com/registration?pcode=20VM"; 
@@ -434,8 +434,6 @@
         default:
           url = "https://1xbet.com/";
       }
-      
-      // Ouvre le lien dans un nouvel onglet avec le code promo transmis
       window.open(url, '_blank');
     }
 
@@ -445,16 +443,19 @@
 
     function changeLanguage(lang) {
       const translations = {
-        fr: { title: "L'Algorithme Mondial de Pari Sportif", desc: "Inscriptions sécurisées, analyses algorithmiques ultra-précises et code promo universel.", box: "✨ OFFRE DE L'IA : Profitez immédiatement du meilleur code promo actuel 20VM pour maximiser vos gains !", live: "🔴 TRACKER DES MATCHS EN LIVE DE L'IA", montante: "🔥 MONTANTES EXCLUSIVES QUOTIDIENNES !", soon: "⏳ Les prochains pronostics algorithmiques de haute précision seront disponibles très bientôt...", dir: "ltr" },
-        ar: { title: "الخوارزمية العالمية للمراهنات الرياضية", desc: "تسجيل مبسط، تحليلات رياضية كاملة، والرمز الترويجي الشامل 20VM.", box: "✨ عرض الذكاء الاصطناعي: استفد فورًا من أفضل رمز ترويجي حالي 20VM لزيادة أرباحك!", live: "🔴 المراقبة الحية للمباريات عبر الذكاء الاصطناعي", montante: "🔥 تحديات الصعود اليومية الحصرية!", soon: "⏳ التوقعات الخوارزمية القادمة عالية الدقة ستكون متاحة قريبًا جدًا...", dir: "rtl" },
-        en: { title: "The Global Sports Betting Algorithm", desc: "Simplified registrations, full mathematical analysis, and universal promo code.", box: "✨ AI OFFER: Take immediate advantage of the best current promo code 20VM to maximize your winnings!", live: "🔴 AI LIVE MATCH TRACKER", montante: "🔥 EXCLUSIVE DAILY ROLLOVER CHALLENGES!", soon: "⏳ Next high-precision algorithmic predictions will be available very soon...", dir: "ltr" }
+        fr: { title: "L'Algorithme Mondial de Pari Sportif", desc: "Inscriptions sécurisées, analyses algorithmiques ultra-précises et code promo universel.", box: "✨ OFFRE DE L'IA : Profitez immédiatement du meilleur code promo actuel 20VM pour maximiser vos gains !", status: "PRONOSTIC DU JOUR VALIDÉ", tip: "<span style='color: var(--text2);'>Pronostic conseillé :</span> <strong style='color: var(--green); font-size: 16px;'>Gagner (Victoire de Nice)</strong> <span style='color: var(--gold); margin-left: 10px; font-weight: bold; font-family: \"JetBrains Mono\";'>Cote : 1,75</span>", live: "🔴 TRACKER DES MATCHS EN LIVE DE L'IA", noLive: "<i class='fas fa-info-circle'></i><p style='font-weight: bold; font-size: 16px; margin-bottom: 8px;'>Pas d'événement populaire d'Europe en live actuellement</p><p style='font-size: 14px;'>Les analyses en direct reprendront dès le coup d'envoi des prochaines rencontres européennes. Profitez-en pour configurer votre compte avec le code promo 20VM.</p>", montante: "🔥 MONTANTES EXCLUSIVES QUOTIDIENNES !", soon: "⏳ Les prochains pronostics algorithmiques de haute précision seront disponibles très bientôt...", dir: "ltr" },
+        ar: { title: "الخوارزمية العالمية للمراهنات الرياضية", desc: "تسجيل مبسط، تحليلات رياضية كاملة، والرمز الترويجي الشامل 20VM.", box: "✨ عرض الذكاء الاصطناعي: استفد فورًا من أفضل رمز ترويجي حالي 20VM لزيادة أرباحك!", status: "تم تأكيد توقعات اليوم", tip: "<span style='color: var(--text2);'>التوقع المقترح:</span> <strong style='color: var(--green); font-size: 16px;'>فوز نيس (Gagner)</strong> <span style='color: var(--gold); margin-left: 10px; font-weight: bold;'>المعدل: 1.75</span>", live: "🔴 المراقبة الحية للمباريات عبر الذكاء الاصطناعي", noLive: "<i class='fas fa-info-circle'></i><p style='font-weight: bold; font-size: 16px; margin-bottom: 8px;'>لا توجد مباريات أوروبية مباشرة حاليًا</p><p style='font-size: 14px;'>ستستأنف التحليلات المباشرة فور بدء المباريات الأوروبية القادمة. استغل الفرصة لتجهيز حسابك برمز ترويجي 20VM.</p>", montante: "🔥 تحديات الصعود اليومية الحصرية!", soon: "⏳ التوقعات الخوارزمية القادمة عالية الدقة ستكون متاحة قريبًا جدًا...", dir: "rtl" },
+        en: { title: "The Global Sports Betting Algorithm", desc: "Simplified registrations, full mathematical analysis, and universal promo code.", box: "✨ AI OFFER: Take immediate advantage of the best current promo code 20VM to maximize your winnings!", status: "TODAY'S PREDICTION VALIDATED", tip: "<span style='color: var(--text2);'>Recommended Bet:</span> <strong style='color: var(--green); font-size: 16px;'>Nice to Win (Gagner)</strong> <span style='color: var(--gold); margin-left: 10px; font-weight: bold;'>Odds: 1.75</span>", live: "🔴 AI LIVE MATCH TRACKER", noLive: "<i class='fas fa-info-circle'></i><p style='font-weight: bold; font-size: 16px; margin-bottom: 8px;'>No popular European live events right now</p><p style='font-size: 14px;'>Live analysis will resume as soon as next European matches kickoff. Take this time to set up your account with code 20VM.</p>", montante: "🔥 EXCLUSIVE DAILY ROLLOVER CHALLENGES!", soon: "⏳ Next high-precision algorithmic predictions will be available very soon...", dir: "ltr" }
       };
 
       if (translations[lang]) {
         document.getElementById('hero-title').innerHTML = translations[lang].title;
         document.getElementById('hero-desc').innerText = translations[lang].desc;
         document.getElementById('promo-box-text').innerHTML = translations[lang].box;
+        document.getElementById('prono-status-label').innerText = translations[lang].status;
+        document.getElementById('prono-tip-box').innerHTML = translations[lang].tip;
         document.getElementById('live-section-title').innerText = translations[lang].live;
+        document.getElementById('no-live-box').innerHTML = translations[lang].noLive;
         document.getElementById('banner-montante-title').innerText = translations[lang].montante;
         document.getElementById('prono-soon-msg').innerText = translations[lang].soon;
         document.documentElement.setAttribute('dir', translations[lang].dir);
@@ -475,12 +476,12 @@
       container.innerHTML += `<div class="msg user">${input.value}</div>`;
       input.value = '';
       
-      let botReply = "Je traite votre demande. Cliquez sur 'Inscriptions' pour accéder aux plateformes directement avec le code **20VM**.";
+      let botReply = "Je traite votre demande. Profitez du pronostic 'Victoire de Nice' aujourd'hui avec notre code partenaire **20VM** !";
       
-      if(val.includes('nice') || val.includes('asse') || val.includes('score') || val.includes('pronostic')) {
-        botReply = "Le match Nice vs ASSE a été simulé à 4-1 avec le pronostic 'Les deux équipes marquent'. Utilisez le code **20VM** lors du dépôt !";
-      } else if(val.includes('inscription') || val.includes('inscrire') || val.includes('compte') || val.includes('site')) {
-        botReply = "Cliquez sur l'onglet 'Inscriptions' en haut. Les boutons ouvrent maintenant directement les formulaires d'inscriptions officiels.";
+      if(val.includes('live') || val.includes('match') || val.includes('europe')) {
+        botReply = "Il n'y a pas de match européen populaire en direct pour le moment, mais suivez notre pronostic Nice validé pour aujourd'hui !";
+      } else if(val.includes('nice') || val.includes('pronostic')) {
+        botReply = "Aujourd'hui, l'analyse automatique conseille la victoire de l'OGC Nice (cote à 1,75). Bonne chance !";
       }
 
       setTimeout(() => {
