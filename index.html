@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
+    /* VARIABLES COMPATIBLES AVEC LE CHANGEMENT DE THÈME (DARK/LIGHT) */
     :root {
       --bg: #060810; --bg2: #0b0f1a; --card: #0e1420;
       --primary: #1a6cff; --accent: #00d4ff; --gold: #f6c90e;
@@ -15,44 +16,48 @@
       --radius: 12px; --radius-lg: 20px; --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
+    /* AJUSTEMENT AUTOMATIQUE SI L'UTILISATEUR PRÉFÈRE UN FOND BLANC (MODE CLAIR) */
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f3f4f6; --bg2: #ffffff; --card: #e5e7eb;
+        --text: #111827; --text2: #4b5563;
+      }
+    }
+
+    /* Support de la direction Arabe (RTL) */
+    [dir="rtl"] { text-align: right; }
+    [dir="rtl"] .nav-right { flex-direction: row-reverse; }
+    [dir="rtl"] .nav-links { flex-direction: row-reverse; }
+    [dir="rtl"] .card-title i { margin-left: 10px; margin-right: 0; }
+    [dir="rtl"] .social-float-buttons { left: 20px; right: auto; }
+
     /* Reset & Base */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; transition: var(--transition); }
     .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     
-    /* BANDEAU DÉFILANT */
+    /* BANDEAU DEFILANT DU CODE PROMO */
     .ticker-bar {
       position: fixed; top: 0; left: 0; right: 0;
       background: linear-gradient(90deg, #0a1628, #1a6cff, #0a1628);
       border-bottom: 1px solid var(--accent); padding: 8px 0; z-index: 1100;
-      overflow: hidden; white-space: nowrap;
     }
-    .ticker-inner { display: inline-flex; gap: 50px; animation: tickerScroll 25s linear infinite; }
-    .ticker-item { font-family: 'Rajdhani'; font-size: 13px; font-weight: 700; color: #fff; }
-    .ticker-item span { background: var(--gold); color: #000; padding: 2px 6px; border-radius: 4px; margin-left: 5px; }
-    @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
     /* Navigation Responsive */
-    nav { position: fixed; top: 35px; width: 100%; background: rgba(6,8,16,0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    nav { position: fixed; top: 41px; width: 100%; background: var(--bg2); opacity: 0.96; backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
     .nav-inner { height: 70px; display: flex; align-items: center; justify-content: space-between; }
     .logo { font-family: 'Rajdhani'; font-size: 24px; font-weight: 700; color: var(--accent); display: flex; align-items: center; gap: 8px; cursor: pointer; }
-    
     .nav-right { display: flex; align-items: center; gap: 15px; }
-    
-    /* Menu Hamburger */
     .menu-toggle { display: none; background: none; border: none; color: var(--text); font-size: 24px; cursor: pointer; }
-
     .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
     .nav-links a { color: var(--text2); font-weight: 500; cursor: pointer; transition: var(--transition); text-decoration: none; }
     .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-    
-    .lang-select { background: var(--bg2); color: var(--text); border: 1px solid rgba(255,255,255,0.1); padding: 6px 10px; border-radius: 6px; font-size: 14px; outline: none; cursor: pointer; }
+    .lang-select { background: var(--bg2); color: var(--text); border: 1px solid rgba(255,255,255,0.2); padding: 6px 10px; border-radius: 6px; font-size: 14px; outline: none; cursor: pointer; }
 
-    /* Responsive Menu Breakpoint (Tablettes et Mobiles) */
     @media (max-width: 992px) {
       .menu-toggle { display: block; }
       .nav-links {
-        position: fixed; top: 105px; left: -100%; width: 100%; height: calc(100vh - 105px);
+        position: fixed; top: 111px; left: -100%; width: 100%; height: calc(100vh - 111px);
         background: var(--bg); flex-direction: column; padding: 40px 20px; gap: 30px;
         transition: var(--transition); border-top: 1px solid rgba(255,255,255,0.05);
       }
@@ -60,83 +65,108 @@
     }
 
     /* Pages */
-    .page { display: none; padding-top: 140px; animation: fadeIn 0.5s ease; padding-bottom: 60px; }
+    .page { display: none; padding-top: 150px; animation: fadeIn 0.5s ease; padding-bottom: 60px; }
     .page.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
+    /* ZONE HERO AVEC JOUEUR ET BALLON EN ARRIÈRE-PLAN */
+    .hero { 
+      text-align: center; 
+      padding: 100px 20px; 
+      background: linear-gradient(rgba(6, 8, 16, 0.75), rgba(6, 8, 16, 0.85)), 
+                  url('https://images.unsplash.com/photo-1544698310-74ea9d1c8258?auto=format&fit=crop&q=80&w=1600') no-repeat center center;
+      background-size: cover;
+      border-radius: var(--radius-lg);
+      margin-bottom: 30px;
+    }
+    @media (prefers-color-scheme: light) {
+      .hero {
+        background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(243, 244, 246, 0.9)), 
+                    url('https://images.unsplash.com/photo-1544698310-74ea9d1c8258?auto=format&fit=crop&q=80&w=1600') no-repeat center center;
+        background-size: cover;
+      }
+    }
+    .hero h1 { font-family: 'Rajdhani'; font-size: clamp(32px, 7vw, 56px); line-height: 1.1; margin-bottom: 20px; color: var(--text); }
+    .hero p { font-size: clamp(14px, 3vw, 18px); color: var(--text2); margin-bottom: 30px; }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; max-width: 600px; margin: 0 auto 20px auto; }
+    .social-hero-btns { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; max-width: 600px; margin: 0 auto; }
+
     /* Grids Flexibles */
     .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-
-    /* Elements Communs */
     .card-title { font-family: 'Rajdhani'; font-size: 22px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
     .section-title { font-size: clamp(28px, 5vw, 36px); font-family: 'Rajdhani'; margin-bottom: 30px; text-align: center; }
 
-    /* Hero Section */
-    .hero { text-align: center; padding: 40px 0; background: radial-gradient(circle at top, rgba(26,108,255,0.15), transparent); }
-    .hero h1 { font-family: 'Rajdhani'; font-size: clamp(32px, 7vw, 56px); line-height: 1.1; margin-bottom: 20px; padding: 0 10px; }
-    .hero p { font-size: clamp(14px, 3vw, 18px); color: var(--text2); margin-bottom: 30px; }
-    .hero-btns { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; width: 100%; max-width: 500px; margin: 0 auto; padding: 0 20px; }
-
-    /* Match Cards & Teams */
-    .match-card { background: var(--card); border: 1px solid rgba(255,255,255,0.05); border-radius: var(--radius-lg); padding: 20px; transition: var(--transition); }
+    /* Match & Bookmakers Cards */
+    .match-card, .plan-card, .bookmaker-card { 
+      background: var(--card); 
+      padding: 30px 20px; border-radius: var(--radius-lg); 
+      text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); 
+    }
+    .match-card:hover, .plan-card:hover, .bookmaker-card:hover { transform: translateY(-5px); border-color: var(--primary); }
     .match-teams { display: flex; align-items: center; justify-content: space-between; margin: 20px 0; gap: 10px; }
     .team { text-align: center; flex: 1; min-width: 0; }
-    .team div { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 14px; }
-    .team img { width: clamp(35px, 10vw, 45px); height: clamp(35px, 10vw, 45px); object-fit: contain; margin-bottom: 8px; }
-    .vs { font-weight: 700; color: var(--text2); font-size: 14px; }
-
-    /* Plan & Bookmakers Cards */
-    .plan-card, .bookmaker-card { 
-      background: linear-gradient(145deg, var(--card), var(--bg2)); 
-      padding: 30px 20px; border-radius: var(--radius-lg); 
-      text-align: center; border: 1px solid rgba(255,255,255,0.05); position: relative; transition: var(--transition); 
-    }
-    .plan-card:hover, .bookmaker-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+    .team img { width: 45px; height: 45px; object-fit: contain; margin-bottom: 8px; }
+    .vs { font-weight: 700; color: var(--text2); }
     .plan-price { font-family: 'Rajdhani'; font-size: 44px; font-weight: 700; color: var(--gold); margin: 15px 0; }
-    .bookie-img { height: 35px; max-width: 80%; object-fit: contain; margin-bottom: 15px; }
     .promo-badge { background: rgba(246,201,14,0.1); color: var(--gold); padding: 5px 10px; border-radius: 6px; font-size: 13px; font-weight: 700; display: inline-block; margin-bottom: 15px; font-family: 'JetBrains Mono'; }
 
     /* Analyses Spécifications */
     .spec-box { background: var(--bg2); padding: 15px; border-radius: var(--radius); margin-top: 15px; }
     .spec-row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 5px; color: var(--text2); gap: 10px; }
-    .progress-bar { background: rgba(255,255,255,0.05); height: 6px; border-radius: 3px; overflow: hidden; }
+    .progress-bar { background: rgba(255,255,255,0.1); height: 6px; border-radius: 3px; overflow: hidden; }
     .progress-fill { background: var(--accent); height: 100%; border-radius: 3px; }
 
     /* Formulaires */
     .form-box { max-width: 500px; margin: 0 auto; background: var(--card); padding: clamp(20px, 5vw, 30px); border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.05); }
     .form-group { margin-bottom: 15px; text-align: left; }
     .form-group label { display: block; margin-bottom: 6px; font-size: 14px; color: var(--text2); }
-    .form-control { width: 100%; background: var(--bg2); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; color: white; outline: none; font-family: inherit; }
+    .form-control { width: 100%; background: var(--bg2); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; color: var(--text); outline: none; font-family: inherit; }
 
     /* Buttons */
     .btn { display: inline-block; padding: 12px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; border: none; text-align: center; text-decoration: none; width: 100%; transition: var(--transition); font-family: inherit; }
     .btn-primary { background: var(--primary); color: white; }
     .btn-gold { background: var(--gold); color: black; }
+    .btn-whatsapp { background: #25D366; color: white; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .btn-telegram { background: #0088cc; color: white; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .btn-whatsapp:hover { background: #20ba59; }
+    .btn-telegram:hover { background: #0077b3; }
 
-    /* Zone de Paiement Sécurisé */
+    /* Paiements et Chat */
     .payment-methods { margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
     .payment-icons { display: flex; justify-content: center; gap: 20px; font-size: 28px; color: var(--text2); margin-top: 15px; flex-wrap: wrap; }
-
-    /* Chatbot Widget Épuré pour Mobile */
     .chat-widget { position: fixed; bottom: 15px; right: 15px; z-index: 2000; }
-    .chat-button { width: 55px; height: 55px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 22px; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+    .chat-button { width: 55px; height: 55px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 22px; cursor: pointer; }
     .chat-box { position: absolute; bottom: 70px; right: 0; width: calc(100vw - 30px); max-width: 320px; height: 380px; background: var(--card); border: 1px solid var(--primary); border-radius: var(--radius); display: none; flex-direction: column; }
     .chat-messages { flex: 1; padding: 15px; overflow-y: auto; font-size: 14px; display: flex; flex-direction: column; gap: 10px; }
-    .chat-input-area { padding: 10px; display: flex; border-top: 1px solid #333; }
-    .chat-input { flex: 1; background: #222; border: none; color: white; padding: 8px; border-radius: 4px; outline: none; }
+    .chat-input-area { padding: 10px; display: flex; border-top: 1px solid rgba(255,255,255,0.1); }
+    .chat-input { flex: 1; background: var(--bg2); border: none; color: var(--text); padding: 8px; border-radius: 4px; outline: none; }
     .msg { padding: 8px 12px; border-radius: 8px; max-width: 85%; }
-    .msg.bot { background: #1a2333; align-self: flex-start; }
-    .msg.user { background: var(--primary); align-self: flex-end; }
+    .msg.bot { background: var(--bg2); align-self: flex-start; }
+    .msg.user { background: var(--primary); color: white; align-self: flex-end; }
+
+    /* BOUTONS FLOTTANTS FIXES POUR WHATSAPP & TELEGRAM */
+    .social-float-buttons {
+      position: fixed; bottom: 85px; right: 20px;
+      display: flex; flex-direction: column; gap: 10px; z-index: 2000;
+    }
+    .float-btn {
+      width: 50px; height: 50px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 24px; text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: var(--transition);
+    }
+    .float-btn:hover { transform: scale(1.1); }
+    .float-wa { background: #25D366; }
+    .float-tg { background: #0088cc; }
   </style>
 </head>
 <body>
 
-  <!-- BANDEAU CODE PROMO -->
+  <!-- BANDEAU DÉFILANT AVEC LE CODE PROMO -->
   <div class="ticker-bar">
-    <div class="ticker-inner">
-      <div class="ticker-item">🌍 INSCRIPTION BOOKMAKERS : UTILISEZ LE CODE UNIQUE <span>20VM</span> POUR VOS BONUS DE BIENVENUE !</div>
-      <div class="ticker-item">🚀 ANALYSES IA DE POINTE ACCESSIBLES DANS L'ONGLET DÉDIÉ !</div>
-    </div>
+    <marquee behavior="scroll" direction="left" scrollamount="6" style="color: #ffffff; font-family: 'Rajdhani'; font-weight: bold; font-size: 14px;">
+      🚀 CODE PROMO EXCLUSIF SUR TOUS LES BOOKMAKERS : <span style="background: var(--gold); color: #000; padding: 2px 6px; border-radius: 4px; margin: 0 5px;">20VM</span> - UTILISEZ LE SUR 1XBET, BETWINNER ET MELBET POUR COMMENCER ! 🌍
+    </marquee>
   </div>
 
   <!-- NAVIGATION -->
@@ -151,126 +181,133 @@
           <li><a onclick="showPage('vip')" class="nav-item" id="link-vip" style="color:var(--gold)">VIP</a></li>
           <li><a onclick="showPage('contact')" class="nav-item" id="link-contact">Contact</a></li>
         </ul>
+        
+        <!-- SÉLECTEUR DE LANGUE (INCLUT L'ARABE ET TOUTES LES MAJEURES) -->
         <select class="lang-select" onchange="changeLanguage(this.value)">
           <option value="fr">Français</option>
+          <option value="ar">العربية (Arabe)</option>
           <option value="en">English</option>
           <option value="es">Español</option>
           <option value="de">Deutsch</option>
-          <option value="it">Italiano</option>
-          <option value="pt">Português</option>
         </select>
         <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
       </div>
     </div>
   </nav>
 
-  <main id="app">
+  <main id="app" class="container">
     
-    <!-- ACCUEIL -->
+    <!-- ACCUEIL AVEC FOND DU JOUEUR DE BALLON -->
     <section id="home" class="page active">
       <div class="hero">
         <h1 id="hero-title">L'Algorithme Mondial <br>de Pari Sportif</h1>
-        <p>Inscriptions simplifiées, analyses mathématiques complètes et code promo universel.</p>
+        <p id="hero-desc">Inscriptions simplifiées, analyses mathématiques complètes et code promo universel.</p>
+        
+        <!-- Boutons d'action de base -->
         <div class="hero-btns">
           <button class="btn btn-primary" onclick="showPage('analyses')">Voir les Spécifications</button>
           <button class="btn btn-gold" onclick="showPage('bookmakers')">S'inscrire (Code: 20VM)</button>
         </div>
+
+        <!-- ACCÈS RÉSEAUX SOCIAUX DANS LE HERO -->
+        <div class="social-hero-btns">
+          <a href="https://wa.me/VOTRE_NUMERO" target="_blank" class="btn btn-whatsapp" id="btn-wa-text"><i class="fab fa-whatsapp"></i> Rejoindre sur WhatsApp</a>
+          <a href="https://t.me/VOTRE_CANAL" target="_blank" class="btn btn-telegram" id="btn-tg-text"><i class="fab fa-telegram-plane"></i> Canal Telegram Officiel</a>
+        </div>
       </div>
     </section>
 
-    <!-- SECTION BOOKMAKERS -->
+    <!-- INTERFACE INSCRIPTIONS BOOKMAKERS -->
     <section id="bookmakers" class="page">
-      <div class="container">
-        <h2 class="section-title">Inscriptions Partenaires</h2>
-        <div class="grid">
-          <div class="bookmaker-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Logo_1XBET.svg" class="bookie-img" alt="1xBet">
-            <div><span class="promo-badge">CODE: 20VM</span></div>
-            <button class="btn btn-primary" onclick="window.open('#')">S'INSCRIRE SUR 1XBET</button>
-          </div>
-          <div class="bookmaker-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Betwinner_logo.svg" class="bookie-img" alt="Betwinner">
-            <div><span class="promo-badge">CODE: 20VM</span></div>
-            <button class="btn btn-primary" onclick="window.open('#')">S'INSCRIRE SUR BETWINNER</button>
-          </div>
-          <div class="bookmaker-card">
-            <div style="font-size:22px; font-weight:700; color:#ffc107; margin-bottom:15px"><i class="fas fa-bolt"></i> MELBET</div>
-            <div><span class="promo-badge">CODE: 20VM</span></div>
-            <button class="btn btn-primary" onclick="window.open('#')">S'INSCRIRE SUR MELBET</button>
-          </div>
+      <h2 class="section-title">Inscriptions Partenaires</h2>
+      <div class="grid">
+        <div class="bookmaker-card">
+          <div style="font-size:24px; font-weight:700; color:#1a6cff; margin-bottom:15px">1XBET</div>
+          <div><span class="promo-badge">CODE: 20VM</span></div>
+          <button class="btn btn-primary" onclick="window.open('#')">S'INSCRIRE</button>
+        </div>
+        <div class="bookmaker-card">
+          <div style="font-size:24px; font-weight:700; color:#00e87a; margin-bottom:15px">BETWINNER</div>
+          <div><span class="promo-badge">CODE: 20VM</span></div>
+          <button class="btn btn-primary" onclick="window.open('#')">S'INSCRIRE</button>
+        </div>
+        <div class="bookmaker-card">
+          <div style="font-size:24px; font-weight:700; color:#ffc107; margin-bottom:15px">MELBET</div>
+          <div><span class="promo-badge">CODE: 20VM</span></div>
+          <button class="btn btn-primary" onclick="window.open('#')">S'INSCRIRE</button>
         </div>
       </div>
     </section>
 
-    <!-- SPÉCIFICATIONS & ANALYSES -->
+    <!-- ANALYSES ET SPÉCIFICATIONS -->
     <section id="analyses" class="page">
-      <div class="container">
-        <h2 class="section-title">Centre de Spécifications</h2>
-        <div class="grid">
-          <div class="match-card">
-            <div class="card-title"><i class="fas fa-layer-group" style="color:var(--accent)"></i> Algorithme</div>
-            <div class="spec-box">
-              <div class="spec-row"><span>Précision Estimée</span><strong>91.4%</strong></div>
-              <div class="progress-bar"><div class="progress-fill" style="width: 91%"></div></div>
-            </div>
+      <h2 class="section-title">Spécifications & Analyses IA</h2>
+      <div class="grid">
+        <div class="match-card">
+          <div class="card-title"><i class="fas fa-layer-group" style="color:var(--accent)"></i> Précision Technique</div>
+          <div class="spec-box">
+            <div class="spec-row"><span>Algorithme Prédictif</span><strong>91.4%</strong></div>
+            <div class="progress-bar"><div class="progress-fill" style="width: 91%"></div></div>
           </div>
-          <div class="match-card">
-            <div class="card-title"><i class="fas fa-chart-bar" style="color:var(--green)"></i> Match Vedette</div>
-            <div class="match-teams">
-              <div class="team"><img src="https://upload.wikimedia.org/wikipedia/fr/4/43/Logo_Paris_Saint-Germain.svg" alt=""><div>PSG</div></div>
-              <div class="vs">vs</div>
-              <div class="team"><img src="https://upload.wikimedia.org/wikipedia/fr/b/b9/Logo_Manchester_City_2016.svg" alt=""><div>City</div></div>
-            </div>
-            <div class="progress-bar"><div class="progress-fill" style="width: 72%; background:var(--gold)"></div></div>
+        </div>
+        <div class="match-card">
+          <div class="card-title"><i class="fas fa-chart-bar" style="color:var(--green)"></i> Match Analysé</div>
+          <div class="match-teams">
+            <div class="team"><img src="https://upload.wikimedia.org/wikipedia/fr/4/43/Logo_Paris_Saint-Germain.svg" alt=""><div>PSG</div></div>
+            <div class="vs">vs</div>
+            <div class="team"><img src="https://upload.wikimedia.org/wikipedia/fr/b/b9/Logo_Manchester_City_2016.svg" alt=""><div>City</div></div>
           </div>
+          <div class="progress-bar"><div class="progress-fill" style="width: 75%; background:var(--gold)"></div></div>
         </div>
       </div>
     </section>
 
-    <!-- VIP -->
+    <!-- PLANS VIP ET ZONE DE PAIEMENT -->
     <section id="vip" class="page">
-      <div class="container">
-        <h2 class="section-title">Abonnements VIP</h2>
-        <div class="grid">
-          <div class="plan-card"><h3>STARTER</h3><div class="plan-price">10$</div><button class="btn btn-gold">S'ABONNER</button></div>
-          <div class="plan-card"><h3>PRO</h3><div class="plan-price">50$</div><button class="btn btn-primary">S'ABONNER</button></div>
-        </div>
-        <div class="payment-methods">
-          <p style="font-size:14px; color:var(--text2)">🔒 PAIEMENT SÉCURISÉ MULTI-DEVISES :</p>
-          <div class="payment-icons">
-            <i class="fab fa-cc-visa"></i>
-            <i class="fab fa-cc-mastercard"></i>
-            <i class="fab fa-cc-paypal"></i>
-            <i class="fab fa-bitcoin"></i>
-          </div>
+      <h2 class="section-title">Abonnements VIP</h2>
+      <div class="grid">
+        <div class="plan-card"><h3>STARTER</h3><div class="plan-price">10$</div><button class="btn btn-gold">S'ABONNER</button></div>
+        <div class="plan-card"><h3>PRO</h3><div class="plan-price">50$</div><button class="btn btn-primary">S'ABONNER</button></div>
+      </div>
+      <div class="payment-methods">
+        <p style="font-size:14px; color:var(--text2)">🔒 PASSERELLE DE PAIEMENT SÉCURISÉE MULTI-DEVISES :</p>
+        <div class="payment-icons">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-paypal"></i>
+          <i class="fab fa-bitcoin"></i>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- FORMULAIRE DE CONTACT -->
     <section id="contact" class="page">
-      <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <div class="form-box">
-          <form onsubmit="event.preventDefault(); alert('Message envoyé !');">
-            <div class="form-group"><label>Nom</label><input type="text" class="form-control" required></div>
-            <div class="form-group"><label>Email</label><input type="email" class="form-control" required></div>
-            <div class="form-group"><label>Message</label><textarea class="form-control" rows="4" required></textarea></div>
-            <button type="submit" class="btn btn-primary">ENVOYER</button>
-          </form>
-        </div>
+      <h2 class="section-title">Support Client</h2>
+      <div class="form-box">
+        <form onsubmit="event.preventDefault(); alert('Message envoyé !');">
+          <div class="form-group"><label>Nom / Name</label><input type="text" class="form-control" required></div>
+          <div class="form-group"><label>Email</label><input type="email" class="form-control" required></div>
+          <div class="form-group"><label>Message</label><textarea class="form-control" rows="4" required></textarea></div>
+          <button type="submit" class="btn btn-primary">ENVOYER</button>
+        </form>
       </div>
     </section>
 
   </main>
 
-  <!-- CHATBOT -->
+  <!-- BOUTONS FLOTTANTS POUR ACCÈS MOBILE RAPIDE -->
+  <div class="social-float-buttons">
+    <a href="https://wa.me/VOTRE_NUMERO" target="_blank" class="float-btn float-wa" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://t.me/VOTRE_CANAL" target="_blank" class="float-btn float-tg" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+  </div>
+
+  <!-- CHATBOT INTERACTIF -->
   <div class="chat-widget">
     <div class="chat-button" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
     <div class="chat-box" id="chatBox">
       <div style="background:var(--bg2); padding:10px; font-weight:700">GEMINI ASSISTANT</div>
       <div class="chat-messages" id="chatMsgs">
-        <div class="msg bot">Bonjour ! Une question sur les bookmakers ou le code promo **20VM** ?</div>
+        <div class="msg bot">Besoin d'aide avec le code promo **20VM** ou nos canaux WhatsApp et Telegram ?</div>
       </div>
       <div class="chat-input-area">
         <input type="text" class="chat-input" id="chatIn" placeholder="Écrivez..." onkeypress="if(event.key==='Enter') sendChat()">
@@ -279,40 +316,37 @@
   </div>
 
   <script>
-    // GESTION DU MENU MOBILE (HAMBURGER)
-    function toggleMenu() {
-      const links = document.getElementById('navLinks');
-      links.classList.toggle('open');
-    }
+    function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
 
-    // NAVIGATION ENTRE LES PAGES (Ferme aussi le menu mobile automatiquement)
     function showPage(id) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById(id).classList.add('active');
       document.querySelectorAll('.nav-item').forEach(l => l.classList.remove('active'));
-      
       const link = document.getElementById('link-'+id);
       if(link) link.classList.add('active');
-      
-      // Ferme le rideau du menu mobile si ouvert
       document.getElementById('navLinks').classList.remove('open');
       window.scrollTo(0,0);
     }
 
-    // CHANGEMENT DE LANGUES (Exemple dynamique)
+    // SYSTEME DE TRADUCTION ET PASSAGE EN MODE ARABE (RTL)
     function changeLanguage(lang) {
-      const titles = {
-        fr: "L'Algorithme Mondial de Pari Sportif",
-        en: "The Global Sports Betting Algorithm",
-        es: "El Algoritmo Global de Apuestas Deportivas",
-        de: "Der globale Sportwetten-Algorithmus",
-        it: "L'Algoritmo Globale di Scommesse Sportive",
-        pt: "O Algoritmo Global de Apostas Desportivas"
+      const translations = {
+        fr: { title: "L'Algorithme Mondial de Pari Sportif", desc: "Inscriptions simplifiées, analyses mathématiques complètes et code promo universel.", wa: "Rejoindre sur WhatsApp", tg: "Canal Telegram Officiel", dir: "ltr" },
+        ar: { title: "الخوارزمية العالمية للمراهنات الرياضية", desc: "تسجيل مبسط، تحليلات رياضية كاملة، والرمز الترويجي الشامل 20VM.", wa: "انضم إلينا عبر واتساب", tg: "قناة تليجرام الرسمية", dir: "rtl" },
+        en: { title: "The Global Sports Betting Algorithm", desc: "Simplified registrations, full mathematical analysis, and universal promo code.", wa: "Join on WhatsApp", tg: "Official Telegram Channel", dir: "ltr" },
+        es: { title: "El Algoritmo Global de Apuestas Deportivas", desc: "Registros simplificados, análisis matemáticos completos y código promo.", wa: "Unirse en WhatsApp", tg: "Canal Oficial de Telegram", dir: "ltr" }
       };
-      if(titles[lang]) document.getElementById('hero-title').innerText = titles[lang];
+
+      if (translations[lang]) {
+        document.getElementById('hero-title').innerText = translations[lang].title;
+        document.getElementById('hero-desc').innerText = translations[lang].desc;
+        document.getElementById('btn-wa-text').innerHTML = `<i class="fab fa-whatsapp"></i> ${translations[lang].wa}`;
+        document.getElementById('btn-tg-text').innerHTML = `<i class="fab fa-telegram-plane"></i> ${translations[lang].tg}`;
+        // Changement de sens complet du site pour la langue Arabe
+        document.documentElement.setAttribute('dir', translations[lang].dir);
+      }
     }
 
-    // CHATBOT CHAT
     function toggleChat() {
       const box = document.getElementById('chatBox');
       box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
@@ -325,7 +359,7 @@
       container.innerHTML += `<div class="msg user">${input.value}</div>`;
       input.value = '';
       setTimeout(() => {
-        container.innerHTML += `<div class="msg bot">Analyse en cours... Utilisez le code promo **20VM** lors de vos inscriptions.</div>`;
+        container.innerHTML += `<div class="msg bot">Rejoignez nos communautés WhatsApp et Telegram via les boutons verts et bleus sur l'écran pour recevoir les pronostics en direct !</div>`;
         container.scrollTop = container.scrollHeight;
       }, 500);
     }
