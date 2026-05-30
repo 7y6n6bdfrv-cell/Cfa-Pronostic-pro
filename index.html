@@ -43,7 +43,7 @@
       color: #ffffff; font-family: 'Rajdhani'; font-weight: bold; font-size: 14px;
     }
     @keyframes ticker {
-      0 { transform: translate3d(0, 0, 0); }
+      0% { transform: translate3d(0, 0, 0); }
       100% { transform: translate3d(-100%, 0, 0); }
     }
 
@@ -93,13 +93,6 @@
 
     .hero-btns { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; max-width: 600px; margin: 0 auto 20px auto; }
     .social-hero-btns { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; max-width: 600px; margin: 0 auto; }
-
-    .montante-banner {
-      background: linear-gradient(135deg, #0e1420, #1a6cff);
-      padding: 30px; border-radius: var(--radius-lg); text-align: center; margin-top: 40px;
-      border: 1px dashed var(--gold); box-shadow: 0 10px 25px rgba(26, 108, 255, 0.2);
-    }
-    .montante-banner h3 { font-family: 'Rajdhani'; font-size: 26px; color: var(--gold); margin-bottom: 10px; }
 
     .prono-section { margin-top: 40px; background: var(--bg2); padding: 30px 20px; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.05); text-align: center; }
     .prono-header-badge { display: inline-block; background: var(--primary); color: white; padding: 5px 15px; border-radius: 50px; font-weight: bold; font-size: 14px; margin-bottom: 20px; font-family: 'Rajdhani'; }
@@ -157,7 +150,7 @@
   <!-- BANDEAU DÉFILANT -->
   <div class="ticker-bar">
     <div class="ticker-content" id="ticker-text">
-      🚀 CODE PROMO EXCLUSIF ET LIENS OFFICIELS VALIDÉS : <span style="background: var(--gold); color: #000; padding: 2px 6px; border-radius: 4px; margin: 0 5px;">20VM</span> - INSCRIPTION SÉCURISÉE SUR 1XBET, LINEBET ET BETWINNER EN DIRECT ! 🌍
+      🚀 CODE PROMO EXCLUSIF ET LIENS OFFICIELS VALIDÉS : <span style="background: var(--gold); color: #000; padding: 2px 6px; border-radius: 4px; margin: 0 5px;">20VM</span> - INSCRIPTION SÉCURISÉE SUR 1XBET, LINEBET ET MELBET EN DIRECT ! 🌍
     </div>
   </div>
 
@@ -223,7 +216,7 @@
         <div><span class="prono-header-badge" id="prono-badge-text"><i class="fas fa-chart-line"></i> DERNIÈRES ANALYSES DU SYSTÈME</span></div>
         <div class="grid" style="grid-template-columns: 1fr; gap: 25px;">
           <div class="match-card" style="border: 2px solid var(--gold); background: linear-gradient(145deg, #0f1626, #1b1202);">
-            <div style="color: var(--gold); font-weight: bold; font-size: 15px; margin-bottom: 5px; font-family: 'Rajdhani';" id="match-title-text">🏆 GRANDE RENCONTRE DU JOUR : FINALE DE C1</div>
+            <div style="color: var(--gold); font-weight: bold; font-size: 15px; margin-bottom: 5px; font-family: 'Rajdhani';" id="match-title-text">🏆 GRANDE RENCONTRE DU DAY : FINALE DE C1</div>
             <div class="match-teams" style="max-width: 550px; margin: 0 auto 15px auto;">
               <div class="team" style="font-size: 22px; color: #fff;">Paris Saint-Germain</div>
               <div class="vs-box" style="font-size: 20px; color: var(--accent); padding: 5px 12px; background: rgba(0, 212, 255, 0.1); border-radius: 8px;">VS</div>
@@ -239,31 +232,33 @@
       </div>
     </section>
 
-    <!-- BOOKMAKERS -->
+    <!-- BOOKMAKERS CONTENANT LES NOUVEAUX LIENS CONFIGURÉS -->
     <section id="bookmakers" class="page">
       <h2 class="section-title" id="bk-title-page">Inscriptions Partenaires Immédiates</h2>
       <div class="register-restricted-alert" id="bk-alert-text">
         🚀 <strong>COUPONS ET LIENS VALIDÉS :</strong> Utilisez le code promo <strong>20VM</strong> sur nos plateformes officielles ci-dessous pour activer vos bonus de dépôt de 200%.
       </div>
-      <div class="register-container">
-        <div class="grid">
-          <div class="bookmaker-card">
-            <div style="font-size:24px; font-weight:700; color:#1a6cff; margin-bottom:15px">1XBET (COUPON VALIDÉ)</div>
-            <button class="btn btn-gold" id="btn-bk-1" onclick="redirectToBookmaker('1xbet')">S'INSCRIRE DIRECTEMENT</button>
-          </div>
-          <div class="bookmaker-card">
-            <div style="font-size:24px; font-weight:700; color:#ffffff; background:#005e20; padding:5px 0; border-radius:6px; margin-bottom:15px">LINEBET</div>
-            <button class="btn btn-gold" id="btn-bk-2" onclick="redirectToBookmaker('linebet')">S'INSCRIRE DIRECTEMENT</button>
-          </div>
-          <div class="bookmaker-card">
-            <div style="font-size:24px; font-weight:700; color:#00e87a; margin-bottom:15px">BETWINNER</div>
-            <button class="btn btn-primary" id="btn-bk-3" onclick="redirectToBookmaker('betwinner')">S'INSCRIRE</button>
-          </div>
+      <div class="grid">
+        <!-- 1XBET -->
+        <div class="bookmaker-card">
+          <div style="font-size:24px; font-weight:700; color:#1a6cff; margin-bottom:15px">1XBET</div>
+          <button class="btn btn-primary" id="btn-bk-1" onclick="redirectToBookmaker('1xbet')">S'INSCRIRE DIRECTEMENT</button>
         </div>
-        <div style="text-align: center; background: rgba(255,255,255,0.02); padding: 25px; border-radius: var(--radius-lg);">
-          <p style="color:var(--gold); font-size:14px; margin-bottom:15px;" id="sms-alert-text">⚠️ <strong>CONFIGURATION SMS OBLIGATOIRE :</strong> Activez votre numéro par SMS lors de l'inscription pour lier l'IA.</p>
-          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" class="phone-validation-img" alt="Validation" />
+        <!-- LINEBET -->
+        <div class="bookmaker-card">
+          <div style="font-size:24px; font-weight:700; color:#ffffff; background:#005e20; padding:5px 0; border-radius:6px; margin-bottom:15px">LINEBET</div>
+          <button class="btn btn-gold" id="btn-bk-2" onclick="redirectToBookmaker('linebet')">S'INSCRIRE DIRECTEMENT</button>
         </div>
+        <!-- MELBET -->
+        <div class="bookmaker-card">
+          <div style="font-size:24px; font-weight:700; color:#f6c90e; margin-bottom:15px">MELBET</div>
+          <button class="btn btn-primary" id="btn-bk-3" onclick="redirectToBookmaker('melbet')">S'INSCRIRE DIRECTEMENT</button>
+        </div>
+      </div>
+      
+      <div style="text-align: center; background: rgba(255,255,255,0.02); padding: 25px; border-radius: var(--radius-lg); margin-top: 30px;">
+        <p style="color:var(--gold); font-size:14px; margin-bottom:15px;" id="sms-alert-text">⚠️ <strong>CONFIGURATION SMS OBLIGATOIRE :</strong> Activez votre numéro par SMS lors de l'inscription pour lier l'IA.</p>
+        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" class="phone-validation-img" alt="Validation" />
       </div>
     </section>
 
@@ -339,14 +334,13 @@
       window.scrollTo(0,0);
     }
 
-    // FONCTION DE RESTRICTION D'ACCÈS SUR LES SKINS SOCIAUX
     function restrictAccess() {
       const alerts = {
         fr: "⚠️ ACCÈS COMPTE BLOQUÉ : Vous devez obligatoirement payer un abonnement VIP ($10, $50 ou $120) dans la section 'VIP ACCÈS' avant d'intégrer nos canaux de discussions.",
         en: "⚠️ ACCESS LOCKED: You must purchase a VIP subscription ($10, $50, or $120) under the 'VIP ACCESS' section before joining our communication channels.",
         es: "⚠️ ACCESO RESTRINGIDO: Debe pagar una suscripción VIP ($10, $50 o $120) en la sección 'VIP ACCÈS' antes de unirse a nuestros canales.",
         pt: "⚠️ ACESSO BLOQUEADO: Você deve obrigatoriamente pagar uma assinatura VIP ($10, $50 ou $120) na seção 'VIP ACCÈS' antes de entrar em nossos canais.",
-        ar: "⚠️ الحساب مغلق: يجب عليك أولاً شراء اشتراك VIP بقيمة (10$ أو 50$ أو 120$) من قسم 'VIP ACCÈS' قبل الانضمام إلى قنواتنا.",
+        ar: "⚠️ الحساب مغلق: يجب عليك أولاً شراء اشتрак VIP بقيمة (10$ أو 50$ أو 120$) من قسم 'VIP ACCÈS' قبل الانضمام إلى قنواتنا.",
         de: "⚠️ ZUGRIFF GESPERRT: Sie müssen zuerst ein VIP-Abonnement ($10, $50 oder $120) im Bereich 'VIP ACCÈS' abschließen, bevor Sie unseren Kanälen beitreten können.",
         ru: "⚠️ ДОСТУП ДЛЯ АККАУНТА ЗАБЛОКИРОВАН: Вы должны обязательно оплатить VIP-подписку ($10, $50 или $120) в разделе 'VIP ACCÈS' перед входом на наши каналы."
       };
@@ -354,13 +348,14 @@
       showPage('vip');
     }
 
+    // GESTION ET DISTRIBUTION EXACTE DES LIENS D'INSCRIPTION PARTICULIERS
     function redirectToBookmaker(platform) { 
       if (platform === '1xbet') {
-        window.open("https://lb-aff.com/L?tag=d_3914573m_66803c_apk1&site=3914573&ad=66803", '_blank'); 
+        window.open("https://1xbet.com/registration?pcode=20VM", '_blank'); 
       } else if (platform === 'linebet') {
         window.open("https://affpa.top/L?tag=d_3906745m_97c_&site=3906745&ad=97", '_blank');
-      } else {
-        window.open("https://1xbet.com/registration?pcode=20VM", '_blank');
+      } else if (platform === 'melbet') {
+        window.open("https://lb-aff.com/L?tag=d_3914573m_66803c_apk1&site=3914573&ad=66803", '_blank');
       }
     }
 
@@ -376,7 +371,6 @@
       }
     }
 
-    // INTERACTION ASSISTANT IA RECONVERTIE DYNAMIQUE
     function sendChat() {
       const input = document.getElementById('chatIn');
       const q = input.value.trim().toLowerCase();
@@ -391,11 +385,11 @@
         let reply = "Poser vos questions à propos du site uniquement.";
 
         if (q.includes("code") || q.includes("promo") || q.includes("20vm") || q.includes("bonus")) {
-          reply = "Le code promo universel officiel du site est <strong>20VM</strong>. Utilisez-le sur 1XBET, LINEBET et BETWINNER pour débloquer immédiatement 200% de bonus lors de votre premier dépôt.";
+          reply = "Le code promo universel officiel du site est <strong>20VM</strong>. Utilisez-le sur 1XBET, LINEBET et MELBET pour débloquer immédiatement 200% de bonus lors de votre premier dépôt.";
         } else if (q.includes("vip") || q.includes("abonner") || q.includes("abonnement") || q.includes("prix") || q.includes("50") || q.includes("dollar")) {
           reply = "Nous proposons désormais 3 formules VIP sur notre site : Accès Starter à 10$, Accès mensuel Pro Tracker à <strong>50$</strong> et l'accès Ultra VIP à vie à 120$. Rendez-vous sur la page 'VIP ACCÈS' pour vous enregistrer.";
-        } else if (q.includes("bookmaker") || q.includes("1xbet") || q.includes("linebet") || q.includes("lien") || q.includes("inscription")) {
-          reply = "Les liens d'inscription directs sécurisés pour 1XBET (Coupon validé) et Linebet sont disponibles sur la page 'Inscriptions directes'. Cliquez simplement sur le bouton correspondant pour lier l'IA à votre profil.";
+        } else if (q.includes("bookmaker") || q.includes("1xbet") || q.includes("linebet") || q.includes("melbet") || q.includes("lien") || q.includes("inscription")) {
+          reply = "Les liens d'inscription directs sécurisés pour 1XBET, Linebet et Melbet sont disponibles sur la page 'Inscriptions directes'. Cliquez simplement sur le bouton correspondant pour lier l'IA à votre profil.";
         } else if (q.includes("contact") || q.includes("support") || q.includes("aide")) {
           reply = "Pour joindre l'assistance technique, veuillez vous rendre sur la page 'Contact' et envoyer votre requête via notre formulaire interne.";
         } else if (q.includes("whatsapp") || q.includes("telegram") || q.includes("canal") || q.includes("rejoindre") || q.includes("groupe")) {
@@ -407,12 +401,11 @@
       }, 700);
     }
 
-    // GESTION DU TRADUCTEUR MULTILINGUE INTEGRAL AU CLIC
     function changeLanguage(lang) {
       currentLang = lang;
       const dict = {
         fr: {
-          ticker: "🚀 CODE PROMO EXCLUSIF ET LIENS OFFICIELS VALIDÉS : 20VM - INSCRIPTION SÉCURISÉE SUR 1XBET, LINEBET ET BETWINNER EN DIRECT ! 🌍",
+          ticker: "🚀 CODE PROMO EXCLUSIF ET LIENS OFFICIELS VALIDÉS : 20VM - INSCRIPTION SÉCURISÉE SUR 1XBET, LINEBET ET MELBET EN DIRECT ! 🌍",
           title: "L'Algorithme Mondial <br>de Pari Sportif",
           desc: "Inscriptions sécurisées, analyses algorithmiques ultra-précises et code promo universel.",
           promo: "✨ OFFRE DE L'IA : Profitez immédiatement du meilleur code promo actuel <span class='promo-highlight'>20VM</span> pour maximiser vos gains !",
@@ -426,7 +419,7 @@
           cTitle: "Support Client", name: "Nom", msg: "Message", send: "ENVOYER", welcome: "Bonjour ! Je suis l'assistant en temps réel de <strong>PRONOPRO</strong>. Posez-moi vos questions à propos de notre site internet uniquement ! (Code promo, VIP, Liens d'inscription...)", dir: "ltr"
         },
         en: {
-          ticker: "🚀 EXCLUSIVE PROMO CODE AND VALIDATED LINKS: 20VM - SECURE REGISTRATION ON 1XBET, LINEBET AND BETWINNER LIVE! 🌍",
+          ticker: "🚀 EXCLUSIVE PROMO CODE AND VALIDATED LINKS: 20VM - SECURE REGISTRATION ON 1XBET, LINEBET AND MELBET LIVE! 🌍",
           title: "The Global Sports <br>Betting Algorithm",
           desc: "Secure registrations, ultra-precise algorithmic analysis and universal promo code.",
           promo: "✨ AI OFFER: Activate the best promo code <span class='promo-highlight'>20VM</span> right now to maximize your profit!",
@@ -440,7 +433,7 @@
           cTitle: "Customer Support", name: "Name", msg: "Message", send: "SEND", welcome: "Hello! I am the real-time assistant for <strong>PRONOPRO</strong>. Ask me your questions about our website only! (Promo code, VIP, links...)", dir: "ltr"
         },
         es: {
-          ticker: "🚀 CÓDIGO PROMO EXCLUSIVO Y ENLACES VALIDADOS: 20VM - REGISTRO SEGURO EN 1XBET, LINEBET Y BETWINNER! 🌍",
+          ticker: "🚀 CÓDIGO PROMO EXCLUSIVO Y ENLACES VALIDADOS: 20VM - REGISTRO SEGURO EN 1XBET, LINEBET Y MELBET! 🌍",
           title: "El Algoritmo Mundial <br>de Apuestas Deportivas",
           desc: "Registros seguros, análisis algorítmicos ultra precisos y código promocional universal.",
           promo: "✨ OFERTA DE IA: ¡Disfrute del mejor código promocional actual <span class='promo-highlight'>20VM</span> para maximizar ganancias!",
@@ -454,7 +447,7 @@
           cTitle: "Soporte Técnico", name: "Nombre", msg: "Mensaje", send: "ENVIAR", welcome: "¡Hola! Soy el asistente de <strong>PRONOPRO</strong>. ¡Haga sus preguntas sobre nuestro sitio web únicamente! (Código promo, VIP...)", dir: "ltr"
         },
         ar: {
-          ticker: "🚀 الرمز الترويجي الحصري والروابط المعتمدة: 20VM - تسجيل آمن ومباشر على 1XBET و LINEBET و BETWINNER! 🌍",
+          ticker: "🚀 الرمز الترويجي الحصري والروابط المعتمدة: 20VM - تسجيل آمن ومباشر على 1XBET و LINEBET و MELBET! 🌍",
           title: "الخوارزمية العالمية <br>للمراهنات الرياضية",
           desc: "تسجيلات آمنة، تحليلات خوارزمية فائقة الدقة ورمز ترويجي شامل لكل المواقع.",
           promo: "✨ عرض الذكاء الاصطناعي: استفد فورًا من أفضل رمز ترويجي حالي <span class='promo-highlight'>20VM</span> لمضاعفة أرباحك!",
@@ -468,7 +461,7 @@
           cTitle: "الدعم الفني والعملاء", name: "الاسم", msg: "الرسالة", send: "إرسال", welcome: "مرحبًا! أنا المساعد الفني لموقع <strong>PRONOPRO</strong>. تفضل بطرح أسئلتك حول الموقع فقط! (كود الخصم، اشتراكات VIP...)", dir: "rtl"
         },
         pt: {
-          ticker: "🚀 CÓDIGO PROMO EXCLUSIVO E LINKS VALIDADOS: 20VM - INSCRIÇÃO SEGURA NO 1XBET, LINEBET E BETWINNER! 🌍",
+          ticker: "🚀 CÓDIGO PROMO EXCLUSIVO E LINKS VALIDADOS: 20VM - INSCRIÇÃO SEGURA NO 1XBET, LINEBET E MELBET! 🌍",
           title: "O Algoritmo Mundial <br>de Apostas Esportivas",
           desc: "Cadastros seguros, análises algorítmicas de alta precisão e código promocional universal.",
           promo: "✨ OFERTA IA: Aproveite imediatamente o melhor código promocional <span class='promo-highlight'>20VM</span> para maximizar seus ganhos!",
@@ -482,7 +475,7 @@
           cTitle: "Suporte ao Cliente", name: "Nome", msg: "Mensagem", send: "ENVIAR", welcome: "Olá! Sou o assistente em tempo real do <strong>PRONOPRO</strong>. Faça suas perguntas apenas sobre o site! (Código promocional, VIP...)", dir: "ltr"
         },
         de: {
-          ticker: "🚀 EXKLUSIVER PROMO-CODE UND VERIFIZIERTE LINKS: 20VM - SICHERE REGISTRIERUNG AUF 1XBET, LINEBET UND BETWINNER! 🌍",
+          ticker: "🚀 EXKLUSIVER PROMO-CODE UND VERIFIZIERTE LINKS: 20VM - SICHERE REGISTRIERUNG AUF 1XBET, LINEBET UND MELBET! 🌍",
           title: "Der globale Sportwetten- <br>Algorithmus",
           desc: "Sichere Registrierung, ultrapräzise algorithmische Analysen und universeller Promo-Code.",
           promo: "✨ KI-ANGEBOT: Nutzen Sie sofort den aktuellen Promo-Code <span class='promo-highlight'>20VM</span> für maximale Gewinne!",
@@ -496,7 +489,7 @@
           cTitle: "Kundensupport", name: "Name", msg: "Nachricht", send: "SENDEN", welcome: "Hallo! Ich bin der Echtzeit-Assistent von <strong>PRONOPRO</strong>. Stellen Sie Fragen ausschließlich zu unserer Website! (Promo-Code, VIP...)", dir: "ltr"
         },
         ru: {
-          ticker: "🚀 ЭКСКЛЮЗИВНЫЙ ПРОМОКОД И ПРОВЕРЕННЫЕ ССЫЛКИ: 20VM - БЕЗОПАСНАЯ РЕГИСТРАЦИЯ НА 1XBET, LINEBET И BETWINNER! 🌍",
+          ticker: "🚀 ЭКСКЛЮЗИВНЫЙ ПРОМОКОД И ПРОВЕРЕННЫЕ ССЫЛКИ: 20VM - БЕЗОПАСНАЯ РЕГИСТРАЦИЯ НА 1XBET, LINEBET И MELBET! 🌍",
           title: "Глобальный ИИ-алгоритм <br>спортивных ставок",
           desc: "Безопасная регистрация, высокоточные анализы ИИ и универсальный промокод.",
           promo: "✨ ПРЕДЛОЖЕНИЕ ИИ: Используйте промокод <span class='promo-highlight'>20VM</span> прямо сейчас, чтобы получить максимальный бонус!",
@@ -513,7 +506,6 @@
 
       const data = dict[lang] || dict['fr'];
       
-      // Injection dynamique textuelle globale
       document.getElementById('ticker-text').innerHTML = data.ticker;
       document.getElementById('hero-title').innerHTML = data.title;
       document.getElementById('hero-desc').innerText = data.desc;
