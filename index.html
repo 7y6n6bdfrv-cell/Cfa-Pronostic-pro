@@ -264,7 +264,7 @@
         
         <div class="grid" style="grid-template-columns: 1fr; gap: 25px;">
           
-          <!-- BLOC : LA GRANDE FINALE DE C1 (GRANDE RENCONTRE DU JOUR) -->
+          <!-- BLOC : LA GRANDE FINALE DE C1 -->
           <div class="match-card" style="border: 2px solid var(--gold); background: linear-gradient(145deg, #0f1626, #1b1202);">
             <div style="color: var(--gold); font-weight: bold; font-size: 15px; margin-bottom: 5px; font-family: 'Rajdhani'; letter-spacing: 1px;">🏆 GRANDE RENCONTRE DU JOUR : FINALE DE C1</div>
             <div class="match-teams" style="max-width: 550px; margin: 0 auto 15px auto;">
@@ -279,7 +279,6 @@
               <span style="background: rgba(0, 232, 122, 0.15); color: var(--green); padding: 3px 8px; border-radius: 4px; font-size: 13px; margin-left: 10px; font-weight: bold;">🎯 pourcentage de chance 95pourcent</span>
             </div>
             
-            <!-- TEXTES PERSONNALISÉS DEMANDÉS -->
             <div style="margin-top: 10px; font-size: 15px; color: var(--text); font-weight: 500;">
               👉 <span style="color: var(--gold); font-weight: 700;">utiliser le code promo 20VM et valider se pronostics</span>
             </div>
@@ -328,7 +327,7 @@
       </div>
     </section>
 
-    <!-- INTERFACE INSCRIPTIONS REDIRECTION DIRECTE -->
+    <!-- INTERFACE INSCRIPTIONS REDIRECTION DIRECTE & VALIDATION TÉLÉPHONE -->
     <section id="bookmakers" class="page">
       <h2 class="section-title">Inscriptions Partenaires Immédiates</h2>
       
@@ -336,24 +335,35 @@
         🚀 <strong>BONUS COMPRIS :</strong> Cliquez sur le bouton d'un bookmaker ci-dessous pour être redirigé vers l'interface d'inscription. Le code promo <strong>20VM</strong> s'activera automatiquement pour doubler votre premier dépôt !
       </div>
 
-      <div class="grid" style="margin-top: 20px;">
-        <div class="bookmaker-card">
-          <div style="font-size:24px; font-weight:700; color:#1a6cff; margin-bottom:15px">1XBET</div>
-          <div><span class="promo-badge">CODE INTÉGRÉ: 20VM</span></div>
-          <p style="font-size:14px; margin-bottom:15px; color:var(--text2)">+200% de bonus sur votre premier dépôt avec notre code d'activation.</p>
-          <button class="btn btn-gold" onclick="redirectToBookmaker('1xbet')">S'INSCRIRE SUR 1XBET</button>
+      <!-- CONTENEUR SUR DEUX COLONNES AVEC LA MAQUETTE DE VALIDATION TÉLÉPHONE -->
+      <div class="register-container">
+        <div class="grid">
+          <div class="bookmaker-card">
+            <div style="font-size:24px; font-weight:700; color:#1a6cff; margin-bottom:15px">1XBET</div>
+            <div><span class="promo-badge">CODE INTÉGRÉ: 20VM</span></div>
+            <p style="font-size:14px; margin-bottom:15px; color:var(--text2)">+200% de bonus sur votre premier dépôt avec notre code d'activation.</p>
+            <button class="btn btn-gold" onclick="redirectToBookmaker('1xbet')">S'INSCRIRE SUR 1XBET</button>
+          </div>
+          <div class="bookmaker-card">
+            <div style="font-size:24px; font-weight:700; color:#00e87a; margin-bottom:15px">BETWINNER</div>
+            <div><span class="promo-badge">CODE INTÉGRÉ: 20VM</span></div>
+            <p style="font-size:14px; margin-bottom:15px; color:var(--text2)">Débloquez jusqu'à 130$ (ou équivalent local) de bonus de bienvenue.</p>
+            <button class="btn btn-gold" onclick="redirectToBookmaker('betwinner')">S'INSCRIRE SUR BETWINNER</button>
+          </div>
+          <div class="bookmaker-card">
+            <div style="font-size:24px; font-weight:700; color:#ffc107; margin-bottom:15px">MELBET</div>
+            <div><span class="promo-badge">CODE INTÉGRÉ: 20VM</span></div>
+            <p style="font-size:14px; margin-bottom:15px; color:var(--text2)">Bonus exclusif paris combinés et casino activé via 20VM.</p>
+            <button class="btn btn-gold" onclick="redirectToBookmaker('melbet')">S'INSCRIRE SUR MELBET</button>
+          </div>
         </div>
-        <div class="bookmaker-card">
-          <div style="font-size:24px; font-weight:700; color:#00e87a; margin-bottom:15px">BETWINNER</div>
-          <div><span class="promo-badge">CODE INTÉGRÉ: 20VM</span></div>
-          <p style="font-size:14px; margin-bottom:15px; color:var(--text2)">Débloquez jusqu'à 130$ (ou équivalent local) de bonus de bienvenue.</p>
-          <button class="btn btn-gold" onclick="redirectToBookmaker('betwinner')">S'INSCRIRE SUR BETWINNER</button>
-        </div>
-        <div class="bookmaker-card">
-          <div style="font-size:24px; font-weight:700; color:#ffc107; margin-bottom:15px">MELBET</div>
-          <div><span class="promo-badge">CODE INTÉGRÉ: 20VM</span></div>
-          <p style="font-size:14px; margin-bottom:15px; color:var(--text2)">Bonus exclusif paris combinés et casino activé via 20VM.</p>
-          <button class="btn btn-gold" onclick="redirectToBookmaker('melbet')">S'INSCRIRE SUR MELBET</button>
+
+        <!-- COLONNE MAQUETTE : VALIDATION NUMÉRO PAR SMS -->
+        <div style="text-align: center; background: rgba(255,255,255,0.02); padding: 25px; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.05);">
+          <div style="background: rgba(246, 201, 14, 0.1); border: 1px dashed var(--gold); color: var(--gold); padding: 12px; border-radius: var(--radius); margin-bottom: 20px; font-size: 13.5px; font-weight: 500;">
+            ⚠️ <strong>ATTENTION CONFIGURATION OBLIGATOIRE :</strong> Lors de votre inscription sur le bookmaker, vous devez impérativement valider votre numéro de téléphone par SMS comme indiqué sur la maquette ci-dessous pour que l'IA valide vos gains automatiques.
+          </div>
+          <img src="https://i.ibb.co/v4b38gB/phone-validation-sample.jpg" onerror="this.src='https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600'" class="phone-validation-img" alt="Exemple Validation Téléphone" />
         </div>
       </div>
     </section>
@@ -419,7 +429,7 @@
     </div>
   </div>
 
-  <!-- CHATBOT -->
+  <!-- CHATBOT AUTOMATISÉ -->
   <div class="chat-widget">
     <div class="chat-button" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
     <div class="chat-box" id="chatBox">
@@ -429,6 +439,9 @@
       </div>
       <div class="chat-input-area">
         <input type="text" class="chat-input" id="chatIn" placeholder="Posez votre question..." onkeypress="if(event.key==='Enter') sendChat()">
+        <button onclick="sendChat()" style="background: var(--primary); color: white; border: none; padding: 0 12px; border-radius: 4px; cursor: pointer; margin-left: 5px;">
+          <i class="fas fa-paper-plane"></i>
+        </button>
       </div>
     </div>
   </div>
@@ -466,7 +479,16 @@
 
     function triggerGate() { document.getElementById('gateModal').style.display = 'flex'; }
     function closeGateAndGoVIP() { document.getElementById('gateModal').style.display = 'none'; showPage('vip'); }
-    function processPayment(amount) { alert("Initialisation de la passerelle de paiement sécurisée pour le plan à " + amount + "$. Après confirmation, vos accès VIP aux canaux WhatsApp et Telegram seront activés."); }
+    
+    function processPayment(amount) {
+      let methode = prompt("Choisissez votre moyen de paiement (Ex: Orange Money, Mobile Money, Visa, Crypto) :");
+      if (!methode) return; 
+      
+      let confirmation = confirm("Voulez-vous valider le montant de " + amount + "$ via " + methode + " ?");
+      if (!confirmation) return;
+      
+      alert("Nous gérons votre demande veuiller patieenter les fond seront credite de votre compte");
+    }
 
     function changeLanguage(lang) {
       const translations = {
@@ -494,25 +516,30 @@
 
     function sendChat() {
       const input = document.getElementById('chatIn');
-      const val = input.value.trim().toLowerCase();
-      if(!val) return;
-      
-      const container = document.getElementById('chatMsgs');
-      container.innerHTML += `<div class="msg user">${input.value}</div>`;
+      const text = input.value.trim().toLowerCase();
+      if (!text) return;
+
+      const msgDiv = document.getElementById('chatMsgs');
+      msgDiv.innerHTML += `<div class="msg user">${input.value}</div>`;
       input.value = '';
-      
-      let botReply = "Je traite votre demande. Utilisez le code promo **20VM** pour valider vos coupons avec bonus !";
-      
-      if(val.includes('psg') || val.includes('arsenal') || val.includes('finale') || val.includes('c1')) {
-        botReply = "Pour le match PSG VS Arsenal (Grande rencontre du jour), le pronostic est : 'un joueur remplaçant marquera non' à 95% de chance (Cote 1,5).";
-      } else if(val.includes('whatsapp') || val.includes('telegram') || val.includes('reste')) {
-        botReply = "Le reste des pronostics de l'IA est disponible immédiatement sur nos canaux officiels WhatsApp et Telegram ! Cliquez sur les icônes pour y accéder.";
-      }
+      msgDiv.scrollTop = msgDiv.scrollHeight;
 
       setTimeout(() => {
-        container.innerHTML += `<div class="msg bot">${botReply}</div>`;
-        container.scrollTop = container.scrollHeight;
-      }, 500);
+        let reply = "Je suis votre assistant IA. Posez-moi vos questions sur nos pronostics, l'accès VIP ou le code promo.";
+        
+        if (text.includes('promo') || text.includes('code') || text.includes('20vm')) {
+          reply = "Le code promo universel est **20VM**. Il vous offre un bonus exceptionnel de 200% sur vos premiers dépôts sur 1XBET, Betwinner et Melbet.";
+        } else if (text.includes('vip') || text.includes('abonner') || text.includes('pay')) {
+          reply = "Pour rejoindre le salon VIP, rendez-vous dans l'onglet 'VIP ACCÈS' depuis la barre de navigation et choisissez l'offre qui vous convient.";
+        } else if (text.includes('match') || text.includes('prono') || text.includes('aujourd')) {
+          reply = "L'analyse phare d'aujourd'hui concerne la Finale de C1 entre le PSG et Arsenal (Un joueur remplaçant marquera : NON / Cote : 1,5).";
+        } else if (text.includes('whatsapp') || text.includes('telegram')) {
+          reply = "L'accès direct aux canaux privés de l'IA nécessite une inscription VIP active. Utilisez les boutons de l'écran principal pour en savoir plus.";
+        }
+
+        msgDiv.innerHTML += `<div class="msg bot">${reply}</div>`;
+        msgDiv.scrollTop = msgDiv.scrollHeight;
+      }, 700);
     }
   </script>
 </body>
