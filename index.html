@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PronosticsPro – IA & Sport Global</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght=600;700&family=DM+Sans:wght=400;500;700&family=JetBrains+Mono:wght=500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     :root {
@@ -25,7 +25,6 @@
     [dir="rtl"] { text-align: right; }
     [dir="rtl"] .nav-right { flex-direction: row-reverse; }
     [dir="rtl"] .nav-links { flex-direction: row-reverse; }
-    [dir="rtl"] .card-title i { margin-left: 10px; margin-right: 0; }
     [dir="rtl"] .social-float-buttons { left: 20px; right: auto; }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -36,6 +35,16 @@
       position: fixed; top: 0; left: 0; right: 0;
       background: linear-gradient(90deg, #0a1628, #1a6cff, #0a1628);
       border-bottom: 1px solid var(--accent); padding: 8px 0; z-index: 1100;
+      overflow: hidden; white-space: nowrap;
+    }
+    .ticker-content {
+      display: inline-block; padding-left: 100%;
+      animation: ticker 25s linear infinite;
+      color: #ffffff; font-family: 'Rajdhani'; font-weight: bold; font-size: 14px;
+    }
+    @keyframes ticker {
+      0 { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-100%, 0, 0); }
     }
 
     nav { position: fixed; top: 41px; width: 100%; background: var(--bg2); opacity: 0.96; backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
@@ -46,7 +55,7 @@
     .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
     .nav-links a { color: var(--text2); font-weight: 500; cursor: pointer; transition: var(--transition); text-decoration: none; }
     .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-    .lang-select { background: var(--bg2); color: var(--text); border: 1px solid rgba(255,255,255,0.2); padding: 6px 10px; border-radius: 6px; font-size: 14px; outline: none; cursor: pointer; }
+    .lang-select { background: var(--bg2); color: var(--text); border: 1px solid rgba(255,255,255,0.2); padding: 6px 10px; border-radius: 6px; font-size: 14px; outline: none; cursor: pointer; max-width: 150px; }
 
     @media (max-width: 992px) {
       .menu-toggle { display: block; }
@@ -69,46 +78,18 @@
                   url('https://images.unsplash.com/photo-1544698310-74ea9d1c8258?auto=format&fit=crop&q=80&w=1600') no-repeat center center;
       background-size: cover; border-radius: var(--radius-lg); margin-bottom: 30px;
     }
-    @media (prefers-color-scheme: light) {
-      .hero {
-        background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(243, 244, 246, 0.9)), 
-                    url('https://images.unsplash.com/photo-1544698310-74ea9d1c8258?auto=format&fit=crop&q=80&w=1600') no-repeat center center;
-      }
-    }
     .hero h1 { font-family: 'Rajdhani'; font-size: clamp(32px, 7vw, 56px); line-height: 1.1; margin-bottom: 20px; }
     .hero p { font-size: clamp(14px, 3vw, 18px); color: var(--text2); margin-bottom: 20px; }
     
     .promo-catchy-box {
-      background: rgba(246, 201, 14, 0.1);
-      border: 2px solid var(--gold);
-      padding: 15px;
-      border-radius: var(--radius);
-      max-width: 550px;
-      margin: 0 auto 15px auto;
-      font-weight: 700;
-      color: #ffffff;
-      font-size: 16px;
+      background: rgba(246, 201, 14, 0.1); border: 2px solid var(--gold);
+      padding: 15px; border-radius: var(--radius); max-width: 550px;
+      margin: 0 auto 15px auto; font-weight: 700; color: #ffffff; font-size: 16px;
       box-shadow: 0 0 15px rgba(246, 201, 14, 0.2);
     }
-    .promo-highlight {
-      background: var(--gold);
-      color: #000;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-family: 'JetBrains Mono';
-      font-size: 18px;
-    }
-    .finger-pointer {
-      font-size: 32px;
-      color: var(--gold);
-      margin-top: 5px;
-      animation: finger-bounce 0.6s infinite alternate;
-      display: block;
-    }
-    @keyframes finger-bounce {
-      from { transform: translateY(0); }
-      to { transform: translateY(8px); }
-    }
+    .promo-highlight { background: var(--gold); color: #000; padding: 2px 8px; border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 18px; }
+    .finger-pointer { font-size: 32px; color: var(--gold); margin-top: 5px; animation: finger-bounce 0.6s infinite alternate; display: block; }
+    @keyframes finger-bounce { from { transform: translateY(0); } to { transform: translateY(8px); } }
 
     .hero-btns { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; max-width: 600px; margin: 0 auto 20px auto; }
     .social-hero-btns { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; max-width: 600px; margin: 0 auto; }
@@ -120,33 +101,10 @@
     }
     .montante-banner h3 { font-family: 'Rajdhani'; font-size: 26px; color: var(--gold); margin-bottom: 10px; }
 
-    .prono-section { margin-top: 40px; background: var(--bg2); padding: 30px 20px; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.05); }
+    .prono-section { margin-top: 40px; background: var(--bg2); padding: 30px 20px; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.05); text-align: center; }
     .prono-header-badge { display: inline-block; background: var(--primary); color: white; padding: 5px 15px; border-radius: 50px; font-weight: bold; font-size: 14px; margin-bottom: 20px; font-family: 'Rajdhani'; }
-    .prono-soon { font-style: italic; color: var(--text2); margin-top: 20px; font-size: 15px; display: block; text-align: center; }
-
-    .live-section { margin-top: 40px; }
-    
-    .no-live-events {
-      background: var(--card);
-      border: 1px dashed rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius-lg);
-      padding: 40px 20px;
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .no-live-events i {
-      font-size: 40px;
-      color: var(--text2);
-      margin-bottom: 15px;
-    }
-    .no-live-events p {
-      color: var(--text2);
-      font-size: 15px;
-    }
 
     .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-    .card-title { font-family: 'Rajdhani'; font-size: 22px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
     .section-title { font-size: clamp(28px, 5vw, 36px); font-family: 'Rajdhani'; margin-bottom: 30px; text-align: center; }
 
     .match-card, .plan-card, .bookmaker-card { 
@@ -157,16 +115,15 @@
     .match-teams { display: flex; align-items: center; justify-content: space-between; margin: 15px 0; gap: 10px; }
     .team { text-align: center; flex: 1; min-width: 0; font-weight: bold; }
     .vs-box { font-family: 'JetBrains Mono'; color: var(--green); font-weight: bold; font-size: 18px; }
-    .match-time { font-size: 12px; color: var(--text2); background: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 20px; display: inline-block; }
     
     .register-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; align-items: center; }
     @media (max-width: 768px) { .register-container { grid-template-columns: 1fr; } }
-    .register-restricted-alert { background: rgba(26, 108, 255, 0.1); border: 1px dashed var(--primary); color: #6ba4ff; padding: 15px; border-radius: var(--radius); margin-bottom: 20px; font-weight: 500; font-size: 14px; }
+    .register-restricted-alert { background: rgba(26, 108, 255, 0.1); border: 1px dashed var(--primary); color: #6ba4ff; padding: 15px; border-radius: var(--radius); margin-bottom: 20px; font-weight: 500; font-size: 14px; text-align: left; }
     .phone-validation-img { width: 100%; max-width: 380px; height: auto; border-radius: var(--radius-lg); border: 3px solid var(--gold); box-shadow: 0 10px 30px rgba(246,201,14,0.2); margin: 0 auto; display: block; }
 
     .plan-price { font-family: 'Rajdhani'; font-size: 48px; font-weight: 700; color: var(--gold); margin: 15px 0; }
     .plan-card.premium-vip { border: 2px solid var(--gold); background: linear-gradient(185deg, var(--card), #1e1702); }
-    .promo-badge { background: rgba(246,201,14,0.1); color: var(--gold); padding: 5px 10px; border-radius: 6px; font-size: 13px; font-weight: 700; display: inline-block; margin-bottom: 15px; font-family: 'JetBrains Mono'; }
+    .promo-badge { background: rgba(246, 201, 14, 0.1); color: var(--gold); padding: 5px 10px; border-radius: 6px; font-size: 13px; font-weight: 700; display: inline-block; margin-bottom: 15px; font-family: 'JetBrains Mono'; }
 
     .form-box { background: var(--card); padding: 30px; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.05); }
     .form-group { margin-bottom: 15px; text-align: left; }
@@ -179,36 +136,29 @@
     .btn-whatsapp { background: #25D366; color: white; display: flex; align-items: center; justify-content: center; gap: 8px; }
     .btn-telegram { background: #0088cc; color: white; display: flex; align-items: center; justify-content: center; gap: 8px; }
 
-    .payment-methods { margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
-    .payment-icons { display: flex; justify-content: center; gap: 20px; font-size: 28px; color: var(--text2); margin-top: 15px; flex-wrap: wrap; }
+    .social-float-buttons { position: fixed; bottom: 85px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 1900; }
+    .float-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: var(--transition); border: none; }
+    .float-wa { background: #25D366; }
+    .float-tg { background: #0088cc; }
     
     .chat-widget { position: fixed; bottom: 15px; right: 15px; z-index: 2000; }
     .chat-button { width: 55px; height: 55px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 22px; cursor: pointer; }
-    .chat-box { position: absolute; bottom: 70px; right: 0; width: calc(100vw - 30px); max-width: 320px; height: 380px; background: var(--card); border: 1px solid var(--primary); border-radius: var(--radius); display: none; flex-direction: column; }
-    .chat-messages { flex: 1; padding: 15px; overflow-y: auto; font-size: 14px; display: flex; flex-direction: column; gap: 10px; }
+    .chat-box { position: absolute; bottom: 70px; right: 0; width: calc(100vw - 30px); max-width: 340px; height: 420px; background: var(--card); border: 1px solid var(--primary); border-radius: var(--radius); display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .chat-messages { flex: 1; padding: 15px; overflow-y: auto; font-size: 14px; display: flex; flex-direction: column; gap: 10px; text-align: left; }
     .chat-input-area { padding: 10px; display: flex; border-top: 1px solid rgba(255,255,255,0.1); }
     .chat-input { flex: 1; background: var(--bg2); border: none; color: var(--text); padding: 8px; border-radius: 4px; outline: none; }
-    .msg { padding: 8px 12px; border-radius: 8px; max-width: 85%; }
-    .msg.bot { background: var(--bg2); align-self: flex-start; }
+    .msg { padding: 8px 12px; border-radius: 8px; max-width: 85%; line-height: 1.4; }
+    .msg.bot { background: var(--bg2); align-self: flex-start; border-left: 3px solid var(--primary); }
     .msg.user { background: var(--primary); color: white; align-self: flex-end; }
-
-    .social-float-buttons { position: fixed; bottom: 85px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 2000; }
-    .float-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: var(--transition); }
-    .float-wa { background: #25D366; }
-    .float-tg { background: #0088cc; }
-
-    .gate-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 3000; display: none; align-items: center; justify-content: center; padding: 20px; }
-    .gate-content { background: var(--card); padding: 40px 30px; border-radius: var(--radius-lg); text-align: center; max-width: 450px; border: 2px solid var(--primary); }
-    .gate-icon { font-size: 50px; color: var(--red); margin-bottom: 20px; }
   </style>
 </head>
 <body>
 
   <!-- BANDEAU DÉFILANT -->
   <div class="ticker-bar">
-    <marquee behavior="scroll" direction="left" scrollamount="6" style="color: #ffffff; font-family: 'Rajdhani'; font-weight: bold; font-size: 14px;">
-      🚀 CODE PROMO EXCLUSIF SUR TOUS LES BOOKMAKERS : <span style="background: var(--gold); color: #000; padding: 2px 6px; border-radius: 4px; margin: 0 5px;">20VM</span> - UTILISEZ LE SUR 1XBET, BETWINNER ET MELBET POUR ACTIVER VOS BONUS ! 🌍
-    </marquee>
+    <div class="ticker-content" id="ticker-text">
+      🚀 CODE PROMO EXCLUSIF ET LIENS OFFICIELS VALIDÉS : <span style="background: var(--gold); color: #000; padding: 2px 6px; border-radius: 4px; margin: 0 5px;">20VM</span> - INSCRIPTION SÉCURISÉE SUR 1XBET, LINEBET ET BETWINNER EN DIRECT ! 🌍
+    </div>
   </div>
 
   <!-- NAVIGATION -->
@@ -222,15 +172,27 @@
           <li><a onclick="showPage('vip')" class="nav-item" id="link-vip" style="color:var(--gold)">VIP ACCÈS</a></li>
           <li><a onclick="showPage('contact')" class="nav-item" id="link-contact">Contact</a></li>
         </ul>
-        <select class="lang-select" onchange="changeLanguage(this.value)">
+        
+        <!-- SÉLECTEUR MULTILINGUE -->
+        <select class="lang-select" id="langSelector" onchange="changeLanguage(this.value)">
           <option value="fr">Français</option>
-          <option value="ar">العربية (Arabe)</option>
           <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="ar">العربية</option>
+          <option value="pt">Português</option>
+          <option value="de">Deutsch</option>
+          <option value="ru">Русский</option>
         </select>
         <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
       </div>
     </div>
   </nav>
+
+  <!-- BOUTONS SOCIAUX FLOTTANTS -->
+  <div class="social-float-buttons">
+    <button onclick="restrictAccess()" class="float-btn float-wa"><i class="fab fa-whatsapp"></i></button>
+    <button onclick="restrictAccess()" class="float-btn float-tg"><i class="fab fa-telegram-plane"></i></button>
+  </div>
 
   <main id="app" class="container">
     
@@ -243,203 +205,121 @@
         <div class="promo-catchy-box" id="promo-box-text">
           ✨ OFFRE DE L'IA : Profitez immédiatement du meilleur code promo actuel <span class="promo-highlight">20VM</span> pour maximiser vos gains !
         </div>
-        <div>
-          <i class="fas fa-hand-point-down finger-pointer"></i>
-        </div>
+        <div><i class="fas fa-hand-point-down finger-pointer"></i></div>
 
         <div class="hero-btns">
-          <button class="btn btn-primary" onclick="showPage('vip')">Activer Mon Accès Premium</button>
-          <button class="btn btn-gold" onclick="showPage('bookmakers')">S'inscrire et Avoir le Bonus</button>
+          <button class="btn btn-primary" id="btn-premium-text" onclick="showPage('vip')">Activer Mon Accès Premium</button>
+          <button class="btn btn-gold" id="btn-register-text" onclick="showPage('bookmakers')">S'inscrire via Liens Validés</button>
         </div>
 
         <div class="social-hero-btns">
-          <button onclick="triggerGate()" class="btn btn-whatsapp" id="btn-wa-text"><i class="fab fa-whatsapp"></i> Rejoindre sur WhatsApp</button>
-          <button onclick="triggerGate()" class="btn btn-telegram" id="btn-tg-text"><i class="fab fa-telegram-plane"></i> Canal Telegram Officiel</button>
+          <button onclick="restrictAccess()" class="btn btn-whatsapp" id="btn-wa-text"><i class="fab fa-whatsapp"></i> Rejoindre sur WhatsApp</button>
+          <button onclick="restrictAccess()" class="btn btn-telegram" id="btn-tg-text"><i class="fab fa-telegram-plane"></i> Canal Telegram Officiel</button>
         </div>
       </div>
 
-      <!-- SECTION PRONOSTICS ALGORITHMIQUES -->
+      <!-- ANALYSES -->
       <div class="prono-section">
-        <center><span class="prono-header-badge"><i class="fas fa-chart-line"></i> DERNIÈRES ANALYSES DU SYSTÈME</span></center>
-        
+        <div><span class="prono-header-badge" id="prono-badge-text"><i class="fas fa-chart-line"></i> DERNIÈRES ANALYSES DU SYSTÈME</span></div>
         <div class="grid" style="grid-template-columns: 1fr; gap: 25px;">
-          
-          <!-- BLOC : LA GRANDE FINALE DE C1 -->
           <div class="match-card" style="border: 2px solid var(--gold); background: linear-gradient(145deg, #0f1626, #1b1202);">
-            <div style="color: var(--gold); font-weight: bold; font-size: 15px; margin-bottom: 5px; font-family: 'Rajdhani'; letter-spacing: 1px;">🏆 GRANDE RENCONTRE DU JOUR : FINALE DE C1</div>
+            <div style="color: var(--gold); font-weight: bold; font-size: 15px; margin-bottom: 5px; font-family: 'Rajdhani';" id="match-title-text">🏆 GRANDE RENCONTRE DU JOUR : FINALE DE C1</div>
             <div class="match-teams" style="max-width: 550px; margin: 0 auto 15px auto;">
               <div class="team" style="font-size: 22px; color: #fff;">Paris Saint-Germain</div>
               <div class="vs-box" style="font-size: 20px; color: var(--accent); padding: 5px 12px; background: rgba(0, 212, 255, 0.1); border-radius: 8px;">VS</div>
               <div class="team" style="font-size: 22px; color: #fff;">Arsenal</div>
             </div>
-            <div style="background: rgba(255,255,255,0.04); padding: 14px 20px; border-radius: var(--radius); display: inline-block; margin-bottom: 10px; border-left: 4px solid var(--green);" id="c1-tip-box">
-              <span style="color: var(--text2);">Pronostic :</span> 
-              <strong style="color: var(--green); font-size: 17px;">un joueur remplaçant marquera non</strong> 
-              <span style="color: var(--gold); margin-left: 15px; font-weight: bold; font-family: 'JetBrains Mono'; font-size: 16px;">cote de 1,5</span>
-              <span style="background: rgba(0, 232, 122, 0.15); color: var(--green); padding: 3px 8px; border-radius: 4px; font-size: 13px; margin-left: 10px; font-weight: bold;">🎯 pourcentage de chance 95pourcent</span>
-            </div>
-            
-            <div style="margin-top: 10px; font-size: 15px; color: var(--text); font-weight: 500;">
-              👉 <span style="color: var(--gold); font-weight: 700;">utiliser le code promo 20VM et valider se pronostics</span>
-            </div>
-            <div style="margin-top: 8px; font-size: 13.5px; color: var(--accent); font-style: italic;">
-              ℹ️ le reste de pronostics disponible dans nos chaines whatsapp et telegram
+            <div style="background: rgba(255,255,255,0.04); padding: 14px 20px; border-radius: var(--radius); display: inline-block; margin-bottom: 10px; border-left: 4px solid var(--green);">
+              <span id="label-prono-text" style="color: var(--text2);">Pronostic :</span> <strong id="val-prono-text" style="color: var(--green); font-size: 17px;">un joueur remplaçant marquera non</strong> 
+              <span style="color: var(--gold); margin-left: 15px; font-weight: bold;">Cote: 1,5</span>
+              <span style="background: rgba(0, 232, 122, 0.15); color: var(--green); padding: 3px 8px; border-radius: 4px; font-size: 13px; margin-left: 10px; font-weight: bold;">🎯 95%</span>
             </div>
           </div>
-
-          <!-- MATCH OGC NICE -->
-          <div class="match-card" style="border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.01);">
-            <div style="color: var(--accent); font-weight: bold; font-size: 14px; margin-bottom: 10px; font-family: 'JetBrains Mono';" id="prono-status-label">ANALYSE COMPLÉMENTAIRE</div>
-            <div class="match-teams" style="max-width: 500px; margin: 0 auto 15px auto;">
-              <div class="team" style="font-size: 19px;">OGC Nice</div>
-              <div class="vs-box" style="font-size: 18px; color: var(--text2);">VS</div>
-              <div class="team" style="font-size: 19px;">ASSE</div>
-            </div>
-            <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: var(--radius); display: inline-block; margin-bottom: 10px;" id="prono-tip-box">
-              <span style="color: var(--text2);">Pronostic conseillé :</span> 
-              <strong style="color: var(--green); font-size: 16px;">Gagner (Victoire de Nice)</strong> 
-              <span style="color: var(--gold); margin-left: 10px; font-weight: bold; font-family: 'JetBrains Mono';">Cote : 1,75</span>
-            </div>
-          </div>
-
         </div>
-        <span class="prono-soon" id="prono-soon-msg">⏳ Les prochains pronostics algorithmiques de haute précision seront disponibles très bientôt...</span>
-      </div>
-
-      <!-- TRACKER DES MATCHS EN LIVE -->
-      <div class="live-section">
-        <h2 class="section-title" id="live-section-title">🔴 TRACKER DES MATCHS EN LIVE DE L'IA</h2>
-        
-        <div class="no-live-events" id="no-live-box">
-          <i class="fas fa-info-circle"></i>
-          <p style="font-weight: bold; font-size: 16px; margin-bottom: 8px;">Pas d'événement populaire d'Europe en live actuellement</p>
-          <p style="font-size: 14px; color: var(--text2);">
-            Les analyses en direct reprendront dès le coup d'envoi des prochaines rencontres européennes. 
-            Profitez-en pour configurer votre compte avec le code promo <span style="color: var(--gold); font-weight: bold;">20VM</span>.
-          </p>
-        </div>
-      </div>
-
-      <!-- MESSAGE DE RELANCE -->
-      <div class="montante-banner">
-        <h3 id="banner-montante-title">🔥 MONTANTES EXCLUSIVES QUOTIDIENNES !</h3>
-        <p id="banner-montante-desc">Rejoignez-nous de toute urgence sur nos canaux WhatsApp et Telegram pour valider les montantes de l'IA lancées chaque jour en direct ! (Accès restreint aux abonnés VIP).</p>
       </div>
     </section>
 
-    <!-- INTERFACE INSCRIPTIONS REDIRECTION DIRECTE & VALIDATION TÉLÉPHONE -->
+    <!-- BOOKMAKERS -->
     <section id="bookmakers" class="page">
-      <h2 class="section-title">Inscriptions Partenaires Immédiates</h2>
-      
-      <div class="register-restricted-alert">
-        🚀 <strong>BONUS COMPRIS :</strong> Cliquez sur le bouton d'un bookmaker ci-dessous pour être redirigé vers l'interface d'inscription. Le code promo <strong>20VM</strong> s'activera automatiquement pour doubler votre premier dépôt !
+      <h2 class="section-title" id="bk-title-page">Inscriptions Partenaires Immédiates</h2>
+      <div class="register-restricted-alert" id="bk-alert-text">
+        🚀 <strong>COUPONS ET LIENS VALIDÉS :</strong> Utilisez le code promo <strong>20VM</strong> sur nos plateformes officielles ci-dessous pour activer vos bonus de dépôt de 200%.
       </div>
-
-      <!-- CONTENEUR SUR DEUX COLONNES AVEC LA MAQUETTE DE VALIDATION TÉLÉPHONE -->
       <div class="register-container">
         <div class="grid">
           <div class="bookmaker-card">
-            <div style="font-size:24px; font-weight:700; color:#1a6cff; margin-bottom:15px">1XBET</div>
-            <div><span class="promo-badge">CODE INTÉGRÉ: 20VM</span></div>
-            <p style="font-size:14px; margin-bottom:15px; color:var(--text2)">+200% de bonus sur votre premier dépôt avec notre code d'activation.</p>
-            <button class="btn btn-gold" onclick="redirectToBookmaker('1xbet')">S'INSCRIRE SUR 1XBET</button>
+            <div style="font-size:24px; font-weight:700; color:#1a6cff; margin-bottom:15px">1XBET (COUPON VALIDÉ)</div>
+            <button class="btn btn-gold" id="btn-bk-1" onclick="redirectToBookmaker('1xbet')">S'INSCRIRE DIRECTEMENT</button>
+          </div>
+          <div class="bookmaker-card">
+            <div style="font-size:24px; font-weight:700; color:#ffffff; background:#005e20; padding:5px 0; border-radius:6px; margin-bottom:15px">LINEBET</div>
+            <button class="btn btn-gold" id="btn-bk-2" onclick="redirectToBookmaker('linebet')">S'INSCRIRE DIRECTEMENT</button>
           </div>
           <div class="bookmaker-card">
             <div style="font-size:24px; font-weight:700; color:#00e87a; margin-bottom:15px">BETWINNER</div>
-            <div><span class="promo-badge">CODE INTÉGRÉ: 20VM</span></div>
-            <p style="font-size:14px; margin-bottom:15px; color:var(--text2)">Débloquez jusqu'à 130$ (ou équivalent local) de bonus de bienvenue.</p>
-            <button class="btn btn-gold" onclick="redirectToBookmaker('betwinner')">S'INSCRIRE SUR BETWINNER</button>
-          </div>
-          <div class="bookmaker-card">
-            <div style="font-size:24px; font-weight:700; color:#ffc107; margin-bottom:15px">MELBET</div>
-            <div><span class="promo-badge">CODE INTÉGRÉ: 20VM</span></div>
-            <p style="font-size:14px; margin-bottom:15px; color:var(--text2)">Bonus exclusif paris combinés et casino activé via 20VM.</p>
-            <button class="btn btn-gold" onclick="redirectToBookmaker('melbet')">S'INSCRIRE SUR MELBET</button>
+            <button class="btn btn-primary" id="btn-bk-3" onclick="redirectToBookmaker('betwinner')">S'INSCRIRE</button>
           </div>
         </div>
-
-        <!-- COLONNE MAQUETTE : VALIDATION NUMÉRO PAR SMS -->
-        <div style="text-align: center; background: rgba(255,255,255,0.02); padding: 25px; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.05);">
-          <div style="background: rgba(246, 201, 14, 0.1); border: 1px dashed var(--gold); color: var(--gold); padding: 12px; border-radius: var(--radius); margin-bottom: 20px; font-size: 13.5px; font-weight: 500;">
-            ⚠️ <strong>ATTENTION CONFIGURATION OBLIGATOIRE :</strong> Lors de votre inscription sur le bookmaker, vous devez impérativement valider votre numéro de téléphone par SMS comme indiqué sur la maquette ci-dessous pour que l'IA valide vos gains automatiques.
-          </div>
-          <img src="https://i.ibb.co/v4b38gB/phone-validation-sample.jpg" onerror="this.src='https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600'" class="phone-validation-img" alt="Exemple Validation Téléphone" />
+        <div style="text-align: center; background: rgba(255,255,255,0.02); padding: 25px; border-radius: var(--radius-lg);">
+          <p style="color:var(--gold); font-size:14px; margin-bottom:15px;" id="sms-alert-text">⚠️ <strong>CONFIGURATION SMS OBLIGATOIRE :</strong> Activez votre numéro par SMS lors de l'inscription pour lier l'IA.</p>
+          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" class="phone-validation-img" alt="Validation" />
         </div>
       </div>
     </section>
 
-    <!-- PLANS VIP -->
+    <!-- VIP ACCÈS -->
     <section id="vip" class="page">
-      <h2 class="section-title">Abonnements d'Accès VIP</h2>
+      <h2 class="section-title" id="vip-title-page">Abonnements d'Accès VIP</h2>
       <div class="grid">
         <div class="plan-card">
-          <h3>STARTER PLAN</h3>
+          <h3>STARTER</h3>
           <div class="plan-price">10$</div>
-          <p style="margin-bottom:15px; color:var(--text2)">Accès aux pronostics simples IA pendant 7 jours</p>
-          <button class="btn btn-gold" onclick="processPayment(10)">S'ABONNER</button>
+          <p style="color:var(--text2); font-size:13px; margin-bottom:15px;" id="plan-starter-desc">Accès aux analyses pendant 7 jours</p>
+          <button class="btn btn-gold" id="btn-plan-1" onclick="processPayment(10)">S'ABONNER</button>
         </div>
-        <div class="plan-card">
-          <h3>PRO SYSTEM</h3>
+        <div class="plan-card" style="border: 1px solid var(--accent);">
+          <span class="promo-badge" id="badge-popular">POPULAIRE</span>
+          <h3>PRO TRACKER</h3>
           <div class="plan-price">50$</div>
-          <p style="margin-bottom:15px; color:var(--text2)">Accès complet, Analyses et Montantes pendant 30 jours</p>
-          <button class="btn btn-primary" onclick="processPayment(50)">S'ABONNER</button>
+          <p style="color:var(--text2); font-size:13px; margin-bottom:15px;" id="plan-pro-desc">Accès mensuel complet + Signaux IA en direct</p>
+          <button class="btn btn-primary" id="btn-plan-2" onclick="processPayment(50)">S'ABONNER</button>
         </div>
         <div class="plan-card premium-vip">
-          <h3 style="color:var(--gold)"><i class="fas fa-crown"></i> ULTRA VIP</h3>
+          <h3>ULTRA VIP</h3>
           <div class="plan-price">120$</div>
-          <p style="margin-bottom:15px; color:var(--text2)">Accès à Vie + Algorithme Privé WhatsApp & Telegram</p>
-          <button class="btn btn-gold" onclick="processPayment(120)">DEVENIR MEMBRE À VIE</button>
-        </div>
-      </div>
-      <div class="payment-methods">
-        <p style="font-size:14px; color:var(--text2)">🔒 CONFIGURATION DU PAIEMENT ENTIÈREMENT SÉCURISÉE :</p>
-        <div class="payment-icons">
-          <i class="fab fa-cc-visa"></i> <i class="fab fa-cc-mastercard"></i> <i class="fab fa-cc-paypal"></i> <i class="fab fa-bitcoin"></i>
+          <p style="color:var(--gold); font-size:13px; margin-bottom:15px;" id="plan-ultra-desc">Accès algorithmique à vie illimité</p>
+          <button class="btn btn-gold" id="btn-plan-3" onclick="processPayment(120)">ACCÈS À VIE</button>
         </div>
       </div>
     </section>
 
-    <!-- SUPPORT -->
+    <!-- CONTACT -->
     <section id="contact" class="page">
-      <h2 class="section-title">Support Client</h2>
+      <h2 class="section-title" id="contact-title-page">Support Client</h2>
       <div class="form-box">
         <form onsubmit="event.preventDefault(); alert('Message envoyé !');">
-          <div class="form-group"><label>Nom / Name</label><input type="text" class="form-control" required></div>
-          <div class="form-group"><label>Email</label><input type="email" class="form-control" required></div>
-          <div class="form-group"><label>Message</label><textarea class="form-control" rows="4" required></textarea></div>
-          <button type="submit" class="btn btn-primary">ENVOYER</button>
+          <div class="form-group"><label id="form-label-name">Nom</label><input type="text" class="form-control" required></div>
+          <div class="form-group"><label id="form-label-msg">Message</label><textarea class="form-control" rows="4" required></textarea></div>
+          <button type="submit" class="btn btn-primary" id="btn-submit-contact">ENVOYER</button>
         </form>
       </div>
     </section>
   </main>
 
-  <div class="social-float-buttons">
-    <div onclick="triggerGate()" class="float-btn float-wa" title="WhatsApp"><i class="fab fa-whatsapp"></i></div>
-    <div onclick="triggerGate()" class="float-btn float-tg" title="Telegram"><i class="fab fa-telegram-plane"></i></div>
-  </div>
-
-  <!-- MODAL DE BLOCAGE -->
-  <div class="gate-modal" id="gateModal">
-    <div class="gate-content">
-      <i class="fas fa-lock gate-icon"></i>
-      <h3 style="font-family:'Rajdhani'; font-size:24px; margin-bottom:15px;">🔒 ACCÈS VIP CANAUX</h3>
-      <p style="color:var(--text2); margin-bottom:25px;">Pour rejoindre nos canaux d'analyses automatisés privés WhatsApp ou Telegram, vous devez activer un plan d'abonnement VIP.</p>
-      <button class="btn btn-gold" style="margin-bottom:10px;" onclick="closeGateAndGoVIP()">Prendre un abonnement (Dès 10$)</button>
-      <button class="btn" style="background:transparent; color:var(--text2);" onclick="document.getElementById('gateModal').style.display='none'">Fermer</button>
-    </div>
-  </div>
-
-  <!-- CHATBOT AUTOMATISÉ -->
+  <!-- ASSISTANT IA -->
   <div class="chat-widget">
     <div class="chat-button" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
     <div class="chat-box" id="chatBox">
-      <div style="background:var(--bg2); padding:10px; font-weight:700">GEMINI ASSISTANT</div>
+      <div style="background:var(--bg2); padding:12px; font-weight:700; border-bottom: 1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between;">
+        <span>🤖 GEMINI ASSISTANT SITE</span>
+        <i class="fas fa-times" onclick="toggleChat()" style="cursor:pointer; color:var(--red);"></i>
+      </div>
       <div class="chat-messages" id="chatMsgs">
-        <div class="msg bot">Bonjour ! La finale de C1 PSG VS Arsenal est disponible. Utilisez le code promo **20VM** pour valider ce pronostic fort à 95% !</div>
+        <div class="msg bot" id="bot-welcome-msg">Bonjour ! Je suis l'assistant en temps réel de <strong>PRONOPRO</strong>. Posez-moi vos questions à propos de notre site internet uniquement ! (Code promo, VIP, Liens d'inscription...)</div>
       </div>
       <div class="chat-input-area">
-        <input type="text" class="chat-input" id="chatIn" placeholder="Posez votre question..." onkeypress="if(event.key==='Enter') sendChat()">
-        <button onclick="sendChat()" style="background: var(--primary); color: white; border: none; padding: 0 12px; border-radius: 4px; cursor: pointer; margin-left: 5px;">
+        <input type="text" class="chat-input" id="chatIn" placeholder="Posez votre question sur le site..." onkeypress="if(event.key==='Enter') sendChat()">
+        <button onclick="sendChat()" style="background: var(--primary); color: white; border: none; padding: 0 15px; border-radius: 4px; cursor: pointer; margin-left: 5px;">
           <i class="fas fa-paper-plane"></i>
         </button>
       </div>
@@ -447,99 +327,229 @@
   </div>
 
   <script>
-    function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
+    var currentLang = "fr";
 
+    function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
     function showPage(id) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById(id).classList.add('active');
       document.querySelectorAll('.nav-item').forEach(l => l.classList.remove('active'));
-      const link = document.getElementById('link-'+id);
-      if(link) link.classList.add('active');
+      if(document.getElementById('link-'+id)) document.getElementById('link-'+id).classList.add('active');
       document.getElementById('navLinks').classList.remove('open');
       window.scrollTo(0,0);
     }
 
-    function redirectToBookmaker(platform) {
-      let url = "";
-      switch(platform) {
-        case '1xbet':
-          url = "https://1xbet.com/registration?pcode=20VM"; 
-          break;
-        case 'betwinner':
-          url = "https://betwinner.com/registration?pcode=20VM";
-          break;
-        case 'melbet':
-          url = "https://melbet.com/registration?pcode=20VM";
-          break;
-        default:
-          url = "https://1xbet.com/";
-      }
-      window.open(url, '_blank');
-    }
-
-    function triggerGate() { document.getElementById('gateModal').style.display = 'flex'; }
-    function closeGateAndGoVIP() { document.getElementById('gateModal').style.display = 'none'; showPage('vip'); }
-    
-    function processPayment(amount) {
-      let methode = prompt("Choisissez votre moyen de paiement (Ex: Orange Money, Mobile Money, Visa, Crypto) :");
-      if (!methode) return; 
-      
-      let confirmation = confirm("Voulez-vous valider le montant de " + amount + "$ via " + methode + " ?");
-      if (!confirmation) return;
-      
-      alert("Nous gérons votre demande veuiller patieenter les fond seront credite de votre compte");
-    }
-
-    function changeLanguage(lang) {
-      const translations = {
-        fr: { title: "L'Algorithme Mondial de Pari Sportif", desc: "Inscriptions sécurisées, analyses algorithmiques ultra-précises et code promo universel.", box: "✨ OFFRE DE L'IA : Profitez immédiatement du meilleur code promo actuel 20VM pour maximiser vos gains !", live: "🔴 TRACKER DES MATCHS EN LIVE DE L'IA", noLive: "<i class='fas fa-info-circle'></i><p style='font-weight: bold; font-size: 16px; margin-bottom: 8px;'>Pas d'événement populaire d'Europe en live actuellement</p><p style='font-size: 14px;'>Les analyses en direct reprendront dès le coup d'envoi des prochaines rencontres européennes. Profitez-en pour configurer votre compte avec le code promo 20VM.</p>", montante: "🔥 MONTANTES EXCLUSIVES QUOTIDIENNES !", soon: "⏳ Les prochains pronostics algorithmiques de haute précision seront disponibles très bientôt...", dir: "ltr" },
-        ar: { title: "الخوارزمية العالمية للمراهنات الرياضية", desc: "تسجيل مبسط، تحليلات رياضية كاملة، والرمز الترويجي الشامل 20VM.", box: "✨ عرض الذكاء الاصطناعي: استفد فورًا من أفضل رمز ترويجي حالي 20VM لزيادة أرباحك!", live: "🔴 المراقبة الحية للمباريات عبر الذكاء الاصطناعي", noLive: "<i class='fas fa-info-circle'></i><p style='font-weight: bold; font-size: 16px; margin-bottom: 8px;'>لا توجد مباريات أوروبية مباشرة حاليًا</p><p style='font-size: 14px;'>ستستأنف التحليلات المباشرة فور بدء المباريات الأوروبية القادمة. استغل الفرصة لتجهيز حسابك برمز ترويجي 20VM.</p>", montante: "🔥 تحديات الصعود اليومية الحصرية!", soon: "⏳ التوقعات الخوارزمية القادمة عالية الدقة ستكون متاحة قريبًا جدًا...", dir: "rtl" },
-        en: { title: "The Global Sports Betting Algorithm", desc: "Simplified registrations, full mathematical analysis, and universal promo code.", box: "✨ AI OFFER: Take immediate advantage of the best current promo code 20VM to maximize your winnings!", live: "🔴 AI LIVE MATCH TRACKER", noLive: "<i class='fas fa-info-circle'></i><p style='font-weight: bold; font-size: 16px; margin-bottom: 8px;'>No popular European live events right now</p><p style='font-size: 14px;'>Live analysis will resume as soon as next European matches kickoff. Take this time to set up your account with code 20VM.</p>", montante: "🔥 EXCLUSIVE DAILY ROLLOVER CHALLENGES!", soon: "⏳ Next high-precision algorithmic predictions will be available very soon...", dir: "ltr" }
+    // FONCTION DE RESTRICTION D'ACCÈS SUR LES SKINS SOCIAUX
+    function restrictAccess() {
+      const alerts = {
+        fr: "⚠️ ACCÈS COMPTE BLOQUÉ : Vous devez obligatoirement payer un abonnement VIP ($10, $50 ou $120) dans la section 'VIP ACCÈS' avant d'intégrer nos canaux de discussions.",
+        en: "⚠️ ACCESS LOCKED: You must purchase a VIP subscription ($10, $50, or $120) under the 'VIP ACCESS' section before joining our communication channels.",
+        es: "⚠️ ACCESO RESTRINGIDO: Debe pagar una suscripción VIP ($10, $50 o $120) en la sección 'VIP ACCÈS' antes de unirse a nuestros canales.",
+        pt: "⚠️ ACESSO BLOQUEADO: Você deve obrigatoriamente pagar uma assinatura VIP ($10, $50 ou $120) na seção 'VIP ACCÈS' antes de entrar em nossos canais.",
+        ar: "⚠️ الحساب مغلق: يجب عليك أولاً شراء اشتراك VIP بقيمة (10$ أو 50$ أو 120$) من قسم 'VIP ACCÈS' قبل الانضمام إلى قنواتنا.",
+        de: "⚠️ ZUGRIFF GESPERRT: Sie müssen zuerst ein VIP-Abonnement ($10, $50 oder $120) im Bereich 'VIP ACCÈS' abschließen, bevor Sie unseren Kanälen beitreten können.",
+        ru: "⚠️ ДОСТУП ДЛЯ АККАУНТА ЗАБЛОКИРОВАН: Вы должны обязательно оплатить VIP-подписку ($10, $50 или $120) в разделе 'VIP ACCÈS' перед входом на наши каналы."
       };
+      alert(alerts[currentLang] || alerts['fr']);
+      showPage('vip');
+    }
 
-      if (translations[lang]) {
-        document.getElementById('hero-title').innerHTML = translations[lang].title;
-        document.getElementById('hero-desc').innerText = translations[lang].desc;
-        document.getElementById('promo-box-text').innerHTML = translations[lang].box;
-        document.getElementById('live-section-title').innerText = translations[lang].live;
-        document.getElementById('no-live-box').innerHTML = translations[lang].noLive;
-        document.getElementById('banner-montante-title').innerText = translations[lang].montante;
-        document.getElementById('prono-soon-msg').innerText = translations[lang].soon;
-        document.documentElement.setAttribute('dir', translations[lang].dir);
+    function redirectToBookmaker(platform) { 
+      if (platform === '1xbet') {
+        window.open("https://lb-aff.com/L?tag=d_3914573m_66803c_apk1&site=3914573&ad=66803", '_blank'); 
+      } else if (platform === 'linebet') {
+        window.open("https://affpa.top/L?tag=d_3906745m_97c_&site=3906745&ad=97", '_blank');
+      } else {
+        window.open("https://1xbet.com/registration?pcode=20VM", '_blank');
       }
     }
 
-    function toggleChat() {
-      const box = document.getElementById('chatBox');
-      box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
+    function toggleChat() { const b = document.getElementById('chatBox'); b.style.display = (b.style.display === 'flex') ? 'none' : 'flex'; }
+
+    function processPayment(amt) {
+      let m = prompt("Moyen de paiement (Orange, MTN, Visa, Crypto) :");
+      if (!m) return;
+      let n = prompt("Numéro de compte / ID :");
+      if (!n) return;
+      if (confirm("Confirmer le paiement de " + amt + "$ ?")) {
+        alert("Votre demande de paiement de " + amt + "$ a été reçue. Vos accès WhatsApp/Telegram seront débloqués après vérification.");
+      }
     }
 
+    // INTERACTION ASSISTANT IA RECONVERTIE DYNAMIQUE
     function sendChat() {
       const input = document.getElementById('chatIn');
-      const text = input.value.trim().toLowerCase();
-      if (!text) return;
+      const q = input.value.trim().toLowerCase();
+      if(!q) return;
 
-      const msgDiv = document.getElementById('chatMsgs');
-      msgDiv.innerHTML += `<div class="msg user">${input.value}</div>`;
-      input.value = '';
-      msgDiv.scrollTop = msgDiv.scrollHeight;
+      const msgs = document.getElementById('chatMsgs');
+      msgs.innerHTML += `<div class="msg user">${input.value}</div>`;
+      input.value = "";
+      msgs.scrollTop = msgs.scrollHeight;
 
       setTimeout(() => {
-        let reply = "Je suis votre assistant IA. Posez-moi vos questions sur nos pronostics, l'accès VIP ou le code promo.";
-        
-        if (text.includes('promo') || text.includes('code') || text.includes('20vm')) {
-          reply = "Le code promo universel est **20VM**. Il vous offre un bonus exceptionnel de 200% sur vos premiers dépôts sur 1XBET, Betwinner et Melbet.";
-        } else if (text.includes('vip') || text.includes('abonner') || text.includes('pay')) {
-          reply = "Pour rejoindre le salon VIP, rendez-vous dans l'onglet 'VIP ACCÈS' depuis la barre de navigation et choisissez l'offre qui vous convient.";
-        } else if (text.includes('match') || text.includes('prono') || text.includes('aujourd')) {
-          reply = "L'analyse phare d'aujourd'hui concerne la Finale de C1 entre le PSG et Arsenal (Un joueur remplaçant marquera : NON / Cote : 1,5).";
-        } else if (text.includes('whatsapp') || text.includes('telegram')) {
-          reply = "L'accès direct aux canaux privés de l'IA nécessite une inscription VIP active. Utilisez les boutons de l'écran principal pour en savoir plus.";
+        let reply = "Poser vos questions à propos du site uniquement.";
+
+        if (q.includes("code") || q.includes("promo") || q.includes("20vm") || q.includes("bonus")) {
+          reply = "Le code promo universel officiel du site est <strong>20VM</strong>. Utilisez-le sur 1XBET, LINEBET et BETWINNER pour débloquer immédiatement 200% de bonus lors de votre premier dépôt.";
+        } else if (q.includes("vip") || q.includes("abonner") || q.includes("abonnement") || q.includes("prix") || q.includes("50") || q.includes("dollar")) {
+          reply = "Nous proposons désormais 3 formules VIP sur notre site : Accès Starter à 10$, Accès mensuel Pro Tracker à <strong>50$</strong> et l'accès Ultra VIP à vie à 120$. Rendez-vous sur la page 'VIP ACCÈS' pour vous enregistrer.";
+        } else if (q.includes("bookmaker") || q.includes("1xbet") || q.includes("linebet") || q.includes("lien") || q.includes("inscription")) {
+          reply = "Les liens d'inscription directs sécurisés pour 1XBET (Coupon validé) et Linebet sont disponibles sur la page 'Inscriptions directes'. Cliquez simplement sur le bouton correspondant pour lier l'IA à votre profil.";
+        } else if (q.includes("contact") || q.includes("support") || q.includes("aide")) {
+          reply = "Pour joindre l'assistance technique, veuillez vous rendre sur la page 'Contact' et envoyer votre requête via notre formulaire interne.";
+        } else if (q.includes("whatsapp") || q.includes("telegram") || q.includes("canal") || q.includes("rejoindre") || q.includes("groupe")) {
+          reply = "L'accès à nos canaux Telegram et WhatsApp est strictement verrouillé. Vous devez obligatoirement acheter un accès VIP (10$, 50$ ou 120$) sur notre site internet pour recevoir vos accès.";
         }
 
-        msgDiv.innerHTML += `<div class="msg bot">${reply}</div>`;
-        msgDiv.scrollTop = msgDiv.scrollHeight;
+        msgs.innerHTML += `<div class="msg bot">${reply}</div>`;
+        msgs.scrollTop = msgs.scrollHeight;
       }, 700);
+    }
+
+    // GESTION DU TRADUCTEUR MULTILINGUE INTEGRAL AU CLIC
+    function changeLanguage(lang) {
+      currentLang = lang;
+      const dict = {
+        fr: {
+          ticker: "🚀 CODE PROMO EXCLUSIF ET LIENS OFFICIELS VALIDÉS : 20VM - INSCRIPTION SÉCURISÉE SUR 1XBET, LINEBET ET BETWINNER EN DIRECT ! 🌍",
+          title: "L'Algorithme Mondial <br>de Pari Sportif",
+          desc: "Inscriptions sécurisées, analyses algorithmiques ultra-précises et code promo universel.",
+          promo: "✨ OFFRE DE L'IA : Profitez immédiatement du meilleur code promo actuel <span class='promo-highlight'>20VM</span> pour maximiser vos gains !",
+          premiumBtn: "Activer Mon Accès Premium", registerBtn: "S'inscrire via Liens Validés",
+          waBtn: "<i class='fab fa-whatsapp'></i> Rejoindre sur WhatsApp", tgBtn: "<i class='fab fa-telegram-plane'></i> Canal Telegram Officiel",
+          badge: "<i class='fas fa-chart-line'></i> DERNIÈRES ANALYSES DU SYSTÈME", matchTitle: "🏆 GRANDE RENCONTRE DU JOUR : FINALE DE C1",
+          lblProno: "Pronostic :", valProno: "un joueur remplaçant marquera non",
+          bkTitle: "Inscriptions Partenaires Immédiates", bkAlert: "🚀 <strong>COUPONS ET LIENS VALIDÉS :</strong> Utilisez le code promo <strong>20VM</strong> sur nos plateformes officielles ci-dessous pour activer vos bonus de dépôt de 200%.",
+          btnBk: "S'INSCRIRE DIRECTEMENT", smsAlert: "⚠️ <strong>CONFIGURATION SMS OBLIGATOIRE :</strong> Activez votre numéro par SMS lors de l'inscription pour lier l'IA.",
+          vipTitle: "Abonnements d'Accès VIP", sDesc: "Accès aux analyses pendant 7 jours", pDesc: "Accès mensuel complet + Signaux IA en direct", uDesc: "Accès algorithmique à vie illimité", btnSub: "S'ABONNER", btnLife: "ACCÈS À VIE", popular: "POPULAIRE",
+          cTitle: "Support Client", name: "Nom", msg: "Message", send: "ENVOYER", welcome: "Bonjour ! Je suis l'assistant en temps réel de <strong>PRONOPRO</strong>. Posez-moi vos questions à propos de notre site internet uniquement ! (Code promo, VIP, Liens d'inscription...)", dir: "ltr"
+        },
+        en: {
+          ticker: "🚀 EXCLUSIVE PROMO CODE AND VALIDATED LINKS: 20VM - SECURE REGISTRATION ON 1XBET, LINEBET AND BETWINNER LIVE! 🌍",
+          title: "The Global Sports <br>Betting Algorithm",
+          desc: "Secure registrations, ultra-precise algorithmic analysis and universal promo code.",
+          promo: "✨ AI OFFER: Activate the best promo code <span class='promo-highlight'>20VM</span> right now to maximize your profit!",
+          premiumBtn: "Activate My Premium Access", registerBtn: "Register via Verified Links",
+          waBtn: "<i class='fab fa-whatsapp'></i> Join on WhatsApp", tgBtn: "<i class='fab fa-telegram-plane'></i> Official Telegram Channel",
+          badge: "<i class='fas fa-chart-line'></i> LATEST SYSTEM ANALYSES", matchTitle: "🏆 MATCH OF THE DAY: C1 FINALS",
+          lblProno: "Prediction:", valProno: "a substitute player will score: NO",
+          bkTitle: "Direct Partner Registrations", bkAlert: "🚀 <strong>VALIDATED LINKS:</strong> Use promo code <strong>20VM</strong> on our official platforms below to activate your 200% deposit bonus.",
+          btnBk: "REGISTER DIRECTLY", smsAlert: "⚠️ <strong>SMS CONFIGURATION MANDATORY:</strong> Activate your mobile number via SMS during sign-up to link the AI.",
+          vipTitle: "VIP Access Subscriptions", sDesc: "Access to all analyses for 7 days", pDesc: "Full monthly access + Live AI signals", uDesc: "Unlimited lifetime algorithmic access", btnSub: "SUBSCRIBE", btnLife: "LIFETIME ACCESS", popular: "POPULAR",
+          cTitle: "Customer Support", name: "Name", msg: "Message", send: "SEND", welcome: "Hello! I am the real-time assistant for <strong>PRONOPRO</strong>. Ask me your questions about our website only! (Promo code, VIP, links...)", dir: "ltr"
+        },
+        es: {
+          ticker: "🚀 CÓDIGO PROMO EXCLUSIVO Y ENLACES VALIDADOS: 20VM - REGISTRO SEGURO EN 1XBET, LINEBET Y BETWINNER! 🌍",
+          title: "El Algoritmo Mundial <br>de Apuestas Deportivas",
+          desc: "Registros seguros, análisis algorítmicos ultra precisos y código promocional universal.",
+          promo: "✨ OFERTA DE IA: ¡Disfrute del mejor código promocional actual <span class='promo-highlight'>20VM</span> para maximizar ganancias!",
+          premiumBtn: "Activar Mi Acceso Premium", registerBtn: "Registrarse con Enlaces Oficiales",
+          waBtn: "<i class='fab fa-whatsapp'></i> Unirse a WhatsApp", tgBtn: "<i class='fab fa-telegram-plane'></i> Canal Oficial de Telegram",
+          badge: "<i class='fas fa-chart-line'></i> ÚLTIMOS ANÁLISIS DEL SISTEMA", matchTitle: "🏆 GRAN PARTIDO DEL DÍA: FINAL DE C1",
+          lblProno: "Pronóstico:", valProno: "un jugador sustituto anotará: NO",
+          bkTitle: "Inscripciones Directas de Socios", bkAlert: "🚀 <strong>CUPONES VALIDADOS:</strong> Use el código de promoción <strong>20VM</strong> en nuestras plataformas para activar su bono del 200%.",
+          btnBk: "REGISTRARSE DIRECTAMENTE", smsAlert: "⚠️ <strong>VALIDACIÓN SMS OBLIGATORIA:</strong> Active su número por SMS al registrarse para vincular el sistema IA.",
+          vipTitle: "Suscripciones de Acceso VIP", sDesc: "Acceso a los análisis por 7 días", pDesc: "Acceso mensual completo + Señales IA en vivo", uDesc: "Acceso algorítmico ilimitado de por vida", btnSub: "SUSCRIBIRSE", btnLife: "ACCESO DE POR VIDA", popular: "POPULAR",
+          cTitle: "Soporte Técnico", name: "Nombre", msg: "Mensaje", send: "ENVIAR", welcome: "¡Hola! Soy el asistente de <strong>PRONOPRO</strong>. ¡Haga sus preguntas sobre nuestro sitio web únicamente! (Código promo, VIP...)", dir: "ltr"
+        },
+        ar: {
+          ticker: "🚀 الرمز الترويجي الحصري والروابط المعتمدة: 20VM - تسجيل آمن ومباشر على 1XBET و LINEBET و BETWINNER! 🌍",
+          title: "الخوارزمية العالمية <br>للمراهنات الرياضية",
+          desc: "تسجيلات آمنة، تحليلات خوارزمية فائقة الدقة ورمز ترويجي شامل لكل المواقع.",
+          promo: "✨ عرض الذكاء الاصطناعي: استفد فورًا من أفضل رمز ترويجي حالي <span class='promo-highlight'>20VM</span> لمضاعفة أرباحك!",
+          premiumBtn: "تفعيل اشتراك VIP المميز", registerBtn: "التسجيل عبر الروابط المعتمدة",
+          waBtn: "<i class='fab fa-whatsapp'></i> انضمام عبر الواتساب", tgBtn: "<i class='fab fa-telegram-plane'></i> قناة التليجرام الرسمية",
+          badge: "<i class='fas fa-chart-line'></i> أحدث تحليلات النظام الذكي", matchTitle: "🏆 مباراة اليوم الكبرى: نهائي دوري الأبطال",
+          lblProno: "التوقع:", valProno: "لاعب بديل سيسجل: لا",
+          bkTitle: "التسجيل المباشر لدى الشركاء", bkAlert: "🚀 <strong>روابط وكوبونات مؤكدة:</strong> استخدم الكود الترويجي <strong>20VM</strong> لتفعيل مكافأة إيداع 200%.",
+          btnBk: "سجل الآن مباشرة", smsAlert: "⚠️ <strong>تفعيل الهاتف عبر SMS إجباري:</strong> قم بتفعيل رقمك عبر رسالة نصية لربط حسابك بنظام الذكاء الاصطناعي.",
+          vipTitle: "اشتراكات الوصول إلى كبار الشخصيات VIP", sDesc: "دخول التحليلات لمدة 7 أيام", pDesc: "اشتراك شهري كامل + إشارات حية من الذكاء الاصطناعي", uDesc: "وصول غير محدود مدى الحياة", btnSub: "اشترك الآن", btnLife: "وصول مدى الحياة", popular: "شائع",
+          cTitle: "الدعم الفني والعملاء", name: "الاسم", msg: "الرسالة", send: "إرسال", welcome: "مرحبًا! أنا المساعد الفني لموقع <strong>PRONOPRO</strong>. تفضل بطرح أسئلتك حول الموقع فقط! (كود الخصم، اشتراكات VIP...)", dir: "rtl"
+        },
+        pt: {
+          ticker: "🚀 CÓDIGO PROMO EXCLUSIVO E LINKS VALIDADOS: 20VM - INSCRIÇÃO SEGURA NO 1XBET, LINEBET E BETWINNER! 🌍",
+          title: "O Algoritmo Mundial <br>de Apostas Esportivas",
+          desc: "Cadastros seguros, análises algorítmicas de alta precisão e código promocional universal.",
+          promo: "✨ OFERTA IA: Aproveite imediatamente o melhor código promocional <span class='promo-highlight'>20VM</span> para maximizar seus ganhos!",
+          premiumBtn: "Ativar Meu Acesso Premium", registerBtn: "Inscreva-se via Links Validados",
+          waBtn: "<i class='fab fa-whatsapp'></i> Entrar no WhatsApp", tgBtn: "<i class='fab fa-telegram-plane'></i> Canal Oficial Telegram",
+          badge: "<i class='fas fa-chart-line'></i> ÚLTIMAS ANÁLISES DO SISTEMA", matchTitle: "🏆 GRANDE JOGO DO DIA: FINAIS DA C1",
+          lblProno: "Prognóstico:", valProno: "um jogador reserva marcará: NÃO",
+          bkTitle: "Inscrições Diretas de Parceiros", bkAlert: "🚀 <strong>LINKS VALIDADOS:</strong> Use o código promocional <strong>20VM</strong> para ativar seu bônus de 200%.",
+          btnBk: "INSCREVER-SE DIRETAMENTE", smsAlert: "⚠️ <strong>CONFIGURAÇÃO SMS OBRIGATÓRIA:</strong> Ative seu número por SMS no registro para vincular a IA.",
+          vipTitle: "Planos de Acesso VIP", sDesc: "Acesso às análises por 7 dias", pDesc: "Acesso mensal completo + Sinais de IA ao vivo", uDesc: "Acesso algorítmico vitalício ilimitado", btnSub: "ASSINAR", btnLife: "ACESSO VITALÍCIO", popular: "POPULAR",
+          cTitle: "Suporte ao Cliente", name: "Nome", msg: "Mensagem", send: "ENVIAR", welcome: "Olá! Sou o assistente em tempo real do <strong>PRONOPRO</strong>. Faça suas perguntas apenas sobre o site! (Código promocional, VIP...)", dir: "ltr"
+        },
+        de: {
+          ticker: "🚀 EXKLUSIVER PROMO-CODE UND VERIFIZIERTE LINKS: 20VM - SICHERE REGISTRIERUNG AUF 1XBET, LINEBET UND BETWINNER! 🌍",
+          title: "Der globale Sportwetten- <br>Algorithmus",
+          desc: "Sichere Registrierung, ultrapräzise algorithmische Analysen und universeller Promo-Code.",
+          promo: "✨ KI-ANGEBOT: Nutzen Sie sofort den aktuellen Promo-Code <span class='promo-highlight'>20VM</span> für maximale Gewinne!",
+          premiumBtn: "Premium-Zugang aktivieren", registerBtn: "Über verifizierte Links registrieren",
+          waBtn: "<i class='fab fa-whatsapp'></i> Auf WhatsApp beitreten", tgBtn: "<i class='fab fa-telegram-plane'></i> Offizieller Telegram-Kanal",
+          badge: "<i class='fas fa-chart-line'></i> AKTUELLE SYSTEM-ANALYSEN", matchTitle: "🏆 TOP-SPIEL DES TAGES: C1-FINALE",
+          lblProno: "Prognose:", valProno: "Ein Einwechselspieler trifft: NEIN",
+          bkTitle: "Direkte Partner-Registrierung", bkAlert: "🚀 <strong>BESTÄTIGTE LINKS:</strong> Nutzen Sie den Promo-Code <strong>20VM</strong>, um Ihren 200% Einzahlungsbonus zu aktivieren.",
+          btnBk: "DIREKT REGISTRIEREN", smsAlert: "⚠️ <strong>SMS-VERIFIZIERUNG ERFORDERLICH:</strong> Aktivieren Sie Ihre Handynummer per SMS, um die KI zu verknüpfen.",
+          vipTitle: "VIP-Zugangsabonnements", sDesc: "Zugang zu den Analysen für 7 Tage", pDesc: "Monatlicher Vollzugriff + Live-KI-Signale", uDesc: "Unbegrenzter lebenslanger KI-Zugriff", btnSub: "ABONNIEREN", btnLife: "LEBENSLANGER ZUGRIFF", popular: "BELIEBT",
+          cTitle: "Kundensupport", name: "Name", msg: "Nachricht", send: "SENDEN", welcome: "Hallo! Ich bin der Echtzeit-Assistent von <strong>PRONOPRO</strong>. Stellen Sie Fragen ausschließlich zu unserer Website! (Promo-Code, VIP...)", dir: "ltr"
+        },
+        ru: {
+          ticker: "🚀 ЭКСКЛЮЗИВНЫЙ ПРОМОКОД И ПРОВЕРЕННЫЕ ССЫЛКИ: 20VM - БЕЗОПАСНАЯ РЕГИСТРАЦИЯ НА 1XBET, LINEBET И BETWINNER! 🌍",
+          title: "Глобальный ИИ-алгоритм <br>спортивных ставок",
+          desc: "Безопасная регистрация, высокоточные анализы ИИ и универсальный промокод.",
+          promo: "✨ ПРЕДЛОЖЕНИЕ ИИ: Используйте промокод <span class='promo-highlight'>20VM</span> прямо сейчас, чтобы получить максимальный бонус!",
+          premiumBtn: "Активировать VIP-доступ", registerBtn: "Регистрация по ссылкам партнёров",
+          waBtn: "<i class='fab fa-whatsapp'></i> Войти в WhatsApp", tgBtn: "<i class='fab fa-telegram-plane'></i> Официальный Telegram-канал",
+          badge: "<i class='fas fa-chart-line'></i> ПОСЛЕДНИЕ АНАЛИЗЫ СИСТЕМЫ", matchTitle: "🏆 МАТЧ ДНЯ: ФИНАЛ ЛИГИ ЧЕМПИОНОВ",
+          lblProno: "Прогноз:", valProno: "запасной игрок забьет: НЕТ",
+          bkTitle: "Прямая регистрация у партнёров", bkAlert: "🚀 <strong>ПРОВЕРЕННЫЕ ССЫЛКИ:</strong> Используйте промокод <strong>20VM</strong> для активации 200% бонуса на первый депозит.",
+          btnBk: "ЗАРЕГИСТРИРОВАТЬСЯ", smsAlert: "⚠️ <strong>ОБЯЗАТЕЛЬНАЯ СМС-ВЕРИФИКАЦИЯ:</strong> Подтвердите номер телефона по SMS для привязки к ИИ-алгоритму.",
+          vipTitle: "VIP-подписки на систему", sDesc: "Доступ к аналитике на 7 дней", pDesc: "Полный месячный доступ + Live-сигналы от ИИ", uDesc: "Безлимитный пожизненный доступ к алгоритму", btnSub: "ПОДПИСАТЬСЯ", btnLife: "ПОЖИЗНЕННЫЙ ДОСТУП", popular: "ПОПУЛЯРНО",
+          cTitle: "Служба поддержки", name: "Имя", msg: "Сообщение", send: "ОТПРАВИТЬ", welcome: "Здравствуйте! Я онлайн-помощник сайта <strong>PRONOPRO</strong>. Задавайте вопросы только о работе нашего сайта! (Промокод, VIP...)", dir: "ltr"
+        }
+      };
+
+      const data = dict[lang] || dict['fr'];
+      
+      // Injection dynamique textuelle globale
+      document.getElementById('ticker-text').innerHTML = data.ticker;
+      document.getElementById('hero-title').innerHTML = data.title;
+      document.getElementById('hero-desc').innerText = data.desc;
+      document.getElementById('promo-box-text').innerHTML = data.promo;
+      document.getElementById('btn-premium-text').innerText = data.premiumBtn;
+      document.getElementById('btn-register-text').innerText = data.registerBtn;
+      document.getElementById('btn-wa-text').innerHTML = data.waBtn;
+      document.getElementById('btn-tg-text').innerHTML = data.tgBtn;
+      document.getElementById('prono-badge-text').innerHTML = data.badge;
+      document.getElementById('match-title-text').innerText = data.matchTitle;
+      document.getElementById('label-prono-text').innerText = data.lblProno;
+      document.getElementById('val-prono-text').innerText = data.valProno;
+      
+      document.getElementById('bk-title-page').innerText = data.bkTitle;
+      document.getElementById('bk-alert-text').innerHTML = data.bkAlert;
+      document.getElementById('btn-bk-1').innerText = data.btnBk;
+      document.getElementById('btn-bk-2').innerText = data.btnBk;
+      document.getElementById('btn-bk-3').innerText = data.btnBk;
+      document.getElementById('sms-alert-text').innerHTML = data.smsAlert;
+      
+      document.getElementById('vip-title-page').innerText = data.vipTitle;
+      document.getElementById('plan-starter-desc').innerText = data.sDesc;
+      document.getElementById('plan-pro-desc').innerText = data.pDesc;
+      document.getElementById('plan-ultra-desc').innerText = data.uDesc;
+      document.getElementById('btn-plan-1').innerText = data.btnSub;
+      document.getElementById('btn-plan-2').innerText = data.btnSub;
+      document.getElementById('btn-plan-3').innerText = data.btnLife;
+      document.getElementById('badge-popular').innerText = data.popular;
+      
+      document.getElementById('contact-title-page').innerText = data.cTitle;
+      document.getElementById('form-label-name').innerText = data.name;
+      document.getElementById('form-label-msg').innerText = data.msg;
+      document.getElementById('btn-submit-contact').innerText = data.send;
+      document.getElementById('bot-welcome-msg').innerHTML = data.welcome;
+      
+      document.documentElement.setAttribute('dir', data.dir);
     }
   </script>
 </body>
