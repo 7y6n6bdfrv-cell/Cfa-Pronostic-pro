@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -1185,83 +1186,6 @@
     .tag-basketball { color: #fb923c; }
     .tag-tennis { color: #facc15; }
     .tag-esport { color: #a78bfa; }
-  
-    /* ========================================
-       OPTIMISATIONS RESPONSIVES INTERNATIONALES
-       ======================================== */
-    @media (max-width: 1024px) {
-      .hero-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-        padding: 40px 20px;
-      }
-      .stats-grid, .pricing-grid, .features-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-        gap: 16px !important;
-      }
-      .nav-container {
-        padding: 0 16px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 28px !important; line-width: 1.2; }
-      h2 { font-size: 22px !important; }
-      .nav-links {
-        display: none !important; /* Managed by mobile toggle menu if available */
-      }
-      .nav-actions {
-        gap: 8px;
-      }
-      .intl-selectors {
-        gap: 4px !important;
-      }
-      .intl-selectors select {
-        padding: 4px 6px !important;
-        font-size: 11px !important;
-      }
-      .btn {
-        padding: 8px 12px !important;
-        font-size: 13px !important;
-      }
-      .vip-card {
-        padding: 20px !important;
-      }
-      .prono-card-body {
-        padding: 16px !important;
-      }
-      .dashboard-layout {
-        grid-template-columns: 1fr !important;
-      }
-      .admin-grid {
-        grid-template-columns: 1fr !important;
-      }
-      /* Prevent table overflow */
-      .table-container {
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-badge {
-        font-size: 11px !important;
-        padding: 4px 10px !important;
-      }
-      .prono-main-tip {
-        padding: 12px !important;
-      }
-      .tip-value {
-        font-size: 15px !important;
-      }
-      .footer-bottom {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-      }
-    }
-
   </style>
 </head>
 <body>
@@ -1290,19 +1214,6 @@
       <li><a onclick="navigate('vip')" data-page="vip" class="vip-link">⭐ VIP</a></li>
     </ul>
     <div class="nav-actions">
-      <!-- Sélecteurs Internationaux de Langue et Devise -->
-      <div class="intl-selectors" style="display: flex; gap: 8px; margin-right: 12px; align-items: center;">
-        <select id="lang-selector" onchange="changeLanguage(this.value)" style="background: #111827; color: #ffffff; border: 1px solid rgba(99,179,237,0.2); padding: 6px 10px; border-radius: 6px; font-size: 13px; cursor: pointer; font-family: 'Rajdhani', sans-serif; font-weight: 600; outline: none;">
-          <option value="fr">🇫🇷 FR</option>
-          <option value="en">🇺🇸 EN</option>
-          <option value="es">🇪🇸 ES</option>
-        </select>
-        <select id="currency-selector" onchange="changeCurrency(this.value)" style="background: #111827; color: #f6ad55; border: 1px solid rgba(99,179,237,0.2); padding: 6px 10px; border-radius: 6px; font-size: 13px; cursor: pointer; font-family: monospace; font-weight: 600; outline: none;">
-          <option value="XAF">FCFA (XAF)</option>
-          <option value="EUR">Euro (€)</option>
-          <option value="USD">Dollar ($)</option>
-        </select>
-      </div>
       <button class="btn btn-ghost" onclick="openModal('login-modal')">Connexion</button>
       <button class="btn btn-primary" onclick="openModal('register-modal')">S'inscrire</button>
       <div class="hamburger" onclick="toggleMenu()" id="hamburger">
@@ -1983,7 +1894,7 @@
   <div class="modal relative">
     <button class="modal-close" onclick="closeModal('payment-modal')">✕</button>
     <div class="modal-title">💳 Paiement VIP</div>
-    <div class="modal-sub" id="payment-plan-label">Plan Expert – 1<span data-base-price="5000">5 000 FCFA</span>/mois</div>
+    <div class="modal-sub" id="payment-plan-label">Plan Expert – 15 000 FCFA/mois</div>
     <div style="background:var(--bg3);border-radius:10px;padding:16px;margin-bottom:20px">
       <div style="font-size:13px;color:var(--text2);margin-bottom:6px">Sélectionnez votre méthode</div>
       <div style="display:flex;flex-direction:column;gap:8px" id="payment-options">
@@ -2064,19 +1975,6 @@ function toggleMenu() {
 }
 
 // ========================================
-  autoDetectIntl();
-    case 'pronostics': loadPronostics(); break;
-    case 'bookmakers': renderBookmakersFull(); break;
-    case 'resultats': loadResults(); break;
-    case 'admin': if(!isAdmin) { navigate('accueil'); toast('Accès refusé','error'); return; } renderAdminDashboard(); break;
-  }
-}
-
-function toggleMenu() {
-  document.getElementById('mobile-menu').classList.toggle('open');
-}
-
-// ========================================
 // TICKER
 // ========================================
 function setupTicker() {
@@ -2096,13 +1994,13 @@ function setupTicker() {
 // BOOKMAKERS DATA
 // ========================================
 const BOOKMAKERS = [
-  { name:'1xBet', color:'#ff5722', emoji:'1X', bonus:'200% jusqu\'à <span data-base-price="130000">130 000 FCFA</span>', link:'https://1xbet.com/?promo=20VM', rating:4.8 },
-  { name:'Melbet', color:'#f44336', emoji:'MB', bonus:'130% jusqu\'à 6<span data-base-price="5000">5 000 FCFA</span>', link:'https://melbet.com/?promo=20VM', rating:4.7 },
+  { name:'1xBet', color:'#ff5722', emoji:'1X', bonus:'200% jusqu\'à 130 000 FCFA', link:'https://1xbet.com/?promo=20VM', rating:4.8 },
+  { name:'Melbet', color:'#f44336', emoji:'MB', bonus:'130% jusqu\'à 65 000 FCFA', link:'https://melbet.com/?promo=20VM', rating:4.7 },
   { name:'BetWinner', color:'#e91e63', emoji:'BW', bonus:'100% + 30 Free Spins', link:'https://betwinner.com/?promo=20VM', rating:4.6 },
-  { name:'22Bet', color:'#3f51b5', emoji:'22', bonus:'100% jusqu\'à 5<span data-base-price="2000">2 000 FCFA</span>', link:'https://22bet.com/?promo=20VM', rating:4.5 },
-  { name:'Bet365', color:'#4caf50', emoji:'B365', bonus:'Jusqu\'à <span data-base-price="100000">100 000 FCFA</span>', link:'https://bet365.com', rating:4.9 },
+  { name:'22Bet', color:'#3f51b5', emoji:'22', bonus:'100% jusqu\'à 52 000 FCFA', link:'https://22bet.com/?promo=20VM', rating:4.5 },
+  { name:'Bet365', color:'#4caf50', emoji:'B365', bonus:'Jusqu\'à 100 000 FCFA', link:'https://bet365.com', rating:4.9 },
   { name:'Premier Bet', color:'#0047ab', emoji:'PB', bonus:'100% sur 1er dépôt', link:'https://premierbet.cm', rating:4.3 },
-  { name:'Parimatch', color:'#ff9800', emoji:'PM', bonus:'<span data-base-price="50000">50 000 FCFA</span> offerts', link:'https://parimatch.com/?promo=20VM', rating:4.4 },
+  { name:'Parimatch', color:'#ff9800', emoji:'PM', bonus:'50 000 FCFA offerts', link:'https://parimatch.com/?promo=20VM', rating:4.4 },
 ];
 
 function renderBookmakerCard(bk) {
@@ -2421,7 +2319,7 @@ function loadResultsBySport(sport) {
 // GUIDES
 // ========================================
 const GUIDES_CONTENT = {
-  bankroll: { title:'💰 Gestion de Bankroll', content: `<h3 style="font-family:var(--font-head);font-size:22px;font-weight:700;margin-bottom:12px">La règle des 1-5%</h3><p style="color:var(--text2);line-height:1.7;margin-bottom:16px">La règle d'or de la gestion bankroll est de ne jamais miser plus de 1 à 5% de votre capital total sur un seul pari. Cela vous protège contre les séries perdantes inévitables.</p><div style="background:var(--bg3);border-radius:10px;padding:16px;margin-bottom:16px"><div style="font-weight:700;margin-bottom:8px">Exemple concret :</div><div style="font-size:14px;color:var(--text2)">Capital : <span data-base-price="100000">100 000 FCFA</span><br/>Mise maximale (5%) : <span data-base-price="5000">5 000 FCFA</span><br/>Mise recommandée (2%) : <span data-base-price="2000">2 000 FCFA</span></div></div><p style="color:var(--text2);line-height:1.7">Cette approche vous permet de survivre à 50+ paris perdants consécutifs avant d'épuiser votre bankroll.</p>` },
+  bankroll: { title:'💰 Gestion de Bankroll', content: `<h3 style="font-family:var(--font-head);font-size:22px;font-weight:700;margin-bottom:12px">La règle des 1-5%</h3><p style="color:var(--text2);line-height:1.7;margin-bottom:16px">La règle d'or de la gestion bankroll est de ne jamais miser plus de 1 à 5% de votre capital total sur un seul pari. Cela vous protège contre les séries perdantes inévitables.</p><div style="background:var(--bg3);border-radius:10px;padding:16px;margin-bottom:16px"><div style="font-weight:700;margin-bottom:8px">Exemple concret :</div><div style="font-size:14px;color:var(--text2)">Capital : 100 000 FCFA<br/>Mise maximale (5%) : 5 000 FCFA<br/>Mise recommandée (2%) : 2 000 FCFA</div></div><p style="color:var(--text2);line-height:1.7">Cette approche vous permet de survivre à 50+ paris perdants consécutifs avant d'épuiser votre bankroll.</p>` },
   value: { title:'📊 Le Value Betting', content: `<h3 style="font-family:var(--font-head);font-size:22px;font-weight:700;margin-bottom:12px">Qu'est-ce qu'une value bet ?</h3><p style="color:var(--text2);line-height:1.7;margin-bottom:16px">Une value bet existe quand la probabilité réelle d'un événement est supérieure à la probabilité implicite dans la cote proposée par le bookmaker.</p><div style="background:var(--bg3);border-radius:10px;padding:16px;margin-bottom:16px"><div style="font-weight:700;margin-bottom:8px">Formule :</div><div style="font-family:var(--font-mono);color:var(--accent);font-size:14px">Value = (Proba réelle × Cote) - 1</div><div style="font-size:13px;color:var(--text2);margin-top:8px">Si Value > 0 → C'est une value bet !</div></div>` },
   btts: { title:'⚽ Stratégie BTTS', content: `<h3 style="font-family:var(--font-head);font-size:22px;font-weight:700;margin-bottom:12px">Both Teams To Score</h3><p style="color:var(--text2);line-height:1.7;margin-bottom:16px">Le BTTS (Les deux équipes marquent) est l'une des stratégies les plus populaires. Elle mise sur le fait que les deux équipes vont marquer au moins un but pendant le match.</p><div style="background:var(--bg3);border-radius:10px;padding:16px"><div style="font-weight:700;margin-bottom:8px">Critères de sélection :</div><ul style="color:var(--text2);font-size:14px;line-height:2;padding-left:20px"><li>Les deux équipes marquent en moyenne 1.5+ buts/match</li><li>Défenses poreuses (1+ buts encaissés/match)</li><li>H2H favorable au BTTS (60%+ des dernières confrontations)</li></ul></div>` },
   handicap: { title:'⚖️ Handicap Asiatique', content:`<h3 style="font-family:var(--font-head);font-size:22px;font-weight:700;margin-bottom:12px">Comprendre le handicap asiatique</h3><p style="color:var(--text2);line-height:1.7;margin-bottom:16px">Le handicap asiatique élimine la possibilité du match nul en accordant un avantage fictif à l'équipe la moins forte. C'est idéal pour les matchs déséquilibrés.</p>` },
@@ -2707,84 +2605,6 @@ function toast(msg, type='success') {
 // ========================================
 function sendContactForm() {
   toast('Message envoyé ! Notre équipe vous répond sous 24h 📩');
-}
-
-
-// ========================================
-// RECONNAISSANCE INTERNATIONALE & MULTI-DEVISES
-// ========================================
-const translations = {
-  fr: {
-    heroTitle: "L'INTELLIGENCE ARTIFICIELLE AU SERVICE DE VOS PARIS",
-    heroSub: "Analyses de pointe, algorithmes prédictifs et statistiques en temps réel pour maximiser vos gains.",
-    vipTitle: "REJOIGNEZ L'ÉLITE VIP",
-    vipSub: "Accédez à 100% de nos pronostics à haute confiance et boostez votre capital.",
-    contactTitle: "CONTACTER LE SUPPORT",
-    features: "Fonctionnalités",
-    dashboard: "Tableau de Bord",
-    stats: "Statistiques"
-  },
-  en: {
-    heroTitle: "ARTIFICIAL INTELLIGENCE AT THE SERVICE OF YOUR BETS",
-    heroSub: "Cutting-edge analysis, predictive algorithms and real-time statistics to maximize your winnings.",
-    vipTitle: "JOIN THE VIP ELITE",
-    vipSub: "Access 100% of our high-confidence predictions and boost your bankroll.",
-    contactTitle: "CONTACT SUPPORT",
-    features: "Features",
-    dashboard: "Dashboard",
-    stats: "Statistics"
-  },
-  es: {
-    heroTitle: "INTELIGENCIA ARTIFICIAL AL SERVICIO DE TUS APUESTAS",
-    heroSub: "Análisis de vanguardia, algoritmos predictivos y estadísticas en tiempo real para maximizar tus ganancias.",
-    vipTitle: "ÚNETE A LA ÉLITE VIP",
-    vipSub: "Accede al 100% de nuestros pronósticos de alta confianza y aumenta tu capital.",
-    contactTitle: "CONTACTAR SOPORTE",
-    features: "Características",
-    dashboard: "Panel de Control",
-    stats: "Estadísticas"
-  }
-};
-
-let currentLang = 'fr';
-let currentCurrency = 'XAF';
-const conversionRates = { XAF: 1, EUR: 0.0015, USD: 0.0016 };
-const currencySymbols = { XAF: ' FCFA', EUR: ' €', USD: ' $' };
-
-function changeLanguage(lang) {
-  currentLang = lang;
-  document.documentElement.lang = lang;
-  
-  document.querySelectorAll('[data-intl]').forEach(el => {
-    const key = el.getAttribute('data-intl');
-    if (translations[lang] && translations[lang][key]) {
-      el.textContent = translations[lang][key];
-    }
-  });
-  
-  toast(lang === 'fr' ? 'Interface en Français 🇫🇷' : lang === 'es' ? 'Interfaz en Español 🇪🇸' : 'Interface in English 🇺🇸', 'info');
-}
-
-function changeCurrency(curr) {
-  currentCurrency = curr;
-  document.querySelectorAll('[data-base-price]').forEach(el => {
-    const basePrice = parseFloat(el.getAttribute('data-base-price'));
-    const converted = (basePrice * conversionRates[curr]).toFixed(curr === 'XAF' ? 0 : 2);
-    el.textContent = converted + currencySymbols[curr];
-  });
-}
-
-function autoDetectIntl() {
-  try {
-    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    // Si l'utilisateur est détecté hors de l'Afrique Centrale/Ouest francophone, on adapte la langue et devise
-    if (!tz.includes('Africa/Douala') && !tz.includes('Africa/Brazzaville') && !tz.includes('Africa/Libreville') && !tz.includes('Africa/Abidjan') && !tz.includes('Africa/Dakar')) {
-      const langSel = document.getElementById('lang-selector');
-      const currSel = document.getElementById('currency-selector');
-      if(langSel) { langSel.value = 'en'; changeLanguage('en'); }
-      if(currSel) { currSel.value = 'EUR'; changeCurrency('EUR'); }
-    }
-  } catch(e) { console.error("Intl detection skipped:", e); }
 }
 
 // ========================================
