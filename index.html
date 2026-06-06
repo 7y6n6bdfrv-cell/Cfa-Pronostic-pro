@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PronosticsPro – Les meilleurs pronostics sportifs</title>
   <meta name="description" content="Pronostics sportifs automatiques générés par IA. Analyse complète des matchs, statistiques avancées et conseils d'experts." />
+  <link rel="icon" type="image/png" href="/site-logo.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="LOGO.png">
   <style>
     /* ===== VARIABLES ===== */
     :root {
@@ -180,6 +182,16 @@
       display: flex;
       align-items: center;
       gap: 10px;
+    }
+    .lang-select {
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 13px;
+      font-weight: 600;
+      min-width: 110px;
     }
     .btn {
       padding: 9px 20px;
@@ -508,14 +520,26 @@
     }
     .team-logo {
       width: 44px; height: 44px;
-      background: var(--bg3);
+      background: rgba(255,255,255,0.06);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 22px;
       border: 1px solid var(--border);
+      overflow: hidden;
+      padding: 4px;
     }
+    .team-logo img { width:100%; height:100%; object-fit:contain; }
+    .team-logo-hero {
+      width: 50px; height: 50px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; padding: 5px;
+    }
+    .team-logo-hero img { width: 100%; height: 100%; object-fit: contain; }
     .team-name { font-size: 13px; font-weight: 600; text-align: center; }
     .vs-block { text-align: center; }
     .vs-time { font-family: var(--font-mono); font-size: 14px; color: var(--accent); }
@@ -599,17 +623,42 @@
     }
     .match-team.away { flex-direction: row-reverse; }
     .match-team-logo {
-      width: 36px; height: 36px;
-      background: var(--bg3);
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,0.05);
       border-radius: 50%;
-      object-fit: contain;
       border: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 18px;
       flex-shrink: 0;
+      overflow: hidden;
+      padding: 4px;
     }
+    .match-team-logo img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+    .match-team-logo img.on-error { display: none; }
+    .league-img {
+      width: 20px; height: 20px;
+      object-fit: contain;
+      border-radius: 3px;
+    }
+    .bookie-logo-img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+    }
+    .team-logo-hero {
+      width: 50px; height: 50px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; padding: 5px;
+    }
+    .team-logo-hero img { width: 100%; height: 100%; object-fit: contain; }
     .match-team-name { font-weight: 600; font-size: 14px; }
     .match-vs { font-family: var(--font-mono); font-size: 13px; color: var(--text3); white-space: nowrap; }
     .match-odds {
@@ -658,6 +707,12 @@
       color: #000;
       letter-spacing: -0.5px;
       border: 2px solid var(--border);
+      overflow: hidden;
+      padding: 6px;
+    }
+    .bookie-logo img {
+      width: 100%; height: 100%;
+      object-fit: contain;
     }
     .bookie-name { font-family: var(--font-head); font-size: 18px; font-weight: 700; }
     .bookie-bonus {
@@ -1095,6 +1150,78 @@
     .float-btn.wa { background: #25D366; color: #fff; }
     .float-btn.tg { background: #0088cc; color: #fff; }
 
+    /* ===== AI CHAT ===== */
+    .ai-chat-toggle {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+    }
+    .ai-chat-widget {
+      position: fixed;
+      right: 20px;
+      bottom: 120px;
+      width: min(380px, calc(100vw - 24px));
+      max-height: 70vh;
+      background: var(--card);
+      border: 1px solid var(--border2);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 900;
+    }
+    .ai-chat-widget.open { display: flex; }
+    .ai-chat-header {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .ai-chat-body {
+      padding: 12px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-height: 220px;
+    }
+    .ai-msg {
+      max-width: 88%;
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .ai-msg.bot { background: var(--bg3); color: var(--text2); border: 1px solid var(--border); align-self: flex-start; }
+    .ai-msg.user { background: rgba(26,108,255,0.16); border: 1px solid rgba(26,108,255,0.35); color: var(--text); align-self: flex-end; }
+    .ai-chat-footer {
+      padding: 10px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+    }
+    .ai-chat-input {
+      flex: 1;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 9px 10px;
+      font-size: 13px;
+    }
+    .ai-chat-send {
+      padding: 9px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border2);
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
       .grid-4 { grid-template-columns: repeat(2, 1fr); }
@@ -1143,6 +1270,8 @@
       .payment-methods { grid-template-columns: repeat(2, 1fr); }
       .hero-stats { gap: 20px; }
       .nav-actions .btn-ghost { display: none; }
+      .lang-select { min-width: 88px; font-size: 12px; padding: 7px 8px; }
+      .ai-chat-widget { right: 12px; bottom: 118px; width: calc(100vw - 24px); }
     }
     @media (max-width: 480px) {
       .admin-stats-grid { grid-template-columns: 1fr; }
@@ -1201,9 +1330,14 @@
 <nav id="main-nav">
   <div class="nav-inner">
     <div class="nav-logo" onclick="navigate('accueil')">
-      <div class="logo-icon">🏆</div>
-      Pronostics<span>Pro</span>
-    </div>
+  <div class="logo-icon">
+    <!-- Remplace l'URL ci-dessous par le lien de ton propre logo -->
+    <img src="LOGO.png" 
+         alt="Logo PronosticsPro" 
+         style="width:100%;height:100%;object-fit:contain" />
+  </div>
+  Pronostics<span>Pro</span>
+</div>
     <ul class="nav-links" id="nav-links">
       <li><a onclick="navigate('accueil')" data-page="accueil">Accueil</a></li>
       <li><a onclick="navigate('pronostics')" data-page="pronostics">Pronostics</a></li>
@@ -1214,6 +1348,13 @@
       <li><a onclick="navigate('vip')" data-page="vip" class="vip-link">⭐ VIP</a></li>
     </ul>
     <div class="nav-actions">
+      <select class="lang-select" id="language-switcher" onchange="setLanguage(this.value)" title="Langue / Language">
+        <option value="fr">FR</option>
+        <option value="en">EN</option>
+        <option value="es">ES</option>
+        <option value="pt">PT</option>
+        <option value="ar">AR</option>
+      </select>
       <button class="btn btn-ghost" onclick="openModal('login-modal')">Connexion</button>
       <button class="btn btn-primary" onclick="openModal('register-modal')">S'inscrire</button>
       <div class="hamburger" onclick="toggleMenu()" id="hamburger">
@@ -1286,14 +1427,16 @@
               <div class="floating-card fc-main">
                 <div class="flex justify-between items-center mb-16">
                   <div class="league-info">
-                    <span style="font-size:18px">⚽</span>
+                    <img src="https://media.api-sports.io/football/leagues/2.png" alt="UCL" class="league-img" />
                     <span style="font-weight:600">UEFA Champions League</span>
                   </div>
                   <div class="live-badge"><div class="live-dot"></div>EN DIRECT</div>
                 </div>
                 <div class="match-preview">
                   <div class="team-block">
-                    <div class="team-logo">⚽</div>
+                    <div class="team-logo-hero">
+                      <img src="https://media.api-sports.io/football/teams/541.png" alt="Real Madrid" loading="lazy" />
+                    </div>
                     <div class="team-name">Real Madrid</div>
                   </div>
                   <div class="vs-block">
@@ -1301,7 +1444,9 @@
                     <div class="vs-label">65'</div>
                   </div>
                   <div class="team-block">
-                    <div class="team-logo">🔵</div>
+                    <div class="team-logo-hero">
+                      <img src="https://media.api-sports.io/football/teams/50.png" alt="Man City" loading="lazy" />
+                    </div>
                     <div class="team-name">Man City</div>
                   </div>
                 </div>
@@ -1563,22 +1708,40 @@
         <h3 class="section-title mb-8">Méthodes de <span>Paiement</span></h3>
         <p style="color:var(--text2);margin-bottom:32px">Paiements sécurisés via Mobile Money et autres méthodes</p>
         <div class="payment-methods" style="max-width:600px;margin:0 auto">
+         <!-- MTN Mobile Money -->
+<div class="payment-btn">
+<div class="p-icon">
+<img src="data:image/jpeg;base64,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" 
+alt="MTN MoMo" style="width:100%; height:auto; border-radius:10px;" />
+</div>
+<div class="p-name">MTN Mobile Money</div>
+</div>
           <div class="payment-btn">
-            <div class="p-icon">📱</div>
-            <div class="p-name">MTN Mobile Money</div>
-          </div>
-          <div class="payment-btn">
-            <div class="p-icon">🟠</div>
-            <div class="p-name">Orange Money</div>
-          </div>
-          <div class="payment-btn">
-            <div class="p-icon">💳</div>
-            <div class="p-name">Carte Bancaire</div>
-          </div>
-          <div class="payment-btn">
-            <div class="p-icon">₿</div>
-            <div class="p-name">Crypto</div>
-          </div>
+  <div class="p-icon">
+    <!-- Logo officiel Orange Money -->
+    <img src="data:image/jpeg;base64,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" 
+         alt="Orange Money" 
+         style="width:100%; height:auto; border-radius:10px;" />
+  </div>
+  <div class="p-name">Orange Money</div>
+</div>
+          <!-- Carte Bancaire (Visa/Mastercard) -->
+<div class="payment-btn">
+<div class="p-icon">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNXq2eMimSDt_ZOQ9Ijw6oueLVonr7CzSyRg&s" 
+alt="Visa/Mastercard" style="width:100%; height:auto; border-radius:10px;" />
+</div>
+<div class="p-name">Carte Bancaire</div>
+</div>
+          <!-- Crypto -->
+<div class="payment-btn">
+<div class="p-icon">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7LO8g8-L-z2Eq5Xyo8SJzKR2zvpErqP7yxQ&s" 
+alt="Bitcoin" style="width:100%; height:auto; border-radius:10px;" />
+</div>
+<div class="p-name">Crypto</div>
+</div>
+</div>
         </div>
       </div>
 
@@ -1632,8 +1795,13 @@
 
       <div class="grid-3 stagger">
         <div class="guide-card" onclick="openGuide('bankroll')">
-          <div class="guide-card-img" style="background:linear-gradient(135deg,rgba(0,232,122,0.1),rgba(0,232,122,0.03))">💰</div>
-          <div class="guide-card-body">
+  <div class="guide-card-img" style="background:linear-gradient(135deg,rgba(0,232,122,0.1),rgba(0,232,122,0.03))">
+    <img src="data:image/jpeg;base64,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" 
+         alt="Bankroll" 
+         style="width:60%;height:60%;object-fit:contain" />
+  </div>
+  <div class="guide-card-body">
+    <!-- reste du code -->
             <div class="badge-pill badge-green mb-8">Débutant</div>
             <div class="guide-card-title">Gestion de Bankroll</div>
             <div class="guide-card-desc">Apprenez à gérer votre capital de façon optimale pour maximiser vos gains sur le long terme.</div>
@@ -1824,6 +1992,22 @@
   <a href="https://t.me/PronosticsPro" target="_blank" class="float-btn tg" title="Telegram">
     <i class="fab fa-telegram"></i>
   </a>
+  <button class="float-btn ai-chat-toggle" title="Assistant IA" onclick="toggleAiChat()">
+    <i class="fas fa-robot"></i>
+  </button>
+</div>
+
+<!-- AI CHAT WIDGET -->
+<div class="ai-chat-widget" id="ai-chat-widget">
+  <div class="ai-chat-header">
+    <div style="font-weight:700;font-size:13px">🤖 Assistant PronosticsPro</div>
+    <button class="btn btn-ghost" style="padding:4px 8px;font-size:12px" onclick="toggleAiChat()">Fermer</button>
+  </div>
+  <div class="ai-chat-body" id="ai-chat-body"></div>
+  <div class="ai-chat-footer">
+    <input id="ai-chat-input" class="ai-chat-input" type="text" placeholder="Pose ta question (paris sportifs uniquement)..." />
+    <button class="ai-chat-send" onclick="sendAiChat()">Envoyer</button>
+  </div>
 </div>
 
 <!-- TOAST CONTAINER -->
@@ -1931,20 +2115,549 @@
 <!-- ===== JAVASCRIPT ===== -->
 <script>
 // ========================================
-// CONFIG
+// CONFIG — METTEZ VOS CLÉS ICI
 // ========================================
-const API_BASE = 'https://your-api.railway.app/api'; // 👈 Change with your backend URL
-const PROMO_CODE = '20VM';
-const WHATSAPP = 'https://wa.me/237600000000';
-const TELEGRAM = 'https://t.me/PronosticsPro';
+const CFG = {
+  // 👇 Clé API-Sports (gratuit 100 req/jour) → https://api-sports.io
+  SPORTS_API_KEY: 'VOTRE_CLE_API_SPORTS',
 
-// State
-let currentUser = null;
-let isAdmin = false;
+  // 👇 Clé OpenAI pour génération pronostics → https://platform.openai.com
+  OPENAI_KEY: 'VOTRE_CLE_OPENAI',
+
+  // 👇 Infos contact
+  WHATSAPP: 'https://wa.me/237600000000',
+  TELEGRAM: 'https://t.me/PronosticsPro',
+
+  // 👇 URL de votre backend (optionnel)
+  API_BASE: 'https://your-api.railway.app/api',
+};
+
+const PROMO_CODE = '20VM';
+const WHATSAPP   = CFG.WHATSAPP;
+const TELEGRAM   = CFG.TELEGRAM;
+const API_BASE   = CFG.API_BASE;
+
+// ── État global ──────────────────────────────────────────────────────────────
+let currentUser        = null;
+let isAdmin            = false;
 let currentSportFilter = 'all';
-let currentConfFilter = 'all';
-let allPronostics = [];
-let allResults = [];
+let currentConfFilter  = 'all';
+let allPronostics      = [];   // matchs du jour avec pronos
+let allResults         = [];
+let _matchCache        = null; // cache mémoire pour la session
+let _cacheDate         = null;
+let currentLanguage    = localStorage.getItem('pp_lang') || 'fr';
+const aiChatHistory    = [];
+const SOURCE_TEXT_CACHE = new Map();
+let translateDebounce = null;
+
+const I18N = {
+  fr: {
+    navAccueil: 'Accueil',
+    navPronostics: 'Pronostics',
+    navBookmakers: 'Bookmakers',
+    navResultats: 'Résultats',
+    navGuides: 'Guides',
+    navContact: 'Contact',
+    navVip: '⭐ VIP',
+    btnLogin: 'Connexion',
+    btnRegister: "S'inscrire",
+    aiWelcome: 'Bonjour 👋 Je suis l’assistant PronosticsPro. Je réponds uniquement aux questions sur les paris sportifs, les matchs, les cotes et l’utilisation du site.',
+    aiOutOfScope: 'Je suis limité aux paris sportifs et au site PronosticsPro. Pose-moi une question sur un match, un type de pari, une cote ou le VIP.',
+    aiInputPlaceholder: 'Pose ta question (paris sportifs uniquement)...',
+  },
+  en: {
+    navAccueil: 'Home',
+    navPronostics: 'Predictions',
+    navBookmakers: 'Bookmakers',
+    navResultats: 'Results',
+    navGuides: 'Guides',
+    navContact: 'Contact',
+    navVip: '⭐ VIP',
+    btnLogin: 'Login',
+    btnRegister: 'Sign up',
+    aiWelcome: 'Hello 👋 I am the PronosticsPro assistant. I only answer about sports betting, matches, odds, and how this site works.',
+    aiOutOfScope: 'I can only help with sports betting and PronosticsPro features.',
+    aiInputPlaceholder: 'Ask your question (sports betting only)...',
+  },
+  es: {
+    navAccueil: 'Inicio',
+    navPronostics: 'Pronósticos',
+    navBookmakers: 'Casas de Apuestas',
+    navResultats: 'Resultados',
+    navGuides: 'Guías',
+    navContact: 'Contacto',
+    navVip: '⭐ VIP',
+    btnLogin: 'Iniciar sesión',
+    btnRegister: 'Crear cuenta',
+    aiWelcome: 'Hola 👋 Soy el asistente de PronosticsPro. Solo respondo sobre apuestas deportivas y uso del sitio.',
+    aiOutOfScope: 'Solo puedo ayudar con apuestas deportivas y funciones de PronosticsPro.',
+    aiInputPlaceholder: 'Haz tu pregunta (solo apuestas deportivas)...',
+  },
+  pt: {
+    navAccueil: 'Início',
+    navPronostics: 'Prognósticos',
+    navBookmakers: 'Bookmakers',
+    navResultats: 'Resultados',
+    navGuides: 'Guias',
+    navContact: 'Contato',
+    navVip: '⭐ VIP',
+    btnLogin: 'Entrar',
+    btnRegister: 'Cadastrar',
+    aiWelcome: 'Olá 👋 Sou o assistente PronosticsPro. Respondo apenas sobre apostas esportivas e uso do site.',
+    aiOutOfScope: 'Só posso ajudar com apostas esportivas e recursos do PronosticsPro.',
+    aiInputPlaceholder: 'Faça sua pergunta (apostas esportivas apenas)...',
+  },
+  ar: {
+    navAccueil: 'الرئيسية',
+    navPronostics: 'التوقعات',
+    navBookmakers: 'شركات المراهنة',
+    navResultats: 'النتائج',
+    navGuides: 'أدلة',
+    navContact: 'اتصل بنا',
+    navVip: '⭐ VIP',
+    btnLogin: 'تسجيل الدخول',
+    btnRegister: 'إنشاء حساب',
+    aiWelcome: 'مرحبا 👋 أنا مساعد PronosticsPro. أجيب فقط عن المراهنات الرياضية واستخدام الموقع.',
+    aiOutOfScope: 'يمكنني المساعدة فقط في المراهنات الرياضية وخدمات PronosticsPro.',
+    aiInputPlaceholder: 'اكتب سؤالك (مراهنات رياضية فقط)...',
+  },
+};
+
+// ========================================
+// MOTEUR API SPORTS — DONNÉES DU JOUR EN TEMPS RÉEL
+// ========================================
+
+// Headers API-Sports (utilisé pour football, basket, tennis, hockey)
+function sportsHeaders() {
+  return {
+    'x-rapidapi-key':  CFG.SPORTS_API_KEY,
+    'x-rapidapi-host': 'v3.football.api-sports.io',
+  };
+}
+
+// Date du jour au format YYYY-MM-DD
+function todayStr() {
+  return new Date().toISOString().split('T')[0];
+}
+
+// ── Football : matchs du jour (top ligues) ───────────────────────────────────
+async function fetchFootballToday() {
+  // Ligues phares: UCL(2), UEL(3), EPL(39), LaLiga(140), Bundesliga(78),
+  //               Ligue1(61), SerieA(135), Brasileirao(71), AFCON(6)
+  const leagues = [2, 3, 39, 140, 78, 61, 135, 71, 6, 203, 197];
+  try {
+    const url = `https://v3.football.api-sports.io/fixtures?date=${todayStr()}&timezone=Africa/Douala`;
+    const res = await fetch(url, { headers: sportsHeaders() });
+    const json = await res.json();
+    if (!json.response) return [];
+
+    // Filtrer uniquement les ligues populaires
+    const filtered = json.response.filter(f =>
+      leagues.includes(f.league.id) && f.fixture.status.short !== 'CANC'
+    );
+
+    return filtered.map(f => ({
+      id:      `football_${f.fixture.id}`,
+      sport:   'football',
+      fixtureId: f.fixture.id,
+      league:  f.league.name,
+      leagueId: f.league.id,
+      leagueLogo: f.league.logo,
+      time:    new Date(f.fixture.date).toLocaleTimeString('fr-FR', { hour:'2-digit', minute:'2-digit', timeZone:'Africa/Douala' }),
+      status:  mapStatus(f.fixture.status.short),
+      venue:   f.fixture.venue?.name || '',
+      home: {
+        name: f.teams.home.name,
+        logo: f.teams.home.logo,
+        score: f.goals.home,
+        id: f.teams.home.id,
+      },
+      away: {
+        name: f.teams.away.name,
+        logo: f.teams.away.logo,
+        score: f.goals.away,
+        id: f.teams.away.id,
+      },
+      odds: {},
+      prono: null,
+    }));
+  } catch(e) {
+    console.warn('Football API:', e.message);
+    return [];
+  }
+}
+
+// ── Basketball (NBA) : matchs du jour ────────────────────────────────────────
+async function fetchBasketballToday() {
+  try {
+    const url = `https://v1.basketball.api-sports.io/games?date=${todayStr()}&timezone=Africa/Douala&league=12&season=2024-2025`;
+    const res = await fetch(url, {
+      headers: { 'x-rapidapi-key': CFG.SPORTS_API_KEY, 'x-rapidapi-host': 'v1.basketball.api-sports.io' }
+    });
+    const json = await res.json();
+    if (!json.response) return [];
+    return json.response.slice(0, 8).map(g => ({
+      id:    `basketball_${g.id}`,
+      sport: 'basketball',
+      league: g.league.name,
+      leagueLogo: g.league.logo,
+      time:  new Date(g.date).toLocaleTimeString('fr-FR', { hour:'2-digit', minute:'2-digit', timeZone:'Africa/Douala' }),
+      status: mapStatus(g.status.short),
+      home: { name: g.teams.home.name, logo: g.teams.home.logo, score: g.scores?.home?.total, id: g.teams.home.id },
+      away: { name: g.teams.away.name, logo: g.teams.away.logo, score: g.scores?.away?.total, id: g.teams.away.id },
+      odds: {},
+      prono: null,
+    }));
+  } catch(e) {
+    console.warn('Basketball API:', e.message);
+    return [];
+  }
+}
+
+// ── Tennis : matchs du jour ───────────────────────────────────────────────────
+async function fetchTennisToday() {
+  try {
+    const url = `https://v1.tennis.api-sports.io/games?date=${todayStr()}&timezone=Africa/Douala`;
+    const res = await fetch(url, {
+      headers: { 'x-rapidapi-key': CFG.SPORTS_API_KEY, 'x-rapidapi-host': 'v1.tennis.api-sports.io' }
+    });
+    const json = await res.json();
+    if (!json.response) return [];
+    return json.response.slice(0, 10).map(g => {
+      const p1 = g.players?.[0] || {};
+      const p2 = g.players?.[1] || {};
+      return {
+        id:    `tennis_${g.id}`,
+        sport: 'tennis',
+        league: g.tournament?.name || 'ATP/WTA',
+        leagueLogo: g.tournament?.logo || null,
+        time:  new Date(g.date).toLocaleTimeString('fr-FR', { hour:'2-digit', minute:'2-digit', timeZone:'Africa/Douala' }),
+        status: mapStatus(g.status?.short || 'NS'),
+        home: {
+          name: p1.name || 'Joueur 1',
+          logo: p1.photo || null,   // 👈 PHOTO du joueur (visage)
+          flag: p1.flag || null,
+          id:   p1.id,
+          isTennis: true,
+        },
+        away: {
+          name: p2.name || 'Joueur 2',
+          logo: p2.photo || null,   // 👈 PHOTO du joueur (visage)
+          flag: p2.flag || null,
+          id:   p2.id,
+          isTennis: true,
+        },
+        odds: {},
+        prono: null,
+      };
+    });
+  } catch(e) {
+    console.warn('Tennis API:', e.message);
+    return [];
+  }
+}
+
+// ── Cotes bookmakers pour un match football ──────────────────────────────────
+async function fetchOdds(fixtureId) {
+  try {
+    const url = `https://v3.football.api-sports.io/odds?fixture=${fixtureId}&bookmaker=6`;
+    const res = await fetch(url, { headers: sportsHeaders() });
+    const json = await res.json();
+    const bets = json.response?.[0]?.bookmakers?.[0]?.bets || [];
+    const h2h  = bets.find(b => b.name === 'Match Winner')?.values || [];
+    const ou   = bets.find(b => b.name === 'Goals Over/Under')?.values || [];
+    const btts = bets.find(b => b.name === 'Both Teams Score')?.values || [];
+    return {
+      h:      parseFloat(h2h.find(v => v.value==='Home')?.odd  || 0) || null,
+      d:      parseFloat(h2h.find(v => v.value==='Draw')?.odd  || 0) || null,
+      a:      parseFloat(h2h.find(v => v.value==='Away')?.odd  || 0) || null,
+      over25: parseFloat(ou.find(v  => v.value==='Over 2.5')?.odd  || 0) || null,
+      under25:parseFloat(ou.find(v  => v.value==='Under 2.5')?.odd || 0) || null,
+      bttsY:  parseFloat(btts.find(v=> v.value==='Yes')?.odd   || 0) || null,
+      bttsN:  parseFloat(btts.find(v=> v.value==='No')?.odd    || 0) || null,
+    };
+  } catch { return {}; }
+}
+
+// ── Récupérer TOUS les matchs du jour (football + basket + tennis) ────────────
+async function fetchAllTodayMatches() {
+  // Cache session (évite de rappeler l'API à chaque changement de page)
+  if (_matchCache && _cacheDate === todayStr()) return _matchCache;
+
+  showLoadingState();
+
+  // Appels parallèles
+  const [football, basketball, tennis] = await Promise.allSettled([
+    fetchFootballToday(),
+    fetchBasketballToday(),
+    fetchTennisToday(),
+  ]);
+
+  let matches = [
+    ...(football.status    === 'fulfilled' ? football.value    : []),
+    ...(basketball.status  === 'fulfilled' ? basketball.value  : []),
+    ...(tennis.status      === 'fulfilled' ? tennis.value      : []),
+  ];
+
+  // Si API non configurée ou erreur → données de démonstration enrichies
+  if (matches.length === 0 || CFG.SPORTS_API_KEY === 'VOTRE_CLE_API_SPORTS') {
+    matches = getDemoMatches();
+  }
+
+  // Générer les pronostics IA pour chaque match
+  matches = await generateAllPronostics(matches);
+
+  _matchCache  = matches;
+  _cacheDate   = todayStr();
+  return matches;
+}
+
+function showLoadingState() {
+  const els = ['home-matches','pronostics-list'];
+  els.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = `
+      <div style="text-align:center;padding:40px 20px">
+        <div class="spinner"></div>
+        <div style="color:var(--text2);margin-top:12px;font-size:14px">
+          🔄 Récupération des matchs du ${new Date().toLocaleDateString('fr-FR')}...
+        </div>
+      </div>`;
+  });
+}
+
+function mapStatus(s) {
+  const m = { NS:'upcoming', '1H':'live', HT:'live', '2H':'live', FT:'finished',
+              PST:'postponed', CANC:'cancelled', LIVE:'live',
+              Q1:'live', Q2:'live', Q3:'live', Q4:'live',
+              InProgress:'live', Finished:'finished', 'Not Started':'upcoming' };
+  return m[s] || 'upcoming';
+}
+
+// ========================================
+// GÉNÉRATION PRONOSTICS IA (OpenAI)
+// ========================================
+
+async function generateAllPronostics(matches) {
+  // Si pas de clé OpenAI → générer avec l'algorithme local
+  if (!CFG.OPENAI_KEY || CFG.OPENAI_KEY === 'VOTRE_CLE_OPENAI') {
+    return matches.map(m => ({ ...m, prono: generateLocalProno(m) }));
+  }
+
+  // Traiter par lots de 5 pour respecter les rate limits
+  const result = [];
+  for (let i = 0; i < matches.length; i += 5) {
+    const chunk = matches.slice(i, i + 5);
+    const pronos = await Promise.allSettled(chunk.map(m => generateAIProno(m)));
+    pronos.forEach((p, j) => {
+      result.push({
+        ...chunk[j],
+        prono: p.status === 'fulfilled' ? p.value : generateLocalProno(chunk[j]),
+      });
+    });
+    // Pause entre les lots
+    if (i + 5 < matches.length) await new Promise(r => setTimeout(r, 800));
+  }
+  return result;
+}
+
+async function generateAIProno(match) {
+  const prompt = `Tu es un expert en paris sportifs. Analyse ce match et génère un pronostic précis.
+
+MATCH: ${match.home.name} vs ${match.away.name}
+SPORT: ${match.sport}
+COMPÉTITION: ${match.league}
+DATE: ${new Date().toLocaleDateString('fr-FR')}
+COTES: Dom ${match.odds.h||'N/A'} | Nul ${match.odds.d||'N/A'} | Ext ${match.odds.a||'N/A'}
+
+Réponds UNIQUEMENT en JSON valide:
+{
+  "tip": "Description du pronostic",
+  "type": "1|2|X|1X|12|2X|BTTS|O/U|HDP",
+  "cote": 1.80,
+  "confiance": 72,
+  "raison": "Justification courte en 1 phrase basée sur les statistiques"
+}`;
+
+  const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${CFG.OPENAI_KEY}`,
+    },
+    body: JSON.stringify({
+      model: 'gpt-4o-mini',
+      messages: [{ role: 'user', content: prompt }],
+      temperature: 0.3,
+      max_tokens: 200,
+    }),
+  });
+
+  const data = await res.json();
+  const text = data.choices?.[0]?.message?.content || '{}';
+  const clean = text.replace(/```json|```/g, '').trim();
+  const parsed = JSON.parse(clean);
+
+  return {
+    tip:       parsed.tip       || 'Match équilibré',
+    type:      parsed.type      || '1X',
+    cote:      parseFloat(parsed.cote)      || 1.80,
+    confiance: parseInt(parsed.confiance)   || 65,
+    raison:    parsed.raison    || 'Analyse basée sur les données disponibles',
+    source:    'gpt-4o-mini',
+  };
+}
+
+// ── Algorithme local de pronostic (sans IA externe) ──────────────────────────
+function generateLocalProno(match) {
+  const sport = match.sport;
+  const h = match.odds.h || 2.0;
+  const d = match.odds.d || 3.5;
+  const a = match.odds.a || 3.0;
+
+  if (sport === 'football') {
+    // Logique basée sur les cotes
+    if (h < 1.6) {
+      return { tip: `Victoire ${match.home.name}`, type:'1', cote: h, confiance: Math.round(85 - h*10), raison: `${match.home.name} favori dominant à domicile (cote: ${h})` };
+    }
+    if (a < 1.6) {
+      return { tip: `Victoire ${match.away.name}`, type:'2', cote: a, confiance: Math.round(83 - a*10), raison: `${match.away.name} très favori malgré le déplacement (cote: ${a})` };
+    }
+    if (match.odds.bttsY && match.odds.bttsY < 1.85) {
+      return { tip: 'Les deux équipes marquent (BTTS)', type:'BTTS', cote: match.odds.bttsY, confiance: 72, raison: 'Attaques prolifiques des deux côtés' };
+    }
+    if (match.odds.over25 && match.odds.over25 < 1.80) {
+      return { tip: 'Plus de 2.5 buts', type:'O/U', cote: match.odds.over25, confiance: 70, raison: 'Match offensif prévu, statistiques favorables à l\'over' };
+    }
+    if (h < d && h < a) {
+      const c = Math.min(82, Math.round(100 / h));
+      return { tip: `1X – ${match.home.name} ne perd pas`, type:'1X', cote: +(h*0.6+1).toFixed(2), confiance: c, raison: `${match.home.name} favori domicile, le nul reste possible` };
+    }
+    return { tip: 'Match nul possible', type:'X', cote: d || 3.2, confiance: 55, raison: 'Match équilibré, les cotes indiquent une rencontre serrée' };
+  }
+
+  if (sport === 'basketball') {
+    const pts = [210, 215, 218, 220, 225][Math.floor(Math.random()*5)];
+    return { tip: `Over ${pts} points total`, type:'O/U', cote: +(1.75+Math.random()*0.3).toFixed(2), confiance: 68+Math.floor(Math.random()*12), raison: 'Rythme offensif élevé attendu dans cette rencontre NBA' };
+  }
+
+  if (sport === 'tennis') {
+    const fav = h && a ? (h < a ? match.home.name : match.away.name) : match.home.name;
+    const type = h && a ? (h < a ? '1' : '2') : '1';
+    const cote = h && a ? Math.min(h,a) : 1.65;
+    return { tip: `Victoire ${fav}`, type, cote: +cote.toFixed(2), confiance: 65+Math.floor(Math.random()*15), raison: `${fav} favori selon les cotes actuelles du marché` };
+  }
+
+  return { tip: '1X – Équipe locale ou nul', type:'1X', cote: 1.45, confiance: 62, raison: 'Avantage domicile pris en compte' };
+}
+
+// ========================================
+// DONNÉES DE DÉMO ENRICHIES (si API non configurée)
+// ========================================
+function getDemoMatches() {
+  const today = new Date();
+  const fmt = (h,m) => `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+  const slots = [13,0, 14,0, 16,30, 18,0, 19,0, 20,0, 20,45, 21,0, 22,0];
+  const times  = [];
+  for (let i=0;i<slots.length;i+=2) times.push(fmt(slots[i],slots[i+1]));
+
+  return [
+    {
+      id:'demo_1', sport:'football', league:'UEFA Champions League',
+      leagueLogo:'https://media.api-sports.io/football/leagues/2.png',
+      time: times[0], status:'upcoming',
+      home:{ name:'Real Madrid',      logo:'https://media.api-sports.io/football/teams/541.png', score:null },
+      away:{ name:'Manchester City',  logo:'https://media.api-sports.io/football/teams/50.png',  score:null },
+      odds:{ h:1.75, d:3.80, a:4.20, over25:1.68, bttsY:1.80 }, prono:null,
+    },
+    {
+      id:'demo_2', sport:'football', league:'Premier League',
+      leagueLogo:'https://media.api-sports.io/football/leagues/39.png',
+      time: times[1], status:'upcoming',
+      home:{ name:'Arsenal',  logo:'https://media.api-sports.io/football/teams/42.png', score:null },
+      away:{ name:'Chelsea',  logo:'https://media.api-sports.io/football/teams/49.png', score:null },
+      odds:{ h:2.10, d:3.50, a:3.20, over25:1.72, bttsY:1.75 }, prono:null,
+    },
+    {
+      id:'demo_3', sport:'football', league:'La Liga',
+      leagueLogo:'https://media.api-sports.io/football/leagues/140.png',
+      time: times[2], status:'upcoming',
+      home:{ name:'Barcelona',      logo:'https://media.api-sports.io/football/teams/529.png', score:null },
+      away:{ name:'Atletico Madrid',logo:'https://media.api-sports.io/football/teams/530.png', score:null },
+      odds:{ h:1.55, d:4.00, a:5.50, over25:1.80, bttsY:1.90 }, prono:null,
+    },
+    {
+      id:'demo_4', sport:'football', league:'Ligue 1',
+      leagueLogo:'https://media.api-sports.io/football/leagues/61.png',
+      time: times[3], status:'upcoming',
+      home:{ name:'PSG',      logo:'https://media.api-sports.io/football/teams/85.png',  score:null },
+      away:{ name:'Marseille',logo:'https://media.api-sports.io/football/teams/81.png',  score:null },
+      odds:{ h:1.52, d:4.20, a:5.50, over25:1.65, bttsY:1.85 }, prono:null,
+    },
+    {
+      id:'demo_5', sport:'football', league:'Bundesliga',
+      leagueLogo:'https://media.api-sports.io/football/leagues/78.png',
+      time: times[4], status:'upcoming',
+      home:{ name:'Bayern Munich',logo:'https://media.api-sports.io/football/teams/157.png', score:null },
+      away:{ name:'Dortmund',     logo:'https://media.api-sports.io/football/teams/165.png', score:null },
+      odds:{ h:1.62, d:3.90, a:4.80, over25:1.60, bttsY:1.78 }, prono:null,
+    },
+    {
+      id:'demo_6', sport:'basketball', league:'NBA',
+      leagueLogo:'https://media.api-sports.io/basketball/leagues/12.png',
+      time: times[5], status:'upcoming',
+      home:{ name:'LA Lakers',    logo:'https://media.api-sports.io/basketball/teams/145.png', score:null },
+      away:{ name:'Boston Celtics',logo:'https://media.api-sports.io/basketball/teams/2.png',  score:null },
+      odds:{ h:1.62, d:null, a:2.15 }, prono:null,
+    },
+    {
+      id:'demo_7', sport:'basketball', league:'NBA',
+      leagueLogo:'https://media.api-sports.io/basketball/leagues/12.png',
+      time: times[6], status:'upcoming',
+      home:{ name:'Golden State Warriors',logo:'https://media.api-sports.io/basketball/teams/11.png', score:null },
+      away:{ name:'Miami Heat',            logo:'https://media.api-sports.io/basketball/teams/20.png', score:null },
+      odds:{ h:1.55, d:null, a:2.40 }, prono:null,
+    },
+    {
+      // Tennis avec PHOTOS des joueurs
+      id:'demo_8', sport:'tennis', league:'ATP Masters',
+      leagueLogo:'https://media.api-sports.io/tennis/leagues/1.png',
+      time: times[7], status:'upcoming',
+      home:{
+        name:'Novak Djokovic',
+        logo:'https://media.api-sports.io/tennis/players/7.png',   // visage
+        flag:'https://media.api-sports.io/flags/rs.svg',
+        isTennis: true,
+      },
+      away:{
+        name:'Carlos Alcaraz',
+        logo:'https://media.api-sports.io/tennis/players/1025.png', // visage
+        flag:'https://media.api-sports.io/flags/es.svg',
+        isTennis: true,
+      },
+      odds:{ h:1.80, d:null, a:2.05 }, prono:null,
+    },
+    {
+      id:'demo_9', sport:'tennis', league:'WTA Tour',
+      leagueLogo:'https://media.api-sports.io/tennis/leagues/2.png',
+      time: times[8], status:'upcoming',
+      home:{
+        name:'Iga Swiatek',
+        logo:'https://media.api-sports.io/tennis/players/55.png',
+        flag:'https://media.api-sports.io/flags/pl.svg',
+        isTennis: true,
+      },
+      away:{
+        name:'Aryna Sabalenka',
+        logo:'https://media.api-sports.io/tennis/players/57.png',
+        flag:'https://media.api-sports.io/flags/by.svg',
+        isTennis: true,
+      },
+      odds:{ h:1.70, d:null, a:2.15 }, prono:null,
+    },
+  ];
+}
 
 // ========================================
 // NAVIGATION
@@ -1974,6 +2687,173 @@ function toggleMenu() {
   document.getElementById('mobile-menu').classList.toggle('open');
 }
 
+function t(key) {
+  return (I18N[currentLanguage] && I18N[currentLanguage][key]) || I18N.fr[key] || key;
+}
+
+function setLanguage(lang) {
+  if (!I18N[lang]) return;
+  currentLanguage = lang;
+  localStorage.setItem('pp_lang', lang);
+  applyTranslations(true);
+  toast(`Langue changée: ${lang.toUpperCase()}`, 'info');
+}
+
+function applyTranslations(withAutoTranslate = false) {
+  document.documentElement.lang = currentLanguage;
+  document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+
+  const navMap = {
+    accueil: 'navAccueil',
+    pronostics: 'navPronostics',
+    bookmakers: 'navBookmakers',
+    resultats: 'navResultats',
+    guides: 'navGuides',
+    contact: 'navContact',
+    vip: 'navVip',
+  };
+  document.querySelectorAll('[data-page]').forEach(link => {
+    const key = navMap[link.dataset.page];
+    if (key) link.textContent = t(key);
+  });
+
+  const loginBtn = document.querySelector('.nav-actions .btn-ghost');
+  const registerBtn = document.querySelector('.nav-actions .btn-primary');
+  if (loginBtn && !currentUser) loginBtn.textContent = t('btnLogin');
+  if (registerBtn && !currentUser) registerBtn.textContent = t('btnRegister');
+
+  const aiInput = document.getElementById('ai-chat-input');
+  if (aiInput) aiInput.placeholder = t('aiInputPlaceholder');
+  if (withAutoTranslate) scheduleAutoTranslate();
+}
+
+function shouldIgnoreNode(node) {
+  if (!node?.parentElement) return true;
+  const parent = node.parentElement;
+  if (parent.closest('script,style,noscript,code,pre')) return true;
+  if (parent.closest('#ai-chat-body')) return true;
+  return false;
+}
+
+function getTranslatableTextNodes() {
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode: (node) => {
+      if (shouldIgnoreNode(node)) return NodeFilter.FILTER_REJECT;
+      const text = node.textContent?.trim();
+      if (!text || text.length < 2) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    },
+  });
+  const nodes = [];
+  let current = walker.nextNode();
+  while (current) {
+    nodes.push(current);
+    current = walker.nextNode();
+  }
+  return nodes;
+}
+
+function getTranslatableAttrs() {
+  const attrs = [];
+  document.querySelectorAll('input[placeholder], textarea[placeholder], [title]').forEach(el => {
+    if (!el.closest('script,style,noscript')) {
+      if (el.hasAttribute('placeholder')) attrs.push({ el, attr: 'placeholder' });
+      if (el.hasAttribute('title')) attrs.push({ el, attr: 'title' });
+    }
+  });
+  return attrs;
+}
+
+function ensureNodeId(el) {
+  if (!el.dataset.i18nId) {
+    el.dataset.i18nId = `i18n_${Math.random().toString(36).slice(2, 11)}`;
+  }
+  return el.dataset.i18nId;
+}
+
+function restoreFrenchContent() {
+  SOURCE_TEXT_CACHE.forEach((value, key) => {
+    const [type, id, attr] = key.split('|');
+    const el = document.querySelector(`[data-i18n-id="${id}"]`);
+    if (!el) return;
+    if (type === 'text') {
+      const textNode = Array.from(el.childNodes).find(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim().length > 0);
+      if (textNode) textNode.textContent = value;
+    } else if (type === 'attr' && attr) {
+      el.setAttribute(attr, value);
+    }
+  });
+}
+
+async function scheduleAutoTranslate() {
+  clearTimeout(translateDebounce);
+  translateDebounce = setTimeout(async () => {
+    if (currentLanguage === 'fr') {
+      restoreFrenchContent();
+      return;
+    }
+    await translateWholePage(currentLanguage);
+  }, 120);
+}
+
+async function translateWholePage(targetLanguage) {
+  const textNodes = getTranslatableTextNodes();
+  const attrTargets = getTranslatableAttrs();
+  const payload = [];
+  const refs = [];
+
+  textNodes.forEach(node => {
+    const text = node.textContent.trim();
+    const id = ensureNodeId(node.parentElement);
+    const cacheKey = `text|${id}|`;
+    if (!SOURCE_TEXT_CACHE.has(cacheKey)) SOURCE_TEXT_CACHE.set(cacheKey, text);
+    const source = SOURCE_TEXT_CACHE.get(cacheKey);
+    payload.push(source);
+    refs.push({ type: 'text', node });
+  });
+
+  attrTargets.forEach(({ el, attr }) => {
+    const id = ensureNodeId(el);
+    const cacheKey = `attr|${id}|${attr}`;
+    const raw = el.getAttribute(attr) || '';
+    if (!SOURCE_TEXT_CACHE.has(cacheKey)) SOURCE_TEXT_CACHE.set(cacheKey, raw);
+    const source = SOURCE_TEXT_CACHE.get(cacheKey);
+    payload.push(source);
+    refs.push({ type: 'attr', el, attr });
+  });
+
+  if (payload.length === 0) return;
+  const translated = await translateTextsInBatches(payload, targetLanguage);
+  refs.forEach((ref, idx) => {
+    const txt = translated[idx];
+    if (!txt) return;
+    if (ref.type === 'text') ref.node.textContent = txt;
+    if (ref.type === 'attr') ref.el.setAttribute(ref.attr, txt);
+  });
+}
+
+async function translateTextsInBatches(texts, targetLanguage) {
+  const out = [];
+  const chunkSize = 120;
+  for (let i = 0; i < texts.length; i += chunkSize) {
+    const chunk = texts.slice(i, i + chunkSize);
+    try {
+      const res = await fetch(`${API_BASE}/ai/translate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ targetLanguage, texts: chunk }),
+      });
+      if (!res.ok) throw new Error('Translate API error');
+      const data = await res.json();
+      const arr = Array.isArray(data.translations) ? data.translations : chunk;
+      out.push(...arr);
+    } catch {
+      out.push(...chunk);
+    }
+  }
+  return out;
+}
+
 // ========================================
 // TICKER
 // ========================================
@@ -1994,20 +2874,54 @@ function setupTicker() {
 // BOOKMAKERS DATA
 // ========================================
 const BOOKMAKERS = [
-  { name:'1xBet', color:'#ff5722', emoji:'1X', bonus:'200% jusqu\'à 130 000 FCFA', link:'https://1xbet.com/?promo=20VM', rating:4.8 },
-  { name:'Melbet', color:'#f44336', emoji:'MB', bonus:'130% jusqu\'à 65 000 FCFA', link:'https://melbet.com/?promo=20VM', rating:4.7 },
-  { name:'BetWinner', color:'#e91e63', emoji:'BW', bonus:'100% + 30 Free Spins', link:'https://betwinner.com/?promo=20VM', rating:4.6 },
-  { name:'22Bet', color:'#3f51b5', emoji:'22', bonus:'100% jusqu\'à 52 000 FCFA', link:'https://22bet.com/?promo=20VM', rating:4.5 },
-  { name:'Bet365', color:'#4caf50', emoji:'B365', bonus:'Jusqu\'à 100 000 FCFA', link:'https://bet365.com', rating:4.9 },
-  { name:'Premier Bet', color:'#0047ab', emoji:'PB', bonus:'100% sur 1er dépôt', link:'https://premierbet.cm', rating:4.3 },
-  { name:'Parimatch', color:'#ff9800', emoji:'PM', bonus:'50 000 FCFA offerts', link:'https://parimatch.com/?promo=20VM', rating:4.4 },
+  {
+    name:'1xBet', bonus:'200% jusqu\'à 130 000 FCFA', link:'https://1xbet.com/?promo=20VM', rating:4.8,
+    logo:'data:image/png;base64,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' ,
+    bgColor:'#ff5722'
+  },
+  {
+    name:'Melbet', bonus:'130% jusqu\'à 65 000 FCFA', link:'https://melbet.com/?promo=20VM', rating:4.7,
+    logo:'data:image/png;base64,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',
+    bgColor:'#e60000'
+  },
+  {
+    name:'BetWinner', bonus:'100% + 30 Free Spins', link:'https://betwinner.com/?promo=20VM', rating:4.6,
+    logo:'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxEPDxUPEBMSFRUVFxUQFRYQFxUWGBUVFhUYFhcWFRUYHSggGBolHRgXJTIhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGxAQGy0lHyYtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOEA4QMBEQACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAABgcEBQgBAwL/xABKEAABAwICBQcHCQUGBwEAAAABAAIDBBEFEgYHEyExQVFUYZOh0hQXIlJxgZEWIzJTcoKSscIIQmKiwTNjg7PD0yRDc6Sy0eMV/8QAGwEBAAIDAQEAAAAAAAAAAAAAAAEDAgQFBgf/xAAuEQEAAgECAwcEAgIDAAAAAAAAAQIDBBEFElETFBUWITFSBkFhkSIyI4FCcaH/2gAMAwEAAhEDEQA/AKjRoiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDMosKqJwXQwTSAHKTFG94BtexLRuNuRV3zY6elpiFlcdre0Mn5N13RKrsZfCq+94PlH7Zdhk6HybruiVXYy+FO94PnH7OwydD5N13RKrsZPCne8Hzj9nYZOjz5N13RKrsZfCne8Hyj9nYZOjFqsNnhF5YZoxzyRvYPi4KyubHb+sxP+2M4rx7wxlYreIPvSUkkz9nEx8jjchsbS51hxOVu9Y2vWsb2llWs2naGd8m67olV2MvhVPe8Hyj9rOwyfE+Tdd0Sq7GXwp3vB84/Z2GT4nybruiVXYyeFR3vB84/Z2GTofJuu6JVdjJ4VPe8Hzj9nd8nQ+Tdd0Sq7GXwp3vB84/Z3fJ0fOowKrjaXyU1Qxrd7nPika0DnLiLBZV1GK87VtEonDesbzDFpKOSZ+zhjfI6xOWNrnOsOJs0XsrL3rSN7Tswisz7M35N13RKrsZfCqe94flH7Wdhk6Pfk3XdEquxl8Kd7wfOP2d3ydD5N13RKrsZPCne8Hzj9nYZOh8m67olV2MnhTveD5x+zu+T4nybruiVXYyeFO94PnH7O75Oh8m67olV2MnhTveD5x+zsMnR8qjAquJhkkpqhjW7y58UjWj2kiwWVdRitO1bRLG2K9fWYYCuVvEBAQEHoRK59VFPkw0O+slkk+Fo/wBC8T9QZJnPFd/aHd4fX/HumVlwOaW/sKeaTYUc0m0Cc0p2Dv3LOmW9J3iWM1ifdX2nug8T4n1VIwMkYC97GCzZGje4ho4PAud3G3vXp+EcYva3ZZp/6czV6ONuaqp16tx071P0uatll5I4be97227muXC4/k5NPtH3l0OH03ybreXh+aXc2FPNJsKOaTaBTzSbQKOaTZD9atTs8Nc2++WSOMddiZD3MK7/ANPUm2om3SGhr7bY9kV1O016qaX1Igz3yPB/QV1+P5OTTxHWWnw6u95lbS8TzS7ewnNJsJzSbQJzSbQJzSbQJzSbQh+tWpyYY5t98kkcfwdnPcxd/wCn6zbUTM/aGhr55call7ZwniIEBAQehEr90Ip9nhtM21vmmvPtfd/6l894xfn1Vvw9JpK7YobwrltlHNOtIX4dTNljaxz3SNjAkvaxa5xO4j1V2OEaCmqvMX9oaerzzirEwgo1qVn1NN8JPGu/5f03WXP8RyJZoXpy3EJDBJHs5Q0vblJc14Fr2vvBFxu38q5PE+DRp6dpSfRuabWdrbaUxXnnQeOAsb8Lb/YrtPvGSu3Vhk/rLmmQAEgcLm3svuX06n9YeXv7rT1NU1oKib1pGxfgbm/1F5b6kyf0p/t1eGV9JlYi8o6woEbxXTihpZn08rpM7LB2VjnDe0OG8cdxC7WDgmfLji8bbS08mtpS01liecnDfXl7Jyt8v6j8K/EMZ5ycN9eXsnJ5e1HWDxDGh+sfSynr44Y6cvIa90j87S2xy5W2B48XLucI4dfSc03+7S1mpjLG1TVzpNSUEU3lBeHyPbbKxzvQa3dvHW5yni+hy6vlin2Ro9RTFE8yYecrDfXl7Jy4Xl7UdYb/AIhjbXR/SimxAvFOXnZhpdmYW2zXtx48D8Fp6zhmXS1i19vVdh1Ncs7Q3S5rZFAj2NaZ0dFNsJ3PDwA4hrHOFncN4XY0vBs2oxxkr7NTLq6Y7bSwfOVhvry9k5bHl7UdYVeIY0P1jaV09fFDHTF5DXukfnaW78uVtr8eLl2+EcOvpOab/dpa3U1yxEVQVdxzniAgICA4G27jye3kUTO0Mqe7pWkg2cbIx+41rPwgD+i+Z6y/NmtP5eoxRtSIfVayxAta9DUVDKeOCGWQBz3u2bS4A2a1t7e1y9R9P5MeOLTe0Q5Wvpe+0VhXjNE8QJt5JUe9hHeV6Sdbp4j+8Ob3bJ0T3V1oZPSzGrqQGOyljIwQ4+la7nEbhuFgLnivPcZ4piyYpxY53dLRaW1J5rLCXlIj1dVFNYGlDKKndExwNRI0tY0cWNduMjubde3OfevQcG4dbJkjJePSP/XP1mpiteWPdSQC9t9nC9126r6fJhcZtvkdJJ8XloPwaF4bj+Tm1PL0h3tBXbHuli4TfEj3hEqg0i0LxGprJ52wtIfI5zbyx72g2buJ3eiAvd6biekxYq15/aHDzaXLa8zs13m8xL6lvax+JX+MaX5qu5ZegdXuJfUt7WPxLKvFtNadosidHlj7Isulu1pjYRiIla+pymtTTy+tKI/cxgP5vXk/qPJ61o7HDa+kysJeVdUSI3lEqF09qNridS69wHhg+4xrPzBX0nh1OXTUj8PNaq2+SWgW6oEQ8QEBAQEGw0fptrWU8frTRg35s4v3XVGpvyYbT+JW4o3vEOirr5led7TL09fYWDIUmwnqbCbjX43STzRFlPPsHH9/I1/u3nd7Qt/QZ8GK2+Wu6jPS1o/jOykNJ8CqqOX/AIq7i8kiXMXiQ8vpHfm6jvXutHqsOam+P9ODnxXpP8mkJW614dEaNUuxoaeL1YowfblBPfdfOOJ5O01N5/L02nrtjhsloLxAQLINfpDV7CjnmHFkUjh7Q0277Lf4bj59TSPyo1NuXHMudQLCy+jw8zM7yIh6iV36sabZ4XETxe6WT4yOA7gF4Tj+Tm1W3SId/Qxtj3SpcRvF7cVZhrzXiGN/SN3NldUbWaSX13vk/E4u/qvp2KvLSK/h5bJO9pl8FYwEBAQEBAQSfVvT7TFIP4M8h90bgO8hc7iuTk0t23pK75YXmvnT0YgrLSfWFVUtbNTwspyyNwYC9ry4+i0uuQ8D6RPIvYaPgmnyYa2tvvMOPm116XmIa5mtOsB9KKmI6myDvzlbM/T+m2+6qOI36J3oZpWzEo3HJs5IyA9t7izr5XNPMbH4Lz3FOGd0mJid4l0dLqe190jXHbjW6R4UyspZKd4+k0lp9V43scPYf6ro8N1VsGesw19Rii9Jc/0NPtZo4vXeyO32nBv9V9AyX2xzb8PPUrveI/LpIC24exfMs1ua8z+Xp6RtUVbJq9J8W8io5KkNDiwNs0mwJc4NAv71v8N0kanNFLeyjUZezpzK8868/RovxvXp/L2DrLl+JX6HnXn6NF+N/wD6Ty9p+sniV+jAx7WJNWU0lMYY2CQBpc1ziQA4ONgee1vetnS8Hw6fJGSu+6rLrbZK7Sha67REAmwRMOitHqXY0cEXqxRNPtyC/fdfOOJ359Vefy9Npq7Y4hsFoL2t0kqthRVEo4shlcPaGG3fZb/DMfaaqkflRqLbY5c7gWX0eHmZ9xECAgICAgIJ5qep81bLL6kJb73yMt3NcuF9QZIrpdusulw6N77reXhncFlSN7RCJ9nP2N0dRLVTy7Cc55ZXAiJ/AvNuTmsvpWDJjrjrG8e0fd5vLS83mdmNBgdXIcrKaoJP90/8yLBZ21OKsbzaP2wjDefaFr6ttF5aGOSWewklyjICDkY25FyN2Ylx4cwXkuOa/Hn2x4/WI+7r6HT2x+spmvOui+FdUthifK82axjnk9TQSVtaPFOXNWI6qstorSZlRugNOZsUpwRweZj1ZGuf+YC95xC3Z6W0/hwdNHNmhfIXzqZ9XoxQNBpvg01dSGnhcxpL2OJkJAytubbgeWy63CNXi02Wb5Gpq8VsldoV/wCaut+tpvxSeBek8wab8ub4dkPNZW/W034pPAo8f035PDsjFxXV3VU0ElRJLTlsbS8hrn3IHILs4q/T8YwZ7xSm+8sMmivSvNKHLrNEQfegg2s0cXryMj/G8N/qq8tuWkz+FmON7RDpMC24L5jmtzZJl6ikbViBVskW1m1OzwuUcrzHF8XgnuBXb4Bj5tVE9Gjr7bYlHr3bgPEQICAgICAgtLUzTWjqZud0cX4Wl36wvK/UmT0pV2OG195WQvJOsJuh7dZ9pbqjaHl05rT9yIgusWW4TbeeA3m/Ms6YrXnlrHqxtaIjeVUaxtM2VDTR0rs0dxtZG8H2Nwxh5W3AJPLw4cfZcH4XOD/Jk9+nRx9Zquf+NWNqgps1e+Tkjhd8XuaB3Byu4/k5dLy9ZV8Pr/k3XAvCO8KAQEQIlE9aNTs8LkA4yOjjHveHHuaV3/p+nNqN5+0NDX22xqSXuHAeIJBoFTbXE6dvM/aH/DaX/mAtHiWTk015/DY0tebLC+l83mfV6WPYRKvdcdTamgi9eV0nuYwj83hep+m8f8rX/wBOXxK/pFVUL1riy8QEBAQEBARKW6Kabuw6AwMgZJmeZC5zy03IAtYNPI0Ll67hdNXaJtPs3NPq5xRtEN152JeiR9q7wLQ8uYflLY8St0POxL0SPtXeBPLmH5SeJW6HnYl6JH2rvCnlzD8pR4lboediXokfau8KeXMPylPiVujHqdalSRaOCFh53F7+64VmP6e08e8zLC3Eb/ZGca0nrK30Z5nFnqMsxnva3j77rq4NFgwf0q1Mmovf3lp1tKEi0P0qdhplLYWyGXIDmeW5QzNwsDe+buWhrtBXV1itp2iGzg1HZTvCSediXokfau8C5flzD8pbfiVuh52JeiR9q7wJ5cw/KU+JW6PfOxL0SPtXeBPLmH5SeJW6PPOxL0SPtXeBPLmH5SjxK3Q87EvRI+1d4E8uYflJ4lbo0Wl2mj8SiZE6FsYY/aei8uucpaBvA5yuhoeGU0kzNZ33a+o1c5Y2lFV02mINvovjhoKkVAjEhDHMDXOLbZrb7gHkHetXV6aNRjnHM7QuwZeztzJh52JeiR9q7wLjeXMPylveJW6HnYl6JH2rvAnlzD8pPErdEY0v0ofiT43OjbHsw5oDXF18xBJJIHMF1NDoa6Ss1rO7U1GonL6yj632sICAgICAgIJBo5odW4kx0lJE17WO2bryRsIdlDuDiDwPFFlaTL3SPQuuw6Ns1XEGMe8RNIkjfdxa51rNJ5Gn4ITjmI9Wow6hkqZmU8Lc0kjgxjRYXJ6zuA5b8gCMIjdLfNRjHRm9tD4kWdlZCSmypKMF1f4lWwNqaeAOjffK50kbL2JaSA5wNrg70WRjmWLX6HVsFXFQyRtE839nGJI3EgkgEkGzRuPHmKI5J32baXVZi7WlzqdoABcTtodwG8n6SMuys0ejOjFXiZeKOMSbMNc+72MsH5sv0iL3yu+CIiky2eK6usUpIH1E1OBHGM7y2SJxDeU5WuJsOVE9naIRRFSWYXq5xSqgZUQwB0cjQ9hMsTbtPA2LrhFkY7NZPovVsrm4a6MeUuIAYHsO9zM4u4HKPR38UOSd9m8OqrGAL+TN7aHxInspQtzSCQQQQSCDuII3EEchUq5hJMB0ExGvh8opYQ+MucwOMkbblu47nOBUM4xzLCxXRmqpKplFNGGzybPIwPY6+0eWMu5pIFyDxRE0mG+81GMdGb20PiRl2Unmoxjoze2h8SHZWeO1VYwASadthvPz0PjQ7KzRaNaMVeJl4o4xJsw1zruYywffL9Mi98p+ClEUtLfeajGOjN7aHxKDsrPnNqtxhgv5Jm6mSwE/DOieylFK6jlgkMU0b43t4skaWuHXY8nXyowtWYY6MRAQEBBbn7PVdaoqqYn6ccc7R9hxY4/zsRsYpS/XnT58Hc+39nLC/wBl3bP9aMskbwiOoTRzPLJiTxuZeCG/K875HD2DK0H+J3MjHFX7rvRc5ThwB9Vi78Pj3F1VNDcfusZI/M73NaT7gpa/L/N0zM+DDqMu3Rw08XJ+7HG3cAOU2FuslF/tClNW1VJiukhrpr3a2aoA5GNAEMbB7BIPeCUV1ne262dY+IeTYRVy3sdi6Np/iltE3veFDO0+iIfs+YfkoZ6ggXlmyA87ImAD+Zz0Y449FoTxNkaWPAc1wLXA8CCLEH3Is2co6ZYA/Dq6Wj3kNN4ieL43b4z1nkPW0o1rV/k6kwKhFNSw044RRRwj7jA3+iNiFO6GkVul1TUWuIjUPB/6eWlb3FGEetl4FFjnHXLo75FiRmYLRVV5224CQEbVvxId99S18tfXdceq2g8nwakbyuj2x9srjJ+ruULq+yt5ia3TMDi2GQD2Cngzf5n5or/5LzRcrvG9b9DSVMtK+Gqe6J5jc6MQlpcONryA9yMJvENLjOuikmppooYKtsj43xsc8QhrXOaWguIkJsCeQFSickbPp+zxR5aSqmt9KZkQ9kcYP5yFQY49N01090uZhFOyofG6XPKIA1hDTcse/NcjgMnejKZ29X40E00hxiJ74o5I3RuDHsksfpC7SHN4g7+bgUTW26O69cHikw3yogbSB8Ya7lLZHiNzCebeD7WoxvG8OfkajxAQEBBN9TldscagHJK2SnP3mF4/mY1StxT6rx1iYY6rwqpp425nuYMg53te1ze8BQ2LRvD9YfTwYLhQB/s6aEueRxe4Auebc7nE+9yHtDG1Y4xJXYXHUzH03vqC7mH/ABElgOoCwHUEIYOh2iewxPEMQkG+WVzIb/VuDZHuH2nG33OtSxiPVD9fGlFyzC4jwtNUW+MUZ/8AI/cRhlsfs8UPpVdSf7qAd73foROKG+1+V+zwxkI4zTsB+zGHSE/iaz4qE3naG/1VUOwwalb67Nub/wB84yfk4Iyr7Plh+mLX45U4W6wyMjdEed4YHytvynK9pH2XIb+uz4awtDBXz0VUwDNDPEJf4qfaBzh7iPg5yExuluLVjaenlndwijfMfYxpcfyRMqj/AGeqQudWVT95Jjiv1nNI/wDNqK8fVONLtL24fX0ED7ZKl0jJCf3foNjd+NwB6iUWTLzWloycTw18UY+ej+eh587Rvb95pcPaRzIWjdKKSFsMLIxubGxrB1BrQPyCEKS1KDyvGaquPqSSb+Q1EwcO5rkV0j1lejnWFyi1GJIMFe4vcMNc5xLnOd5OS5xNySTxJKlj6Kx12OoGR00dEylBLpJHmlEd7NaGtDizkJcTY+qoVZNtvRO9SlJs8FicRYyPllPvkLR/K0Isp7NxppodBi8ccVRJMwRuMjdg5gJcW5fSzsdyE/FGUxu/OE4Th+A0rsrmwxl2Z8k797nEWGZzuJ3bgPcERERCo9a+sNmIgUdJm2DXB75HAt2rm/RDWneGA794uTbhbeVZL/aFaIoEBAQEGfgFd5NWQVF7bKaOQ/Za8F3ddGVfd14EbioNfukWWOLDWHe+1RNbkY0/NtI63An7g50VZLbQ3WoebNhBb6k8rfjlf+pIZUneEw0ox2PD6OWrk4RtuG8r3ncxg6y4gIymdnKVfWyVEz55nZpJHOkeedzjc25gOAHIAApalrby6C1G0WywdslrGaWWU9YDtkO6PvUNnHG0Ifr+qTNWUlGw7wxzrfxTyCNn+WfijDJ7xC6qGmEMTIW8I2NjHsa0NH5It9ocs4vj0gxeXEIjZ7al8sZ5CGvIaD1FoAPUSpa82/lu6dwDFo62liqovoStDxzjnaesG4PWFDYj1hHdbtfsMFqeeQNpx/ivDXfylyIt6Q1+oyi2WENktvmlllPWGu2Q7o0RSPRXWvat2mLCK+6GCNluZz3Oe732LPgpV5J9VtasNI//ANHDY5Hm8sfzE3OXsA9I/abld7yoW1neGfp3XeTYXVzDi2CTL9pzS1veQiZ9kB/Z4ow2mqp7b3Sshv1Rxh3+qUYY49N1p4lTmWCSJrshex8Yda+UuaQHWuL2ve1+RFkqgGoYdP8A+3/+qlTOKeqFaw9CW4M6FnlG2Mokcfm9nlDMov8ATde+Y83BRLC1NnQGgtGYMLpIiLFtPFm+0WBzu8lGxDRYhpuKbH24dKQIpYYg1xsMlQ5z7Anmc3KPbl5yiN9pSzGcLiraeSmnbmjkaWuHKOYg8jgbEHkICJmN3LGlWj8uG1b6SXfl9JjuSSMk5Hj223jkII5Eat67S1CMBAQEBAcLi3uRMTtO6xYNcuJsY1mSkOUBtzHJc2Frn5ziiztZQrHsYlrqmSrnIMkhBOW4aAAGhrQSbAABGFrczd6Iaf1eFRPhpmwFr37U7Zr3HNla3dleN1mhGVckw/Ol+nlZirGR1Oyaxji8Nga5oc61gXZnG9he3tKFrzKLorTrBNatfRU0dLDHS5Imhjc7JC4gcriJACTx4cqLYyTDRYvpXUVdezEZmxGWMxOa1rXCP5l2ZoLc17X3nfyoxm877pRJrnxNzS3JSC4IuI5Li/KPnOKMu1lXIRXKW6J6w63C4DT04hcwvMgE7XuylwFw3K8WBIvbnJ50ZxkmDS3WHW4pAKeobA1geJfmWvaSQCADmed3pHuQtkmWdgmtWvoqaOlhjpckTQxudkhcQOVxEgBJNzw5UT2sopj2Ly11TJVzZdpKQ52QENFmhoDQSSBZo5UYWtu2WiGmVVhLpHU2zIlDQ5swc5t2k2cA1wsd5HvRlW/K2ekus2uxGlfSTtp2xvLS4xMe13ouDgLl5FrgciE5JmHz0W1kVuGUwpadlMWBzn3lY8uJcbm5DwOrhyIRkmG489WJ/V0fZy/7qMu1k89WJ/V0fZy/7qHayiWl+lFRisrZqkRgtZsgIQ5rbZi69i4m+/n5AjCbzM7pXHrnxJrQ0R0dgAB83JwG4f8AMRl2soXpHjk2IVT6ufKJH5QRHdrW5GhoygkkcL8eJKMZtMzumNLrkxSONrMtK/KA3M+N+Z1hbM4iQC55bAIz7WWi0v03qMWawVMdMHRklj4WPa4B3FpJebtNgbc4CMLXmUZRg8QEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBB//2Q==',
+    bgColor:'#1a1f36'
+  },
+  {
+    name:'22Bet', bonus:'100% jusqu\'à 52 000 FCFA', link:'https://22bet.com/?promo=20VM', rating:4.5,
+    logo:'data:image/jpeg;base64,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',
+    bgColor:'#1d2b4e'
+  },
+  {
+    name:'Bet365', bonus:'Jusqu\'à 100 000 FCFA', link:'https://bet365.com', rating:4.9,
+    logo:'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQDw8PDw8VDxAPDxAPDw8PEA8PDxUPFRUWFhUVFRUYHSggGBolHRUVITIhJSkrLi4uFx8zODUtNygtLisBCgoKDg0OFw8QFy0dHR0tLS0tLS0rLS0tLS0tKy0rLSsuLS0uKy0tKystLSsrLS0tLS0tLSstLS0tLS0rLSstLf/AABEIAKgBLAMBEQACEQEDEQH/xAAcAAACAQUBAAAAAAAAAAAAAAAAAQMCBAUGBwj/xABMEAABAwIDBQMGBw0GBwEAAAABAAIDBBEFEiEGBzFBURNhcRQiMoGRsQg1QnJzobIXIzNSY3SCkpOzwdHSFUNTVWKiJCU0RYTE4Rb/xAAbAQEBAQEBAQEBAAAAAAAAAAAAAQIDBAUGB//EADoRAQACAgADAwkFCAEFAAAAAAABAgMRBCExBRJBBhMiUWFxgZHRFDKhseEWNEJTYnLB8JIVIzNSgv/aAAwDAQACEQMRAD8A5CsvGaB3RAqGgEAgEEscaMTKdsKM95V2CJ3lEkCLFlq9tkdInaNGhdFJAroEikUCJRQEU0ZMKhgqIZKBKqpRSUUkAqpIBAkAopKhIBA0FwsuR3RBdAIHdAXVBdBWxGZXcQRylIZLImjZKhNUh1RlY1DUdqrRyOpIFdFF0CRSui6K6KQKIqugYKId0QFAkUiikUUigFQKBKgUUlQIEgEFQQTKORoBAIBAIAIJ4gjnZdBHNDKjUFFdFles4I5ShnYjdZY+QI7QjujQuildAropXRSQCB3QMFEMFEMoaJFK6KSBXQCARQgFQkAgSBoGiJbqMGiBAIBAIAILiEo52XIcjALboG1iG0ocqzpRK7RFrDGzFHoqhuo2LoFdFJAIEihA0QwgaILoEqoUCRQgV0BdAXQNAIgsqCyAsgaCtRgXQCAugLoC6AuhpIxyMzCZsiMzC4jcjEwrc5GULpFW4hFJKjUVWj3KO0QpRSQK6AuikgLoC6qi6iKkAEQ7oEgEUkAgSoEUKB3RDBRFQRDsqmzyobGRDZKAQd33SbH4dV4TDPU0UU0rpZ2mR7SXENkcAOPIKu1Y5Nx+53g/+Wwfqn+aNacn35bP0dC/DxR0zKcSsqTIIwRmLTFlv4Zj7Uc7w5eo5hFAKJpW16qTCdkqOc1VOmQiqF8iNxCFzkbiFF1FIlF0zmB7H4jW2NLRSyNPCQt7KG30j7NPqKLpnNqN2VVhtAa2qmiv2scYgizyHz+bnmwFrcAD4qrMaaNdRGd2Z2RrMRzmljaWRkNfJJI1jGuIuB+MdOgK8PG9pcPwmoyzznpERv8AR0x4rX6NxptzFSR99rIWHpGySUe05V8e/lPhifRxzPvmI+r0Rwk+Mrg7lJOWINv30zgP3i5/tTX+TP8Ay/RfsntYjFN0eIxAuhdFVAfJY8xyH9F9h/uXsweUfCZJ1eJp7+cfhz/Bztwt46c2jVdLJC90U0bopGGzmSNLXA+BX3MeSmSsWpMTE+MPNNZidSiutICUGzYFsFiVYA+On7ON2olqD2LCOoB84jvAIXzeJ7X4Th57tr7n1Rz/AE/F2pgvbpDaqfcxUEffa2Jh5hkUkg9pLfcvlX8p8W/RxTPvmI+rtHBz4ykfuWl+TiDCe+nc33PKzHlRTxwz/wAv0X7HPraxtZu+q8Oh8olkhkiztjvE5+e7uF2uaOnUr6fA9sYOLv5ukTFtb56/Pblk4e1I3LWsMoX1E8VPFbtJpGxszGzcztBc8gvpZstcOO2S3SsblxrXc6bn9yTFPyH7Y/0r437RcH/V8v1ej7LcfcjxT8h+2P8ASn7RcH/V8v1Pstx9yPFPyH7Y/wBKftFwf9Xy/U+y3H3JMU/Iftj/AEp+0XB/1fL9T7Ldp+J0L6aeWnlt2kLzG/Kczcw42PML7GDNXNjrlr0tG4ea9e7OpQtK7OcwmaFGJSBiM7WiOoQektx3xJB9NU/vXKu9ejfkacS+Eb+Ewz5lX74Ec7uNqOYQF0CugeZDRGTvQ0WZF0V0UkHYfg9YZTzOxCSaCOV8JpexfLGx7mZu2zFhI80nKOHRGqu6KujnW/v4ld+dU/vKM28P98Hm1GXaNw3/AEtb+cM+wvxnlP8A+bH/AGz+b38J0l0ipxCGL8LNHF9JIxnvK/OUw5L/AHKzPuiZembVjrKSmqo5RmikbI38aN7Xj2grN8d6Tq0THvjRFonolWWmq7wdk48RpX2aBVRMc6nktZ2YC/Zk82u4dx1X1Oye0bcJmjc+hPWP8++HDNii8e15xB5r+jPlu1bs93scUcdbWxh87wJIYXi7Ym8Wuc08ZOevo6c1+L7Z7Zte04ME6rHKZjx/T8/c9+DBER3rOnL8y9a3rK6GEZppWQg8DLIyMe1xXTHivknVKzb3RtJtEdZWsO0NC82ZW07j0bUQk+y6624LiK85xWj/AOZ+jPnKeuGp76HA4TcG4NTBYg3Hyua+r5PRrjdT/wCsuXEz6DkWwvxrh/53D9pfru0/3PN/bLw4/vx8HptfzN9c0AgFUeZtvvjXEPzqT+C/pXZf7lh/th8nN9+WCaV73GU8bkc5hctdoo5TCxR6BdB6T3HfEkH01T+9cq7V6N+Rpoe8XYV+L1VADJ2NPTsqDPI2xkJeYsrGA6XOV2p0FufBGZja8od2GDRNDfIWy9XzOklefWTp6rId2GK2h3O4ZUMd5M11DLbzXxOc+K/LNG42I+aQe9CauC7SYFPh9VJSVLcskdiHC5Y+M+i9h5tPvBHEFRzmNLfCMLmq546amjMs0psxg+sk8mgak8kSId32V3MUUDWvrya2awJYC6OmaegaLF/i469Aq6xVvFNsnhsYtHh9M0d1NCT7SEXuwgrticLmBEmHU5uLXbCyN3qcwAhDuw5ZvC3PCCJ9XhZe9sYL5KN5Mj8gGphdxdbjlNydbHkjM1aZulwmnrMWhgqohNC6KdxY4kAlrLg6FEh6PwDZmioO08ip20/bZO0yF5zZM2W+Ynhmd7UbiNMsirHGsGp62LsKqITRZmvyOLgMzeB0I6okxtyze7sThtHhUtRS0bIZWzQNEjTISA54BGp6Ikw4pSYtUwxuihqJIo3uzPZHI6MOda3nZeOnJcb8PiyWi96RMx03GyLTEaiVkT11PO/G67I23dS6f+1qUQZrEu7cNvl7DKc2e2luFr87c7L5Pbfm/sV/OfD3+Gv96O2HffjT0cv52+mT5A0FzjZrQXOJ4ADUkpETM6jxSejzjsDhTa7FomFv3kSSVL2nh2TDmDT3Elg9a/o3anEW4XgrW36WorHvnlv85fMxU713o9fzl9NhNtcbNBQVFU0AvY0NiB1HavcGNJHQF1z3Ar29m8LHFcTTFPSevujnLGW/drMvPxwbFK95qDTVNS6TzjM6KQtPg4i1ugC/f/aeD4WsY4vWkR4bj8nze7e070t6/ZiugBdNQzsaBcvMLywDvcBYLpi4/hss6plrM++Emlo6wxrZnBpYHEMcQ5zA4hhcOBLeBK9M1jfemObO5ZrYT41w/wDO4ftLxdp/ueb+2Wsf3oenF/M312K2tnfHh9dJG4sfHSTvY9ps5rgxxBB63Xr4Clb8TiraNxNo5fFzyTqkvO420xP/ADCf9s5f0H/pnCfya/J83zt/Wf8A+yxP/MKj9q5P+mcH/Jr8jzt/WxFTUvle+WV5kkeS573G7nOPMnqvZSlaVitY1EdIc5nc7lGFplI0ozKdr0c9IFHQkHpTcd8SQfTVP71yrtXo35Gmt7bbaUuExRyVAe90zi2KGINMjstszvOIAaLi57wiTOk+x21dNitOaimzNDXmOSOUBsjHgA2NiQQQQQQbesEIRO2dRXK/hA4K2SghrQPvlJM1jnczBL5tvU/J7SjFoRfB+2fYyklxFzQZah7oYnc2wRmzrdMzwb/MahWHWUbca32bc1lJVQ0VHMacCBs8sjMvaOc9zg1oJGgAZfTjm7kZtLY9y+1lRiNHMKt/azUswZ2tmtL43tzMzW0zCzhfoBz1QiXQkaeeK+ph2f2nnmdE58FpJY44socG1DL2F7AAOLh4AIx0db2C28gxjynsIZIfJuyzdrk17TPa2Unh2Z9oRqJbYisHtntPFhdIauaN8rBIyPLFlzXdex84gckSZ045vF3qUuJ4e+jhppo3vkieHydlksx1z6LiUSZclRHovY3Z+ilwygfLRwSPdSwlznwROcTlGpJGq/nnaHGcRTi8ta5LRHenpMvpY8dZpG4bRR0MMIywwshb0iY2MewBfMyZsmSd3tNvfO3WKxHSEz3WBNi6wvYWue4X0WIjc6WXHN6O3NU4PoGUstHHICJH1DcssrObWWu0MPMgm/DTn+w7F7JwxriJyReY6RHSJ9vjv4PFnzWn0daQbh4Qayrk5spmtH6UgJ+wFvynv/2MdfXb8o/VOFj0pl2xfi3vRVNLHKAJGNkDXNeGvAcM7fRNjzHFbpktSd1nW+TMxE9TFQzNkztzj5GZuf8AV4p3La72uXrNx0SLKuf7xd3sNXFJU0kYjrGNL8rAGtmA1LXDhn6O9R7vv9k9s3wXjFmndJ9f8P6ex5s2CLRuOrkWwnxrh/53D9pfrO0/3PN/bLx4/vQ9PBfzN9VTIwOBa4BzSCC1wBBB4gg8VYmYncE6lZTYLSPGV9LC9p0IdDERb2LtXis1Z3XJaPjLPm6+ppW1m6mknY59E0UtQAS1gJ8neejmn0PFvXgV9vgfKDPitFc/p1/GPr8fm4ZOGiedeTh1XTPikfFK0skjcWPY7iHA2IX7al63rF6zuJ5w+fManUqAtMqmoiQIxKhRsIPSm474kg+mqf3rlXWvRvyNOD/CLefK6BvyRTSkeJkF/cEc7r34OD3XxRvyf+Ed3Zj2w9wHsQo7Wjo0/e8wHA8Qzco43D5zZYyPrARm3QboAP7Cw+3+HIT87tpL/WhXo3BGmLxLZqhqX9rU0UFRJlDe0mhjkflHAXI4alE0mwrBaWkDxS00VMHkF4giZEHEXtfKNbXPtQX9kV51+EKy2LQn8ahiv6pJQjE9Wd+DZ/3X/wAL/wBhRau2KtOdb+x/yV/dU0/vKM28HmtECg3/AAzevV01NBTRU8OWCJkQc/tXOIaLXNnBfBzeT+DNltlte3pTvlr6PRXiLRGobLslvcfPUxU9ZTsYJntjbNAXgB7jZuZjr6XIF76L53HeTtceK2TDeZ7sb1Oukdebrj4mZnUurr8q9jHbQYJBXU76eoYHNcDldYZmP5PYeRH/AMXo4TisnDZIyY55x+MeqXO9IvGpcm3M3psVraOQ+eIpIzbgZIZQDb2uK/V+UOs3B4s1em4n4Wh5OH9G8w7Uvxj3tf2/xSSkwysqIjaRkbWscOLXSPbGHDvGe/qXv7LwVz8Xjx36TPP4RM6+OnLNaa0mYeaY53teJWvc2QOziQOIkz3vmzcb35r+kzWs17sxy9Xh8ny9y9Q7KYg+poKSok/CS08b36WBfbzjbvNz61/MuOw1w8Tkx16RM69z6uOd1iZZVeR0eZ9rwaPGKs07jG6KrdJE5trtcfPFvDMv6TwExxHBY4yRuJrqfb4PlZPRvOmOqMfrZCTJWTvJ/GnlP1XXorwnD05Vx1j4QzN7T4rrCdrsQpXtfFVy6cY5JHyxOHRzHEj+PRc83Z3C5qzW+OPfEan5wtclq9Jek8Er/KaWnqcuXt4IpsvGxe0Ot9a/nPE4fM5r4t77szHyl9Olu9WJXq4NuC77aBsWJtlaLeU07HutzkaXMJ/VDF+78nM034SaT/DMx8J5/V87iq6u0AL77yqwjMpAjMo1Ggg9K7jviSD6ap/euVda9G/I00PepsE7F44HQStiqKYvDe1zdm+N+W7SQCQQWgg2PE+ozaNrvdjsV/ZFNIySRss88gkmewEMAaLMY2+pA843NvSKFY03FGnO9++JNiwd8N/Pq54YmjnlY4SuPh5gH6QRmyw+D/jrZaCShJtLSSOe1vMwSkuDh4PLwelx1Qq6mjTm+9fYKqxF0VVQz5J44+yfC6R8bJGAlzS1wNg4FzhrxBGotqZmHKXbvNoQbeSz+IqoiPb2iM91mMJ3R43KR284pG8y+pfK8DubGSCfWEO77HOsahfHUzwvkMpgmlg7RxNyI3lt7Em17Xtfmg6z8G6cCXE47+c+OlkA52YZQftj2o1DuSNMNtfs9HiVFNRSuMYlDS2RoBLHtcHNdY8dRqOYJ4IS4Nt3uqOFURrHVontLHEI205j9O+pcXnpwsjOlO7rYKmxOimllkkiljqXRNdGWluQRscLtI11ceYX53tbtfLwXEVpWsTWa75++fF6cOGL1mV9VblJx+Cro3/SRPi+yXLhTynxz9/FMe6Yn6LPCz62T2U3ROp6mKoq6lsghe2RsULXWc9pu3M91tAQNLarz8b5RRlxWx4qTHejW59vsapw0xO5l1VflnsJzgASTYAXJOgAHElIjc6hJeaKbaTsMYfiUVy01k02XgXQSPdmb4ljj67L+k34HznBRwtuvdiPjEfV8uL6v3o9b0lRVcc0Uc0Tg+OVoexw4Fp4L+c5Mdsd5peNTHKX06zExuEWLYdHVQTU0ovHNG6N1uNjzHeOPqWsGa2HJXLTrWdlqxaNS5JHuWm7azq2Pye+rmseJy35p80HvuV+snynx9zcY573vjXz6/g8f2Wd9XX6GkZBFHDEMscMbI2N42Y0ADXnoF+Sy5LZL2vbradz8XsrERGoSTzNjY+SRwYxjXPe5xsGtaLkk9AAs0rN7RWsbmeULM6jcvOuD08eMY45sxcyOslqZLsIbI1oje+O1wRfzWr+hcRe3Z/Z8TTUzSKxz6dYifzl8ysecyc/FuVXuUbe8OIEN5Nlpw4/rNePcvj08qJ16eLn7J/xqfzd54T2psL3LRNeHVVY6ZgIJiii7G/cXlxNvAA96zm8p7zWYxY9T65nf4aha8Lz5y6nBC1jWsY0NYxoYxoFgGtFgAOgAX5e1ptM2tO5l64jXJWsq4HvqxJs2JiJhuKWBkTrf4ji57h7HNHqK/eeTuGcfCd6f45mfh0+r5vE23fl4NBC+88y+w7D5Jj5os0cXu0aP5nuUmWZnTPMpKaMZMgkI4vfe5PcBwCx3pZ7tp5tXW2gg9J7j5GjBIAXAffqniQP71yrrEt97Zv4zf1gi7hpeJbwaejxZ9BWPEcMkEMsNQfQZI4uDmSEcGnKCDy1vx0Jvm3SCZkjQ+N7ZGuFw5jg5pHUEI1tj8d2gpKGMy1dQyFo4BzhncejGDznHuARNvNG8fbN+LVfa2MdPCDHSxH0g02zPf8A6nEDwAA5XMYmdsJgGN1FBUR1VK/JLGfFjmn0mPHymnp69CAVUiXoHZXe/h1W1ral/kM/BzZj94J5lsvAD51ijpEt8pcQglaHRTRytOodHIx7SPEFDcJHzsaLue1o6lzQEXbB4ttxhdKCZ6+EFvFjJBNL+pHd31Im4eVceqmzVdVNGbslqZ5WEixLHyOc245aEIyyGw208mF10VWwZ2gGOaO9s8LrZm35HQEd4CD05s7tlh9ewPpqpjnEawvcI52no6N2vr4dCjW2bfMwC5e0DqXABF25Xv1x6jkww00dVDJP5TC7sY5WSSBozXJa0m3rRJazua2joqakngqamOCR1SZGtlOQFhjjaDmPm8WnnyX5Lyh4LPmzVyY6TaIrrlz57nw6vXw+StY1Muq02IwSgGKeOQHgY5WPH1Fflr4MtOVqTHviXqi9Z6SndK0cXAeLgFiKzPSF3DEYptbh9MCZq2FpAuWNkEknqYy7vqXrw9ncVmn0Mcz8NR855MWy0jxco2/3nmrjfSUTXRwPBbLM/SWRvNrW/Jaed9T3a3/Vdl9hRgtGbPO7R0iOke32z/vN5Mufvco6Oar9I8zcthNv58MPZOb29I51zDezmE8XRnl3tOh7uK+P2n2Rj4z049G8ePr9/wBXXFmmnLwdmwXbrDasDs6tjHn+6nIhkv0s70v0SV+O4jsni8E+ljmY9cc4/D/L3VzUt4s+2dhFw9pHUOaQvB3LRy06bhi8W2qoKUEz1cTCNcgeHyHwY27j7F6sHZ/E551jxzPw1HznkxbLSOsuPbwd5Lq9ppaVroaUn7452kstuAIHos7uJ59F+v7K7Erws+dyz3r+Hqj6z7Xiy55vyjowO7rEoaXFKWoqH9nEztg95DnAZontbcNBPEhe7tbBkz8Hkx443adcvdMSxhmK3iZehKHaGin/AANZBJ3NmjLvW29wv5/k4PiMf38do+EvoxkrPSWREjeTh7QuHdn1NbhaV2MUsAzT1MUQ/KSxs95XXHw2bLOqUmfdEszesdZc/wBrN68TWOiwxpqZTdvbljxCzvAIu89OXjwX3+A8nslrRbifRr6vGfp+bz5OJiOVXG3wzSPc5zXve9xc5zgblzjckk8ySv2VYrWIiOUQ8E28V3BRMjN5iHn8QHzR4nn4BSbeo1Mr2XEyRlYLAaAAWFllYpELYzO53TS7hjF0cggpLR0RdyMg6D2IbkAIJYKiSO/ZyOjvx7N7mX8bFFRvcXEucS5x4ucSSfWUCVQiikgWUdFF2Mo6KrsIgRSQBCEFYKKFQKBWVUrKhqIaAQNECilZUNAKAQIhUFgmwWQZ+GZzLMA0a0a8lzlnuxInq9PS9Z4D+amliIhin1Oumvef5LcQbUds48z7ldQzJ3VZUqKEAgECQCoECRQgSKEBZAigSKEAgSKEAgECQCBoBA1AIJI4Seg8U2kyjcLGx0IVUkAgEAihESioda31nUqagUOeTxN0CRFQVSVYKMhQCAVCUAgFQlFJUVsjJQmU8dP1U2zNkzYWozuT7JvRDaiSnaU2sWlBLSkcE21FluQq2SKSAQCAQJBNBTuf6IvbieA9qk2iOqTaI6p3Yc4cx9az34Z85C2kjLTYhaidtxO1KBILlrrcuVrKM6V1Md2hw4jj4KwlZ8Fmq2EAgECQCBoJIIHvNmNLvAaDxPAJJMxHVdHDJh8j/ez+az3oZ2v4sAcQC6VjT0F3fWnehzmfYxCrRIBAKgQCKSCuOO6iTK6aLKMHdBUCgYKBjigkCgt6mmB1HFWJarbTHOFjZadYJAIBAkFcMeZzWj5RspM6jZM6jbYhGGNDWiwC8czudvLvc7QSFbrLULScAiy6VluGOIXZ1JBOHc7KImimN1GZhTJAA4OHom5I6GyqxPJaFVokFcUTnei0nwGntRJtEdV3Hhrj6Tgzu9I/V/NHK2esdOaQ4Y3Szz33aPq1VZ8/PqXdNRQt1LS8/wCvUewaI5Xy3n2L7tdNAAOgAAWLx4rhtz1KB2Ym5Og1sub1pRUIaa4uzAQCAQCBIpsFyhK5assKroAlAmORVd0FUZREgKiKwgsq6H5QVhusrFadAgECQXOGutKy/W3tBWMn3ZZv92WekXkeaFtItw6QtZF0hqGOkOp8V2h1hSqJInclJSUiiK+05KmlLKXOTlBJVJtpeQYSeJIHjqjnORMyA8GyMeR8kOsfYjEx7Eb3Fps4Fp70Z7oEiJNVebvVTRCqsbKS1FOkpo65vQrlp69JfLGfiKaTTALswEAgSKECQTRNUZlIiDMoujuiqb6oK1BVGUJSB6M6MXKCp0d2kIbYl7bEhbdoUqAVAgAUGYpq9rgA7R3A35964WpMT0cLY9dEjyON1mIghYVM44A3K6Vr63SsLJdWwgEE4N7KMqmN66DmVRl6NzcvmDT3o5W34pp4y5ha02J93RGYnUsFLEWkg8kd4nbNYTH2sTmSXOU+Y4+kAehRxycp5MdVQuieWO8QeRHVGo1MbRvltxNkIrtC+oHEanv4I3FFUEjieR9SmoamWSjcLahTusbYhaCQCARQgSC4ZwUZlUVEIhGlIKKbkDa5NBgIidgWUSBESNRJYqsFnFbda9ECNBAKhIGgd1AkAqBAIKmlElI46AdUIZilGVrR0Gvio4zzldMcjMwrDWk5i0E9SASqm5XcbkZY/aVgMYcD57CNAdcp4/wKOmLq1hHoVxxEoTK9oqY3Ri0rzLZGWJRSQCKECQCC4ZwUZkyoFdFUlVVTWqCpuiIrsoG02QTNcoiVqrMsXWnzitQ606LdVoKAVCQNAIBQCAVAgSDIURGUHmLi6jFuq7ElteiMaRnER8kE/UFV7i7oqoPHQjiEYtXS+Y9GGFr5S50p5XsPVYfwR2rGoha09ODqUbmV7HA1GNrqMgaIicMCM7a2joSARQoBUJBPGdFGZNA7KKLIGxJDKgqagqUDDeiqJGvsNURi5nXcVt1jooUUKgQJA0AgEAoBUCBILyi0Njz96jNmQ7G9wOiOe0YpbBVe8qpoTmvwsiWnkyMYRzlaV1OCbNHHU9EbrKllIWhF7ypkWuqG19DSZrI5zZd+SBGe8//Z',
+    bgColor:'#027b5b'
+  },
+  {
+    name:'Premier Bet', bonus:'100% sur 1er dépôt', link:'https://premierbet.cm', rating:4.3,
+    logo:'data:image/png;base64,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',
+    bgColor:'#003087'
+  },
+  {
+    name:'Parimatch', bonus:'50 000 FCFA offerts', link:'https://parimatch.com/?promo=20VM', rating:4.4,
+    logo:'data:image/png;base64,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',
+    bgColor:'#f5e71e'
+  },
 ];
 
 function renderBookmakerCard(bk) {
   const stars = '⭐'.repeat(Math.round(bk.rating));
+  const logoHtml = bk.logo
+    ? `<img src="${bk.logo}" alt="${bk.name}" class="bookie-logo-img"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+           loading="lazy" />
+       <span style="display:none;font-weight:900;font-size:11px;color:#000;letter-spacing:-0.5px">${bk.name.substring(0,4)}</span>`
+    : `<span style="font-weight:900;font-size:11px;color:#000">${bk.name.substring(0,4)}</span>`;
   return `
   <div class="bookie-card" onclick="window.open('${bk.link}','_blank')">
-    <div class="bookie-logo" style="background:${bk.color};color:#fff;font-size:12px;font-weight:900">${bk.emoji}</div>
+    <div class="bookie-logo" style="background:${bk.bgColor || '#fff'}">${logoHtml}</div>
     <div class="bookie-name">${bk.name}</div>
     <div style="font-size:12px;color:var(--text3)">${stars} ${bk.rating}/5</div>
     <div class="bookie-bonus">${bk.bonus}</div>
@@ -2016,9 +2930,6 @@ function renderBookmakerCard(bk) {
   </div>`;
 }
 
-// ========================================
-// HOME DATA
-// ========================================
 async function loadHomeData() {
   renderHomeBookmakers();
   await loadHomeMatches();
@@ -2040,60 +2951,223 @@ function renderBookmakersFull() {
 async function loadHomeMatches() {
   const el = document.getElementById('home-matches');
   if (!el) return;
-  try {
-    const matches = await fetchMatches();
-    el.innerHTML = matches.slice(0,3).map(renderMatchCard).join('');
-  } catch(e) {
-    el.innerHTML = getFallbackMatches().slice(0,3).map(renderMatchCard).join('');
+  el.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:30px">
+    <div class="spinner"></div>
+    <div style="color:var(--text2);margin-top:12px;font-size:14px">Chargement des matchs du ${new Date().toLocaleDateString('fr-FR')}...</div>
+  </div>`;
+
+  const matches = await fetchAllTodayMatches();
+  const football = matches.filter(m => m.sport === 'football').slice(0, 3);
+  const display  = football.length >= 3 ? football : matches.slice(0, 3);
+
+  if (display.length === 0) {
+    el.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text2)">
+      <div style="font-size:36px;margin-bottom:12px">📭</div>
+      Aucun match programmé aujourd'hui. Revenez demain !
+    </div>`;
+    return;
   }
+  el.innerHTML = display.map(renderMatchCard).join('');
 }
 
-// ========================================
-// MATCH DATA (API + FALLBACK)
-// ========================================
+// Alias pour compatibilité
 async function fetchMatches() {
-  try {
-    const res = await fetch(`${API_BASE}/matches/today`, { signal: AbortSignal.timeout(6000) });
-    if (!res.ok) throw new Error('API error');
-    return await res.json();
-  } catch {
-    return getFallbackMatches();
+  return fetchAllTodayMatches();
+}
+
+// ─── BASE DE DONNÉES LOGOS (CDN public API-Sports + Wikipedia) ───────────────
+const TEAM_LOGOS = {
+  // Football
+  'Real Madrid':       'https://media.api-sports.io/football/teams/541.png',
+  'Manchester City':   'https://media.api-sports.io/football/teams/50.png',
+  'Arsenal':           'https://media.api-sports.io/football/teams/42.png',
+  'Chelsea':           'https://media.api-sports.io/football/teams/49.png',
+  'LA Lakers':         'https://media.api-sports.io/basketball/teams/145.png',
+  'Boston Celtics':    'https://media.api-sports.io/basketball/teams/2.png',
+  'PSG':               'https://media.api-sports.io/football/teams/85.png',
+  'Marseille':         'https://media.api-sports.io/football/teams/81.png',
+  'Barcelona':         'https://media.api-sports.io/football/teams/529.png',
+  'Atletico Madrid':   'https://media.api-sports.io/football/teams/530.png',
+  'Liverpool':         'https://media.api-sports.io/football/teams/40.png',
+  'Manchester United': 'https://media.api-sports.io/football/teams/33.png',
+  'Bayern Munich':     'https://media.api-sports.io/football/teams/157.png',
+  'Juventus':          'https://media.api-sports.io/football/teams/496.png',
+  'AC Milan':          'https://media.api-sports.io/football/teams/489.png',
+  'Inter Milan':       'https://media.api-sports.io/football/teams/505.png',
+  'Dortmund':          'https://media.api-sports.io/football/teams/165.png',
+  'Ajax':              'https://media.api-sports.io/football/teams/194.png',
+  'Porto':             'https://media.api-sports.io/football/teams/212.png',
+  'Benfica':           'https://media.api-sports.io/football/teams/211.png',
+  'Sevilla':           'https://media.api-sports.io/football/teams/536.png',
+  'Tottenham':         'https://media.api-sports.io/football/teams/47.png',
+  'Leicester':         'https://media.api-sports.io/football/teams/46.png',
+  'Napoli':            'https://media.api-sports.io/football/teams/492.png',
+  'Roma':              'https://media.api-sports.io/football/teams/497.png',
+  'Lazio':             'https://media.api-sports.io/football/teams/487.png',
+  'Valencia':          'https://media.api-sports.io/football/teams/532.png',
+  'Villarreal':        'https://media.api-sports.io/football/teams/533.png',
+  'Lyon':              'https://media.api-sports.io/football/teams/80.png',
+  // Tennis
+  'Djokovic':  'https://media.api-sports.io/tennis/players/7.png',
+  'Alcaraz':   'https://media.api-sports.io/tennis/players/1025.png',
+  'Nadal':     'https://media.api-sports.io/tennis/players/2.png',
+  'Federer':   'https://media.api-sports.io/tennis/players/1.png',
+  'Sinner':    'https://media.api-sports.io/tennis/players/1032.png',
+  'Medvedev':  'https://media.api-sports.io/tennis/players/11.png',
+};
+
+const LEAGUE_LOGOS = {
+  'UEFA Champions League': 'https://media.api-sports.io/football/leagues/2.png',
+  'Premier League':        'https://media.api-sports.io/football/leagues/39.png',
+  'La Liga':               'https://media.api-sports.io/football/leagues/140.png',
+  'Bundesliga':            'https://media.api-sports.io/football/leagues/78.png',
+  'Ligue 1':               'https://media.api-sports.io/football/leagues/61.png',
+  'Serie A':               'https://media.api-sports.io/football/leagues/135.png',
+  'UEFA Europa League':    'https://media.api-sports.io/football/leagues/3.png',
+  'NBA':                   'https://media.api-sports.io/basketball/leagues/12.png',
+  'ATP Roland Garros':     'https://media.api-sports.io/tennis/leagues/2.png',
+  'ATP Wimbledon':         'https://media.api-sports.io/tennis/leagues/3.png',
+  'ATP US Open':           'https://media.api-sports.io/tennis/leagues/4.png',
+};
+
+// Renvoie l'URL du logo d'une équipe (CDN public) avec fallback gracieux
+function teamLogo(name) {
+  return TEAM_LOGOS[name] || null;
+}
+function leagueLogo(name) {
+  return LEAGUE_LOGOS[name] || null;
+}
+
+// Génère le HTML du logo d'une équipe OU du visage d'un joueur tennis
+function teamLogoHtml(entity, size = 38) {
+  const name   = typeof entity === 'string' ? entity : entity.name;
+  const url    = typeof entity === 'object' ? (entity.logo || teamLogo(name)) : teamLogo(name);
+  const isTennis = typeof entity === 'object' && entity.isTennis;
+  const initials = name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+
+  // Tennis → photo carrée arrondie (visage joueur)
+  if (isTennis) {
+    const flagHtml = typeof entity === 'object' && entity.flag
+      ? `<img src="${entity.flag}" style="width:16px;height:11px;border-radius:2px;position:absolute;bottom:-2px;right:-2px;border:1px solid var(--border)" />`
+      : '';
+    if (url) {
+      return `<div style="position:relative;width:${size}px;height:${size}px;flex-shrink:0">
+        <div style="width:${size}px;height:${size}px;border-radius:${Math.round(size*0.25)}px;overflow:hidden;border:2px solid var(--border);background:var(--bg3)">
+          <img src="${url}" alt="${name}" loading="lazy" style="width:100%;height:100%;object-fit:cover"
+               onerror="this.parentElement.innerHTML='<span style=\'font-size:13px;font-weight:700;color:var(--text2);display:flex;align-items:center;justify-content:center;height:100%\'>${initials}</span>'" />
+        </div>
+        ${flagHtml}
+      </div>`;
+    }
+    return `<div style="position:relative;width:${size}px;height:${size}px;flex-shrink:0">
+      <div style="width:${size}px;height:${size}px;border-radius:${Math.round(size*0.25)}px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center">
+        <span style="font-size:${Math.round(size*0.33)}px;font-weight:700;color:var(--text2)">${initials}</span>
+      </div>
+      ${flagHtml}
+    </div>`;
   }
+
+  // Football/basket → logo circulaire
+  if (url) {
+    return `<div class="match-team-logo" style="width:${size}px;height:${size}px">
+      <img src="${url}" alt="${name}" loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+           style="width:100%;height:100%;object-fit:contain" />
+      <span style="display:none;font-size:${Math.round(size*0.3)}px;font-weight:700;color:var(--text2);align-items:center;justify-content:center;height:100%">${initials}</span>
+    </div>`;
+  }
+  return `<div class="match-team-logo" style="width:${size}px;height:${size}px">
+    <span style="font-size:${Math.round(size*0.33)}px;font-weight:700;color:var(--text2)">${initials}</span>
+  </div>`;
+}
+
+// Génère le HTML du logo de ligue (URL directe ou lookup)
+function leagueLogoHtml(name, directUrl) {
+  const url = directUrl || leagueLogo(name);
+  if (url) {
+    return `<img src="${url}" alt="${name}" class="league-img" loading="lazy"
+        onerror="this.style.display='none'" />`;
+  }
+  const icons = { 'NBA':'🏀','ATP':'🎾','WTA':'🎾' };
+  const icon = Object.keys(icons).find(k => name.includes(k));
+  return `<span style="font-size:16px">${icon ? icons[icon] : '⚽'}</span>`;
 }
 
 function getFallbackMatches() {
-  const today = new Date();
-  const times = ['14:00','16:30','19:00','20:45','21:00'];
+  const times = ['14:00','16:30','19:00','20:45','21:00','22:00'];
   return [
-    { id:1, sport:'football', league:'UEFA Champions League', league_logo:'⚽', home:{ name:'Real Madrid', logo:'🤍', emoji:'⚪' }, away:{ name:'Manchester City', logo:'🔵', emoji:'🔵' }, time: times[0], status:'upcoming', prono: { tip:'Victoire Real Madrid', type:'1', cote:1.75, confiance:82, raison:'Avantage domicile + forme actuelle' }, odds:{ h:1.75, d:3.80, a:4.20 } },
-    { id:2, sport:'football', league:'Premier League', league_logo:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', home:{ name:'Arsenal', logo:'🔴', emoji:'🔴' }, away:{ name:'Chelsea', logo:'🔵', emoji:'🔵' }, time: times[1], status:'upcoming', prono: { tip:'Les deux équipes marquent', type:'BTTS', cote:1.88, confiance:76, raison:'Attaques puissantes des deux côtés' }, odds:{ h:2.10, d:3.50, a:3.20 } },
-    { id:3, sport:'basketball', league:'NBA', league_logo:'🏀', home:{ name:'LA Lakers', logo:'🟡', emoji:'🟡' }, away:{ name:'Boston Celtics', logo:'🍀', emoji:'🟢' }, time: times[2], status:'upcoming', prono: { tip:'Over 218.5 points', type:'O/U', cote:1.90, confiance:71, raison:'Rythme offensif élevé des deux équipes' }, odds:{ h:1.62, d:null, a:2.15 } },
-    { id:4, sport:'football', league:'Ligue 1', league_logo:'🇫🇷', home:{ name:'PSG', logo:'🔵', emoji:'🔵' }, away:{ name:'Marseille', logo:'🔵', emoji:'⚪' }, time: times[3], status:'upcoming', prono: { tip:'Victoire PSG + Over 2.5', type:'Combo', cote:2.15, confiance:79, raison:'Domination PSG + derby très ouvert' }, odds:{ h:1.52, d:4.20, a:5.50 } },
-    { id:5, sport:'tennis', league:'ATP Roland Garros', league_logo:'🎾', home:{ name:'Djokovic', logo:'🇷🇸', emoji:'🎾' }, away:{ name:'Alcaraz', logo:'🇪🇸', emoji:'🎾' }, time: times[4], status:'upcoming', prono: { tip:'Alcaraz gagne', type:'1', cote:2.10, confiance:68, raison:'Meilleure forme sur terre battue' }, odds:{ h:1.75, d:null, a:2.10 } },
-    { id:6, sport:'football', league:'La Liga', league_logo:'🇪🇸', home:{ name:'Barcelona', logo:'🔵', emoji:'🔵' }, away:{ name:'Atletico Madrid', logo:'❤️', emoji:'🔴' }, time:'22:00', status:'upcoming', prono: { tip:'1X (1 ou nul)', type:'1X', cote:1.42, confiance:85, raison:'Barcelona invincible à domicile en Liga' }, odds:{ h:1.45, d:3.90, a:6.50 } },
+    {
+      id:1, sport:'football', league:'UEFA Champions League',
+      home:{ name:'Real Madrid' }, away:{ name:'Manchester City' },
+      time: times[0], status:'upcoming',
+      prono: { tip:'Victoire Real Madrid', type:'1', cote:1.75, confiance:82, raison:'Avantage domicile + série de 8 victoires consécutives' },
+      odds:{ h:1.75, d:3.80, a:4.20 }
+    },
+    {
+      id:2, sport:'football', league:'Premier League',
+      home:{ name:'Arsenal' }, away:{ name:'Chelsea' },
+      time: times[1], status:'upcoming',
+      prono: { tip:'Les deux équipes marquent', type:'BTTS', cote:1.88, confiance:76, raison:'BTTS dans 8 des 10 derniers matchs des deux équipes' },
+      odds:{ h:2.10, d:3.50, a:3.20 }
+    },
+    {
+      id:3, sport:'basketball', league:'NBA',
+      home:{ name:'LA Lakers' }, away:{ name:'Boston Celtics' },
+      time: times[2], status:'upcoming',
+      prono: { tip:'Over 218.5 points', type:'O/U', cote:1.90, confiance:71, raison:'Moyenne combinée 228 pts sur les 5 derniers matchs' },
+      odds:{ h:1.62, d:null, a:2.15 }
+    },
+    {
+      id:4, sport:'football', league:'Ligue 1',
+      home:{ name:'PSG' }, away:{ name:'Marseille' },
+      time: times[3], status:'upcoming',
+      prono: { tip:'Victoire PSG + Over 2.5', type:'Combo', cote:2.15, confiance:79, raison:'PSG domine ce derby, 3+ buts dans 7/10 confrontations' },
+      odds:{ h:1.52, d:4.20, a:5.50 }
+    },
+    {
+      id:5, sport:'tennis', league:'ATP Roland Garros',
+      home:{ name:'Djokovic' }, away:{ name:'Alcaraz' },
+      time: times[4], status:'upcoming',
+      prono: { tip:'Alcaraz gagne', type:'2', cote:2.10, confiance:68, raison:'Alcaraz: 91% de victoires sur terre battue cette saison' },
+      odds:{ h:1.75, d:null, a:2.10 }
+    },
+    {
+      id:6, sport:'football', league:'La Liga',
+      home:{ name:'Barcelona' }, away:{ name:'Atletico Madrid' },
+      time: times[5], status:'upcoming',
+      prono: { tip:'1X – Victoire ou nul domicile', type:'1X', cote:1.42, confiance:85, raison:'Barça invaincu à domicile en Liga depuis 18 matchs' },
+      odds:{ h:1.45, d:3.90, a:6.50 }
+    },
   ];
 }
 
 function renderMatchCard(m) {
-  const sportIcon = { football:'⚽', basketball:'🏀', tennis:'🎾', hockey:'🏒' }[m.sport] || '🏅';
+  if (!m.prono) m.prono = generateLocalProno(m);
   const confClass = m.prono.confiance >= 75 ? 'conf-high' : m.prono.confiance >= 60 ? 'conf-med' : 'conf-low';
   const confColor = m.prono.confiance >= 75 ? 'var(--green)' : m.prono.confiance >= 60 ? 'var(--gold)' : 'var(--red)';
-  const awayOdds = m.odds.a ? `<div class="odd-box"><div class="odd-label">${m.sport==='tennis'?m.away.name:'Ext'}</div><div class="odd-val">${m.odds.a}</div></div>` : '';
+  const awayOdds = m.odds.a ? `<div class="odd-box"><div class="odd-label">${m.sport==='tennis'?m.away.name.split(' ').pop():'Ext'}</div><div class="odd-val">${m.odds.a}</div></div>` : '';
   const drawOdds = m.odds.d ? `<div class="odd-box"><div class="odd-label">Nul</div><div class="odd-val">${m.odds.d}</div></div>` : '';
+  const statusBadge = m.status==='live'
+    ? `<div class="live-badge"><div class="live-dot"></div>EN DIRECT</div>`
+    : `<div style="font-size:12px;color:var(--text3)"><i class="far fa-clock"></i> ${m.time}</div>`;
+
   return `
   <div class="match-card" onclick="navigate('pronostics')">
     <div class="match-header">
-      <div class="league-info">${m.league_logo} ${m.league}</div>
-      <div style="font-size:12px;color:var(--text3)"><i class="far fa-clock"></i> ${m.time}</div>
+      <div class="league-info">
+        ${leagueLogoHtml(m.league, m.leagueLogo)}
+        <span>${m.league}</span>
+      </div>
+      ${statusBadge}
     </div>
     <div class="match-teams">
       <div class="match-team">
-        <div class="match-team-logo">${m.home.emoji}</div>
+        ${teamLogoHtml(m.home, 38)}
         <div class="match-team-name">${m.home.name}</div>
       </div>
-      <div class="match-vs">VS</div>
+      <div class="match-vs">${m.status==='live'&&m.home.score!=null ? `<span style="font-size:18px;font-weight:700;color:var(--text)">${m.home.score} – ${m.away.score}</span>` : 'VS'}</div>
       <div class="match-team away">
-        <div class="match-team-logo">${m.away.emoji}</div>
+        ${teamLogoHtml(m.away, 38)}
         <div class="match-team-name">${m.away.name}</div>
       </div>
     </div>
@@ -2107,7 +3181,7 @@ function renderMatchCard(m) {
       <div class="confidence-bar ${confClass}" style="margin-top:6px"><div class="confidence-fill" style="width:${m.prono.confiance}%"></div></div>
     </div>
     <div class="match-odds">
-      <div class="odd-box ${m.prono.type==='1'?'recommended':''}"><div class="odd-label">${m.sport==='tennis'?m.home.name:'Dom'}</div><div class="odd-val">${m.odds.h}</div></div>
+      <div class="odd-box ${m.prono.type==='1'?'recommended':''}"><div class="odd-label">${m.sport==='tennis'?m.home.name.split(' ').pop():'Dom'}</div><div class="odd-val">${m.odds.h||'–'}</div></div>
       ${drawOdds}
       ${awayOdds}
     </div>
@@ -2118,20 +3192,24 @@ function renderMatchCard(m) {
 // PRONOSTICS PAGE
 // ========================================
 async function loadPronostics() {
-  const el = document.getElementById('pronostics-list');
-  const countEl = document.getElementById('match-count');
+  const el       = document.getElementById('pronostics-list');
+  const countEl  = document.getElementById('match-count');
   const updateEl = document.getElementById('last-update');
   if (!el) return;
-  el.innerHTML = '<div class="spinner"></div>';
 
-  try {
-    allPronostics = await fetchMatches();
-    const now = new Date();
-    if (updateEl) updateEl.textContent = `${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}`;
-    renderPronostics();
-  } catch(e) {
-    el.innerHTML = '<div style="text-align:center;color:var(--text2);padding:40px">Impossible de charger les pronostics.</div>';
-  }
+  el.innerHTML = `<div style="text-align:center;padding:40px">
+    <div class="spinner"></div>
+    <div style="color:var(--text2);margin-top:14px;font-size:14px">
+      🤖 Récupération & analyse IA des matchs du ${new Date().toLocaleDateString('fr-FR')}...
+    </div>
+  </div>`;
+
+  allPronostics = await fetchAllTodayMatches();
+
+  const now = new Date();
+  if (updateEl) updateEl.textContent = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+
+  renderPronostics();
 }
 
 function renderPronostics() {
@@ -2155,18 +3233,27 @@ function renderPronostics() {
 }
 
 function renderPronoCard(m) {
+  if (!m.prono) m.prono = generateLocalProno(m);
   const confClass = m.prono.confiance >= 75 ? 'conf-high' : m.prono.confiance >= 60 ? 'conf-med' : 'conf-low';
   const confColor = m.prono.confiance >= 75 ? 'var(--green)' : m.prono.confiance >= 60 ? 'var(--gold)' : 'var(--red)';
-  const confLabel = m.prono.confiance >= 75 ? 'Haute confiance' : m.prono.confiance >= 60 ? 'Confiance moyenne' : 'Faible confiance';
+  const confLabel = m.prono.confiance >= 75 ? '🟢 Haute confiance' : m.prono.confiance >= 60 ? '🟡 Moyenne' : '🔴 Faible';
   const sportColors = { football:'#4ade80', basketball:'#fb923c', tennis:'#facc15', hockey:'#a78bfa' };
   const sportColor = sportColors[m.sport] || '#fff';
+  const isTennis = m.sport === 'tennis';
+  const statusBadge = m.status === 'live'
+    ? `<div class="live-badge"><div class="live-dot"></div>EN DIRECT</div>`
+    : `<span style="font-size:12px;color:var(--text3)"><i class="far fa-clock"></i> ${m.time}</span>`;
+  const scoreDisplay = (m.status==='live'||m.status==='finished') && m.home.score!=null
+    ? `<div style="font-size:20px;font-weight:800;color:var(--text);font-family:var(--font-head)">${m.home.score} – ${m.away.score}</div>`
+    : `<div style="font-family:var(--font-mono);font-size:13px;color:var(--text3)">VS</div>`;
 
   return `
   <div class="prono-card">
     <div class="prono-card-header">
       <div class="flex items-center gap-12">
-        <span style="color:${sportColor}">${m.league_logo} ${m.league}</span>
-        <span style="font-size:12px;color:var(--text3)"><i class="far fa-clock"></i> ${m.time}</span>
+        ${leagueLogoHtml(m.league, m.leagueLogo)}
+        <span style="color:${sportColor};font-weight:600">${m.league}</span>
+        ${statusBadge}
       </div>
       <div style="display:flex;align-items:center;gap:8px">
         <span style="font-size:12px;font-weight:700;color:${confColor}">${confLabel}</span>
@@ -2177,21 +3264,23 @@ function renderPronoCard(m) {
     <div class="prono-card-body">
       <div class="match-teams" style="margin-bottom:0">
         <div class="match-team">
-          <div class="match-team-logo" style="width:44px;height:44px;font-size:22px">${m.home.emoji}</div>
+          ${teamLogoHtml(m.home, 52)}
           <div>
             <div class="match-team-name" style="font-size:16px">${m.home.name}</div>
-            <div style="font-size:12px;color:var(--text3)">Domicile</div>
+            <div style="font-size:12px;color:var(--text3)">${isTennis ? 'Joueur 1' : 'Domicile'}</div>
+            ${m.home.flag ? `<img src="${m.home.flag}" style="height:12px;margin-top:3px;border-radius:2px" loading="lazy"/>` : ''}
           </div>
         </div>
         <div style="text-align:center">
-          <div style="font-family:var(--font-mono);font-size:12px;color:var(--text3)">VS</div>
-          <div style="font-size:11px;color:var(--text3);margin-top:2px">${m.time}</div>
+          ${scoreDisplay}
+          <div style="font-size:11px;color:var(--text3);margin-top:4px">${m.time}</div>
         </div>
         <div class="match-team away">
-          <div class="match-team-logo" style="width:44px;height:44px;font-size:22px">${m.away.emoji}</div>
+          ${teamLogoHtml(m.away, 52)}
           <div style="text-align:right">
             <div class="match-team-name" style="font-size:16px">${m.away.name}</div>
-            <div style="font-size:12px;color:var(--text3)">Extérieur</div>
+            <div style="font-size:12px;color:var(--text3)">${isTennis ? 'Joueur 2' : 'Extérieur'}</div>
+            ${m.away.flag ? `<img src="${m.away.flag}" style="height:12px;margin-top:3px;border-radius:2px" loading="lazy"/>` : ''}
           </div>
         </div>
       </div>
@@ -2214,11 +3303,14 @@ function renderPronoCard(m) {
 
       <div class="match-odds" style="margin-top:14px">
         <div class="odd-box ${m.prono.type==='1'?'recommended':''}">
-          <div class="odd-label">${m.sport==='tennis'?m.home.name:'Domicile'}</div>
-          <div class="odd-val">${m.odds.h}</div>
+          <div class="odd-label">${isTennis ? m.home.name.split(' ').pop() : 'Domicile'}</div>
+          <div class="odd-val">${m.odds.h || '–'}</div>
         </div>
         ${m.odds.d ? `<div class="odd-box"><div class="odd-label">Match Nul</div><div class="odd-val">${m.odds.d}</div></div>` : ''}
-        ${m.odds.a ? `<div class="odd-box ${m.prono.type==='2'?'recommended':''}"><div class="odd-label">${m.sport==='tennis'?m.away.name:'Extérieur'}</div><div class="odd-val">${m.odds.a}</div></div>` : ''}
+        ${m.odds.a ? `<div class="odd-box ${m.prono.type==='2'?'recommended':''}">
+          <div class="odd-label">${isTennis ? m.away.name.split(' ').pop() : 'Extérieur'}</div>
+          <div class="odd-val">${m.odds.a}</div>
+        </div>` : ''}
       </div>
     </div>
   </div>`;
@@ -2547,8 +3639,10 @@ function renderAdminSection(section) {
   if (section === 'overview') {
     const tableBody = document.getElementById('admin-prono-table');
     if (tableBody) {
-      const matches = getFallbackMatches();
-      tableBody.innerHTML = matches.map(m => `
+      const matches = (_matchCache || getDemoMatches()).map(m => ({
+        ...m, prono: m.prono || generateLocalProno(m)
+      }));
+      tableBody.innerHTML = matches.slice(0,8).map(m => `
         <tr>
           <td><strong>${m.home.name}</strong> vs ${m.away.name}</td>
           <td style="color:var(--accent)">${m.prono.tip}</td>
@@ -2608,11 +3702,136 @@ function sendContactForm() {
 }
 
 // ========================================
+// AI CHAT ASSISTANT (sports betting only)
+// ========================================
+function toggleAiChat() {
+  const widget = document.getElementById('ai-chat-widget');
+  widget.classList.toggle('open');
+  if (widget.classList.contains('open') && aiChatHistory.length === 0) {
+    pushAiMessage('bot', t('aiWelcome'));
+  }
+}
+
+function pushAiMessage(role, text) {
+  const body = document.getElementById('ai-chat-body');
+  if (!body) return;
+  const div = document.createElement('div');
+  div.className = `ai-msg ${role}`;
+  div.textContent = text;
+  body.appendChild(div);
+  body.scrollTop = body.scrollHeight;
+}
+
+function isSportsBettingQuestion(text) {
+  const q = text.toLowerCase();
+  const allow = [
+    'pari', 'bet', 'bookmaker', 'cote', 'odd', 'match', 'football', 'basket', 'tennis',
+    'hockey', 'btts', 'over', 'under', 'handicap', 'vip', 'pronostic', 'bankroll', 'roi',
+  ];
+  return allow.some(w => q.includes(w));
+}
+
+async function sendAiChat() {
+  const input = document.getElementById('ai-chat-input');
+  if (!input) return;
+  const userText = input.value.trim();
+  if (!userText) return;
+
+  pushAiMessage('user', userText);
+  input.value = '';
+
+  if (!isSportsBettingQuestion(userText)) {
+    pushAiMessage('bot', t('aiOutOfScope'));
+    return;
+  }
+
+  pushAiMessage('bot', '...');
+
+  try {
+    const response = await fetch(`${API_BASE}/ai/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        language: currentLanguage,
+        message: userText,
+        history: aiChatHistory.slice(-6),
+      }),
+    });
+
+    let answer = '';
+    if (response.ok) {
+      const data = await response.json();
+      answer = data.reply || '';
+    }
+
+    if (!answer && CFG.OPENAI_KEY && CFG.OPENAI_KEY !== 'VOTRE_CLE_OPENAI') {
+      answer = await getOpenAIDirectReply(userText);
+    }
+
+    if (!answer) {
+      answer = `Conseil rapide: sur "${userText}", commence par une mise prudente (1-2% bankroll), vérifie la forme récente et compare au moins 2 bookmakers avant de valider.`;
+    }
+
+    aiChatHistory.push({ role: 'user', content: userText });
+    aiChatHistory.push({ role: 'assistant', content: answer });
+
+    const body = document.getElementById('ai-chat-body');
+    if (body && body.lastChild && body.lastChild.textContent === '...') body.lastChild.remove();
+    pushAiMessage('bot', answer);
+  } catch (e) {
+    const body = document.getElementById('ai-chat-body');
+    if (body && body.lastChild && body.lastChild.textContent === '...') body.lastChild.remove();
+    pushAiMessage('bot', 'Service IA temporairement indisponible. Réessaie dans quelques secondes.');
+  }
+}
+
+async function getOpenAIDirectReply(userText) {
+  const system = currentLanguage === 'fr'
+    ? 'Tu es l’assistant de PronosticsPro. Tu réponds seulement sur les paris sportifs et l’utilisation du site. Refuse poliment tout sujet hors domaine.'
+    : 'You are PronosticsPro assistant. Only answer sports betting and site usage topics. Politely refuse out-of-scope topics.';
+
+  const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${CFG.OPENAI_KEY}`,
+    },
+    body: JSON.stringify({
+      model: 'gpt-4o-mini',
+      temperature: 0.4,
+      max_tokens: 220,
+      messages: [
+        { role: 'system', content: system },
+        ...aiChatHistory.slice(-6),
+        { role: 'user', content: userText },
+      ],
+    }),
+  });
+  const data = await res.json();
+  return data?.choices?.[0]?.message?.content?.trim() || '';
+}
+
+// ========================================
 // INIT
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
+  const langSelect = document.getElementById('language-switcher');
+  if (langSelect) langSelect.value = currentLanguage;
+  applyTranslations(true);
   setupTicker();
   loadHomeData();
+
+  const aiInput = document.getElementById('ai-chat-input');
+  if (aiInput) {
+    aiInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') sendAiChat();
+    });
+  }
+
+  const observer = new MutationObserver(() => {
+    if (currentLanguage !== 'fr') scheduleAutoTranslate();
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
 });
 </script>
 </body>
