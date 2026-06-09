@@ -501,6 +501,9 @@
     </div>
 
     <script>
+        // --- BASE API URL (PROD VERCEL) ---
+        const API_URL = "https://backendd-psi.vercel.app";
+
         // --- CHANGER LES ONGLETS ---
         const navButtons = document.querySelectorAll('.nav-btn');
         const tabContents = document.querySelectorAll('.tab-content');
@@ -520,13 +523,13 @@
             document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
         });
 
-        // --- LIAISON ABSOLUE AVEC TON SERVEUR BACKEND ---
+        // --- LIAISON ABSOLUE AVEC TON SERVEUR BACKEND EN LIGNE ---
         function updateSiteData() {
             const liveContainer = document.getElementById('live-matches-container');
             const pronoContainer = document.getElementById('matches-container');
 
             // 🟢 1. Appel Backend pour les Matchs Réels en Direct
-            fetch('http://localhost:5000/api/live-matches')
+            fetch(`${API_URL}/api/live-matches`)
                 .then(response => response.json())
                 .then(data => {
                     liveContainer.innerHTML = '';
@@ -559,11 +562,11 @@
                 })
                 .catch(error => {
                     console.error("Erreur backend live :", error);
-                    liveContainer.innerHTML = '<p style="text-align:center; width:100%; color:#ff4d4d;">⚠️ En attente de connexion avec le serveur backend...</p>';
+                    liveContainer.innerHTML = '<p style="text-align:center; width:100%; color:#ff4d4d;">⚠️ En attente de synchronisation avec le serveur cloud Vercel...</p>';
                 });
 
             // 🟢 2. Appel Backend pour l'Autogénération des Pronostics via l'IA
-            fetch('http://localhost:5000/api/ai-predictions')
+            fetch(`${API_URL}/api/ai-predictions`)
                 .then(response => response.json())
                 .then(predictions => {
                     pronoContainer.innerHTML = '';
@@ -594,14 +597,14 @@
                 })
                 .catch(error => {
                     console.error("Erreur récupération pronos IA :", error);
-                    pronoContainer.innerHTML = '<p style="text-align:center; width:100%; color:#ff4d4d;">⚠️ Impossible de charger les analyses IA pour le moment.</p>';
+                    pronoContainer.innerHTML = '<p style="text-align:center; width:100%; color:#ff4d4d;">⚠️ Impossible de charger les analyses cloud IA pour le moment.</p>';
                 });
         }
         
         updateSiteData();
-        setInterval(updateSiteData, 20000); // Rafraîchissement automatique toutes les 20 secondes
+        setInterval(updateSiteData, 25000); // Rafraîchissement automatique toutes les 25 secondes
 
-        // --- BARRE DE SECURITE DU MOT DE PASE ---
+        // --- BARRE DE SECURITE DU MOT DE PASSE ---
         const pwd = document.getElementById('password-field');
         const sBar = document.getElementById('strength-bar');
         const sTxt = document.getElementById('strength-text');
@@ -614,7 +617,7 @@
             else { sBar.style.width = "100%"; sTxt.innerText = "Sécurité : Excellent 🛡️"; sBar.style.backgroundColor = "#2ec4b6"; }
         });
 
-        // --- ENVOI DE L'INSCRIPTION AU BACKEND ---
+        // --- ENVOI DE L'INSCRIPTION AU BACKEND CLOUD ---
         document.getElementById('register-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
@@ -622,7 +625,7 @@
             const email = document.getElementById('reg-email').value;
             const password = pwd.value;
 
-            fetch('http://localhost:5000/api/register', {
+            fetch(`${API_URL}/api/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, password })
@@ -639,7 +642,7 @@
             })
             .catch(error => {
                 console.error("Erreur transmission inscription :", error);
-                alert("Erreur de connexion : Assurez-vous que votre serveur Node.js est démarré.");
+                alert("Erreur de connexion : Impossible de joindre le serveur Vercel distant.");
             });
         });
 
