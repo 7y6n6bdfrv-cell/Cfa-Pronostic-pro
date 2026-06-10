@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Pronostic Pro CFA - Meilleur Site de Pronostic & Bookmaker</title>
-    <meta name="description" content="Découvrez Pronostic Pro CFA, l'expert en pronostic foot et comparatif bookmaker. Suivez notre cfa pronostic pour optimiser vos gains et parier efficacement.">
-    <meta name="keywords" content="pronostic pro, cfa pronostic, pronostic, bookmaker, code promo 1xbet, bonus bookmaker, pronostic foot cfa">
+    <meta name="description" content="Découvrez Pronostic Pro CFA, l'expert en pronostic foot, pronostic VIP et comparatif bookmaker. Suivez notre cfa pronostic pour optimiser vos gains.">
+    <meta name="keywords" content="pronostic pro, cfa pronostic, pronostic, bookmaker, pronostic vip, code promo 1xbet, bonus bookmaker">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://votre-site-pronostic.com/">
 
     <meta property="og:title" content="Pronostic Pro CFA - Expert Pronostic & Bookmaker">
-    <meta property="og:description" content="Rejoignez Pronostic Pro CFA. Profitez du meilleur cfa pronostic et découvrez le top bookmaker du moment.">
+    <meta property="og:description" content="Rejoignez Pronostic Pro CFA. Profitez du meilleur cfa pronostic, de l'accès VIP et découvrez le top bookmaker du moment.">
     <meta property="og:type" content="website">
 
     <script type="application/ld+json">
@@ -19,9 +19,9 @@
       "@context": "https://schema.org",
       "@type": "SportsWebSite",
       "name": "Pronostic Pro CFA",
-      "description": "Plateforme de pronostic pro et cfa pronostic pour trouver le meilleur bookmaker.",
+      "description": "Plateforme de pronostic pro, pronostic VIP et cfa pronostic pour trouver le meilleur bookmaker.",
       "url": "https://votre-site-pronostic.com/",
-      "keywords": "pronostic pro, cfa pronostic, pronostic, bookmaker"
+      "keywords": "pronostic pro, cfa pronostic, pronostic, bookmaker, pronostic vip"
     }
     </script>
     
@@ -175,6 +175,85 @@
             justify-content: space-between;
         }
 
+        /* --- GRILLE DES TARIFS VIP --- */
+        .vip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        .vip-card {
+            background: rgba(20, 20, 20, 0.85);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .vip-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+        .vip-card.popular {
+            border-color: var(--accent-color);
+            position: relative;
+        }
+        .vip-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-color);
+            color: #000;
+            padding: 3px 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+        .vip-price {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #fff;
+            margin: 15px 0;
+        }
+        .vip-features {
+            list-style: none;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            opacity: 0.85;
+            line-height: 1.8;
+        }
+        .btn-vip-select {
+            display: block;
+            background: linear-gradient(90deg, #ffcc00, #ff9900);
+            color: #000;
+            text-decoration: none;
+            padding: 12px;
+            font-weight: bold;
+            border-radius: 8px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        /* --- INFOS MÉTHODES DE PAIEMENT --- */
+        .payment-methods-box {
+            margin-top: 35px;
+            padding: 20px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 2rem;
+            margin-top: 15px;
+            opacity: 0.8;
+            flex-wrap: wrap;
+        }
+
         /* --- SECTION BOX REDIRECTION LIVE UNIQUE --- */
         .live-redirect-box {
             background: var(--card-bg);
@@ -321,19 +400,20 @@
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             header { flex-direction: column; gap: 12px; }
-            .nav-btn { font-size: 0.75rem; padding: 12px 2px; }
+            .nav-btn { font-size: 0.7rem; padding: 12px 2px; gap: 3px; }
+            .nav-btn i { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="seo-shadow-layer">
-        <p>Recherche associée : pronostic pro de football et cfa pronostic gratuit.</p>
-        <p>Trouvez un pronostic fiable pour chaque match sur notre guide du parieur.</p>
+        <p>Recherche associée : pronostic pro de football et cfa pronostic gratuit ou vip.</p>
+        <p>Trouvez un pronostic fiable pour chaque match sur notre guide du parieur et l'onglet vip.</p>
         <p>Quel est le meilleur bookmaker en Afrique ? Comparez les cotes bookmaker.</p>
-        <p>Suivez le pronostic pro cfa pour maximiser vos chances de victoires.</p>
+        <p>Suivez le pronostic pro cfa pour maximiser vos chances de victoires avec les scores VIP.</p>
     </div>
 
     <div class="promo-banner">
@@ -356,7 +436,8 @@
 
     <nav class="main-nav">
         <button class="nav-btn active" data-target="live-home" id="tab-live"><i class="fas fa-satellite-dish" style="color: #ff3333;"></i> <span>Accueil Live</span></button>
-        <button class="nav-btn" data-target="pronos" id="tab-prono"><i class="fas fa-chart-line"></i> <span>Pronos du Jour</span></button>
+        <button class="nav-btn" data-target="vip-zone" id="tab-vip"><i class="fas fa-crown" style="color: #ffcc00;"></i> <span>Accès VIP</span></button>
+        <button class="nav-btn" data-target="pronos" id="tab-prono"><i class="fas fa-chart-line"></i> <span>Bonus 200%</span></button>
         <button class="nav-btn" data-target="bookmakers" id="tab-book"><i class="fas fa-shield-halved"></i> <span>Bookmakers</span></button>
         <button class="nav-btn" data-target="register" id="tab-reg"><i class="fas fa-user-plus"></i> <span>Inscription</span></button>
     </nav>
@@ -372,6 +453,58 @@
                 <a href="https://www.livescore.com" target="_blank" class="btn-livescore-large" id="btn-live">
                     <i class="fas fa-arrow-up-right-from-square"></i> Ouvrir LiveScore
                 </a>
+            </div>
+        </section>
+
+        <section id="vip-zone" class="tab-content">
+            <h2 id="title-vip-section">💎 Tarifs & Abonnements VIP</h2>
+            <p style="text-align: center; max-width:600px; margin: 0 auto 20px; opacity:0.8;">Sélectionnez la formule qui vous convient. Une fois votre forfait choisi, vous serez guidé vers notre secrétariat privé.</p>
+            
+            <div class="vip-grid">
+                <div class="vip-card">
+                    <h4 style="font-size:1.3rem; font-weight:800;">PACK STARTER</h4>
+                    <div class="vip-price">5 000 <span style="font-size:1rem; font-weight:500;">U.M</span></div>
+                    <ul class="vip-features">
+                        <li><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Validité : 1 Semaine</li>
+                        <li><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Analyses Quotidiennes</li>
+                        <li><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Assistance 24h/7j</li>
+                    </ul>
+                    <a href="https://t.me/+JotGKo_dJho5Njg0" target="_blank" class="btn-vip-select">Choisir ce plan</a>
+                </div>
+
+                <div class="vip-card popular">
+                    <div class="vip-badge">Recommandé</div>
+                    <h4 style="font-size:1.3rem; font-weight:800; color:var(--accent-color);">PACK PRO</h4>
+                    <div class="vip-price" style="color:var(--accent-color);">15 000 <span style="font-size:1rem; font-weight:500; color:#fff;">U.M</span></div>
+                    <ul class="vip-features">
+                        <li><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Validité : 1 Mois</li>
+                        <li><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Cotations Élevées Exclusives</li>
+                        <li><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Accès Canal Privé 15K</li>
+                    </ul>
+                    <a href="https://t.me/+JotGKo_dJho5Njg0" target="_blank" class="btn-vip-select" style="background: var(--accent-color);">Choisir ce plan</a>
+                </div>
+
+                <div class="vip-card">
+                    <h4 style="font-size:1.3rem; font-weight:800;">PACK ELITE</h4>
+                    <div class="vip-price">35 000 <span style="font-size:1rem; font-weight:500;">U.M</span></div>
+                    <ul class="vip-features">
+                        <li><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Validité : 3 Mois</li>
+                        <li><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Gestion de Capital Élite</li>
+                        <li><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Alertes VIP Prioritaires</li>
+                    </ul>
+                    <a href="https://t.me/+JotGKo_dJho5Njg0" target="_blank" class="btn-vip-select">Choisir ce plan</a>
+                </div>
+            </div>
+
+            <div class="payment-methods-box" style="text-align: center;">
+                <h4 style="font-weight: 800; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-globe" style="color: var(--accent-color); margin-right: 8px;"></i> Paiements Internationaux Acceptés</h4>
+                <p style="font-size: 0.95rem; opacity: 0.8; margin-top: 5px;">Nous acceptons absolument toutes les méthodes de paiement du monde (Orange Money, MTN, Mobile Money, Wave, Visa, Mastercard, Crypto, etc.).</p>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa" style="color: #0057b8;" title="Visa"></i>
+                    <i class="fab fa-cc-mastercard" style="color: #ff5f00;" title="Mastercard"></i>
+                    <i class="fas fa-mobile-alt" style="color: #28a745;" title="Mobile Money / Wave / Orange / MTN"></i>
+                    <i class="fab fa-bitcoin" style="color: #f7931a;" title="Cryptomonnaies"></i>
+                </div>
             </div>
         </section>
 
@@ -439,7 +572,7 @@
     </main>
 
     <div class="floating-socials">
-        <a href="https://t.me/+JotGKo_dJho5Njg0" target="_blank" class="social-btn telegram" title="Canal Telegram unique"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://t.me/+JotGKo_dJho5Njg0" target="_blank" class="social-btn telegram" title="Canal Telegram"><i class="fab fa-telegram-plane"></i></a>
         <a href="https://whatsapp.com/channel/0029VbBqk6XD38CQ5XfmfT26" target="_blank" class="social-btn whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
     </div>
 
@@ -458,23 +591,23 @@
         // --- ENGIN DE TRADUCTION AUTOMATIQUE BASÉ SUR LE NAVIGATEUR ---
         const translations = {
             en: {
-                tabLive: "Live scores", tabProno: "Promo Bonus", tabBook: "Bookmaker List", tabReg: "Join Us",
+                tabLive: "Live scores", tabVip: "VIP Pricing", tabProno: "Promo Bonus", tabBook: "Bookmaker List", tabReg: "Join Us",
                 titleLive: "Live scores", headlineLive: "Follow all scores in real-time", descLive: "Instantly check live scores, matching statistics and game flow directly on the world leading LiveScore platform.", btnLive: "Open LiveScore",
                 titleProno: "🎁 Special Welcome Offer", headlineBonus: "Register with promo code", descBonus: "To get your instant 200% bonus on your first deposit at our partner bookmaker websites.",
                 titleRegisterSection: "📝 Fast Sign Up", btnSubmitReg: "Create My Account", placeholderName: "Full Name", placeholderEmail: "Email", placeholderPass: "Password",
                 alertSuccess: "Success! Your registration data has been saved."
             },
             es: {
-                tabLive: "Marcadores", tabProno: "Bono Especial", tabBook: "Casas Bookmaker", tabReg: "Ingresar",
-                titleLive: "Partidos en Directo", headlineLive: "Sigue todos los marcadores en tiempo real", descLive: "Consulta al instante los resultados en vivo, estadísticas y flujo de juego directement en la plataforma líder LiveScore.", btnLive: "Abrir LiveScore",
+                tabLive: "Marcadores", tabVip: "Precios VIP", tabProno: "Bono Especial", tabBook: "Casas Bookmaker", tabReg: "Ingresar",
+                titleLive: "Partidos en Directo", headlineLive: "Sigue todos los marcadores en tiempo real", descLive: "Consulta al instante los resultados en vivo, estadísticas y flujo de juego directamente en la plataforma líder LiveScore.", btnLive: "Abrir LiveScore",
                 titleProno: "🎁 Oferta Especial de Bienvenida", headlineBonus: "Regístrese con el código promocional", descBonus: "Para obtener de inmediato su 200% de bonificación en su primer depósito con nuestro socio bookmaker.",
                 titleRegisterSection: "📝 Registro Rápido", btnSubmitReg: "Crear cuenta", placeholderName: "Nombre completo", placeholderEmail: "Email", placeholderPass: "Contraseña",
                 alertSuccess: "¡Éxito! Su registro ha sido guardado de manera segura."
             },
             pt: {
-                tabLive: "Placares", tabProno: "Bônus Promo", tabBook: "Lista Bookmaker", tabReg: "Cadastrar",
-                titleLive: "Partidos em Directo", headlineLive: "Siga todos os placares em tempo real", descLive: "Consulte imediatamente os resultados ao vivo e estatísticas diretamente no site oficial LiveScore.", btnLive: "Abrir LiveScore",
-                titleProno: "🎁 Oferta Especial de Boas-Vindas", headlineBonus: "Inscreva-se com o código promocional", descBonus: "Para ganhar um bônus imediato de 200% no seu primeiro depósito junto à plataforma parceira bookmaker.",
+                tabLive: "Placares", tabVip: "Preços VIP", tabProno: "Bônus Promo", tabBook: "Lista Bookmaker", tabReg: "Cadastrar",
+                titleLive: "Partidos em Directo", headlineLive: "Siga todos os placares em tempo real", descLive: "Consulte imediatamente os resultados ao vivo e estatísticas diretamente no site officiel LiveScore.", btnLive: "Abrir LiveScore",
+                titleProno: "🎁 Oferta Especial de Boas-Vindas", headlineBonus: "Inscreva-se com o código promocional", descBonus: "Para ganhar um bônus imediato de 200% no seu primeiro dépôt junto à plataforma parceira bookmaker.",
                 titleRegisterSection: "📝 Cadastro Rápido", btnSubmitReg: "Criar minha conta", placeholderName: "Nome completo", placeholderEmail: "Email", placeholderPass: "Senha",
                 alertSuccess: "Cadastro efetuado com sucesso!"
             }
@@ -490,6 +623,7 @@
                 const t = translations[userLang];
                 
                 document.getElementById('tab-live').querySelector('span').innerText = t.tabLive;
+                document.getElementById('tab-vip').querySelector('span').innerText = t.tabVip;
                 document.getElementById('tab-prono').querySelector('span').innerText = t.tabProno;
                 document.getElementById('tab-book').querySelector('span').innerText = t.tabBook;
                 document.getElementById('tab-reg').querySelector('span').innerText = t.tabReg;
