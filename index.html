@@ -328,11 +328,12 @@
 
         /* --- BOOKMAKERS --- */
         .bookmaker-card { 
-            border-radius: 16px; padding: 25px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-decoration: none; box-shadow: 0 8px 25px rgba(0,0,0,0.3); border: 1px solid var(--border-color); height: 180px; transition: transform 0.3s;
+            border-radius: 16px; padding: 25px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-decoration: none; box-shadow: 0 8px 25px rgba(0,0,0,0.3); border: 1px solid var(--border-color); min-height: 220px; transition: transform 0.3s;
         }
         .bookmaker-card:hover { transform: translateY(-6px); }
-        .bookmaker-logo { max-width: 90%; max-height: 65px; object-fit: contain; margin-bottom: 15px; }
-        .promo-tag { color: var(--accent-color); font-weight: bold; font-size: 1.05rem; letter-spacing: 0.5px; }
+        .bookmaker-logo { max-width: 90%; max-height: 55px; object-fit: contain; margin-bottom: 12px; }
+        .promo-tag { color: var(--accent-color); font-weight: bold; font-size: 1rem; letter-spacing: 0.5px; margin-bottom: 15px; }
+        .btn-bookmaker-action { width: 100%; background: #28a745; color: white; border: none; padding: 10px 5px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; text-align: center; text-transform: uppercase; box-shadow: 0 4px 10px rgba(40,167,69,0.3); }
 
         /* --- FORMULAIRE --- */
         .pro-form-card { max-width: 550px; margin: 0 auto; padding: 35px; }
@@ -387,16 +388,47 @@
     </header>
 
     <nav class="main-nav">
-        <button class="nav-btn active" data-target="vip-zone" id="tab-vip"><i class="fas fa-crown" style="color: #ffcc00;"></i> <span>Canal VIP Telegram</span></button>
+        <button class="nav-btn active" data-target="bookmakers" id="tab-book"><i class="fas fa-shield-halved"></i> <span>Bookmakers</span></button>
+        <button class="nav-btn" data-target="vip-zone" id="tab-vip"><i class="fas fa-crown" style="color: #ffcc00;"></i> <span>Canal VIP Telegram</span></button>
         <button class="nav-btn" data-target="live-home" id="tab-live"><i class="fas fa-satellite-dish" style="color: #ff3333;"></i> <span>Accueil Live</span></button>
         <button class="nav-btn" data-target="pronos" id="tab-prono"><i class="fas fa-chart-line"></i> <span>Bonus 200%</span></button>
-        <button class="nav-btn" data-target="bookmakers" id="tab-book"><i class="fas fa-shield-halved"></i> <span>Bookmakers</span></button>
         <button class="nav-btn" data-target="register" id="tab-reg"><i class="fas fa-user-plus"></i> <span>Inscription</span></button>
     </nav>
 
     <main class="content-container">
         
-        <section id="vip-zone" class="tab-content active">
+        <section id="bookmakers" class="tab-content active">
+            <h2 id="title-book">🏆 Plateformes Officielles Partenaires</h2>
+            <div class="grid-layout">
+                <a href="https://affpa.top/L?tag=d_3906745m_97c_&site=3906745&ad=97" target="_blank" class="bookmaker-card" style="background: #0d2247;">
+                    <img class="bookmaker-logo" src="https://img.icons8.com/color/180/1xbet.png" alt="1XBET" onerror="this.src='https://placehold.co/200x80/0d2247/ffffff?text=1XBET'">
+                    <span class="promo-tag">CODE PROMO : 20VM</span>
+                    <div class="btn-bookmaker-action">S'inscrire ici et bénéficier de l'offre</div>
+                </a>
+                <a href="https://lb-aff.com/L?tag=d_3914573m_66803c_apk1&site=3914573&ad=66803" target="_blank" class="bookmaker-card" style="background: #1a4d2e;">
+                    <img class="bookmaker-logo" src="https://placehold.co/200x80/1a4d2e/ffffff?text=LINEBET" alt="Linebet">
+                    <span class="promo-tag">CODE PROMO : 20VM</span>
+                    <div class="btn-bookmaker-action">S'inscrire ici et bénéficier de l'offre</div>
+                </a>
+                <a href="https://combodef.com/L?tag=d_4299584m_60651c_&site=4299584&ad=60651" target="_blank" class="bookmaker-card" style="background: #131d27;">
+                    <img class="bookmaker-logo" src="https://placehold.co/200x80/131d27/ff6600?text=PARIPESA" alt="Paripesa">
+                    <span class="promo-tag">CODE PROMO : 20VM</span>
+                    <div class="btn-bookmaker-action">S'inscrire ici et bénéficier de l'offre</div>
+                </a>
+                <a href="https://refpakrtsb.top/L?tag=d_3907081m_66335c_&site=3907081&ad=66335" target="_blank" class="bookmaker-card" style="background: #232323;">
+                    <img class="bookmaker-logo" src="https://img.icons8.com/color/180/melbet.png" alt="Melbet" onerror="this.src='https://placehold.co/200x80/232323/ffcc00?text=MELBET'">
+                    <span class="promo-tag">CODE PROMO : 20VM</span>
+                    <div class="btn-bookmaker-action">S'inscrire ici et bénéficier de l'offre</div>
+                </a>
+                <a href="https://bonusweb.org/L?tag=d_3955561m_63543c_&site=3955561&ad=63543" target="_blank" class="bookmaker-card" style="background: #191919;">
+                    <img class="bookmaker-logo" src="https://placehold.co/200x80/191919/e50914?text=888STARZ" alt="888starz">
+                    <span class="promo-tag">CODE PROMO : 20VM</span>
+                    <div class="btn-bookmaker-action">S'inscrire ici et bénéficier de l'offre</div>
+                </a>
+            </div>
+        </section>
+
+        <section id="vip-zone" class="tab-content">
             <h2 id="title-vip-section">👑 Rejoindre le Canal VIP Telegram</h2>
             <p style="text-align: center; max-width:750px; margin: 0 auto 25px; opacity:0.9; line-height:1.6; font-size:1.1rem;">
                 L'accès au groupe privé est soumis à un abonnement. Sélectionnez votre forfait ci-dessous pour <strong>payer directement via notre WhatsApp de paiement (+237 671038587)</strong>. Dès validation de votre paiement, <strong>vous intégrez instantanément le canal VIP Telegram !</strong>
@@ -471,32 +503,6 @@
                 <p>Pour obtenir immédiatement <strong>200% de bonus</strong> sur votre premier dépôt chez nos bookmakers partenaires.</p>
                 <a href="https://t.me/+JotGKo_dJho5Njg0" target="_blank" class="btn-whatsapp-large" id="btn-wa" style="background-color: var(--primary-btn); text-decoration:none;">
                     <i class="fas fa-user-plus"></i> Profiter du Bonus 200%
-                </a>
-            </div>
-        </section>
-
-        <section id="bookmakers" class="tab-content">
-            <h2 id="title-book">🏆 Plateformes Officielles Partenaires</h2>
-            <div class="grid-layout">
-                <a href="https://affpa.top/L?tag=d_3906745m_97c_&site=3906745&ad=97" target="_blank" class="bookmaker-card" style="background: #0d2247;">
-                    <img class="bookmaker-logo" src="https://img.icons8.com/color/180/1xbet.png" alt="1XBET" onerror="this.src='https://placehold.co/200x80/0d2247/ffffff?text=1XBET'">
-                    <span class="promo-tag">CODE PROMO : 20VM</span>
-                </a>
-                <a href="https://lb-aff.com/L?tag=d_3914573m_66803c_apk1&site=3914573&ad=66803" target="_blank" class="bookmaker-card" style="background: #1a4d2e;">
-                    <img class="bookmaker-logo" src="https://placehold.co/200x80/1a4d2e/ffffff?text=LINEBET" alt="Linebet">
-                    <span class="promo-tag">CODE PROMO : 20VM</span>
-                </a>
-                <a href="https://combodef.com/L?tag=d_4299584m_60651c_&site=4299584&ad=60651" target="_blank" class="bookmaker-card" style="background: #131d27;">
-                    <img class="bookmaker-logo" src="https://placehold.co/200x80/131d27/ff6600?text=PARIPESA" alt="Paripesa">
-                    <span class="promo-tag">CODE PROMO : 20VM</span>
-                </a>
-                <a href="https://refpakrtsb.top/L?tag=d_3907081m_66335c_&site=3907081&ad=66335" target="_blank" class="bookmaker-card" style="background: #232323;">
-                    <img class="bookmaker-logo" src="https://img.icons8.com/color/180/melbet.png" alt="Melbet" onerror="this.src='https://placehold.co/200x80/232323/ffcc00?text=MELBET'">
-                    <span class="promo-tag">CODE PROMO : 20VM</span>
-                </a>
-                <a href="https://bonusweb.org/L?tag=d_3955561m_63543c_&site=3955561&ad=63543" target="_blank" class="bookmaker-card" style="background: #191919;">
-                    <img class="bookmaker-logo" src="https://placehold.co/200x80/191919/e50914?text=888STARZ" alt="888starz">
-                    <span class="promo-tag">CODE PROMO : 20VM</span>
                 </a>
             </div>
         </section>
