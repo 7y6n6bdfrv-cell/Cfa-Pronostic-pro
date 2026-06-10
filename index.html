@@ -81,12 +81,12 @@
         }
         .promo-text {
             display: inline-block;
-            font-size: 1.1rem;
-            animation: vaEtVient 20s linear infinite alternate;
+            font-size: 1.2rem;
+            animation: vaEtVient 15s linear infinite alternate;
         }
         @keyframes vaEtVient {
-            0% { transform: translate3d(5%, 0, 0); }
-            100% { transform: translate3d(-35%, 0, 0); }
+            0% { transform: translate3d(15%, 0, 0); }
+            100% { transform: translate3d(-15%, 0, 0); }
         }
         .highlight { background: #fffb00; color: black; padding: 2px 8px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
 
@@ -232,7 +232,21 @@
         .bonus-box .highlight-bonus { color: var(--accent-color); font-size: 2.5rem; display: block; margin: 10px 0; font-weight: 900; }
         .bonus-box p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 25px; }
 
-        /* --- CONTENEUR CACHÉ POUR FORCER L'INDEXATION GOOGLE (SEO SPY) --- */
+        .btn-whatsapp-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            text-decoration: none;
+            padding: 16px 35px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .btn-whatsapp-large:hover { transform: scale(1.04); }
+
+        /* --- CONTENEUR CACHÉ POUR FORCER L'INDEXATION GOOGLE --- */
         .seo-shadow-layer {
             position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden;
         }
@@ -284,7 +298,9 @@
             width: 55px; height: 55px; border-radius: 50%; display: flex; 
             justify-content: center; align-items: center; color: white; 
             font-size: 1.7rem; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.4); 
+            transition: transform 0.2s;
         }
+        .social-btn:hover { transform: scale(1.1); }
         .telegram { background: #0088cc; } .whatsapp { background: #25D366; }
 
         /* --- BANDE DE DÉFILEMENT IA EN BAS --- */
@@ -321,7 +337,7 @@
     </div>
 
     <div class="promo-banner">
-        <span class="promo-text">🔥 CODE PROMO UNIQUE RECONNU : <strong class="highlight">20VM</strong> SUR TOUTES LES PLATEFORMES POUR DÉBLOQUER 200% DE CRÉDIT SUPPLÉMENTAIRE ! 🔥</span>
+        <span class="promo-text">🔥 <strong class="highlight">200% de bonus avec le code promo 20VM</strong> 🔥</span>
     </div>
 
     <header>
@@ -367,7 +383,7 @@
                 <h3 id="headline-bonus">Inscrivez-vous avec le code promo</h3>
                 <span class="highlight-bonus">CODE : 20VM</span>
                 <p id="desc-bonus">Pour obtenir immédiatement <strong>200% de bonus</strong> sur votre premier dépôt chez nos bookmakers partenaires.</p>
-                <a href="https://whatsapp.com/channel/0029VbBqk6XD38CQ5XfmfT26" target="_blank" class="btn-whatsapp-large" id="btn-wa" style="background-color: var(--primary-btn);">
+                <a href="https://t.me/+JotGKo_dJho5Njg0" target="_blank" class="btn-whatsapp-large" id="btn-wa" style="background-color: var(--primary-btn);">
                     <i class="fas fa-user-plus"></i> Profiter du Bonus 200%
                 </a>
             </div>
@@ -423,7 +439,7 @@
     </main>
 
     <div class="floating-socials">
-        <a href="https://t.me/votre_canal_telegram" target="_blank" class="social-btn telegram" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://t.me/+JotGKo_dJho5Njg0" target="_blank" class="social-btn telegram" title="Canal Telegram unique"><i class="fab fa-telegram-plane"></i></a>
         <a href="https://whatsapp.com/channel/0029VbBqk6XD38CQ5XfmfT26" target="_blank" class="social-btn whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
     </div>
 
@@ -431,7 +447,7 @@
         <div class="robot-icon-area"><i class="fas fa-robot"></i></div>
         <div class="ticker-wrap">
             <div class="ticker-content">
-                🤖 PROMO PARI : INSCRIVEZ-VOUS SUR VOTRE BOOKMAKER PRÉFÉRÉ AVEC LE CODE UNIQUE <span style="color:var(--accent-color);">20VM</span> ET PROFITEZ DE 200% DE BONUS CRÉDITÉ IMMÉDIATEMENT SUR VOTRE PREMIER DÉPÔT. 🔞 JOUER COMPORTE DES RISQUES.
+                🤖 📊 [ROBOT PRONO PRO] : <span style="color:var(--accent-color);">200% de bonus avec le code promo 20VM</span> CHEZ TOUS NOS BOOKMAKERS PARTENAIRES ! REJOIGNEZ NOTRE CANAL PRIVÉ POUR EN PROFITER. 🔞 INTERDIT AUX MOINS DE 18 ANS.
             </div>
         </div>
     </div>
@@ -439,7 +455,7 @@
     <script>
         let submitted = false;
 
-        // --- ENGIN DE TRADUCTION AUTOMATIQUE BASÉ SUR LE NAVIGATEUR (CIBLE : PRONOSTIC, PRONOSTIC PRO, CFA PRONOSTIC, BOOKMAKER) ---
+        // --- ENGIN DE TRADUCTION AUTOMATIQUE BASÉ SUR LE NAVIGATEUR ---
         const translations = {
             en: {
                 tabLive: "Live scores", tabProno: "Promo Bonus", tabBook: "Bookmaker List", tabReg: "Join Us",
@@ -450,7 +466,7 @@
             },
             es: {
                 tabLive: "Marcadores", tabProno: "Bono Especial", tabBook: "Casas Bookmaker", tabReg: "Ingresar",
-                titleLive: "Partidos en Directo", headlineLive: "Sigue todos los marcadores en tiempo real", descLive: "Consulta al instante los resultados en vivo, estadísticas y flujo de juego directamente en la plataforma líder LiveScore.", btnLive: "Abrir LiveScore",
+                titleLive: "Partidos en Directo", headlineLive: "Sigue todos los marcadores en tiempo real", descLive: "Consulta al instante los resultados en vivo, estadísticas y flujo de juego directement en la plataforma líder LiveScore.", btnLive: "Abrir LiveScore",
                 titleProno: "🎁 Oferta Especial de Bienvenida", headlineBonus: "Regístrese con el código promocional", descBonus: "Para obtener de inmediato su 200% de bonificación en su primer depósito con nuestro socio bookmaker.",
                 titleRegisterSection: "📝 Registro Rápido", btnSubmitReg: "Crear cuenta", placeholderName: "Nombre completo", placeholderEmail: "Email", placeholderPass: "Contraseña",
                 alertSuccess: "¡Éxito! Su registro ha sido guardado de manera segura."
@@ -499,7 +515,7 @@
 
         window.addEventListener('DOMContentLoaded', applyAutomaticLanguage);
 
-        // --- ENVOI FORMULAIRE ---
+        // --- ENVOI FORMULAIRE GOOGLE FORMS ---
         const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScyvshRscfshSgshshshshshshshsh/formResponse"; 
         const ENTRY_ID_NAME = "entry.1000001";     
         const ENTRY_ID_EMAIL = "entry.1000002";    
@@ -519,7 +535,7 @@
             submitted = false;
         }
 
-        // --- ONGLETS ---
+        // --- GESTION DES ONGLETS ---
         const navButtons = document.querySelectorAll('.nav-btn');
         const tabContents = document.querySelectorAll('.tab-content');
         navButtons.forEach(button => {
@@ -531,7 +547,7 @@
             });
         });
 
-        // --- COULEUR THEME ---
+        // --- CHANGEMENT DE THEME DE COULEUR ---
         const themeBtn = document.getElementById('theme-toggle');
         themeBtn.addEventListener('click', () => {
             const cur = document.documentElement.getAttribute('data-theme');
