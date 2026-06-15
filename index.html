@@ -78,6 +78,7 @@
             font-weight: bold;
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
             z-index: 101;
+            text-align: center;
         }
         .promo-text {
             display: inline-block;
@@ -88,7 +89,7 @@
             0% { transform: translate3d(15%, 0, 0); }
             100% { transform: translate3d(-15%, 0, 0); }
         }
-        .highlight { background: #fffb00; color: black; padding: 2px 8px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .highlight { background: #fffb00; color: black; padding: 2px 8px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); cursor: pointer; }
 
         /* --- EN-TÊTE --- */
         header { 
@@ -308,7 +309,7 @@
             backdrop-filter: blur(10px);
         }
         .bonus-box h3 { font-size: 2.2rem; margin-bottom: 15px; font-weight: 800; color: #fff; }
-        .bonus-box .highlight-bonus { color: var(--accent-color); font-size: 2.5rem; display: block; margin: 10px 0; font-weight: 900; }
+        .bonus-box .highlight-bonus { color: var(--accent-color); font-size: 2.5rem; display: block; margin: 10px 0; font-weight: 900; cursor: pointer; }
         .bonus-box p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 25px; }
 
         .btn-whatsapp-large {
@@ -355,10 +356,41 @@
         .ticker-content { display: inline-block; white-space: nowrap; font-weight: bold; color: #fff; font-size: 0.95rem; animation: marquee 22s linear infinite; }
         @keyframes marquee { 0% { transform: translate3d(100%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-        @media (max-width: 768px) {
-            header { flex-direction: column; gap: 12px; }
-            .nav-btn { font-size: 0.7rem; padding: 12px 2px; gap: 3px; }
-            .nav-btn i { font-size: 1.1rem; }
+        .copy-toast {
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            background: #28a745;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 2000;
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+
+        /* --- STYLE POUR TOGGLE INSCRIPTION / CONNEXION --- */
+        .form-toggle-link {
+            display: block;
+            margin-top: 15px;
+            color: var(--accent-color);
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .logged-in-box {
+            text-align: center;
+            padding: 20px;
+        }
+        .logged-in-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .btn-logout {
+            background: linear-gradient(135deg, #dc3545, #bd2130);
+            margin-top: 15px;
         }
     </style>
 </head>
@@ -369,8 +401,8 @@
         <p>Abonnement canal VIP après paiement WhatsApp pour pronostics fiables.</p>
     </div>
 
-    <div class="promo-banner">
-        <span class="promo-text">🔥 <strong class="highlight">200% de bonus avec le code promo 20VM</strong> 🔥</span>
+    <div class="promo-banner" onclick="copyPromoCode()">
+        <span class="promo-text">🔥 <strong class="highlight">200% de bonus avec le code promo 20VM (Cliquez pour copier)</strong> 🔥</span>
     </div>
 
     <header>
@@ -391,8 +423,8 @@
         <button class="nav-btn active" data-target="bookmakers" id="tab-book"><i class="fas fa-shield-halved"></i> <span>Bookmakers</span></button>
         <button class="nav-btn" data-target="vip-zone" id="tab-vip"><i class="fas fa-crown" style="color: #ffcc00;"></i> <span>Canal VIP Telegram</span></button>
         <button class="nav-btn" data-target="live-home" id="tab-live"><i class="fas fa-satellite-dish" style="color: #ff3333;"></i> <span>Accueil Live</span></button>
-        <button class="nav-btn" data-target="pronos" id="tab-prono"><i class="fas fa-chart-line"></i> <span>Bonus 200%</span></button>
-        <button class="nav-btn" data-target="register" id="tab-reg"><i class="fas fa-user-plus"></i> <span>Inscription</span></button>
+        <button class="nav-btn" data-target="pronos" id="tab-prono"><i class="fas fa-gift"></i> <span>Bonus 200%</span></button>
+        <button class="nav-btn" data-target="register" id="tab-reg"><i class="fas fa-user-plus"></i> <span id="nav-reg-text">Inscription</span></button>
     </nav>
 
     <main class="content-container">
@@ -499,8 +531,8 @@
             <div class="bonus-box">
                 <i class="fas fa-gift" style="font-size: 3.5rem; color: var(--accent-color); margin-bottom: 15px;"></i>
                 <h3>Inscrivez-vous avec le code promo</h3>
-                <span class="highlight-bonus">CODE : 20VM</span>
-                <p>Pour obtenir immédiatement <strong>200% de bonus</strong> sur votre premier dépôt chez nos bookmakers partenaires.</p>
+                <span class="highlight-bonus" onclick="copyPromoCode()">CODE : 20VM</span>
+                <p>Pour obtenir immédiatement <strong>200% de bonus</strong> sur votre premier dépôt chez nos bookmakers partenaires. (Cliquez sur le code pour le copier)</p>
                 <a href="https://t.me/+JotGKo_dJho5Njg0" target="_blank" class="btn-whatsapp-large" id="btn-wa" style="background-color: var(--primary-btn); text-decoration:none;">
                     <i class="fas fa-user-plus"></i> Profiter du Bonus 200%
                 </a>
@@ -509,11 +541,12 @@
 
         <section id="register" class="tab-content">
             <h2 id="title-register-section">📝 Inscription Rapide</h2>
-            <div class="card pro-form-card">
-                <form id="register-form" target="hidden_iframe" onsubmit="submitted=true;">
-                    <div class="input-group-icon">
+            <div class="card pro-form-card" id="form-wrapper">
+                <!-- FORMULAIRE PRINCIPAL (INSCRIPTION OU CONNEXION DYNAMIQUE) -->
+                <form id="register-form" target="hidden_iframe" onsubmit="handleFormSubmit(event)">
+                    <div class="input-group-icon" id="name-group">
                         <i class="fas fa-user"></i>
-                        <input type="text" id="reg-name" placeholder="Nom complet" required>
+                        <input type="text" id="reg-name" placeholder="Nom complet">
                     </div>
                     <div class="input-group-icon">
                         <i class="fas fa-envelope"></i>
@@ -524,6 +557,7 @@
                         <input type="password" id="password-field" placeholder="Mot de passe" required>
                     </div>
                     <button type="submit" class="btn-action" id="btn-submit-reg">Créer mon compte</button>
+                    <span class="form-toggle-link" id="form-toggle" onclick="toggleFormMode()">Déjà un compte ? Se connecter</span>
                 </form>
                 <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { handleRegistrationSuccess(); }"></iframe>
             </div>
@@ -534,6 +568,8 @@
         <a href="https://t.me/+JotGKo_dJho5Njg0" target="_blank" class="social-btn telegram" title="Canal Telegram"><i class="fab fa-telegram-plane"></i></a>
         <a href="https://whatsapp.com/channel/0029VbBqk6XD38CQ5XfmfT26" target="_blank" class="social-btn whatsapp" title="Chaîne WhatsApp"><i class="fab fa-whatsapp"></i></a>
     </div>
+
+    <div id="copy-toast" class="copy-toast">Code promo "20VM" copié avec succès ! 👍</div>
 
     <div class="bottom-robot-ticker">
         <div class="robot-icon-area"><i class="fas fa-robot"></i></div>
@@ -546,6 +582,7 @@
 
     <script>
         let submitted = false;
+        let isLoginMode = false; // Permet de savoir si le formulaire est en mode Connexion ou Inscription
 
         // --- MATRICE DE CONVERSION DES TARIFS VIP ---
         const priceMatrix = {
@@ -560,18 +597,17 @@
             const currentCurrency = document.getElementById('currency-selector').value;
             const pricing = priceMatrix[currentCurrency];
 
-            // 1. Mise à jour de l'affichage des textes de prix sur la page
+            localStorage.setItem('selectedCurrency', currentCurrency);
+
             document.getElementById('price-hebdo').innerText = pricing.hebdo;
             document.getElementById('price-mensuel').innerText = pricing.mensuel;
             document.getElementById('price-investisseur').innerText = pricing.investisseur;
 
-            // 2. Mise à jour des symboles monétaires textuels
             const symbols = document.querySelectorAll('.currency-symbol');
             symbols.forEach(symbol => {
                 symbol.innerText = currentCurrency;
             });
 
-            // 3. Reconstruction dynamique des URL WhatsApp privées avec montants pour le paiement
             const textHebdo = encodeURIComponent(`Bonjour, je souhaite m'abonner au Canal VIP Telegram (Pack HEBDO - ${pricing.hebdo} ${currentCurrency})`);
             const textMensuel = encodeURIComponent(`Bonjour, je souhaite m'abonner au Canal VIP Telegram (Pack MENSUEL - ${pricing.mensuel} ${currentCurrency})`);
             const textInvestisseur = encodeURIComponent(`Bonjour, je souhaite m'abonner au Canal VIP Telegram (Pack INVESTISSEUR - ${pricing.investisseur} ${currentCurrency})`);
@@ -581,11 +617,22 @@
             document.getElementById('link-investisseur').href = `https://wa.me/${WHATSAPP_PAY_NUMBER}?text=${textInvestisseur}`;
         }
 
-        // Activer les écouteurs sur le changement de monnaie
         document.getElementById('currency-selector').addEventListener('change', updateVipPricesAndLinks);
         
-        // Lancer une première configuration automatique au chargement initial de la page
-        window.addEventListener('DOMContentLoaded', updateVipPricesAndLinks);
+        // --- CHARGEMENT INITIAL ---
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedCurrency = localStorage.getItem('selectedCurrency');
+            if(savedCurrency) {
+                document.getElementById('currency-selector').value = savedCurrency;
+            }
+            
+            const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+
+            updateVipPricesAndLinks();
+            checkUserSession(); // Vérifie si l'utilisateur est déjà connecté au chargement
+        });
 
         // --- GESTION DES ONGLETS ---
         const navButtons = document.querySelectorAll('.nav-btn');
@@ -599,32 +646,146 @@
             });
         });
 
-        // --- ENVOI FORMULAIRE GOOGLE FORMS ---
+        // --- GESTION DU THEME ---
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('selectedTheme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            if (theme === 'light') {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+
+        // --- FONCTIONNALITÉ : COPIER LE CODE PROMO ---
+        function copyPromoCode() {
+            navigator.clipboard.writeText("20VM").then(() => {
+                const toast = document.getElementById('copy-toast');
+                toast.style.display = 'block';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 2500);
+            });
+        }
+
+        // --- ALTERNATIVE INSCRIPTION / CONNEXION (TOGGLE MODE) ---
+        function toggleFormMode() {
+            const nameGroup = document.getElementById('name-group');
+            const nameInput = document.getElementById('reg-name');
+            const btnSubmit = document.getElementById('btn-submit-reg');
+            const toggleLink = document.getElementById('form-toggle');
+            const formTitle = document.getElementById('title-register-section');
+
+            isLoginMode = !isLoginMode;
+
+            if (isLoginMode) {
+                nameGroup.style.display = 'none';
+                nameInput.removeAttribute('required');
+                formTitle.innerText = "🔑 Connexion";
+                btnSubmit.innerText = "Se connecter";
+                toggleLink.innerText = "Pas de compte ? S'inscrire";
+            } else {
+                nameGroup.style.display = 'flex';
+                nameInput.setAttribute('required', 'true');
+                formTitle.innerText = "📝 Inscription Rapide";
+                btnSubmit.innerText = "Créer mon compte";
+                toggleLink.innerText = "Déjà un compte ? Se connecter";
+            }
+        }
+
+        // --- GESTION DES SOUMISSIONS DU FORMULAIRE ---
         const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScyvshRscfshSgshshshshshshshsh/formResponse"; 
         const ENTRY_ID_NAME = "entry.1000001";     
         const ENTRY_ID_EMAIL = "entry.1000002";    
         const ENTRY_ID_PASSWORD = "entry.1000003"; 
 
-        document.getElementById('register-form').addEventListener('submit', function(e) {
-            const form = document.getElementById('register-form');
+        function handleFormSubmit(e) {
             const nameValue = document.getElementById('reg-name').value;
             const emailValue = document.getElementById('reg-email').value;
             const passwordValue = document.getElementById('password-field').value;
-            form.action = `${GOOGLE_FORM_ACTION_URL}?${ENTRY_ID_NAME}=${encodeURIComponent(nameValue)}&${ENTRY_ID_EMAIL}=${encodeURIComponent(emailValue)}&${ENTRY_ID_PASSWORD}=${encodeURIComponent(passwordValue)}`;
-        });
+            const form = document.getElementById('register-form');
 
-        function handleRegistrationSuccess() {
-            alert("Félicitations ! Votre inscription a été enregistrée avec succès.");
-            document.getElementById('register-form').reset();
-            submitted = false;
+            if (!isLoginMode) {
+                // --- MODE INSCRIPTION ---
+                // Sauvegarde locale dans le navigateur
+                const userData = { name: nameValue, email: emailValue, password: passwordValue };
+                localStorage.setItem('user_' + emailValue, JSON.stringify(userData));
+                localStorage.setItem('activeUserEmail', emailValue); // Connecte l'utilisateur
+
+                // Déclenche l'iframe Google Form en tâche de fond comme avant
+                submitted = true;
+                form.action = `${GOOGLE_FORM_ACTION_URL}?${ENTRY_ID_NAME}=${encodeURIComponent(nameValue)}&${ENTRY_ID_EMAIL}=${encodeURIComponent(emailValue)}&${ENTRY_ID_PASSWORD}=${encodeURIComponent(passwordValue)}`;
+            } else {
+                // --- MODE CONNEXION ---
+                e.preventDefault(); // Stoppe l'envoi Google Form en mode connexion seule
+                const storedUser = localStorage.getItem('user_' + emailValue);
+
+                if (storedUser) {
+                    const parsedUser = JSON.parse(storedUser);
+                    if (parsedUser.password === passwordValue) {
+                        localStorage.setItem('activeUserEmail', emailValue);
+                        alert(`Ravi de vous revoir, ${parsedUser.name} !`);
+                        checkUserSession();
+                        window.location.href = "https://t.me/+JotGKo_dJho5Njg0"; // Redirection vers Telegram
+                    } else {
+                        alert("Mot de passe incorrect ! ❌");
+                    }
+                } else {
+                    alert("Aucun compte trouvé avec cet e-mail ! ❌");
+                }
+            }
         }
 
-        // --- CHANGEMENT DE THEME DE COULEUR ---
-        const themeBtn = document.getElementById('theme-toggle');
-        themeBtn.addEventListener('click', () => {
-            const cur = document.documentElement.getAttribute('data-theme');
-            document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
-        });
+        function handleRegistrationSuccess() {
+            alert("Compte créé avec succès ! Bienvenue chez Pronostic Pro CFA.");
+            checkUserSession();
+            window.location.href = "https://t.me/+JotGKo_dJho5Njg0";
+        }
+
+        // --- RECONNAISSANCE DE LA SESSION (CONNECTÉ OU NON) ---
+        function checkUserSession() {
+            const activeEmail = localStorage.getItem('activeUserEmail');
+            const formWrapper = document.getElementById('form-wrapper');
+            const formTitle = document.getElementById('title-register-section');
+            const navText = document.getElementById('nav-reg-text');
+
+            if (activeEmail) {
+                const userData = JSON.parse(localStorage.getItem('user_' + activeEmail));
+                
+                // Change l'onglet du menu en "Mon Espace"
+                navText.innerText = "Mon Espace";
+                formTitle.innerText = "👤 Votre Compte Pro";
+
+                // Remplace le formulaire par l'espace membre connecté
+                formWrapper.innerHTML = `
+                    <div class="logged-in-box">
+                        <h3>Bienvenue, <span style="color: var(--accent-color);">${userData.name}</span> ! ⭐</h3>
+                        <p>Statut du compte : <strong style="color: #28a745;">Actif</strong></p>
+                        <p style="margin-top: 10px; font-size: 0.95rem; opacity: 0.8;">Vous êtes maintenant connecté sur l'application frontend Pronostic Pro CFA.</p>
+                        <button class="btn-action btn-logout" onclick="logoutUser()">Se déconnecter</button>
+                    </div>
+                `;
+            } else {
+                // Si déconnecté, remet le texte par défaut
+                navText.innerText = "Inscription";
+            }
+        }
+
+        // --- SÉCURITÉ DE DÉCONNEXION ---
+        function logoutUser() {
+            localStorage.removeItem('activeUserEmail');
+            alert("Vous avez été déconnecté.");
+            // Recharge la page proprement pour réinitialiser le formulaire d'origine
+            window.location.reload();
+        }
     </script>
 </body>
 </html>
