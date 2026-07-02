@@ -209,50 +209,6 @@
             border-color: rgba(255, 255, 255, 0.25);
         }
 
-        /* --- SECTION NOUVEAU : PRONOSTICS DU JOUR --- */
-        .daily-prono-box {
-            background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(15, 15, 15, 0.95));
-            border: 2px dashed var(--accent-color);
-            border-radius: 20px;
-            padding: 30px 20px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 35px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .daily-prono-box h3 {
-            font-size: 1.6rem;
-            color: #fff;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-        .daily-prono-box p {
-            font-size: 1rem;
-            opacity: 0.85;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-        .prono-channels-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
-        .btn-channel {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            color: white;
-            text-decoration: none;
-            padding: 15px 20px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .btn-channel.tg { background: #0088cc; }
-        .btn-channel.wa { background: #25D366; }
-
         /* --- GRILLE DES TARIFS VIP --- */
         .vip-grid {
             display: grid;
@@ -472,7 +428,6 @@
             .nav-btn { font-size: 0.9rem; padding: 18px 10px; }
             .nav-btn i { font-size: 1.2rem; }
             .grid-layout { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-            .prono-channels-grid { grid-template-columns: repeat(2, 1fr); }
             .vip-grid { grid-template-columns: repeat(2, 1fr); }
             h2 { font-size: 1.6rem; }
         }
@@ -500,13 +455,14 @@
         </div>
     </div>
 
-    <!-- EN-TÊTE AVEC LE SÉLECTEUR DE LANGUES POPULAIRES -->
+    <!-- EN-TÊTE AVEC LE SÉLECTEUR DE LANGUES POPULAIRES MULTILINGUES -->
     <header>
         <div class="logo-area">
             <div class="logo-icon"><i class="fas fa-crown"></i></div>
             <h1>Pronostic Pro <span class="cfa">CFA</span></h1>
         </div>
         <div class="header-controls">
+            <!-- 🌍 SÉLECTEUR MULTILINGUE (Les 5 langues les plus populaires) -->
             <select id="language-switcher">
                 <option value="fr">🇫🇷 Français</option>
                 <option value="en">🇺🇸 English</option>
@@ -535,21 +491,7 @@
 
     <main class="content-container">
         
-        <!-- 🎯 NOUVEL ESPACE : PRONOSTICS DU JOUR (CENTRALISÉ) -->
-        <div class="daily-prono-box">
-            <h3 data-key="title_daily_prono">🎯 Pronostics & Coupons du Jour</h3>
-            <p data-key="desc_daily_prono">Accédez immédiatement aux analyses du jour et aux combinaisons à forte probabilité. Rejoignez nos canaux officiels pour récupérer le coupon direct.</p>
-            <div class="prono-channels-grid">
-                <a href="https://t.me/+JotGKo_dJho5Njg0" target="_blank" class="btn-channel tg">
-                    <i class="fab fa-telegram-plane"></i> Telegram
-                </a>
-                <button onclick="handleWhatsAppChannelAccess()" class="btn-channel wa">
-                    <i class="fab fa-whatsapp"></i> WhatsApp Channel
-                </button>
-            </div>
-        </div>
-        
-        <!-- SECTION BOOKMAKERS (PREMIER BET RETIRÉ) -->
+        <!-- SECTION BOOKMAKERS (TOUS LES PRINCIPAUX LOGOS AJOUTÉS) -->
         <section id="bookmakers" class="tab-content active">
             <h2 data-key="title_bookmakers">🏆 Institutions et Plateformes Partenaires</h2>
             <div class="grid-layout">
@@ -568,6 +510,12 @@
                 <!-- MELBET -->
                 <a href="https://refpakrtsb.top/L?tag=d_3907081m_66335c_&site=3907081&ad=66335" target="_blank" class="bookmaker-card" style="background: #232323;">
                     <img class="bookmaker-logo" src="https://img.icons8.com/color/180/melbet.png" alt="Melbet">
+                    <span class="promo-tag"><span data-key="cert_code">CODE DE CERTIFICATION</span> : 20VM</span>
+                    <div class="btn-bookmaker-action" data-key="btn_bonus">Accéder au bonus</div>
+                </a>
+                <!-- PREMIER BET -->
+                <a href="#" target="_blank" class="bookmaker-card" style="background: #111;">
+                    <span class="bookmaker-text-logo" style="color: #28a745;"><i class="fas fa-star"></i> PREMIER BET</span>
                     <span class="promo-tag"><span data-key="cert_code">CODE DE CERTIFICATION</span> : 20VM</span>
                     <div class="btn-bookmaker-action" data-key="btn_bonus">Accéder au bonus</div>
                 </a>
@@ -726,7 +674,7 @@
         </div>
     </div>
 
-    <!-- MODULE DE CONFIGURATION DES TRADUCTIONS DES 5 LANGUES -->
+    <!-- MODULE DE CONFIGURATION DES TRADUCTIONS DES 5 LANGUES POPULAIRES -->
     <script>
         const translations = {
             fr: {
@@ -741,8 +689,6 @@
                 title_bookmakers: "🏆 Institutions et Plateformes Partenaires",
                 cert_code: "CODE DE CERTIFICATION",
                 btn_bonus: "Accéder au bonus",
-                title_daily_prono: "🎯 Pronostics & Coupons du Jour",
-                desc_daily_prono: "Accédez immédiatement aux analyses du jour et aux combinaisons à forte probabilité. Rejoignez nos canaux officiels pour récupérer le coupon direct.",
                 title_vip_section: "👑 Acquisition de Forfaits d'Analyses VIP",
                 vip_desc: "L'intégration de notre cellule d'analyse privée requiert une souscription active. Sélectionnez l'offre correspondant à vos objectifs de couverture financière afin de soumettre votre ordre de paiement à notre bureau d'enregistrement (+237 659672569).",
                 vip1_title: "COUVERTURE HEBDOMADAIRE",
@@ -789,8 +735,6 @@
                 title_bookmakers: "🏆 Partner Institutions and Platforms",
                 cert_code: "CERTIFICATION CODE",
                 btn_bonus: "Access Bonus",
-                title_daily_prono: "🎯 Daily Tips & Betting Slips",
-                desc_daily_prono: "Get immediate access to today's analysis and high probability combinations. Join our official channels to grab the direct coupon.",
                 title_vip_section: "👑 Acquisition of VIP Analysis Packages",
                 vip_desc: "Joining our private analysis unit requires an active subscription. Select the offer corresponding to your financial targets to submit your payment to our registration desk (+237 659672569).",
                 vip1_title: "WEEKLY COVERAGE",
@@ -837,8 +781,6 @@
                 title_bookmakers: "🏆 Instituciones y Plataformas Socias",
                 cert_code: "CÓDIGO DE CERTIFICACIÓN",
                 btn_bonus: "Acceder al Bono",
-                title_daily_prono: "🎯 Pronósticos y Cupones del Día",
-                desc_daily_prono: "Acceda de inmediato a los análisis del día y combinaciones de alta probabilidad. Únase a nuestros canales oficiales para obtener el cupón directo.",
                 title_vip_section: "👑 Adquisición de Paquetes de Análisis VIP",
                 vip_desc: "Unirse a nuestra unidad de análisis privado requiere una suscripción activa. Seleccione la oferta correspondiente a sus objetivos para enviar su pago a nuestra oficina de registro (+237 659672569).",
                 vip1_title: "COBERTURA SEMANAL",
@@ -885,8 +827,6 @@
                 title_bookmakers: "🏆 المؤسسات والمنصات الشريكة",
                 cert_code: "رمز الشهادة",
                 btn_bonus: "الحصول على المكافأة",
-                title_daily_prono: "🎯 توقعات وقسائم اليوم",
-                desc_daily_prono: "احصل على وصول فوري لتحليلات اليوم والتوليفات ذات الاحتمالية العالية. انضم إلى قنواتنا الرسمية للحصول على القسيمة المباشرة.",
                 title_vip_section: "👑 شراء باقات التحليل VIP",
                 vip_desc: "الانضمام إلى وحدة التحليل الخاصة بنا يتطلب اشتراكاً نشطاً. اختر العرض المناسب لأهدافك لإرسال الدفع إلى مكتب التسجيل الخاص بنا (+237 659672569).",
                 vip1_title: "تغطية أسبوعية",
@@ -933,20 +873,18 @@
                 title_bookmakers: "🏆 Instituições e Plataformas Parceiras",
                 cert_code: "CÓDIGO DE CERTIFICAÇÃO",
                 btn_bonus: "Acessar Bônus",
-                title_daily_prono: "🎯 Dicas e Cupons do Dia",
-                desc_daily_prono: "Tenha acesso imediato às análises de hoje e combinações de alta probabilidade. Junte-se aos nossos canais oficiais para obter o cupão direto.",
                 title_vip_section: "👑 Aquisição de Pacotes de Análise VIP",
                 vip_desc: "A adesão à nossa unidade de análise privada requer uma assinatura ativa. Selecione a oferta correspondente aos seus objetivos para enviar o pagamento ao nosso balcão de registro (+237 659672569).",
                 vip1_title: "COBERTURA SEMANAL",
-                vip1_f1: "Acesso à Unidade Privada: 7 Días",
+                vip1_f1: "Acesso à Unidade Privada: 7 Dias",
                 vip1_f2: "Análise Estratégica Diária",
                 vip1_f3: "Entrega imediata dos acessos",
                 vip2_title: "COBERTURA MENSAL",
-                vip2_f1: "Acesso à Unidade Privada: 30 Días",
+                vip2_f1: "Acesso à Unidade Privada: 30 Dias",
                 vip2_f2: "Índices de Alto Valor e Portfólios Combinados",
                 vip2_f3: "Processamento prioritário de acesso",
-                vip3_title: "PAQUETE DE INVESTIDOR LST",
-                vip3_f1: "Acesso à Unidade Privada: 90 Días",
+                vip3_title: "PACOTE DE INVESTIDOR LST",
+                vip3_f1: "Acesso à Unidade Privada: 90 Dias",
                 vip3_f2: "Modelagem de Capital e Gestão de Risco",
                 vip3_f3: "Suporte de assistência ao investimento incluso",
                 vip_rec: "Recomendação dos Analistas",
@@ -986,6 +924,7 @@
             localStorage.setItem('preferred_lang_cfa', lang);
             document.documentElement.lang = lang;
             
+            // Adapter la direction du texte pour l'arabe (RTL)
             if (lang === 'ar') {
                 document.documentElement.dir = 'rtl';
                 document.querySelectorAll('.vip-features').forEach(el => el.style.textAlign = 'right');
