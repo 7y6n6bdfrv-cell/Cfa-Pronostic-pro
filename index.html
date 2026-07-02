@@ -4,27 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Pronostic Pro CFA - Plateforme d'Analyses Sportives & Investissements VIP</title>
-    <meta name="description" content="Optimisez vos placements sportifs avec Pronostic Pro CFA. Analyses de marché, outils d'aide à la décision et accès exclusif à notre canal VIP Telegram.">
-    <meta name="keywords" content="pronostic pro, cfa pronostic, investissement sportif, bookmaker, pronostic vip, telegram vip, code promo 1xbet, gestion de capital">
+    <!-- 🎯 CONFIGURATION SEO POUR RECHERCHE GOOGLE (.COM) -->
+    <title data-key="seo_title">Pronostic Pro CFA - Analyses Sportives & Investissements VIP</title>
+    <meta name="description" content="Optimisez vos placements sportifs avec Pronostic Pro CFA. Profitez de 200% de bonus avec le code promo officiel 20VM. Analyses VIP et coupons de paris quotidiens.">
+    <meta name="keywords" content="pronostic pro cfa, code promo 1xbet 20vm, coupon paris sportif, pronostic vip telegram, meilleur pronostiqueur afrique, coupon 1xbet gratuit, bonus 1xbet cfa, linebet code promo, melbet cfa, investissement sportif cote d'ivoire cameroun senegal, pronostic fiable gratuit">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://votre-site-pronostic.com/">
 
-    <meta property="og:title" content="Pronostic Pro CFA - Analyses Sportives de Performance">
-    <meta property="og:description" content="Rejoignez Pronostic Pro CFA. Bénéficiez de l'expertise de nos analystes et intégrez notre canal privé après souscription.">
-    <meta property="og:type" content="website">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SportsWebSite",
-      "name": "Pronostic Pro CFA",
-      "description": "Plateforme d'analyses sportives, outils d'aide à la décision et abonnements VIP exclusifs.",
-      "url": "https://votre-site-pronostic.com/",
-      "keywords": "pronostic pro, cfa pronostic, gestion de capital, investissement sportif"
-    }
-    </script>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -55,7 +41,7 @@
             margin: 0; 
             padding: 0; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            transition: background 0.3s, color 0.3s, border-color 0.3s; 
+            transition: background 0.3s, color 0.3s, border-color 0.3s, transform 0.2s, box-shadow 0.2s; 
         }
 
         body { 
@@ -63,11 +49,11 @@
                         url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
             background-size: cover;
             color: var(--text-color); 
-            padding-bottom: 150px; 
+            padding-bottom: 180px; 
             backdrop-filter: blur(4px);
         }
 
-        /* --- BANNIÈRE DÉFILANTE AMÉLIORÉE (TOP TICKER) --- */
+        /* --- BANNIÈRE DÉFILANTE AVEC CODE PROMO EFFET BATTEMENT DE COEUR --- */
         .promo-banner {
             background: linear-gradient(90deg, #ff0055, #990033);
             color: white;
@@ -80,24 +66,41 @@
             width: 100%;
         }
         .promo-ticker-wrap {
-            width: 100%;
-            overflow: hidden;
+            display: flex;
+            width: max-content;
         }
         .promo-text {
             display: inline-block;
             white-space: nowrap;
             font-size: 1.1rem;
             font-weight: bold;
-            padding-left: 100%;
+            padding-right: 50px;
             animation: topMarquee 18s linear infinite;
         }
         @keyframes topMarquee {
             0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-100%, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
         }
-        .highlight { background: #fffb00; color: black; padding: 2px 10px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); font-weight: 900; }
+        
+        .highlight { 
+            background: #fffb00; 
+            color: black; 
+            padding: 2px 12px; 
+            border-radius: 4px; 
+            box-shadow: 0 2px 8px rgba(255,251,0,0.5); 
+            font-weight: 900; 
+            display: inline-block;
+            animation: heartBeat 1.2s infinite ease-in-out;
+        }
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.12); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.12); }
+            70% { transform: scale(1); }
+        }
 
-        /* --- EN-TÊTE --- */
+        /* --- EN-TÊTE AVEC LE LOGO --- */
         header { 
             display: flex; 
             flex-direction: column;
@@ -110,23 +113,38 @@
             backdrop-filter: blur(10px);
             text-align: center;
         }
-        .logo-area h1 { font-size: 1.8rem; }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo-icon {
+            background: linear-gradient(135deg, #ffcc00, #ff6600);
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 10px rgba(255,204,0,0.4);
+        }
+        .logo-area h1 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.5px; }
         .cfa { color: var(--accent-color); font-weight: 800; text-shadow: 0 0 10px rgba(255,204,0,0.3); }
-        .header-controls { display: flex; gap: 10px; align-items: center; width: 100%; justify-content: center; }
+        
+        .header-controls { display: flex; gap: 10px; align-items: center; width: 100%; justify-content: center; flex-wrap: wrap; }
         .header-controls select, .header-controls button { 
             padding: 10px 14px; 
             border-radius: 6px; 
-            background: rgba(0,0,0,0.3); 
+            background: rgba(0,0,0,0.5); 
             color: var(--text-color); 
             border: 1px solid var(--border-color); 
             cursor: pointer; 
             font-weight: bold;
+            font-size: 0.9rem;
         }
 
-        /* --- NAVIGATION PAR ONGLETS (RESPONSIVE) --- */
+        /* --- NAVIGATION PAR ONGLETS --- */
         .main-nav { 
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             background: var(--card-bg); 
             border-bottom: 2px solid var(--border-color); 
             position: sticky;
@@ -137,9 +155,9 @@
         .nav-btn { 
             background: none; 
             border: none; 
-            padding: 15px 8px; 
+            padding: 15px 4px; 
             color: var(--text-color); 
-            font-size: 0.85rem; 
+            font-size: 0.8rem; 
             cursor: pointer; 
             font-weight: 600; 
             text-align: center;
@@ -185,6 +203,55 @@
             flex-direction: column;
             justify-content: space-between;
         }
+        .card:hover, .bookmaker-card:hover, .vip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        /* --- SECTION NOUVEAU : PRONOSTICS DU JOUR --- */
+        .daily-prono-box {
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(15, 15, 15, 0.95));
+            border: 2px dashed var(--accent-color);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .daily-prono-box h3 {
+            font-size: 1.6rem;
+            color: #fff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .daily-prono-box p {
+            font-size: 1rem;
+            opacity: 0.85;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .prono-channels-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        .btn-channel {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .btn-channel.tg { background: #0088cc; }
+        .btn-channel.wa { background: #25D366; }
 
         /* --- GRILLE DES TARIFS VIP --- */
         .vip-grid {
@@ -199,7 +266,6 @@
             border-radius: 15px;
             padding: 25px 15px;
             text-align: center;
-            transition: transform 0.3s, border-color 0.3s;
         }
         .vip-card.popular {
             border-color: var(--accent-color);
@@ -230,7 +296,10 @@
             font-size: 0.9rem;
             opacity: 0.85;
             line-height: 1.8;
+            text-align: left;
+            padding-left: 10px;
         }
+        .vip-features li { margin-bottom: 8px; }
         .btn-vip-select {
             display: block;
             background: linear-gradient(90deg, #25D366, #1ebd59);
@@ -242,6 +311,7 @@
             text-transform: uppercase;
             font-size: 0.85rem;
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            text-align: center;
         }
 
         /* --- INFOS PAIEMENT --- */
@@ -303,7 +373,7 @@
             margin: 20px auto;
         }
         .bonus-box h3 { font-size: 1.8rem; margin-bottom: 10px; }
-        .bonus-box .highlight-bonus { color: var(--accent-color); font-size: 2rem; display: block; margin: 10px 0; font-weight: 900; }
+        .bonus-box .highlight-bonus { color: var(--accent-color); font-size: 2rem; display: block; margin: 10px 0; font-weight: 900; cursor: pointer; animation: heartBeat 1.2s infinite ease-in-out;}
         .bonus-box p { font-size: 1.1rem; margin-bottom: 20px; }
         .btn-whatsapp-large {
             display: inline-flex;
@@ -319,23 +389,56 @@
 
         /* --- BOOKMAKERS --- */
         .bookmaker-card { 
-            border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-decoration: none; border: 1px solid var(--border-color); min-height: 200px;
+            border-radius: 16px; padding: 25px 20px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-decoration: none; border: 1px solid var(--border-color); min-height: 220px;
         }
-        .bookmaker-logo { max-width: 85%; max-height: 45px; object-fit: contain; margin-bottom: 12px; }
-        .promo-tag { color: var(--accent-color); font-weight: bold; font-size: 0.95rem; margin-bottom: 15px; }
-        .btn-bookmaker-action { width: 100%; background: #28a745; color: white; border: none; padding: 12px 5px; border-radius: 6px; font-size: 0.8rem; font-weight: bold; text-align: center; text-transform: uppercase; }
+        .bookmaker-logo { width: auto; max-width: 85%; height: 45px; object-fit: contain; margin-bottom: 15px; filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.3)); }
+        .bookmaker-text-logo { font-size: 1.6rem; font-weight: 900; margin-bottom: 15px; letter-spacing: 0.5px; }
+        .promo-tag { color: var(--accent-color); font-weight: bold; font-size: 0.95rem; margin-bottom: 15px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .btn-bookmaker-action { width: 100%; background: #28a745; color: white; border: none; padding: 12px 5px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; text-align: center; text-transform: uppercase; cursor: pointer;}
 
         /* --- FORMULAIRE --- */
         .pro-form-card { max-width: 550px; margin: 0 auto; padding: 25px 20px; }
         .input-group-icon { position: relative; display: flex; align-items: center; margin-bottom: 15px; }
         .input-group-icon i { position: absolute; left: 15px; color: rgba(255,255,255,0.4); font-size: 1rem; }
         .input-group-icon input { width: 100%; padding: 12px 15px 12px 40px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 8px; font-size: 0.95rem; outline: none; }
-        .btn-action { background: linear-gradient(135deg, var(--primary-btn), #0056b3); color: white; border: none; padding: 14px; width: 100%; border-radius: 8px; font-size: 1rem; font-weight: bold; }
+        .btn-action { background: linear-gradient(135deg, var(--primary-btn), #0056b3); color: white; border: none; padding: 14px; width: 100%; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer;}
 
         /* --- SOCIAUX FLOTTANTS --- */
         .floating-socials { position: fixed; bottom: 70px; left: 15px; display: flex; flex-direction: column; gap: 10px; z-index: 1000; }
-        .social-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 1.5rem; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
+        .social-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 1.5rem; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.4); border:none; cursor:pointer; }
         .telegram { background: #0088cc; } .whatsapp { background: #25D366; }
+
+        /* --- CERTIFICATION REGLEMENTAIRE +21 ANS & FOOTER --- */
+        .certification-footer {
+            background: #0a0a0a;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 30px 15px;
+            text-align: center;
+            margin-top: 50px;
+            color: #888;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+        .cert-badge-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .cert-21-badge {
+            border: 3px solid #dc3545;
+            color: #dc3545;
+            font-weight: 900;
+            font-size: 1.4rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(220, 53, 69, 0.05);
+        }
 
         /* --- TICKER DÉFILEMENT (BAS) --- */
         .bottom-robot-ticker { position: fixed; bottom: 0; left: 0; width: 100%; height: 50px; background: #0f0f0f; border-top: 2px solid var(--accent-color); display: flex; align-items: center; padding: 0 15px; z-index: 1500; overflow: hidden; }
@@ -361,7 +464,7 @@
         .form-toggle-link { display: block; margin-top: 15px; color: var(--accent-color); text-decoration: underline; cursor: pointer; font-size: 0.9rem; }
         .logged-in-box { text-align: center; padding: 15px; }
         .logged-in-box h3 { font-size: 1.3rem; margin-bottom: 10px; }
-        .btn-logout { background: linear-gradient(135deg, #dc3545, #bd2130); margin-top: 15px; }
+        .btn-logout { background: linear-gradient(135deg, #dc3545, #bd2130); margin-top: 15px; width: 100%; padding: 12px; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
 
         /* --- RESPONSIVE MEDIA QUERIES --- */
         @media (min-width: 576px) {
@@ -369,6 +472,7 @@
             .nav-btn { font-size: 0.9rem; padding: 18px 10px; }
             .nav-btn i { font-size: 1.2rem; }
             .grid-layout { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+            .prono-channels-grid { grid-template-columns: repeat(2, 1fr); }
             .vip-grid { grid-template-columns: repeat(2, 1fr); }
             h2 { font-size: 1.6rem; }
         }
@@ -385,22 +489,32 @@
 <body>
 
     <div class="seo-shadow-layer">
-        <p>Recherche associée : analyses sportives professionnelles, gestion de capital et forfaits vip telegram.</p>
-        <p>Activation d'abonnement VIP par transfert sécurisé via support WhatsApp.</p>
+        <p>Indexation .com : Plateforme mondiale CFA de pronostics football, tennis, basketball. Coupons et stratégies de gestion de bankroll.</p>
     </div>
 
-    <!-- BARRE DÉFILANTE DU HAUT (CORRIGÉE ET EMPOURVU D'UN MARQUEE FLUIDE) -->
+    <!-- BANNIÈRE SUPÉRIEURE -->
     <div class="promo-banner" onclick="copyPromoCode()">
         <div class="promo-ticker-wrap">
-            <span class="promo-text">🔥 200% DE BONUS AVEC LE CODE PROMO <strong class="highlight">20VM</strong> (Cliquez n'importe où ici pour copier automatiquement) 🔥</span>
+            <span class="promo-text">🔥 <span data-key="banner_text">200% DE BONUS AVEC LE CODE PROMO AUTORISÉ</span> <strong class="highlight">20VM</strong> <span data-key="click_copy">(Cliquez pour copier)</span> 🔥</span>
+            <span class="promo-text">🔥 <span data-key="banner_text">200% DE BONUS AVEC LE CODE PROMO AUTORISÉ</span> <strong class="highlight">20VM</strong> <span data-key="click_copy">(Cliquez pour copier)</span> 🔥</span>
         </div>
     </div>
 
+    <!-- EN-TÊTE AVEC LE SÉLECTEUR DE LANGUES POPULAIRES -->
     <header>
         <div class="logo-area">
+            <div class="logo-icon"><i class="fas fa-crown"></i></div>
             <h1>Pronostic Pro <span class="cfa">CFA</span></h1>
         </div>
         <div class="header-controls">
+            <select id="language-switcher">
+                <option value="fr">🇫🇷 Français</option>
+                <option value="en">🇺🇸 English</option>
+                <option value="es">🇪🇸 Español</option>
+                <option value="ar">🇦🇪 العربية</option>
+                <option value="pt">🇵🇹 Português</option>
+            </select>
+
             <select id="currency-selector">
                 <option value="FCFA">XAF (FCFA)</option>
                 <option value="€">EUR (€)</option>
@@ -410,92 +524,120 @@
         </div>
     </header>
 
+    <!-- NAVIGATION PAR ONGLETS -->
     <nav class="main-nav">
-        <button class="nav-btn active" data-target="bookmakers" id="tab-book"><i class="fas fa-shield-halved"></i> <span>Bookmakers</span></button>
-        <button class="nav-btn" data-target="vip-zone" id="tab-vip"><i class="fas fa-crown" style="color: #ffcc00;"></i> <span>Portefeuille VIP</span></button>
-        <button class="nav-btn" data-target="live-home" id="tab-live"><i class="fas fa-satellite-dish" style="color: #ff3333;"></i> <span>Données Live</span></button>
-        <button class="nav-btn" data-target="pronos" id="tab-prono"><i class="fas fa-gift"></i> <span>Allocation Bonus</span></button>
-        <button class="nav-btn" data-target="register" id="tab-reg"><i class="fas fa-user-plus"></i> <span id="nav-reg-text">Espace Client</span></button>
+        <button class="nav-btn active" data-target="bookmakers" id="tab-book"><i class="fas fa-shield-halved"></i> <span data-key="tab_bookmakers">Bookmakers</span></button>
+        <button class="nav-btn" data-target="vip-zone" id="tab-vip"><i class="fas fa-crown" style="color: #ffcc00;"></i> <span data-key="tab_vip">Portefeuille VIP</span></button>
+        <button class="nav-btn" data-target="live-home" id="tab-live"><i class="fas fa-satellite-dish" style="color: #ff3333;"></i> <span data-key="tab_live">Données Live</span></button>
+        <button class="nav-btn" data-target="pronos" id="tab-prono"><i class="fas fa-gift"></i> <span data-key="tab_bonus">Allocation Bonus</span></button>
+        <button class="nav-btn" data-target="register" id="tab-reg"><i class="fas fa-user-plus"></i> <span id="nav-reg-text" data-key="tab_client">Espace Client</span></button>
     </nav>
 
     <main class="content-container">
         
+        <!-- 🎯 NOUVEL ESPACE : PRONOSTICS DU JOUR (CENTRALISÉ) -->
+        <div class="daily-prono-box">
+            <h3 data-key="title_daily_prono">🎯 Pronostics & Coupons du Jour</h3>
+            <p data-key="desc_daily_prono">Accédez immédiatement aux analyses du jour et aux combinaisons à forte probabilité. Rejoignez nos canaux officiels pour récupérer le coupon direct.</p>
+            <div class="prono-channels-grid">
+                <a href="https://t.me/+JotGKo_dJho5Njg0" target="_blank" class="btn-channel tg">
+                    <i class="fab fa-telegram-plane"></i> Telegram
+                </a>
+                <button onclick="handleWhatsAppChannelAccess()" class="btn-channel wa">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Channel
+                </button>
+            </div>
+        </div>
+        
+        <!-- SECTION BOOKMAKERS (PREMIER BET RETIRÉ) -->
         <section id="bookmakers" class="tab-content active">
-            <h2 id="title-book">🏆 Institutions et Plateformes Partenaires</h2>
+            <h2 data-key="title_bookmakers">🏆 Institutions et Plateformes Partenaires</h2>
             <div class="grid-layout">
+                <!-- 1XBET -->
                 <a href="https://affpa.top/L?tag=d_3906745m_97c_&site=3906745&ad=97" target="_blank" class="bookmaker-card" style="background: #0d2247;">
-                    <img class="bookmaker-logo" src="https://img.icons8.com/color/180/1xbet.png" alt="1XBET" onerror="this.src='https://placehold.co/200x80/0d2247/ffffff?text=1XBET'">
-                    <span class="promo-tag">CODE DE CERTIFICATION : 20VM</span>
-                    <div class="btn-bookmaker-action">Accéder à l'enregistrement institutionnel</div>
+                    <img class="bookmaker-logo" src="https://img.icons8.com/color/180/1xbet.png" alt="1XBET">
+                    <span class="promo-tag"><span data-key="cert_code">CODE DE CERTIFICATION</span> : 20VM</span>
+                    <div class="btn-bookmaker-action" data-key="btn_bonus">Accéder au bonus</div>
                 </a>
-                <a href="https://lb-aff.com/L?tag=d_3914573m_66803c_apk1&site=3914573&ad=66803" target="_blank" class="bookmaker-card" style="background: #1a4d2e;">
-                    <img class="bookmaker-logo" src="https://placehold.co/200x80/1a4d2e/ffffff?text=LINEBET" alt="Linebet">
-                    <span class="promo-tag">CODE DE CERTIFICATION : 20VM</span>
-                    <div class="btn-bookmaker-action">Accéder à l'enregistrement institutionnel</div>
+                <!-- BETWINNER -->
+                <a href="#" target="_blank" class="bookmaker-card" style="background: #12331c;">
+                    <span class="bookmaker-text-logo" style="color: #ffcc00;"><i class="fas fa-trophy"></i> BETWINNER</span>
+                    <span class="promo-tag"><span data-key="cert_code">CODE DE CERTIFICATION</span> : 20VM</span>
+                    <div class="btn-bookmaker-action" data-key="btn_bonus">Accéder au bonus</div>
                 </a>
-                <a href="https://combodef.com/L?tag=d_4299584m_60651c_&site=4299584&ad=60651" target="_blank" class="bookmaker-card" style="background: #131d27;">
-                    <img class="bookmaker-logo" src="https://placehold.co/200x80/131d27/ff6600?text=PARIPESA" alt="Paripesa">
-                    <span class="promo-tag">CODE DE CERTIFICATION : 20VM</span>
-                    <div class="btn-bookmaker-action">Accéder à l'enregistrement institutionnel</div>
-                </a>
+                <!-- MELBET -->
                 <a href="https://refpakrtsb.top/L?tag=d_3907081m_66335c_&site=3907081&ad=66335" target="_blank" class="bookmaker-card" style="background: #232323;">
-                    <img class="bookmaker-logo" src="https://img.icons8.com/color/180/melbet.png" alt="Melbet" onerror="this.src='https://placehold.co/200x80/232323/ffcc00?text=MELBET'">
-                    <span class="promo-tag">CODE DE CERTIFICATION : 20VM</span>
-                    <div class="btn-bookmaker-action">Accéder à l'enregistrement institutionnel</div>
+                    <img class="bookmaker-logo" src="https://img.icons8.com/color/180/melbet.png" alt="Melbet">
+                    <span class="promo-tag"><span data-key="cert_code">CODE DE CERTIFICATION</span> : 20VM</span>
+                    <div class="btn-bookmaker-action" data-key="btn_bonus">Accéder au bonus</div>
                 </a>
-                <a href="https://bonusweb.org/L?tag=d_3955561m_63543c_&site=3955561&ad=63543" target="_blank" class="bookmaker-card" style="background: #191919;">
-                    <img class="bookmaker-logo" src="https://placehold.co/200x80/191919/e50914?text=888STARZ" alt="888starz">
-                    <span class="promo-tag">CODE DE CERTIFICATION : 20VM</span>
-                    <div class="btn-bookmaker-action">Accéder à l'enregistrement institutionnel</div>
+                <!-- LINEBET -->
+                <a href="https://lb-aff.com/L?tag=d_3914573m_66803c_apk1&site=3914573&ad=66803" target="_blank" class="bookmaker-card" style="background: #1e3d2f;">
+                    <img class="bookmaker-logo" src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Linebet_logo.png" onerror="this.src='https://img.icons8.com/color/180/sports.png'" alt="Linebet">
+                    <span class="promo-tag"><span data-key="cert_code">CODE DE CERTIFICATION</span> : 20VM</span>
+                    <div class="btn-bookmaker-action" data-key="btn_bonus">Accéder au bonus</div>
+                </a>
+                <!-- PARIPESA -->
+                <a href="https://combodef.com/L?tag=d_4299584m_60651c_&site=4299584&ad=60651" target="_blank" class="bookmaker-card" style="background: #111a24;">
+                    <span class="bookmaker-text-logo" style="color: #ff6600;">PARIPESA</span>
+                    <span class="promo-tag"><span data-key="cert_code">CODE DE CERTIFICATION</span> : 20VM</span>
+                    <div class="btn-bookmaker-action" data-key="btn_bonus">Accéder au bonus</div>
+                </a>
+                <!-- 888STARZ -->
+                <a href="https://bonusweb.org/L?tag=d_3955561m_63543c_&site=3955561&ad=63543" target="_blank" class="bookmaker-card" style="background: #141414;">
+                    <span class="bookmaker-text-logo" style="color: #e50914;"><i class="fas fa-dice"></i> 888STARZ</span>
+                    <span class="promo-tag"><span data-key="cert_code">CODE DE CERTIFICATION</span> : 20VM</span>
+                    <div class="btn-bookmaker-action" data-key="btn_bonus">Accéder au bonus</div>
                 </a>
             </div>
         </section>
 
+        <!-- SECTION PORTFEUILLE VIP -->
         <section id="vip-zone" class="tab-content">
-            <h2 id="title-vip-section">👑 Acquisition de Forfaits d'Analyses VIP</h2>
-            <p style="text-align: center; max-width:750px; margin: 0 auto 25px; opacity:0.9; line-height:1.6; font-size:1.1rem;">
-                L'intégration de notre cellule d'analyse privée requiert une souscription active. Sélectionnez l'offre correspondant à vos objectifs de couverture financière afin de **soumettre votre ordre de paiement à notre bureau d'enregistrement (+237 659672569)**.
+            <h2 data-key="title_vip_section">👑 Acquisition de Forfaits d'Analyses VIP</h2>
+            <p style="text-align: center; max-width:750px; margin: 0 auto 25px; opacity:0.9; line-height:1.6; font-size:1.1rem;" data-key="vip_desc">
+                L'intégration de notre cellule d'analyse privée requiert une souscription active. Sélectionnez l'offre correspondant à vos objectifs de couverture financière afin de soumettre votre ordre de paiement à notre bureau d'enregistrement (+237 659672569).
             </p>
             
             <div class="vip-grid">
                 <div class="vip-card">
-                    <h4 style="font-size:1.3rem; font-weight:800;">COUVERTURE HEBDOMADAIRE</h4>
+                    <h4 style="font-size:1.3rem; font-weight:800;" data-key="vip1_title">COUVERTURE HEBDOMADAIRE</h4>
                     <div class="vip-price"><span id="price-hebdo">5 000</span> <span class="currency-symbol">FCFA</span></div>
                     <ul class="vip-features">
-                        <li><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Accès Cellule Privée : 7 Jours</li>
-                        <li><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Analyses Stratégiques Quotidiennes</li>
-                        <li><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Délivrance Immédiate des accès</li>
+                        <li data-key="vip1_f1"><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Accès Cellule Privée : 7 Jours</li>
+                        <li data-key="vip1_f2"><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Analyses Stratégiques Quotidiennes</li>
+                        <li data-key="vip1_f3"><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Délivrance Immédiate des accès</li>
                     </ul>
-                    <a href="#" id="link-hebdo" target="_blank" class="btn-vip-select" onclick="markAsPaid()"><i class="fab fa-whatsapp"></i> Initier le règlement via WhatsApp</a>
+                    <a href="#" id="link-hebdo" target="_blank" class="btn-vip-select"><i class="fab fa-whatsapp"></i> <span data-key="btn_pay">Initier le règlement via WhatsApp</span></a>
                 </div>
 
                 <div class="vip-card popular">
-                    <div class="vip-badge">Recommandation Analystes</div>
-                    <h4 style="font-size:1.3rem; font-weight:800; color:var(--accent-color);">COUVERTURE MENSUELLE</h4>
+                    <div class="vip-badge" data-key="vip_rec">Recommandation Analystes</div>
+                    <h4 style="font-size:1.3rem; font-weight:800; color:var(--accent-color);" data-key="vip2_title">COUVERTURE MENSUELLE</h4>
                     <div class="vip-price" style="color:var(--accent-color);"><span id="price-mensuel">15 000</span> <span class="currency-symbol" style="color:#fff;">FCFA</span></div>
                     <ul class="vip-features">
-                        <li><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Accès Cellule Privée : 30 Jours</li>
-                        <li><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Indices à Forte Valeur & Portefeuilles Combinés</li>
-                        <li><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Priorisation du traitement des accès</li>
+                        <li data-key="vip2_f1"><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Accès Cellule Privée : 30 Jours</li>
+                        <li data-key="vip2_f2"><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Indices à Forte Valeur & Portefeuilles Combinés</li>
+                        <li data-key="vip2_f3"><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Priorisation du traitement des accès</li>
                     </ul>
-                    <a href="#" id="link-mensuel" target="_blank" class="btn-vip-select" style="background: linear-gradient(90deg, #25D366, #1ebd59); color:white;" onclick="markAsPaid()"><i class="fab fa-whatsapp"></i> Initier le règlement via WhatsApp</a>
+                    <a href="#" id="link-mensuel" target="_blank" class="btn-vip-select"><i class="fab fa-whatsapp"></i> <span data-key="btn_pay">Initier le règlement via WhatsApp</span></a>
                 </div>
 
                 <div class="vip-card">
-                    <h4 style="font-size:1.3rem; font-weight:800;">FORFAIT INVESTISSEUR LST</h4>
+                    <h4 style="font-size:1.3rem; font-weight:800;" data-key="vip3_title">FORFAIT INVESTISSEUR LST</h4>
                     <div class="vip-price"><span id="price-investisseur">35 000</span> <span class="currency-symbol">FCFA</span></div>
                     <ul class="vip-features">
-                        <li><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Accès Cellule Privée : 90 Jours</li>
-                        <li><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Modélisation de Capital & Gestion d'Exposition</li>
-                        <li><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Support d'Aide à l'Investissement inclut</li>
+                        <li data-key="vip3_f1"><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Accès Cellule Privée : 90 Jours</li>
+                        <li data-key="vip3_f2"><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Modélisation de Capital & Gestion d'Exposition</li>
+                        <li data-key="vip3_f3"><i class="fas fa-check-circle" style="color:var(--accent-color);"></i> Support d'Aide à l'Investissement inclus</li>
                     </ul>
-                    <a href="#" id="link-investisseur" target="_blank" class="btn-vip-select" onclick="markAsPaid()"><i class="fab fa-whatsapp"></i> Initier le règlement via WhatsApp</a>
+                    <a href="#" id="link-investisseur" target="_blank" class="btn-vip-select"><i class="fab fa-whatsapp"></i> <span data-key="btn_pay">Initier le règlement via WhatsApp</span></a>
                 </div>
             </div>
 
             <div class="payment-methods-box" style="text-align: center;">
-                <h4 style="font-weight: 800; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-lock" style="color: var(--accent-color); margin-right: 8px;"></i> Protocoles et passerelles de facturation multidevises</h4>
-                <p style="font-size: 0.95rem; opacity: 0.8; margin-top: 5px;">Règlements sécurisés inter-États : Orange Money, MTN MoMo, Wave, Moov, Airtel, Cartes Bancaires & Actifs Numériques.</p>
+                <h4 data-key="pay_title"><i class="fas fa-lock" style="color: var(--accent-color); margin-right: 8px;"></i> Protocoles et passerelles de facturation multidevises</h4>
+                <p data-key="pay_desc">Règlements sécurisés inter-États : Orange Money, MTN MoMo, Wave, Moov, Airtel, Cartes Bancaires & Actifs Numériques.</p>
                 <div class="payment-icons">
                     <i class="fab fa-cc-visa" style="color: #0057b8;"></i>
                     <i class="fab fa-cc-mastercard" style="color: #ff5f00;"></i>
@@ -505,72 +647,364 @@
             </div>
         </section>
 
+        <!-- SECTION DONNÉES LIVE -->
         <section id="live-home" class="tab-content">
-            <h2 id="title-live">Données de Marché en Temps Réel</h2>
+            <h2 data-key="title_live">Données de Marché en Temps Réel</h2>
             <div class="live-redirect-box">
                 <i class="fas fa-satellite-dish main-live-icon"></i>
-                <h3 id="headline-live">Flux d'Évolution en Direct</h3>
-                <p id="desc-live">Consultez les indicateurs de performance, l'historique mathématique et les dynamiques de jeu des rencontres internationales en cours sur notre passerelle d'infrastructure LiveScore.</p>
-                <a href="https://www.livescore.com" target="_blank" class="btn-livescore-large" id="btn-live">
-                    <i class="fas fa-arrow-up-right-from-square"></i> Déployer la console LiveScore
+                <h3 data-key="live_subtitle">Flux d'Évolution en Direct</h3>
+                <p data-key="live_desc">Consultez les indicateurs de performance, l'historique mathématique et les dynamiques de jeu des rencontres internationales en cours sur notre passerelle d'infrastructure LiveScore.</p>
+                <a href="https://www.livescore.com" target="_blank" class="btn-livescore-large">
+                    <i class="fas fa-arrow-up-right-from-square"></i> <span data-key="btn_live">Déployer la console LiveScore</span>
                 </a>
             </div>
         </section>
 
+        <!-- SECTION ALLOCATION BONUS -->
         <section id="pronos" class="tab-content">
-            <h2 id="title-prono">🎁 Allocation d'Entrée & Droits de Bienvenue</h2>
+            <h2 data-key="title_bonus_sect">🎁 Allocation d'Entrée & Droits de Bienvenue</h2>
             <div class="bonus-box">
                 <i class="fas fa-gift" style="font-size: 3.5rem; color: var(--accent-color); margin-bottom: 15px;"></i>
-                <h3>Enregistrement sous accréditation</h3>
+                <h3 data-key="bonus_subtitle">Enregistrement sous accréditation</h3>
                 <span class="highlight-bonus" onclick="copyPromoCode()">RÉFÉRENCE : 20VM</span>
-                <p>Appliquez cette clé lors de votre ouverture de compte pour déclencher **l'abondement de 200%** sur vos premiers capitaux déposés.</p>
-                <a href="https://t.me/+JotGKo_dJho5Njg0" target="_blank" class="btn-whatsapp-large" id="btn-wa" style="background-color: var(--primary-btn); text-decoration:none;">
-                    <i class="fas fa-user-plus"></i> Activer l'offre de bienvenue
+                <p data-key="bonus_desc">Appliquez cette clé lors de votre ouverture de compte pour déclencher l'abondement de 200% sur vos premiers capitaux déposés.</p>
+                <a href="https://t.me/+JotGKo_dJho5Njg0" target="_blank" class="btn-whatsapp-large" style="background-color: var(--primary-btn);">
+                    <i class="fas fa-user-plus"></i> <span data-key="btn_bonus_act">Activer l'offre de bienvenue</span>
                 </a>
             </div>
         </section>
 
+        <!-- SECTION ESPACE CLIENT -->
         <section id="register" class="tab-content">
-            <h2 id="title-register-section">📝 Portail Authentification Client</h2>
+            <h2 id="title-register-section" data-key="title_auth">📝 Portail Authentification Client</h2>
             <div class="card pro-form-card" id="form-wrapper">
-                <form id="register-form" onsubmit="handleFormSubmit(event)">
+                <form id="auth-form" onsubmit="handleFormSubmit(event)">
                     <div class="input-group-icon" id="name-group">
                         <i class="fas fa-user"></i>
-                        <input type="text" id="reg-name" placeholder="Nom et Prénoms (Identité légale)">
+                        <input type="text" id="reg-name" placeholder="Nom et Prénoms (Identité légale)" required>
                     </div>
                     <div class="input-group-icon">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" id="reg-email" placeholder="Adresse Électronique Professionnelle" required>
+                        <input type="email" id="reg-email" placeholder="Adresse Électronique" required>
                     </div>
                     <div class="input-group-icon">
                         <i class="fas fa-lock"></i>
-                        <input type="password" id="password-field" placeholder="Clé de chiffrement / Mot de passe" required>
+                        <input type="password" id="password-field" placeholder="Mot de passe" required>
                     </div>
-                    <button type="submit" class="btn-action" id="btn-submit-reg">Créer un compte de membre</button>
-                    <span class="form-toggle-link" id="form-toggle" onclick="toggleFormMode()">Titulaire d'un accès réseau ? Se connecter</span>
+                    <button type="submit" class="btn-action" id="btn-submit-reg" data-key="btn_register">Créer un compte de membre</button>
+                    <span class="form-toggle-link" id="form-toggle" onclick="toggleFormMode()" data-key="toggle_login">Titulaire d'un accès réseau ? Se connecter</span>
                 </form>
             </div>
         </section>
     </main>
 
     <div class="floating-socials">
-        <a href="https://t.me/+JotGKo_dJho5Njg0" target="_blank" class="social-btn telegram" title="Canal d'Analyse Principal"><i class="fab fa-telegram-plane"></i></a>
-        <button onclick="handleWhatsAppChannelAccess()" class="social-btn whatsapp" title="Flux d'Information Exclusif WhatsApp"><i class="fab fa-whatsapp"></i></button>
+        <a href="https://t.me/+JotGKo_dJho5Njg0" target="_blank" class="social-btn telegram"><i class="fab fa-telegram-plane"></i></a>
+        <button onclick="handleWhatsAppChannelAccess()" class="social-btn whatsapp"><i class="fab fa-whatsapp"></i></button>
     </div>
 
-    <div id="copy-toast" class="copy-toast">Clé d'accréditation "20VM" enregistrée dans le presse-papiers. 👍</div>
+    <div id="copy-toast" class="copy-toast"><span data-key="toast_copied">Clé d'accréditation "20VM" enregistrée.</span> 👍</div>
 
+    <!-- 🔞 ZONE DE CERTIFICATION RÈGLEMENTAIRE +21 ANS 🔞 -->
+    <footer class="certification-footer">
+        <div class="cert-badge-container">
+            <div class="cert-21-badge">21+</div>
+        </div>
+        <p><strong><span data-key="cert_title">CERTIFICATION ET EXPOSITION RESPONSABLE</span></strong></p>
+        <p style="max-width: 650px; margin: 8px auto 0;" data-key="cert_desc">
+            L'accès aux plateformes de jeux d'argent et de paris en ligne est strictement interdit aux mineurs de moins de 21 ans. Les investissements sportifs comportent des risques d'endettement et de dépendance. Jouez de manière responsable et mesurée.
+        </p>
+    </footer>
+
+    <!-- ROBOT BANNER -->
     <div class="bottom-robot-ticker">
         <div class="robot-icon-area"><i class="fas fa-robot"></i></div>
         <div class="ticker-wrap">
-            <div class="ticker-content">
-                🤖 📊 [AUTOMATE D'ANALYSE] : <span style="color:var(--accent-color);">Déclenchement des droits d'abondement de 200% via la clé 20VM</span>. DISPOSITIFS ACCESSIBLES AUX INDIVIDUS MAJEURS UNIQUEMENT. EXPOSITION FINANCIÈRE RESPONSABLE RECOMMANDÉE. 🔞
+            <div class="ticker-content" data-key="ticker_text">
+                🤖 📊 [AUTOMATE] : Droits d'abondement de 200% via le code 20VM. DISPOSITIFS ACCESSIBLES AUX INDIVIDUS DE 21 ANS ET PLUS UNIQUEMENT. 🔞
             </div>
         </div>
     </div>
 
+    <!-- MODULE DE CONFIGURATION DES TRADUCTIONS DES 5 LANGUES -->
     <script>
-        let submitted = false;
+        const translations = {
+            fr: {
+                seo_title: "Pronostic Pro CFA - Analyses Sportives & Investissements VIP",
+                banner_text: "200% DE BONUS AVEC LE CODE PROMO AUTORISÉ",
+                click_copy: "(Cliquez pour copier)",
+                tab_bookmakers: "Bookmakers",
+                tab_vip: "Portefeuille VIP",
+                tab_live: "Données Live",
+                tab_bonus: "Allocation Bonus",
+                tab_client: "Espace Client",
+                title_bookmakers: "🏆 Institutions et Plateformes Partenaires",
+                cert_code: "CODE DE CERTIFICATION",
+                btn_bonus: "Accéder au bonus",
+                title_daily_prono: "🎯 Pronostics & Coupons du Jour",
+                desc_daily_prono: "Accédez immédiatement aux analyses du jour et aux combinaisons à forte probabilité. Rejoignez nos canaux officiels pour récupérer le coupon direct.",
+                title_vip_section: "👑 Acquisition de Forfaits d'Analyses VIP",
+                vip_desc: "L'intégration de notre cellule d'analyse privée requiert une souscription active. Sélectionnez l'offre correspondant à vos objectifs de couverture financière afin de soumettre votre ordre de paiement à notre bureau d'enregistrement (+237 659672569).",
+                vip1_title: "COUVERTURE HEBDOMADAIRE",
+                vip1_f1: "Accès Cellule Privée : 7 Jours",
+                vip1_f2: "Analyses Stratégiques Quotidiennes",
+                vip1_f3: "Délivrance Immédiate des accès",
+                vip2_title: "COUVERTURE MENSUELLE",
+                vip2_f1: "Accès Cellule Privée : 30 Jours",
+                vip2_f2: "Indices à Forte Valeur & Portefeuilles Combinés",
+                vip2_f3: "Priorisation du traitement des accès",
+                vip3_title: "FORFAIT INVESTISSEUR LST",
+                vip3_f1: "Accès Cellule Privée : 90 Jours",
+                vip3_f2: "Modélisation de Capital & Gestion d'Exposition",
+                vip3_f3: "Support d'Aide à l'Investissement inclus",
+                vip_rec: "Recommandation Analystes",
+                btn_pay: "Initier le règlement via WhatsApp",
+                pay_title: "Protocoles et passerelles de facturation multidevises",
+                pay_desc: "Règlements sécurisés inter-États : Orange Money, MTN MoMo, Wave, Moov, Airtel, Cartes Bancaires & Actifs Numériques.",
+                title_live: "Données de Marché en Temps Réel",
+                live_subtitle: "Flux d'Évolution en Direct",
+                live_desc: "Consultez les indicateurs de performance, l'historique mathématique et les dynamiques de jeu des rencontres internationales en cours sur notre passerelle d'infrastructure LiveScore.",
+                btn_live: "Déployer la console LiveScore",
+                title_bonus_sect: "🎁 Allocation d'Entrée & Droits de Bienvenue",
+                bonus_subtitle: "Enregistrement sous accréditation",
+                bonus_desc: "Appliquez cette clé lors de votre ouverture de compte pour déclencher l'abondement de 200% sur vos premiers capitaux déposés.",
+                btn_bonus_act: "Activer l'offre de bienvenue",
+                title_auth: "📝 Portail Authentification Client",
+                btn_register: "Créer un compte de membre",
+                toggle_login: "Titulaire d'un accès réseau ? Se connecter",
+                toast_copied: "Clé d'accréditation \"20VM\" enregistrée.",
+                cert_title: "CERTIFICATION ET EXPOSITION RESPONSABLE",
+                cert_desc: "L'accès aux plateformes de jeux d'argent et de paris en ligne est strictement interdit aux mineurs de moins de 21 ans. Les investissements sportifs comportent des risques d'endettement et de dépendance. Jouez de manière responsable.",
+                ticker_text: "🤖 📊 [AUTOMATE] : Droits d'abondement de 200% via le code 20VM. DISPOSITIFS ACCESSIBLES AUX INDIVIDUS DE 21 ANS ET PLUS UNIQUEMENT. 🔞"
+            },
+            en: {
+                seo_title: "Pronostic Pro CFA - Sports Analysis & VIP Investments",
+                banner_text: "200% BONUS WITH THE AUTHORIZED PROMO CODE",
+                click_copy: "(Click to copy)",
+                tab_bookmakers: "Bookmakers",
+                tab_vip: "VIP Portfolio",
+                tab_live: "Live Data",
+                tab_bonus: "Bonus Allocation",
+                tab_client: "Client Area",
+                title_bookmakers: "🏆 Partner Institutions and Platforms",
+                cert_code: "CERTIFICATION CODE",
+                btn_bonus: "Access Bonus",
+                title_daily_prono: "🎯 Daily Tips & Betting Slips",
+                desc_daily_prono: "Get immediate access to today's analysis and high probability combinations. Join our official channels to grab the direct coupon.",
+                title_vip_section: "👑 Acquisition of VIP Analysis Packages",
+                vip_desc: "Joining our private analysis unit requires an active subscription. Select the offer corresponding to your financial targets to submit your payment to our registration desk (+237 659672569).",
+                vip1_title: "WEEKLY COVERAGE",
+                vip1_f1: "Private Unit Access: 7 Days",
+                vip1_f2: "Daily Strategic Analysis",
+                vip1_f3: "Immediate delivery of access",
+                vip2_title: "MONTHLY COVERAGE",
+                vip2_f1: "Private Unit Access: 30 Days",
+                vip2_f2: "High-Value Indices & Combo Portfolios",
+                vip2_f3: "Prioritized processing of access",
+                vip3_title: "LST INVESTOR PACKAGE",
+                vip3_f1: "Private Unit Access: 90 Days",
+                vip3_f2: "Capital Modeling & Exposure Management",
+                vip3_f3: "Investment Support assistance included",
+                vip_rec: "Analysts' Recommendation",
+                btn_pay: "Initiate payment via WhatsApp",
+                pay_title: "Multi-currency protocols and billing gateways",
+                pay_desc: "Secure inter-State payments: Orange Money, MTN MoMo, Wave, Moov, Airtel, Credit Cards & Digital Assets.",
+                title_live: "Real-Time Market Data",
+                live_subtitle: "Live Evolution Stream",
+                live_desc: "Check performance indicators, mathematical history, and match dynamics of ongoing international games on our LiveScore infrastructure gateway.",
+                btn_live: "Deploy the LiveScore console",
+                title_bonus_sect: "🎁 Entry Allocation & Welcome Rights",
+                bonus_subtitle: "Registration under accreditation",
+                bonus_desc: "Apply this key during account opening to trigger the 200% funding match on your initial deposited capital.",
+                btn_bonus_act: "Activate welcome offer",
+                title_auth: "📝 Client Authentication Portal",
+                btn_register: "Create member account",
+                toggle_login: "Network access holder? Log in",
+                toast_copied: "Accreditation key \"20VM\" saved.",
+                cert_title: "CERTIFICATION AND RESPONSIBLE EXPOSURE",
+                cert_desc: "Access to gambling and online betting platforms is strictly prohibited for minors under 21. Sports investments involve risks of debt and addiction. Play responsibly.",
+                ticker_text: "🤖 📊 [AUTOMATE]: 200% funding rights via code 20VM. ACCESSIBLE TO INDIVIDUS AGED 21 AND OVER ONLY. 🔞"
+            },
+            es: {
+                seo_title: "Pronostic Pro CFA - Análisis Deportivo e Inversiones VIP",
+                banner_text: "200% DE BONO CON EL CÓDIGO PROMO AUTORIZADO",
+                click_copy: "(Haga clic para copiar)",
+                tab_bookmakers: "Casas de Apuestas",
+                tab_vip: "Portafolio VIP",
+                tab_live: "Datos en Vivo",
+                tab_bonus: "Asignación de Bono",
+                tab_client: "Área de Clientes",
+                title_bookmakers: "🏆 Instituciones y Plataformas Socias",
+                cert_code: "CÓDIGO DE CERTIFICACIÓN",
+                btn_bonus: "Acceder al Bono",
+                title_daily_prono: "🎯 Pronósticos y Cupones del Día",
+                desc_daily_prono: "Acceda de inmediato a los análisis del día y combinaciones de alta probabilidad. Únase a nuestros canales oficiales para obtener el cupón directo.",
+                title_vip_section: "👑 Adquisición de Paquetes de Análisis VIP",
+                vip_desc: "Unirse a nuestra unidad de análisis privado requiere una suscripción activa. Seleccione la oferta correspondiente a sus objetivos para enviar su pago a nuestra oficina de registro (+237 659672569).",
+                vip1_title: "COBERTURA SEMANAL",
+                vip1_f1: "Acceso a Unidad Privada: 7 Días",
+                vip1_f2: "Análisis Estratégico Diario",
+                vip1_f3: "Entrega inmediata de accesos",
+                vip2_title: "COBERTURA MENSUAL",
+                vip2_f1: "Acceso a Unidad Privada: 30 Días",
+                vip2_f2: "Índices de Alto Valor y Portafolios Combinados",
+                vip2_f3: "Procesamiento prioritario de acceso",
+                vip3_title: "PAQUETE DE INVERSOR LST",
+                vip3_f1: "Acceso a Unidad Privada: 90 Días",
+                vip3_f2: "Modelado de Capital y Gestión de Riesgo",
+                vip3_f3: "Soporte de ayuda a la inversión incluido",
+                vip_rec: "Recomendación de Analistas",
+                btn_pay: "Iniciar pago por WhatsApp",
+                pay_title: "Protocolos y pasarelas de facturación multidivisa",
+                pay_desc: "Pagos seguros: Orange Money, MTN MoMo, Wave, Moov, Airtel, Tarjetas de Crédito y Activos Digitales.",
+                title_live: "Datos de Mercado en Tiempo Real",
+                live_subtitle: "Transmisión en Vivo",
+                live_desc: "Consulte los indicadores de rendimiento, el historial matemático y la dinámica de los partidos internacionales en curso.",
+                btn_live: "Desplegar la consola LiveScore",
+                title_bonus_sect: "🎁 Asignación de Entrada y Derechos de Bienvenida",
+                bonus_subtitle: "Registro bajo acreditación",
+                bonus_desc: "Aplique esta clave durante la apertura de la cuenta para activar el bono del 200% en su capital inicial depositado.",
+                btn_bonus_act: "Activar oferta de bienvenida",
+                title_auth: "📝 Portal de Autenticación de Clientes",
+                btn_register: "Crear cuenta de miembro",
+                toggle_login: "¿Ya tiene cuenta? Iniciar sesión",
+                toast_copied: "Código de acreditación \"20VM\" guardado.",
+                cert_title: "CERTIFICACIÓN Y JUEGO RESPONSABLE",
+                cert_desc: "El acceso a las plataformas de juegos de azar y apuestas en línea está estrictamente prohibido para menores de 21 años. Las inversiones deportivas conllevan riesgos de endeudamiento. Juegue con responsabilidad.",
+                ticker_text: "🤖 📊 [AUTOMÁTICO]: 200% de bonificación con el código 20VM. DISPOSITIVOS ACCESIBLES SOLO PARA MAYORES DE 21 AÑOS. 🔞"
+            },
+            ar: {
+                seo_title: "Pronostic Pro CFA - التحليلات الرياضية والاستثمارات VIP",
+                banner_text: "200% مكافأة مع الكود الترويجي المعتمد",
+                click_copy: "(اضغط للنسخ)",
+                tab_bookmakers: "وكلاء المراهنات",
+                tab_vip: "محفظة VIP",
+                tab_live: "البيانات المباشرة",
+                tab_bonus: "تخصيص المكافآت",
+                tab_client: "منطقة العملاء",
+                title_bookmakers: "🏆 المؤسسات والمنصات الشريكة",
+                cert_code: "رمز الشهادة",
+                btn_bonus: "الحصول على المكافأة",
+                title_daily_prono: "🎯 توقعات وقسائم اليوم",
+                desc_daily_prono: "احصل على وصول فوري لتحليلات اليوم والتوليفات ذات الاحتمالية العالية. انضم إلى قنواتنا الرسمية للحصول على القسيمة المباشرة.",
+                title_vip_section: "👑 شراء باقات التحليل VIP",
+                vip_desc: "الانضمام إلى وحدة التحليل الخاصة بنا يتطلب اشتراكاً نشطاً. اختر العرض المناسب لأهدافك لإرسال الدفع إلى مكتب التسجيل الخاص بنا (+237 659672569).",
+                vip1_title: "تغطية أسبوعية",
+                vip1_f1: "دخول الوحدة الخاصة: 7 أيام",
+                vip1_f2: "التحليل الاستراتيجي اليومي",
+                vip1_f3: "تسليم فوري للحسابات",
+                vip2_title: "تغطية شهرية",
+                vip2_f1: "دخول الوحدة الخاصة: 30 يوم",
+                vip2_f2: "مؤشرات عالية القيمة ومحافظ مدمجة",
+                vip2_f3: "أولوية معالجة الطلبات",
+                vip3_title: "باقة المستثمر LST",
+                vip3_f1: "دخول الوحدة الخاصة: 90 يوم",
+                vip3_f2: "نمذجة رأس المال وإدارة المخاطر",
+                vip3_f3: "الدعم الاستثماري مشمول في الباقة",
+                vip_rec: "توصية المحللين",
+                btn_pay: "بدء الدفع عبر الواتساب",
+                pay_title: "بروتوكولات وبوابات الفوترة متعددة العملات",
+                pay_desc: "مدفوعات آمنة: Orange Money، MTN MoMo، Wave، Moov، Airtel، البطاقات الائتمانية والأصول الرقمية.",
+                title_live: "بيانات السوق في الوقت الفعلي",
+                live_subtitle: "البث المباشر للتطورات",
+                live_desc: "تحقق من مؤشرات الأداء والتاريخ الرياضي وديناميكيات المباريات الدولية الجارية.",
+                btn_live: "تشغيل لوحة LiveScore",
+                title_bonus_sect: "🎁 تخصيص الدخول وحقوق الترحيب",
+                bonus_subtitle: "التسجيل بموجب الاعتماد",
+                bonus_desc: "أدخل هذا الرمز عند فتح الحساب لتفعيل مكافأة الإيداع بنسبة 200% على رأس مالك الأول.",
+                btn_bonus_act: "تفعيل عرض الترحيب",
+                title_auth: "📝 بوابة التحقق من هوية العملاء",
+                btn_register: "إنشاء حساب عضو",
+                toggle_login: "هل لديك حساب بالفعل؟ تسجيل الدخول",
+                toast_copied: "تم حفظ رمز الاعتماد \"20VM\".",
+                cert_title: "شهادة اللعب المسؤول",
+                cert_desc: "يُحظر تمامًا الدخول إلى منصات القمار والمراهنة عبر الإنترنت للقاصرين دون سن 21 عامًا. تنطوي الاستثمارات الرياضية على مخاطر الديون والإدمان. العب بمسؤولية.",
+                ticker_text: "🤖 📊 [آلي]: حقوق تمويل بنسبة 200% عبر كود 20VM. متاح فقط للأفراد الذين تبلغ أعمارهم 21 عامًا فما فوق. 🔞"
+            },
+            pt: {
+                seo_title: "Pronostic Pro CFA - Análise Esportiva e Investimentos VIP",
+                banner_text: "200% DE BÔNUS COM O CÓDIGO PROMO AUTORIZADO",
+                click_copy: "(Clique para copiar)",
+                tab_bookmakers: "Casas de Apostas",
+                tab_vip: "Portfólio VIP",
+                tab_live: "Dados ao Vivo",
+                tab_bonus: "Alocação de Bônus",
+                tab_client: "Área do Cliente",
+                title_bookmakers: "🏆 Instituições e Plataformas Parceiras",
+                cert_code: "CÓDIGO DE CERTIFICAÇÃO",
+                btn_bonus: "Acessar Bônus",
+                title_daily_prono: "🎯 Dicas e Cupons do Dia",
+                desc_daily_prono: "Tenha acesso imediato às análises de hoje e combinações de alta probabilidade. Junte-se aos nossos canais oficiais para obter o cupão direto.",
+                title_vip_section: "👑 Aquisição de Pacotes de Análise VIP",
+                vip_desc: "A adesão à nossa unidade de análise privada requer uma assinatura ativa. Selecione a oferta correspondente aos seus objetivos para enviar o pagamento ao nosso balcão de registro (+237 659672569).",
+                vip1_title: "COBERTURA SEMANAL",
+                vip1_f1: "Acesso à Unidade Privada: 7 Días",
+                vip1_f2: "Análise Estratégica Diária",
+                vip1_f3: "Entrega imediata dos acessos",
+                vip2_title: "COBERTURA MENSAL",
+                vip2_f1: "Acesso à Unidade Privada: 30 Días",
+                vip2_f2: "Índices de Alto Valor e Portfólios Combinados",
+                vip2_f3: "Processamento prioritário de acesso",
+                vip3_title: "PAQUETE DE INVESTIDOR LST",
+                vip3_f1: "Acesso à Unidade Privada: 90 Días",
+                vip3_f2: "Modelagem de Capital e Gestão de Risco",
+                vip3_f3: "Suporte de assistência ao investimento incluso",
+                vip_rec: "Recomendação dos Analistas",
+                btn_pay: "Iniciar pagamento via WhatsApp",
+                pay_title: "Protocolos e gateways de faturamento multimoeda",
+                pay_desc: "Pagamentos seguros: Orange Money, MTN MoMo, Wave, Moov, Airtel, Cartões de Crédito e Ativos Digitais.",
+                title_live: "Dados de Mercado em Tempo Real",
+                live_subtitle: "Transmissão ao Vivo",
+                live_desc: "Consulte indicadores de desempenho, histórico matemático e dinâmicas das partidas internacionais em andamento.",
+                btn_live: "Implantar o console LiveScore",
+                title_bonus_sect: "🎁 Alocação de Entrada e Direitos de Boas-Vindas",
+                bonus_subtitle: "Registro sob acreditação",
+                bonus_desc: "Aplique esta chave durante a abertura da conta para ativar o bônus de 200% no seu capital inicial depositado.",
+                btn_bonus_act: "Ativar oferta de boas-vindas",
+                title_auth: "📝 Portal de Autenticação do Cliente",
+                btn_register: "Criar conta de membro",
+                toggle_login: "Já tem uma conta? Conectar-se",
+                toast_copied: "Código de acreditação \"20VM\" salvo.",
+                cert_title: "CERTIFICAÇÃO E JOGO RESPONSÁVEL",
+                cert_desc: "O acesso a plataformas de jogos de azar e apostas online é estritamente proibido para menores de 21 anos. Os investimentos esportivos envolvem riscos de endividamento. Jogue com responsabilidade.",
+                ticker_text: "🤖 📊 [AUTOMÁTICO]: 200% de bônus com o código 20VM. DISPOSITIVOS ACESSÍVEIS APENAS PARA MAIORES DE 21 ANOS. 🔞"
+            }
+        };
+
+        function applyLanguage(lang) {
+            const elements = document.querySelectorAll('[data-key]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    if (el.tagName === 'TITLE') {
+                        document.title = translations[lang][key];
+                    } else {
+                        el.innerText = translations[lang][key];
+                    }
+                }
+            });
+            localStorage.setItem('preferred_lang_cfa', lang);
+            document.documentElement.lang = lang;
+            
+            if (lang === 'ar') {
+                document.documentElement.dir = 'rtl';
+                document.querySelectorAll('.vip-features').forEach(el => el.style.textAlign = 'right');
+                document.querySelector('h2').style.borderLeft = 'none';
+                document.querySelector('h2').style.borderRight = '5px solid var(--accent-color)';
+                document.querySelector('h2').style.paddingLeft = '0';
+                document.querySelector('h2').style.paddingRight = '12px';
+            } else {
+                document.documentElement.dir = 'ltr';
+                document.querySelectorAll('.vip-features').forEach(el => el.style.textAlign = 'left');
+                document.querySelector('h2').style.borderRight = 'none';
+                document.querySelector('h2').style.borderLeft = '5px solid var(--accent-color)';
+                document.querySelector('h2').style.paddingRight = '0';
+                document.querySelector('h2').style.paddingLeft = '12px';
+            }
+        }
+    </script>
+
+    <script>
         let isLoginMode = false;
 
         const priceMatrix = {
@@ -582,171 +1016,136 @@
         const WHATSAPP_PAY_NUMBER = "237659672569";
         const REAL_WHATSAPP_CHANNEL = "https://whatsapp.com/channel/0029VbBqk6XD38CQ5XfmfT26";
 
-        function updateVipPricesAndLinks() {
-            const currentCurrency = document.getElementById('currency-selector').value;
-            const pricing = priceMatrix[currentCurrency];
+        document.addEventListener("DOMContentLoaded", () => {
+            const navButtons = document.querySelectorAll('.nav-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
 
-            localStorage.setItem('selectedCurrency', currentCurrency);
-
-            document.getElementById('price-hebdo').innerText = pricing.hebdo;
-            document.getElementById('price-mensuel').innerText = pricing.mensuel;
-            document.getElementById('price-investisseur').innerText = pricing.investisseur;
-
-            const symbols = document.querySelectorAll('.currency-symbol');
-            symbols.forEach(symbol => {
-                symbol.innerText = currentCurrency;
+            navButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetId = btn.getAttribute('data-target');
+                    navButtons.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    btn.classList.add('active');
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) targetSection.classList.add('active');
+                });
             });
 
-            const textHebdo = encodeURIComponent(`Bonjour. Je sollicite l'ouverture de mes accès au Canal d'Analyse VIP Privé (Abonnement HEBDOMADAIRE - ${pricing.hebdo} ${currentCurrency})`);
-            const textMensuel = encodeURIComponent(`Bonjour. Je sollicite l'ouverture de mes accès au Canal d'Analyse VIP Privé (Abonnement MENSUEL - ${pricing.mensuel} ${currentCurrency})`);
-            const textInvestisseur = encodeURIComponent(`Bonjour. Je sollicite l'ouverture de mes accès au Canal d'Analyse VIP Privé (Abonnement INVESTISSEUR LST - ${pricing.investisseur} ${currentCurrency})`);
+            const currencySelector = document.getElementById('currency-selector');
+            currencySelector.addEventListener('change', updatePricesAndLinks);
 
-            document.getElementById('link-hebdo').href = `https://wa.me/${WHATSAPP_PAY_NUMBER}?text=${textHebdo}`;
-            document.getElementById('link-mensuel').href = `https://wa.me/${WHATSAPP_PAY_NUMBER}?text=${textMensuel}`;
-            document.getElementById('link-investisseur').href = `https://wa.me/${WHATSAPP_PAY_NUMBER}?text=${textInvestisseur}`;
-        }
+            const themeToggle = document.getElementById('theme-toggle');
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                themeToggle.innerHTML = newTheme === 'light' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            });
 
-        function markAsPaid() {
-            localStorage.setItem('hasPaidVip', 'true');
-        }
+            const langSwitcher = document.getElementById('language-switcher');
+            langSwitcher.addEventListener('change', (e) => {
+                applyLanguage(e.target.value);
+            });
 
-        function handleWhatsAppChannelAccess() {
-            const hasPaid = localStorage.getItem('hasPaidVip');
+            const savedLang = localStorage.getItem('preferred_lang_cfa');
+            const browserLang = (navigator.language || navigator.userLanguage).substring(0, 2);
+            const defaultLang = savedLang || (translations[browserLang] ? browserLang : 'fr');
             
-            if (hasPaid === 'true') {
-                window.open(REAL_WHATSAPP_CHANNEL, '_blank');
-            } else {
-                alert("🔒 Accès Sécurisé Réservé — Ce canal d'information privé requiert l'activation préalable d'une formule d'analyse VIP. Vous allez être mis en relation avec notre service de souscription.");
-                const redirectionText = encodeURIComponent("Bonjour, je souhaite régler mon statut et souscrire à une offre d'analyse afin de débloquer l'accès à la chaîne exclusive WhatsApp.");
-                window.open(`https://wa.me/${WHATSAPP_PAY_NUMBER}?text=${redirectionText}`, '_blank');
-            }
-        }
+            langSwitcher.value = defaultLang;
+            applyLanguage(defaultLang);
 
-        document.getElementById('currency-selector').addEventListener('change', updateVipPricesAndLinks);
-        
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedCurrency = localStorage.getItem('selectedCurrency');
-            if(savedCurrency) {
-                document.getElementById('currency-selector').value = savedCurrency;
-            }
-            
-            const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            updateThemeIcon(savedTheme);
-            updateVipPricesAndLinks();
+            updatePricesAndLinks();
             checkUserSession();
         });
 
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('click', () => {
-            let currentTheme = document.documentElement.getAttribute('data-theme');
-            let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('selectedTheme', newTheme);
-            updateThemeIcon(newTheme);
-        });
+        function updatePricesAndLinks() {
+            const currentCurrency = document.getElementById('currency-selector').value;
+            const symbols = document.querySelectorAll('.currency-symbol');
+            symbols.forEach(sym => { sym.innerText = currentCurrency; });
 
-        function updateThemeIcon(theme) {
-            const icon = themeToggle.querySelector('i');
-            if (theme === 'dark') {
-                icon.className = 'fas fa-sun';
-            } else {
-                icon.className = 'fas fa-moon';
-            }
+            const prices = priceMatrix[currentCurrency];
+            document.getElementById('price-hebdo').innerText = prices.hebdo;
+            document.getElementById('price-mensuel').innerText = prices.mensuel;
+            document.getElementById('price-investisseur').innerText = prices.investisseur;
+
+            const textHebdo = encodeURIComponent(`Bonjour, je souhaite souscrire au forfait VIP Hebdomadaire (${prices.hebdo} ${currentCurrency}). Code : 20VM.`);
+            const textMensuel = encodeURIComponent(`Bonjour, je souhaite souscrire au forfait VIP Mensuel (${prices.mensuel} ${currentCurrency}). Code : 20VM.`);
+            const textInvest = encodeURIComponent(`Bonjour, je souhaite souscrire au forfait Investisseur LST (${prices.investisseur} ${currentCurrency}). Code : 20VM.`);
+
+            document.getElementById('link-hebdo').href = `https://wa.me/${WHATSAPP_PAY_NUMBER}?text=${textHebdo}`;
+            document.getElementById('link-mensuel').href = `https://wa.me/${WHATSAPP_PAY_NUMBER}?text=${textMensuel}`;
+            document.getElementById('link-investisseur').href = `https://wa.me/${WHATSAPP_PAY_NUMBER}?text=${textInvest}`;
         }
 
-        const navButtons = document.querySelectorAll('.nav-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        navButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const targetTab = button.getAttribute('data-target');
-
-                navButtons.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(tab => tab.classList.remove('active'));
-
-                button.classList.add('active');
-                document.getElementById(targetTab).classList.add('active');
-                
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
-
         function copyPromoCode() {
-            const code = "20VM";
-            navigator.clipboard.writeText(code).then(() => {
+            navigator.clipboard.writeText("20VM").then(() => {
                 const toast = document.getElementById('copy-toast');
                 toast.style.display = 'block';
-                setTimeout(() => {
-                    toast.style.display = 'none';
-                }, 3000);
-            }).catch(err => {
-                console.error('Échec de la copie d\'accréditation : ', err);
+                setTimeout(() => { toast.style.display = 'none'; }, 2500);
             });
+        }
+
+        function handleWhatsAppChannelAccess() {
+            window.open(REAL_WHATSAPP_CHANNEL, '_blank');
         }
 
         function toggleFormMode() {
             isLoginMode = !isLoginMode;
             const nameGroup = document.getElementById('name-group');
-            const submitBtn = document.getElementById('btn-submit-reg');
-            const toggleLink = document.getElementById('form-toggle');
             const regNameInput = document.getElementById('reg-name');
+            const btnSubmit = document.getElementById('btn-submit-reg');
+            const toggleLink = document.getElementById('form-toggle');
+            const titleSection = document.getElementById('title-register-section');
+
+            const currentLang = document.documentElement.lang;
 
             if (isLoginMode) {
+                titleSection.innerText = translations[currentLang].title_auth + " (Login)";
                 nameGroup.style.display = 'none';
                 regNameInput.removeAttribute('required');
-                submitBtn.innerText = "S'authentifier";
-                toggleLink.innerText = "Nouveau membre ? Créer un profil de compte";
+                btnSubmit.innerText = currentLang === 'fr' ? "Se connecter" : "Log In";
+                toggleLink.innerText = translations[currentLang].btn_register;
             } else {
+                titleSection.innerText = translations[currentLang].title_auth;
                 nameGroup.style.display = 'flex';
                 regNameInput.setAttribute('required', 'required');
-                submitBtn.innerText = "Créer un compte de membre";
-                toggleLink.innerText = "Titulaire d'un accès réseau ? Se connecter";
+                btnSubmit.innerText = translations[currentLang].btn_register;
+                toggleLink.innerText = translations[currentLang].toggle_login;
             }
         }
 
         function handleFormSubmit(event) {
             event.preventDefault();
-            submitted = true;
-            
             const email = document.getElementById('reg-email').value;
-            localStorage.setItem('userEmail', email);
-            
-            if (isLoginMode) {
-                alert("Authentification validée. Session utilisateur active.");
-            } else {
-                alert("Enregistrement validé avec succès. Votre profil membre est désormais actif.");
-            }
-            
+            const nameInput = document.getElementById('reg-name').value;
+            const displayName = isLoginMode ? "Membre Privé" : (nameInput || "Utilisateur");
+            localStorage.setItem('user_session_cfa', JSON.stringify({ name: displayName, email: email }));
             checkUserSession();
         }
 
         function checkUserSession() {
-            const userEmail = localStorage.getItem('userEmail');
+            const sessionData = localStorage.getItem('user_session_cfa');
             const formWrapper = document.getElementById('form-wrapper');
-            const navRegText = document.getElementById('nav-reg-text');
-            const navRegIcon = document.querySelector('#tab-reg i');
+            const navText = document.getElementById('nav-reg-text');
+            const currentLang = document.documentElement.lang;
 
-            if (userEmail && formWrapper) {
-                navRegText.innerText = "Mon Terminal";
-                navRegIcon.className = "fas fa-user-shield";
-                
+            if (sessionData && formWrapper) {
+                const user = JSON.parse(sessionData);
+                navText.innerText = currentLang === 'fr' ? "Mon Espace ✅" : "My Space ✅";
                 formWrapper.innerHTML = `
                     <div class="logged-in-box">
-                        <i class="fas fa-check-circle" style="font-size: 3rem; color: #28a745; margin-bottom: 15px;"></i>
-                        <h3>Session Membre Sécurisée</h3>
-                        <p style="opacity: 0.8;">Identifiant de connexion : <strong>${userEmail}</strong></p>
-                        <p style="margin-top: 10px; font-size: 0.9rem; color: var(--accent-color);">Votre statut vous donne droit à l'utilisation de la clé de certification <strong>20VM</strong>.</p>
-                        <button class="btn-action btn-logout" onclick="handleLogout()">Fermer la session de compte</button>
+                        <i class="fas fa-user-check" style="font-size: 3.5rem; color: var(--accent-color); margin-bottom: 15px;"></i>
+                        <h3>Active</h3>
+                        <p><strong>${user.name}</strong></p>
+                        <p style="font-size:0.85rem; opacity:0.6;">ID: ${user.email}</p>
+                        <button onclick="handleLogout()" class="btn-logout">Logout</button>
                     </div>
                 `;
             }
         }
 
         function handleLogout() {
-            localStorage.removeItem('userEmail');
-            alert("Fermeture de session effectuée. Reconnexion requise pour accéder au terminal.");
+            localStorage.removeItem('user_session_cfa');
             window.location.reload();
         }
     </script>
